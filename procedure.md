@@ -3,6 +3,7 @@ type: Type
 _icon: list-checks
 _color: "#10b981"
 _order: 4
+_organized: true
 ---
 
 # Procedure

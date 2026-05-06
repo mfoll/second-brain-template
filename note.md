@@ -3,6 +3,7 @@ type: Type
 _order: 3
 _icon: file-text
 color: yellow
+_organized: true
 ---
 
 # Note

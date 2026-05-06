@@ -3,6 +3,7 @@ type: Type
 _icon: lightbulb
 _color: "#8b5cf6"
 _order: 7
+_organized: true
 ---
 
 # Concept

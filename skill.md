@@ -3,6 +3,7 @@ type: Type
 _icon: puzzle
 _color: "#8b5cf6"
 _order: 9
+_organized: true
 ---
 
 # Skill

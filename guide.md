@@ -3,6 +3,7 @@ type: Type
 _icon: book-open
 _color: "#16a34a"
 _order: 10
+_organized: true
 ---
 
 # Guide

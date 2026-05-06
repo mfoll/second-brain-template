@@ -1,6 +1,7 @@
 ---
 type: Type
 _order: 9
+_organized: true
 ---
 
 # Type

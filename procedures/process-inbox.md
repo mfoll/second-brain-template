@@ -22,6 +22,7 @@ Move captured material from vague storage into retrievable structure, or deliber
 5. If the capture is an internal durable idea, decide whether to update an existing typed note or create a new Project, Question, Concept, Responsibility, Procedure, ADR, Source, or Note.
 6. Add the minimum useful relationships and body links needed for retrieval. Prefer a few strong links over broad weak tagging.
 7. Mark a note organized only when it is findable through a Project, Responsibility, Topic, Source, Question, Concept, Procedure, ADR, saved view, backlink, or explicit archive convention.
+   - When a note is organized enough to leave Inbox, add or preserve `_organized: true` in frontmatter.
 8. Use `_archived: true` for retained material that should no longer appear in active resumption.
 9. Delete only when the content has no retrieval value, contains junk, or has already been fully promoted elsewhere and provenance is not useful.
 10. If placement is unclear, leave the note unprocessed and add a concrete `## Triage Question` rather than forcing a poor structure.

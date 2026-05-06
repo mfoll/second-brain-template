@@ -3,6 +3,7 @@ type: Type
 _icon: repeat
 _color: "#ef4444"
 _order: 8
+_organized: true
 ---
 
 # Responsibility

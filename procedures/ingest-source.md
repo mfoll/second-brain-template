@@ -38,6 +38,7 @@ A usable Source note includes:
 - provenance sufficient to re-check the source;
 - a short summary in the vault owner's words;
 - at least one clear retrieval path or an explicit unprocessed state.
+- `_organized: true` when the Source has a clear retrieval path, or `_organized: false` only when placement is still unresolved.
 
 
 ## Guardrails

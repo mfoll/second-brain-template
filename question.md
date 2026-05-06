@@ -3,6 +3,7 @@ type: Type
 _icon: hand
 _color: "#eab308"
 _order: 1
+_organized: true
 ---
 
 # Question

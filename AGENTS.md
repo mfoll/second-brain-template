@@ -28,6 +28,7 @@ If an external workspace expects Second Brain memory but the configured vault ro
 - One Markdown note per file.
 - The first H1 in the body is the preferred display title.
 - Store note type in the `type:` frontmatter field.
+- Agent-created or agent-routed notes should include `_organized: true` once they have a clear retrieval path. Keep `_organized: false` only for deliberately unprocessed captures such as [[ready-to-ingest]].
 - Type definitions live at the vault root unless the user reorganizes the vault intentionally.
 - Saved views live in `views/*.yml`.
 - Files in `attachments/` are assets, not notes or types.
@@ -36,6 +37,8 @@ If an external workspace expects Second Brain memory but the configured vault ro
 ## Types
 
 Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Topic, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
+
+Type notes are structural notes and should normally be `_organized: true`, unless a new Type is still a draft.
 
 Do not add a new Type until there is a recurring retrieval need that existing types do not cover cleanly.
 
