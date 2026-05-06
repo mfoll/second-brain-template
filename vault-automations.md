@@ -20,7 +20,7 @@ The work/control vault may track routing and template decisions, but it should n
 
 Common starting points:
 
-- process the reusable [[ready-to-ingest]] note with [[procedures/process-ready-ingestion-inbox]];
+- process the reusable [[ready-to-ingest]] note with [[procedures/process-ready-ingestion-inbox]], normally every 12 hours unless the deployed vault has a reason for a different cadence;
 - run read-only mechanical diagnostics with [[procedures/lint-vault]];
 - run read-only strategic review with [[procedures/review-vault-health]].
 
@@ -37,6 +37,8 @@ For private or sensitive vaults, include an explicit stop rule for sensitive mat
 ## Schedule Pattern
 
 Stagger schedules across vaults so jobs do not collide. For example, if the work/control vault runs lint at 09:00, a personal vault could run lint at 09:15.
+
+Ready-ingestion inbox processing should default to every 12 hours. Use explicit times in the deployed vault's automation guide, for example 00:30 and 12:30 or a staggered pair such as 00:45 and 12:45.
 
 ## Deployment Checklist
 

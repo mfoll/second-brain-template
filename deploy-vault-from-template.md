@@ -106,7 +106,7 @@ Review [[vault-automations]] and decide whether this deployed vault should have 
 
 Start with read-only jobs unless the user explicitly wants a write-capable intake job. Common candidates are:
 
-- process [[ready-to-ingest]] with [[procedures/process-ready-ingestion-inbox]];
+- process [[ready-to-ingest]] with [[procedures/process-ready-ingestion-inbox]], normally every 12 hours;
 - run read-only [[procedures/lint-vault]];
 - run read-only [[procedures/review-vault-health]].
 
