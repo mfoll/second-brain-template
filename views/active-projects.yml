@@ -8,3 +8,6 @@ filters:
     - field: status
       op: equals
       value: Active
+    - field: _archived
+      op: not_equals
+      value: true

@@ -5,3 +5,6 @@ filters:
     - field: type
       op: equals
       value: Source
+    - field: _archived
+      op: not_equals
+      value: true

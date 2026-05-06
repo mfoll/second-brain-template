@@ -7,18 +7,37 @@ _organized: true
 
 # Git Checkpoint Vault Changes
 
+Use this procedure after an agent changes vault files and the user has not asked to leave the work uncommitted.
+
 ## Goal
 
-After vault edits, inspect status and diff, exclude local junk and unrelated files, stage the intended scope, commit with a concise message, push when approved or expected, and report the final state.
+Keep Git as the audit trail, backup layer, and rollback path while avoiding accidental commits of unrelated or sensitive material.
 
 ## Steps
 
-1. Read `AGENTS.md` and the relevant Project note before changing the vault.
-2. Confirm the current scope and avoid unrelated edits.
-3. Make the smallest useful change that satisfies the workflow.
-4. Validate links, frontmatter, and retrieval paths touched by the change.
-5. Report what changed, what was left alone, and any follow-up needed.
+1. Check repository state with `git status --short --branch`.
+2. Review changed scope with `git diff --stat` and `git diff` when useful.
+3. Exclude local junk such as `.DS_Store`, caches, temporary renders, generated dumps, and unrelated files.
+4. If unrelated user edits are present, stage only task-scoped files or ask before mixing them into the commit.
+5. Stage the intended files.
+6. Review staged scope with `git diff --cached --stat` and `git diff --cached --name-only`.
+7. Commit with a concise message describing the knowledge, workflow, or structural change.
+8. Push the current branch only when the user requested it, the workflow explicitly allows it, or the repository's operating policy makes push part of normal checkpointing.
+9. Verify final state with `git status --short --branch`.
+10. Report branch, commit hash, push result, files changed, and any files intentionally left uncommitted.
 
-## Boundaries
+## Branch Policy
 
-Do not add private source material, secrets, credentials, cache files, generated dumps, or machine-specific paths to durable vault notes.
+Use direct commits to `main` for small coherent vault maintenance changes. Use a short-lived branch such as `codex/<topic>` for broad, risky, experimental, or review-heavy changes.
+
+## Stop Conditions
+
+Ask before pushing broad diffs, attachments, secrets, credentials, sensitive documents, generated dumps, visibility changes, or changes outside the stated task scope. Never force-push unless the user explicitly asks and the risk has been stated.
+
+
+## Guardrails
+
+- Keep edits scoped to the user's request and the relevant Project or Source.
+- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
+- Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

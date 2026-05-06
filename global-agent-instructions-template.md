@@ -1,3 +1,9 @@
+---
+type: Guide
+Related to: "[[vault]]"
+_organized: true
+---
+
 # Global Agent Instructions Template
 
 ## Second Brain Memory
