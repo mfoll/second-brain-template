@@ -16,6 +16,8 @@ Automations are per-vault. A job should run with the target vault as its working
 
 The work/control vault may track routing and template decisions, but it should not run maintenance jobs over another vault's private content unless the user explicitly asks.
 
+Cross-vault consistency review is a routing/control-vault responsibility, not a generic deployed-vault workflow. Do not add or deploy a `review-multi-vault-consistency` procedure, skill, or automation into ordinary personal, research, or project vaults unless that vault is explicitly designated as the routing/control vault.
+
 ## Candidate Automations
 
 Common starting points:
@@ -23,6 +25,8 @@ Common starting points:
 - process the reusable [[ready-to-ingest]] note with [[procedures/process-ready-ingestion-inbox]], normally every 12 hours unless the deployed vault has a reason for a different cadence;
 - run read-only mechanical diagnostics with [[procedures/lint-vault]];
 - run read-only strategic review with [[procedures/review-vault-health]].
+
+Do not treat cross-vault routing/interface review as a common starting point. It belongs only to the routing/control vault.
 
 ## Prompt Pattern
 

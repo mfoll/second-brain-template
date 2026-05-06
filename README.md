@@ -82,6 +82,8 @@ Automations are per-vault and are not active in the template. Use [[vault-automa
 
 Each automation should run with the deployed vault as its working directory and follow that vault's `AGENTS.md`, Procedure notes, Skill packages, privacy boundary, and Git checkpoint policy.
 
+Cross-vault consistency review is not a generic per-vault automation. It belongs only in a vault explicitly designated as the routing/control vault for a multi-vault setup.
+
 ## Git Checkpoints
 
 Use [[procedures/git-checkpoint-vault-changes]] after agent-managed vault edits unless the user asks not to commit or push. Review the changed scope, exclude local junk and unrelated files, commit a coherent checkpoint, push, and report the final state.

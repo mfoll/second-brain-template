@@ -110,6 +110,8 @@ Start with read-only jobs unless the user explicitly wants a write-capable intak
 - run read-only [[procedures/lint-vault]];
 - run read-only [[procedures/review-vault-health]].
 
+Do not deploy `review-multi-vault-consistency` into ordinary vaults. That workflow belongs only in a vault explicitly designated as the routing/control vault for a multi-vault setup.
+
 Each automation must run with this deployed vault as its working directory, not with another vault's working directory. Stagger schedules across vaults so jobs do not collide. For the user's current setup, ready-ingestion starts at 00:30 in the work/control vault and 00:45 in the personal vault, then repeats every 12 hours. Record active jobs in the deployed vault's automation guide.
 
 Do not let a work/control vault automation read or maintain a private vault's contents unless the user explicitly asks for that vault to be inspected.
