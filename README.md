@@ -76,6 +76,10 @@ Included generic skills:
 
 Each skill is a thin activation wrapper under `.agents/skills/`. The portable workflow source of truth remains the matching note in `procedures/`. Visible catalogue entries live in `skills/`.
 
+## Compatibility Shims
+
+Keep root compatibility shims such as `CLAUDE.md` when deploying the template. They are lightweight pointers for agent tools and Tolaria's compatibility checks; shared instructions still belong in `AGENTS.md`.
+
 ## Automations
 
 Automations are per-vault and are not active in the template. Use [[vault-automations]] after deployment to document any local jobs that process inbox content, run lint, or review vault health.

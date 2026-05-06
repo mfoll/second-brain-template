@@ -82,6 +82,8 @@ Update the README so it describes the concrete vault rather than the template. R
 
 Keep the vault conventions, but update wording that should name the concrete vault scope. Do not add machine-local paths.
 
+Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not duplicate the full instruction body into the shim.
+
 ## Customize Global Instruction Placeholders
 
 Use [[global-agent-instructions-template]] to create the machine-local global instruction text. Replace `<VAULT_ROOT>` only in the machine-local instruction surface, not in portable vault notes unless the note is explicitly a local setup note.
