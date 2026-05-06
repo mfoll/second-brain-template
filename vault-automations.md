@@ -38,7 +38,7 @@ For private or sensitive vaults, include an explicit stop rule for sensitive mat
 
 Stagger schedules across vaults so jobs do not collide. For example, if the work/control vault runs lint at 09:00, a personal vault could run lint at 09:15.
 
-Ready-ingestion inbox processing should default to every 12 hours. Use explicit times in the deployed vault's automation guide, for example 00:30 and 12:30 or a staggered pair such as 00:45 and 12:45.
+Ready-ingestion inbox processing should default to every 12 hours. Use explicit times in the deployed vault's automation guide. In the user's current multi-vault setup, the work/control vault starts at 00:30 and the personal vault starts at 00:45, then each repeats every 12 hours.
 
 ## Deployment Checklist
 
