@@ -1,0 +1,3 @@
+name: review-vault-health
+description: Activate the Review Vault Health procedure for this vault.
+entrypoint: SKILL.md

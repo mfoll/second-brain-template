@@ -1,0 +1,7 @@
+name: Sources
+sort: "modified:desc"
+filters:
+  all:
+    - field: type
+      op: equals
+      value: Source

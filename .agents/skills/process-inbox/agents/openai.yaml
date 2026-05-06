@@ -1,0 +1,3 @@
+name: process-inbox
+description: Activate the Process Inbox procedure for this vault.
+entrypoint: SKILL.md

@@ -1,0 +1,3 @@
+name: initialize-project-memory
+description: Activate the Initialize Project Memory procedure for this vault.
+entrypoint: SKILL.md

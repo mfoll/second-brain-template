@@ -1,0 +1,10 @@
+name: Open Questions
+sort: "modified:desc"
+filters:
+  all:
+    - field: type
+      op: equals
+      value: Question
+    - field: status
+      op: equals
+      value: Open

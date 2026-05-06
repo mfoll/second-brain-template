@@ -1,0 +1,3 @@
+name: ingest-source
+description: Activate the Ingest Source procedure for this vault.
+entrypoint: SKILL.md

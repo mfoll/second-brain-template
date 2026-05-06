@@ -1,0 +1,3 @@
+name: update-project-next-actions
+description: Activate the Update Project Next Actions procedure for this vault.
+entrypoint: SKILL.md

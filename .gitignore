@@ -1,0 +1,9 @@
+.DS_Store
+*.tmp
+*.temp
+*.log
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.tolaria-cache/
+.cache/

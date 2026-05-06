@@ -1,0 +1,10 @@
+name: Active Projects
+sort: "modified:desc"
+filters:
+  all:
+    - field: type
+      op: equals
+      value: Project
+    - field: status
+      op: equals
+      value: Active

@@ -1,0 +1,3 @@
+name: lint-vault
+description: Activate the Lint Vault procedure for this vault.
+entrypoint: SKILL.md
