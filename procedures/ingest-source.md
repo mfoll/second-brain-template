@@ -31,7 +31,7 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 
 ## Source Note Minimum
 
-A usable Source note has:
+A usable Source note includes:
 
 - `type: Source` frontmatter;
 - a first H1;
