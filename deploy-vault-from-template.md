@@ -100,6 +100,20 @@ find skills .agents/skills -maxdepth 3 -type f | sort
 
 Open each file in `views/` and confirm that filters match the deployed vault's Type and relationship conventions. Active views should normally exclude notes with `_archived: true`.
 
+## Configure Per-Vault Automations
+
+Review [[vault-automations]] and decide whether this deployed vault should have local automations.
+
+Start with read-only jobs unless the user explicitly wants a write-capable intake job. Common candidates are:
+
+- process [[ready-to-ingest]] with [[procedures/process-ready-ingestion-inbox]];
+- run read-only [[procedures/lint-vault]];
+- run read-only [[procedures/review-vault-health]].
+
+Each automation must run with this deployed vault as its working directory, not with another vault's working directory. Stagger schedules across vaults so jobs do not collide. Record active jobs in the deployed vault's automation guide.
+
+Do not let a work/control vault automation read or maintain a private vault's contents unless the user explicitly asks for that vault to be inspected.
+
 ## Validate Placeholders
 
 Search for placeholders:

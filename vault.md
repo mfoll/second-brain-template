@@ -25,11 +25,13 @@ Describe what belongs here and what does not.
 - [[procedures/update-project-next-actions|Update Project Next Actions]]
 - [[procedures/lint-vault|Lint Vault]]
 - [[procedures/review-vault-health|Review Vault Health]]
+- [[vault-automations|Vault Automations]]
 
 ## Next Actions
 
 - [ ] Customize this vault's purpose and scope.
 - [ ] Configure global or local agent instructions.
+- [ ] Decide whether this vault needs local automations and document them in [[vault-automations]].
 - [ ] Create the first real Project, Responsibility, or Source note.
 - [ ] Test source ingestion with one low-risk item.
 

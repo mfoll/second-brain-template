@@ -23,6 +23,7 @@ It provides:
 - vault-level agent instructions;
 - reusable procedures for capture, ingestion, project memory, linting, review, and Git checkpoints;
 - thin skill wrappers for recurring agent workflows;
+- a per-vault automation documentation pattern;
 - saved views for common retrieval surfaces.
 
 ## What This Is Not For
@@ -74,6 +75,12 @@ Included generic skills:
 - `review-vault-health`
 
 Each skill is a thin activation wrapper under `.agents/skills/`. The portable workflow source of truth remains the matching note in `procedures/`. Visible catalogue entries live in `skills/`.
+
+## Automations
+
+Automations are per-vault and are not active in the template. Use [[vault-automations]] after deployment to document any local jobs that process inbox content, run lint, or review vault health.
+
+Each automation should run with the deployed vault as its working directory and follow that vault's `AGENTS.md`, Procedure notes, Skill packages, privacy boundary, and Git checkpoint policy.
 
 ## Git Checkpoints
 
