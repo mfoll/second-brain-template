@@ -1,4 +1,6 @@
 name: Open Questions
+icon: hand
+color: gray
 sort: "modified:desc"
 filters:
   all:

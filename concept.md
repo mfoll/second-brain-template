@@ -2,7 +2,7 @@
 type: Type
 _icon: lightbulb
 _color: "#8b5cf6"
-_order: 4
+_order: 7
 ---
 
 # Concept

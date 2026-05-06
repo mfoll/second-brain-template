@@ -1,4 +1,6 @@
 name: Evergreen Concepts
+icon: lightbulb
+color: green
 sort: "title:asc"
 filters:
   all:

@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: sparkles
-_color: "#a855f7"
-_order: 10
+_icon: puzzle
+_color: "#8b5cf6"
+_order: 9
 ---
 
 # Skill

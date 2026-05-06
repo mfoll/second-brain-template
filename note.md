@@ -1,8 +1,8 @@
 ---
 type: Type
+_order: 3
 _icon: file-text
-_color: "#94a3b8"
-_order: 9
+color: yellow
 ---
 
 # Note

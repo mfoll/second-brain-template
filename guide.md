@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: map
-_color: "#06b6d4"
-_order: 8
+_icon: book-open
+_color: "#16a34a"
+_order: 10
 ---
 
 # Guide

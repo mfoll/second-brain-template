@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: book-open
-_color: "#f97316"
-_order: 3
+_icon: file-text
+_color: "#0ea5e9"
+_order: 6
 ---
 
 # Source

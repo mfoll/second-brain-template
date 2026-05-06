@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: shield
-_color: "#14b8a6"
-_order: 1
+_icon: repeat
+_color: "#ef4444"
+_order: 8
 ---
 
 # Responsibility

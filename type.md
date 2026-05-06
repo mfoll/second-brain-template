@@ -1,8 +1,6 @@
 ---
 type: Type
-_icon: tags
-_color: "#ef4444"
-_order: 11
+_order: 9
 ---
 
 # Type

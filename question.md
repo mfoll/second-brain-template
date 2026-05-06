@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: circle-help
+_icon: hand
 _color: "#eab308"
-_order: 5
+_order: 1
 ---
 
 # Question

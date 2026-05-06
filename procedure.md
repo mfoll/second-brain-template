@@ -1,8 +1,8 @@
 ---
 type: Type
 _icon: list-checks
-_color: "#22c55e"
-_order: 6
+_color: "#10b981"
+_order: 4
 ---
 
 # Procedure

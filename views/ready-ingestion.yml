@@ -1,7 +1,0 @@
-name: Ready Ingestion
-sort: "modified:desc"
-filters:
-  all:
-    - field: ingest_ready
-      op: equals
-      value: true

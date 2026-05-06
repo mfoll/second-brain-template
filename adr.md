@@ -1,8 +1,8 @@
 ---
 type: Type
-_icon: scale
-_color: "#0ea5e9"
-_order: 7
+_icon: scales
+_color: "#6366f1"
+_order: 5
 ---
 
 # ADR

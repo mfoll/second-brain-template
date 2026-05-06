@@ -1,7 +1,7 @@
 ---
 type: Type
-_icon: hash
-_color: "#64748b"
+_icon: tag
+_color: "#f59e0b"
 _order: 2
 ---
 
