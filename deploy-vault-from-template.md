@@ -18,7 +18,7 @@ Collect these values before changing files:
 - `<LOCAL_DESTINATION_ROOT>`
 - `<VAULT_SCOPE>`
 - `<VAULT_ROOT_NOTE>`
-- `<PRIVATE_OR_PUBLIC>`
+- `<VISIBILITY_FLAG>`: use `--private` or `--public`; default to `--private` when unsure.
 
 ## Preflight Checks
 
@@ -47,10 +47,10 @@ test -e <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME> && echo "Destination exists" 
 Create the new repository from this template with the chosen visibility:
 
 ```bash
-gh repo create <GITHUB_OWNER>/<REPOSITORY_NAME> --<PRIVATE_OR_PUBLIC> --template <GITHUB_OWNER>/second-brain-template
+gh repo create <GITHUB_OWNER>/<REPOSITORY_NAME> <VISIBILITY_FLAG> --template <GITHUB_OWNER>/second-brain-template
 ```
 
-Use `--private` or `--public` for `<PRIVATE_OR_PUBLIC>` after the user chooses visibility. Default to private when unsure.
+Use `--private` or `--public` for `<VISIBILITY_FLAG>` after the user chooses visibility. Default to `--private` when unsure.
 
 ## Clone Locally
 
