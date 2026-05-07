@@ -17,6 +17,8 @@ This repository is the generic source for deployable vault conventions. When cha
 
 The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] and its skill package for deployments that become the main/control brain of a multi-vault setup. Do not activate, schedule, or use that workflow in ordinary deployed vaults by default; it should remain dormant unless the vault is explicitly responsible for routing, template coordination, and cross-vault interface review.
 
+After deployment, ordinary vaults should not keep reusable template notes active. Convert template guidance into implemented local `AGENTS.md`, `README.md`, root Project, automation guide, and procedure content. Delete template-only notes that no longer serve the deployed vault, or mark provenance-only deployment notes with `_archived: true`.
+
 ## Instruction Layers
 
 Second Brain guidance is split across three layers:

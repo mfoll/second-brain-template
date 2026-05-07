@@ -88,6 +88,10 @@ Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not du
 
 Use [[global-agent-instructions-template]] to create the machine-local global instruction text. Replace `<VAULT_ROOT>` only in the machine-local instruction surface, not in portable vault notes unless the note is explicitly a local setup note.
 
+After the installed global instructions are configured, decide whether `global-agent-instructions-template.md` still belongs in the deployed vault. For ordinary deployed vaults in a multi-vault setup, it usually does not: delete it or archive it as provenance, and rely on the work/control vault's global-instruction source plus this vault's implemented `AGENTS.md`. Keep an active local global-instruction template only for a standalone vault that must bootstrap itself without a separate control vault or template repository.
+
+Likewise, keep deployment guides only when they remain useful. If retained only as deployment provenance, mark them `_archived: true` and state that they are not active workflows.
+
 ## Review Generic Skills
 
 Keep only the generic skills that make sense for the new vault. Remove or archive unused visible Skill notes only if they would confuse users or agents.
@@ -126,7 +130,7 @@ Search for placeholders:
 grep -R "<[A-Z0-9_]*>" -n .
 ```
 
-Expected placeholders may remain in this deployment guide and in [[global-agent-instructions-template]]. Other placeholder hits should be reviewed and replaced before the deployment checkpoint.
+Expected placeholders may remain in this deployment guide and in [[global-agent-instructions-template]] while still working from the template repository. In deployed vaults, placeholders should remain only in archived provenance notes or explicitly local setup snippets. Other placeholder hits should be reviewed and replaced before the deployment checkpoint.
 
 ## Validate Scope
 

@@ -44,6 +44,14 @@ Follow [[deploy-vault-from-template]]. The short version is:
 6. Review the generic skills and saved views.
 7. Commit and push the customized starting point.
 
+## Template Residue In Deployed Vaults
+
+After deployment, a concrete vault should mostly contain implemented guidance, not reusable template copies.
+
+Keep template-only files active in this repository. In an ordinary deployed vault, delete or archive template-only notes once they have served deployment. For example, `global-agent-instructions-template.md` should normally stay in this template repository; a multi-vault setup should instead use the work/control vault's global-instruction source and the deployed vault's own `AGENTS.md`.
+
+Archived deployment provenance is fine when it is explicitly marked `_archived: true` and not treated as an active workflow.
+
 ## Control-Vault Workflow
 
 The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] and its skill package so a main/control brain can audit routing, deployed vaults, template drift, and local automations.

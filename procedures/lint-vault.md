@@ -31,6 +31,7 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 - Package folders with no visible Skill note when they are intended to be discoverable.
 - Local junk files such as `.DS_Store`, `__pycache__`, `.pyc`, logs, temporary files, or generated artifacts.
 - Durable template content that contains unscoped local paths, cache paths, or machine-specific setup details.
+- In deployed non-template vaults, active template-only notes such as unarchived deployment guides or `global-agent-instructions-template.md` copies that should have been deleted, archived, or converted into implemented local guidance.
 
 ## Steps
 
