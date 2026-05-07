@@ -13,7 +13,7 @@ Do not use `type: Source` for ordinary internal planning once the useful conclus
 
 ## Goal
 
-Create a traceable Source note, preserve provenance, extract only useful durable knowledge, and link the source into the vault without over-atomizing it.
+Create a traceable Source note, preserve provenance, extract only useful durable knowledge, link the source into the vault without over-atomizing it, and give advisory feedback about what the ingestion surfaced.
 
 ## Steps
 
@@ -27,7 +27,32 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 8. Extract separate typed notes only when they improve future retrieval. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates.
 9. If the source changes an active Project's understanding, update that Project's summary or next actions using the matching procedure.
 10. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
-11. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
+11. Prepare advisory ingestion feedback using the standard below.
+12. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
+
+## Ingestion Feedback
+
+Every source ingestion should tell the user what the agent noticed. This is a feedback layer, not an approval gate.
+
+Include concise feedback in the final response or automation report:
+
+- what is actually new, useful, surprising, weak, duplicate, or not worth saving;
+- how the source maps to existing Projects, Questions, Concepts, Procedures, ADRs, Responsibilities, or user priorities;
+- which questions the source contains or raises;
+- which questions the agent answered during ingestion;
+- which durable questions, next actions, or synthesis updates were created or changed;
+- which optional discussion points the user may want to revisit.
+
+Do not block ordinary ingestion just because the user might want to discuss the feedback. If the source is processable, save it, make the useful linked updates, commit, and push according to the normal checkpoint rules.
+
+Stop and ask before completing ingestion only when the missing answer is required to avoid misrouting, privacy leakage, destructive edits, broad structural changes, or another unsafe outcome.
+
+When the source contains questions:
+
+- Answer what can be answered from the source plus relevant vault context.
+- Create or update durable `Question` notes when the question should remain findable.
+- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion.
+- Use `## Ingestion Questions` on the original intake note only when user input is required before the material can be safely or coherently processed.
 
 ## Source Note Minimum
 

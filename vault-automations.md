@@ -42,6 +42,8 @@ In <VAULT_ROOT>, run the <skill-name> skill. Follow AGENTS.md, the skill, and pr
 
 For private or sensitive vaults, include an explicit stop rule for sensitive material.
 
+For ready-ingestion automation, advisory feedback should not block safe ingestion, commit, or push. Use `## Ingestion Questions` only when user input is required before coherent or safe processing.
+
 ## Schedule Pattern
 
 Stagger schedules across vaults so jobs do not collide. For example, if the work/control vault runs lint at 09:00, a personal vault could run lint at 09:15.

@@ -11,7 +11,7 @@ Use this procedure when the user asks to organize, triage, clean up, or process 
 
 ## Goal
 
-Move captured material from vague storage into retrievable structure, or deliberately leave it unprocessed with a clear reason.
+Move captured material from vague storage into retrievable structure, or deliberately leave it unprocessed with a clear reason, while giving advisory feedback about the questions, links, and judgment calls surfaced during processing.
 
 ## Steps
 
@@ -26,7 +26,32 @@ Move captured material from vague storage into retrievable structure, or deliber
 8. Use `_archived: true` for retained material that should no longer appear in active resumption.
 9. Delete only when the content has no retrieval value, contains junk, or has already been fully promoted elsewhere and provenance is not useful.
 10. If placement is unclear, leave the note unprocessed and add a concrete `## Triage Question` rather than forcing a poor structure.
-11. Review the diff and summarize promoted notes, archived notes, unresolved questions, and anything intentionally left unprocessed.
+11. Prepare advisory ingestion feedback using the standard below.
+12. Review the diff and summarize promoted notes, archived notes, unresolved questions, and anything intentionally left unprocessed.
+
+## Ingestion Feedback
+
+Inbox processing should not be a blind swallow of captured material. After processing, tell the user what the agent noticed. This feedback is advisory and should not block ingestion when the capture is processable.
+
+Include concise feedback in the final response or automation report:
+
+- what was promoted, linked, archived, deferred, or intentionally not saved;
+- which existing Projects, Questions, Concepts, Procedures, ADRs, Responsibilities, or priorities the capture connected to;
+- which questions the capture contained or raised;
+- which questions the agent answered during processing;
+- which durable questions, next actions, or synthesis updates were created or changed;
+- which optional discussion points the user may want to revisit.
+
+Do not stop processing merely because the feedback could trigger a discussion. Continue organizing, commit, and push according to the normal checkpoint rules when the material can be processed safely.
+
+Stop and ask only when the missing answer is required to avoid misrouting, privacy leakage, destructive edits, broad structural changes, or another unsafe outcome.
+
+When a capture contains questions:
+
+- Answer what can be answered from the capture plus relevant vault context.
+- Create or update durable `Question` notes when the question should remain findable.
+- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion.
+- Keep the original material visible with `## Ingestion Questions` only when user input is required before the capture can be safely or coherently processed.
 
 ## Organization Standard
 

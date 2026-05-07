@@ -14,7 +14,7 @@ Use this procedure when an agent or scheduled workflow processes notes explicitl
 
 ## Goal
 
-Process only ready-marked intake material, preserve the reusable intake note, and avoid surprising edits to unrelated Inbox content.
+Process only ready-marked intake material, preserve the reusable intake note, provide advisory ingestion feedback, and avoid surprising edits to unrelated Inbox content.
 
 ## Scope
 
@@ -35,8 +35,23 @@ The standing intake note [[ready-to-ingest]] is reusable. Never delete, archive,
 5. Create or update only notes directly required by the ready-marked content.
 6. Clear processed body content from [[ready-to-ingest]] only after it has been moved, synthesized, archived, or deliberately discarded.
 7. Preserve the frontmatter, H1, and `ingest_ready: true` flag on [[ready-to-ingest]].
-8. If user input is required, keep the original content visible and add a concrete `## Ingestion Questions` section.
-9. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material.
+8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the processed body, and report the optional discussion point in the automation result or a durable linked `Question` or `Next Actions` item.
+9. If user input is required to know what the content is, where it belongs, whether it is safe or private, or whether a broad structural change is approved, keep the original content visible and add a concrete `## Ingestion Questions` section.
+10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material.
+
+## Ingestion Feedback
+
+Ready-ingestion feedback is advisory, not a blocking gate. The automation should keep ingesting, organizing, committing, and pushing processable material even if the user never answers the feedback.
+
+Use the feedback standards from [[procedures/process-inbox]] and delegated workflows such as [[procedures/ingest-source]]. In the automation report, briefly state:
+
+- what was ingested or organized;
+- what was new, useful, weak, duplicate, or intentionally ignored;
+- which existing notes or projects the material connected to;
+- which questions were answered, created as durable `Question` notes, or left as optional discussion points;
+- whether any material remains blocked in [[ready-to-ingest]] under `## Ingestion Questions`.
+
+Do not leave optional feedback inside [[ready-to-ingest]] if the underlying content has already been safely processed. Use `## Ingestion Questions` there only for true blockers.
 
 ## Stop Conditions
 

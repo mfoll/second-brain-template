@@ -59,7 +59,7 @@ Capture quickly, organize later. Put ambiguous material in unprocessed notes or 
 
 Use Projects as work entry points. Project notes should summarize purpose, context, active workflows, next actions, open questions, and important linked notes.
 
-Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval.
+Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval. Ingestion feedback is advisory and should not block safe processing, commit, or push.
 
 ## Agent Skills
 
