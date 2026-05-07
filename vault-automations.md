@@ -10,6 +10,10 @@ Use this guide to document local automations for a deployed vault.
 
 The template does not define active automations. Each deployed vault should decide whether to create automations after its scope, privacy boundary, and Git policy are clear.
 
+When creating or updating Codex automations, explicitly set the latest available default-capable Codex model unless the user explicitly asks for another model. Verify the model in both the automation file and any local automation database before reporting the automation as done.
+
+Write-capable automations that are expected to push Git checkpoints need a persisted `git push` network approval or another configured network path. Without that, a sandboxed automation may commit locally but fail to push until the user approves network escalation.
+
 ## Ownership
 
 Automations are per-vault. A job should run with the target vault as its working directory, follow that vault's `AGENTS.md`, Procedure notes, and Skill packages, and respect that vault's privacy and Git checkpoint policies.
