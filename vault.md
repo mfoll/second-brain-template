@@ -44,3 +44,4 @@ Describe what belongs here and what does not.
 
 - YYYY-MM-DD: Deployed from `second-brain-template`.
 - YYYY-MM-DD: Template includes advisory ingestion feedback in source, inbox, and ready-ingestion workflows; feedback should not block safe ingestion.
+- YYYY-MM-DD: Template includes a deployment propagation checkpoint for generic workflow and convention changes.

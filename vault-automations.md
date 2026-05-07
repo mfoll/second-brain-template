@@ -12,6 +12,8 @@ The template does not define active automations. Each deployed vault should deci
 
 When creating or updating Codex automations, explicitly set the latest available default-capable Codex model unless the user explicitly asks for another model. Verify the model in both the automation file and any local automation database before reporting the automation as done.
 
+When this template's generic automation patterns change, check whether currently deployed vault automation guides should receive the same compatible change. Deployed vaults may intentionally diverge for privacy, scope, cadence, or local execution reasons, but that divergence should be explicit.
+
 Write-capable automations that are expected to push Git checkpoints need a persisted `git push` network approval or another configured network path. Without that, a sandboxed automation may commit locally but fail to push until the user approves network escalation.
 
 ## Ownership

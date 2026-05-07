@@ -13,6 +13,8 @@ Use this vault as a scoped memory layer for humans and agents. It should store d
 
 The root Project note is [[vault]]. Start there, then follow linked procedures, ADRs, views, and project notes.
 
+This repository is the generic source for deployable vault conventions. When changing a generic procedure, skill, vault convention, automation pattern, or `AGENTS.md` behavior here, proactively check whether currently deployed vaults should receive the compatible change too. Port only generic, safe changes; deployed-vault-specific privacy, scope, and content rules remain local.
+
 ## Instruction Layers
 
 Second Brain guidance is split across three layers:
@@ -108,6 +110,7 @@ Define the vault in agent-neutral terms. Mention specific products only for conc
 - Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
 - Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
+- When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope.
 
 When editing Question notes, reconcile `status` with the body and active Project usage:
 
