@@ -13,6 +13,12 @@ Use this procedure when the user asks to organize, triage, clean up, or process 
 
 Move captured material from vague storage into retrievable structure, or deliberately leave it unprocessed with a clear reason, while giving advisory feedback about the questions, links, and judgment calls surfaced during processing.
 
+## Preserve Original Captures
+
+Before ingesting an Inbox note in a way that will delete, clear, archive, heavily rewrite, or otherwise obscure the original captured text, make sure the current original capture has already been pushed to the configured Git remote. If the original capture is not yet present remotely, create and push a narrow pre-ingestion checkpoint containing the unprocessed Inbox note before continuing.
+
+This rule protects the user's raw idea from being lost when processing later clears `ready-to-ingest.md`, archives a capture, deletes a duplicate, or promotes only part of the source material into typed notes. If pushing is blocked, keep the original capture visible and stop rather than performing the destructive part of ingestion.
+
 ## Steps
 
 1. Identify the intended scope: all unprocessed notes, a named Project, recent captures, [[ready-to-ingest]], or specific files named by the user.

@@ -26,6 +26,12 @@ ingest_ready: true
 
 The standing intake note [[ready-to-ingest]] is reusable. Never delete, archive, rename, or move it during this workflow.
 
+## Pre-Ingestion Source Checkpoint
+
+Because this workflow clears processed body content from [[ready-to-ingest]], verify before ingestion that the current unprocessed body content has already been pushed to the configured Git remote. If it has not, create and push a narrow pre-ingestion checkpoint for [[ready-to-ingest]] before processing begins.
+
+If the pre-ingestion push is blocked by network, authentication, privacy, unrelated changes, or sandbox approval, stop before clearing body content and leave the original capture visible. Do not rely on the later post-ingestion checkpoint as the only backup of the raw idea.
+
 ## Steps
 
 1. Find notes with `ingest_ready: true`.
