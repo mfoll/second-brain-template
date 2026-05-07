@@ -41,7 +41,7 @@ The agent must know the configured vault root from global/user instructions. If 
 
 Primary Project note:
 
-`[[project-note-stem]]`
+`<project-note-wikilink>`
 
 Read the vault-level `AGENTS.md` from the configured vault root. Start memory lookup from this Project note and its linked notes before widening search.
 ```

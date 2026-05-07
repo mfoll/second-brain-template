@@ -37,11 +37,11 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 1. Check Git state first so lint findings are not confused with unrelated local edits.
 2. Inventory Markdown files, Type notes, Procedure notes, Skill notes, `.agents/skills/` packages, and saved views.
 3. Run targeted searches for missing frontmatter, missing H1s, relationship-field drift, broken view fields, local path leakage, and junk files.
-4. Check wikilinks by matching file stems and vault-relative path stems. Report ambiguous links separately from missing links.
+4. Check wikilinks with the portable resolver: exclude `.agents/**`, `.git/**`, `attachments/**`, caches, generated artifacts, and implementation files from normal note resolution; prefer exact vault-relative path-stem matches first; then exact filename-stem matches when unique; use H1/title/humanized-title matching only as fallback and report fallback-required links as non-portable. Report ambiguous links only when more than one normal durable note remains plausible after path-stem and filename-stem precedence. `.agents/skills/**/SKILL.md` files remain part of skill-package consistency checks, not normal wikilink target resolution.
 5. Check visible Skill notes against package directories and package `SKILL.md` files.
 6. Group findings by severity: errors that break retrieval or execution, warnings that reduce portability, and suggestions for later health review.
 7. Stay read-only unless the user explicitly asks for focused fixes.
-8. Recommend follow-up workflows when appropriate, such as [[procedures/process-inbox]], [[procedures/update-project-summary]], [[procedures/update-project-next-actions]], or [[procedures/review-vault-health]].
+8. Recommend follow-up workflows when appropriate, such as [[procedures/process-inbox|Process Inbox]], [[procedures/update-project-summary|Update Project Summary]], [[procedures/update-project-next-actions|Update Project Next Actions]], or [[procedures/review-vault-health|Review Vault Health]].
 
 ## Output Standard
 

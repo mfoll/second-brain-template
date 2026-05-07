@@ -4,7 +4,7 @@ Related to: "[[vault]]"
 _organized: true
 ---
 
-# Second Brain Template
+# Second Brain Template Repository Guide
 
 This repository is an empty Markdown Second Brain vault template.
 

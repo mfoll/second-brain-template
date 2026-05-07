@@ -62,11 +62,15 @@ Before removing a Project `Has` link, make sure the target note still has a retr
 
 ## Wikilinks
 
-- Use `[[vault]]` for normal links to the root Project note.
-- Use path-stem links for notes in folders, such as `[[procedures/ingest-source]]`.
+- Root notes may use filename-stem links such as `[[vault]]`.
+- Notes in folders must use vault-relative path-stem links such as `[[procedures/lint-vault|Lint Vault]]` or `[[skills/lint-vault-skill|lint-vault skill]]`.
+- Repository guides should be linked as `[[README]]`, not by reusing the root Project alias.
+- Compatibility shims should be linked explicitly as `[[CLAUDE]]` or `[[GEMINI]]` only when discussing the shim itself.
 - Use pipe display text when a nicer label helps, such as `[[procedures/ingest-source|Ingest Source]]`.
-- Avoid relying on title-only links when a stable filename or path-stem target is available.
-- When renaming or moving notes outside a vault UI, update affected wikilinks in the same change or run [[procedures/lint-vault]].
+- Do not rely on H1/title matching when a filename-stem or path-stem target exists.
+- Hidden skill packages under `.agents/skills/` are implementation files, not normal durable note targets. Link visible Skill catalogue notes in `skills/` when the skill itself is the graph target.
+- Avoid giving a Guide, README, compatibility shim, visible Skill note, or package `SKILL.md` the same H1 as a Project, Procedure, or root note. Use disambiguating titles such as "Repository Guide", "Compatibility Shim", or "Skill Package" where needed.
+- When renaming or moving notes outside a vault UI, update affected wikilinks in the same change or run [[procedures/lint-vault|Lint Vault]].
 
 ## Archived Notes
 
