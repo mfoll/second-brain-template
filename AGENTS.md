@@ -110,6 +110,7 @@ Define the vault in agent-neutral terms. Mention specific products only for conc
 - Write to the vault only when explicitly asked to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.
 - If the user's message contains only a file, URL, or source attachment, treat it as a request to ingest it unless surrounding context says otherwise.
 - For ambiguous captures, use Inbox or unprocessed notes rather than forcing a project.
+- Treat chat captures, Inbox captures, and similar user-provided memory as material that may disappear from normal working context. Do not reduce them to vague summaries or rely on future chat search, automation logs, or Git history as the primary retrieval layer. When saving or remembering such material, preserve concrete future-use details such as plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords in the appropriate durable note. Use synthesis, but keep enough specificity that a future agent can resume the work without recovering the raw capture.
 - Before bulk edits or reorganizations, summarize intended changes and review the diff.
 - Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.

@@ -19,13 +19,15 @@ Before ingesting an Inbox note in a way that will delete, clear, archive, heavil
 
 This rule protects the user's raw idea from being lost when processing later clears `ready-to-ingest.md`, archives a capture, deletes a duplicate, or promotes only part of the source material into typed notes. If pushing is blocked, keep the original capture visible and stop rather than performing the destructive part of ingestion.
 
+Before clearing, archiving, deleting, or heavily rewriting an internal user capture, also verify that concrete future-use details have been promoted into retrievable notes. Inbox captures follow the same memory-quality standard as chat captures: preserve plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords when they matter for future resumption. The pre-ingestion Git checkpoint is a recovery and audit layer, not the normal way to find missing details.
+
 ## Steps
 
 1. Identify the intended scope: all unprocessed notes, a named Project, recent captures, [[ready-to-ingest]], or specific files named by the user.
 2. Find candidates using `_organized: false`, `status: Unprocessed`, `ingest_ready: true`, recent modified files, Inbox views, and the user's explicit list.
 3. For each candidate, classify it as external source, internal idea, project update, question, reusable concept, responsibility, procedure, ADR candidate, duplicate, obsolete note, or ambiguous capture.
 4. If the capture is clearly external or re-checkable material, follow [[procedures/ingest-source]] instead of recreating ingestion rules here.
-5. If the capture is an internal durable idea, decide whether to update an existing typed note or create a new Project, Question, Concept, Responsibility, Procedure, ADR, Source, or Note.
+5. If the capture is an internal durable idea, decide whether to update an existing typed note or create a new Project, Question, Concept, Responsibility, Procedure, ADR, or Note. Do not use `Source` for ordinary internal brainstorms, planning notes, or chat captures merely to preserve raw text.
 6. Add the minimum useful relationships and body links needed for retrieval. Prefer a few strong links over broad weak tagging.
 7. Mark a note organized only when it is findable through a Project, Responsibility, Topic, Source, Question, Concept, Procedure, ADR, saved view, backlink, or explicit archive convention.
    - When a note is organized enough to leave Inbox, add or preserve `_organized: true` in frontmatter.
