@@ -157,6 +157,8 @@ Review changed scope first, exclude local junk and unrelated edits, commit a coh
 
 Ask before pushing broad diffs, vault-structure changes, attachments, secrets, credentials, sensitive documents, generated dumps, or anything not clearly covered by the request.
 
+External or machine-local memory summaries are hints, not authority. If remembered guidance conflicts with current vault files, project-local `AGENTS.md`, procedures, ADRs, or the user's current instruction, follow the live vault instruction and treat the remembered guidance as stale.
+
 ## Agent Skills
 
 Vault-owned skills live under `.agents/skills/`. They are reusable activation wrappers around procedures, not replacements for Procedure notes.
