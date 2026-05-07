@@ -27,10 +27,15 @@ Describe what belongs here and what does not.
 - [[procedures/review-vault-health|Review Vault Health]]
 - [[vault-automations|Vault Automations]]
 
+Optional only if this vault is the designated main/control brain for a multi-vault setup:
+
+- [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]]
+
 ## Next Actions
 
 - [ ] Customize this vault's purpose and scope.
 - [ ] Configure global or local agent instructions.
+- [ ] Decide whether this vault is an ordinary vault or the main/control brain for multi-vault routing.
 - [ ] Decide whether this vault needs local automations and document them in [[vault-automations]].
 - [ ] Create the first real Project, Responsibility, or Source note.
 - [ ] Test source ingestion with one low-risk item.

@@ -22,7 +22,7 @@ Automations are per-vault. A job should run with the target vault as its working
 
 The work/control vault may track routing and template decisions, but it should not run maintenance jobs over another vault's private content unless the user explicitly asks.
 
-Cross-vault consistency review is a routing/control-vault responsibility, not a generic deployed-vault workflow. Do not add or deploy a `review-multi-vault-consistency` procedure, skill, or automation into ordinary personal, research, or project vaults unless that vault is explicitly designated as the routing/control vault.
+Cross-vault consistency review is a routing/control-vault responsibility, not a generic deployed-vault workflow. The template includes `review-multi-vault-consistency` so a main/control brain can be deployed from the same starter kit, but ordinary personal, research, project, or team vaults should not list it as active or schedule it unless that vault is explicitly designated as the routing/control vault.
 
 ## Candidate Automations
 
@@ -32,7 +32,7 @@ Common starting points:
 - run read-only mechanical diagnostics with [[procedures/lint-vault]];
 - run read-only strategic review with [[procedures/review-vault-health]].
 
-Do not treat cross-vault routing/interface review as a common starting point. It belongs only to the routing/control vault.
+Do not treat cross-vault routing/interface review as a common starting point. It belongs only to the routing/control vault; if this deployed vault is the main/control brain, document that explicitly before creating a `review-multi-vault-consistency` automation.
 
 ## Prompt Pattern
 
@@ -58,4 +58,5 @@ Ready-ingestion inbox processing should default to every 12 hours. Use explicit 
 - Keep read-only jobs explicitly read-only.
 - Give write-capable jobs narrow permission and a clear Git checkpoint rule.
 - Record active jobs in the deployed vault's automation guide.
+- Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only for the designated main/control brain.
 - Do not copy another vault's automation prompts without checking scope, privacy, and working directory.

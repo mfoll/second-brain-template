@@ -15,6 +15,8 @@ The root Project note is [[vault]]. Start there, then follow linked procedures, 
 
 This repository is the generic source for deployable vault conventions. When changing a generic procedure, skill, vault convention, automation pattern, or `AGENTS.md` behavior here, proactively check whether currently deployed vaults should receive the compatible change too. Port only generic, safe changes; deployed-vault-specific privacy, scope, and content rules remain local.
 
+The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] and its skill package for deployments that become the main/control brain of a multi-vault setup. Do not activate, schedule, or use that workflow in ordinary deployed vaults by default; it should remain dormant unless the vault is explicitly responsible for routing, template coordination, and cross-vault interface review.
+
 ## Instruction Layers
 
 Second Brain guidance is split across three layers:
@@ -143,6 +145,8 @@ Recurring workflows are described in `procedures/` as `type: Procedure` notes. F
 
 The Procedure note is the portable source of truth. Skill wrappers should activate the workflow, not duplicate it.
 
+`review-multi-vault-consistency` is a special case: the template carries it so a designated main/control brain can be deployed from the same starter kit, but ordinary vaults should not list it as an active workflow or create automations for it.
+
 ## Git Checkpoints
 
 After an agent changes the vault, normally run [[procedures/git-checkpoint-vault-changes]] unless the user asks not to commit or push.
@@ -166,6 +170,7 @@ Expose or install skills in an agent runtime only during explicit setup. Prefer 
 - Add or modify relationships without breaking wikilinks.
 - Create and edit saved YAML views in `views/`.
 - Use procedures and skills for recurring workflows.
+- Activate `review-multi-vault-consistency` only when this vault is the designated main/control brain for a multi-vault setup.
 
 ## What Agents Should Avoid
 
@@ -173,4 +178,5 @@ Expose or install skills in an agent runtime only during explicit setup. Prefer 
 - Do not treat files in `attachments/` as notes, types, or view definitions.
 - Do not silently overwrite a custom `AGENTS.md`.
 - Do not rewrite installation-specific app configuration unless asked.
+- Do not use `review-multi-vault-consistency` to inspect another vault's private content unless the user explicitly approves that scope.
 - Do not commit machine-local metadata, cache paths, temporary files, secrets, or credentials.
