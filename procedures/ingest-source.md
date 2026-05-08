@@ -19,16 +19,17 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 
 1. Confirm the source input: URL, file path, pasted text, repository, document, or attachment.
 2. Read enough of the source to identify title, author or owner when available, date or access date, source type, and why it matters.
-3. Search the vault for likely Projects, Responsibilities, Topics, Concepts, Questions, Procedures, ADRs, and existing Source notes before creating a new note.
+3. Search the vault for likely Projects, Responsibilities, Topics, Concepts, Opinions, Questions, Procedures, ADRs, and existing Source notes before creating a new note.
 4. Create one `type: Source` note with a kebab-case filename and a clear H1 matching the source title or repository/tool name.
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
 6. Add only strong relationships. Use `Belongs to` when the source belongs to a project or collection; use `Related to` for concepts, questions, topics, tools, or methods; use `Has` only for selected child notes or deliverables.
 7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail.
 8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates. Do not create exhaustive derived notes from long sources by default.
-9. If the source changes an active Project's understanding, update that Project's summary or next actions using the matching procedure.
-10. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
-11. Prepare advisory ingestion feedback using the standard below.
-12. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
+9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
+10. If the source changes an active Project's understanding, update that Project's summary or next actions using the matching procedure.
+11. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
+12. Prepare advisory ingestion feedback using the standard below.
+13. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
 
 ## Ingestion Feedback
 
@@ -38,9 +39,11 @@ Include concise feedback in the final response or automation report:
 
 - what is actually new, useful, surprising, weak, duplicate, or not worth saving;
 - how the source maps to existing Projects, Questions, Concepts, Procedures, ADRs, Responsibilities, or user priorities;
+- how the source relates to relevant Opinions, including whether it supports, weakens, contradicts, depends on, or should update one;
 - which questions the source contains or raises;
 - which questions the agent answered during ingestion;
 - which durable questions, next actions, or synthesis updates were created or changed;
+- which Opinions may need to be created, revised, superseded, or explicitly left unchanged;
 - which optional discussion points the user may want to revisit.
 
 Do not block ordinary ingestion just because the user might want to discuss the feedback. If the source is processable, save it, make the useful linked updates, commit, and push according to the normal checkpoint rules.
