@@ -104,6 +104,8 @@ Automations are per-vault and are not active in the template. Use [[vault-automa
 
 Each automation should run with the deployed vault as its working directory and follow that vault's `AGENTS.md`, Procedure notes, Skill packages, privacy boundary, and Git checkpoint policy.
 
+For write-capable Codex automations, do not rely on broad global full access. Document the exact Git command the automation is allowed to use, prefer a command-scoped persisted approval such as `git push origin main` for scheduled main-branch vault jobs, and record the stop conditions in the deployed vault's automation guide. Persisted push approval is not general permission to push from arbitrary Codex contexts.
+
 Cross-vault consistency review is included as an optional control-vault workflow, not as a generic per-vault automation. It belongs only in a vault explicitly designated as the routing/control vault for a multi-vault setup.
 
 ## Git Checkpoints

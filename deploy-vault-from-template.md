@@ -120,6 +120,8 @@ Do not deploy `review-multi-vault-consistency` into ordinary vaults. That workfl
 
 Each automation must run with this deployed vault as its working directory, not with another vault's working directory. Stagger schedules across vaults so jobs do not collide. For the user's current setup, ready-ingestion starts at 00:30 in the work/control vault and 00:45 in the personal vault, then repeats every 12 hours. Record active jobs in the deployed vault's automation guide.
 
+For any write-capable automation that should push unattended, decide and document the exact allowed Git command before enabling the job. Prefer narrow persisted command approval such as `git push origin main` for scheduled main-branch vault jobs, not broad global full access. Update the deployed vault's automation guide and the machine-local global agent instructions with the automation name, working directory, allowed command, and stop conditions. Read-only automations must explicitly say not to edit, stage, commit, or push.
+
 Do not let a work/control vault automation read or maintain a private vault's contents unless the user explicitly asks for that vault to be inspected.
 
 ## Validate Placeholders
