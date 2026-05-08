@@ -43,7 +43,7 @@ If the pre-ingestion push is blocked by network, authentication, privacy, unrela
 7. Preserve the frontmatter, H1, and `ingest_ready: true` flag on [[ready-to-ingest]].
 8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the processed body, and report the optional discussion point in the automation result or a durable linked `Question` or `Next Actions` item.
 9. If user input is required to know what the content is, where it belongs, whether it is safe or private, or whether a broad structural change is approved, keep the original content visible and add a concrete `## Ingestion Questions` section.
-10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material.
+10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material. For scheduled main-branch jobs, use an explicit command such as `git push origin main` rather than a bare `git push`, so persisted approvals can stay command-scoped.
 
 ## Ingestion Feedback
 

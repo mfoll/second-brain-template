@@ -14,7 +14,7 @@ When creating or updating Codex automations, explicitly set the latest available
 
 When this template's generic automation patterns change, check whether currently deployed vault automation guides should receive the same compatible change. Deployed vaults may intentionally diverge for privacy, scope, cadence, or local execution reasons, but that divergence should be explicit.
 
-Write-capable automations that are expected to push Git checkpoints need a persisted `git push` network approval or another configured network path. Without that, a sandboxed automation may commit locally but fail to push until the user approves network escalation.
+Write-capable automations that are expected to push Git checkpoints need a persisted Git network approval or another configured network path. Prefer narrow command-scoped approval for the exact scheduled-run command, such as `git push origin main`, over broad global full access. Without that, a sandboxed automation may commit locally but fail to push until the user approves network escalation.
 
 ## Ownership
 
