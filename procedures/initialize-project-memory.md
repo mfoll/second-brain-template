@@ -33,8 +33,9 @@ The memory scope can be:
 8. Create or update the entry note. When creating a new Project note, instantiate the structure from [[project]]: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 9. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
 10. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
-11. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
-12. Review the diff in both the workspace and vault repository before committing.
+11. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
+12. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
+13. Review the diff in both the workspace and vault repository before committing.
 
 ## Entry-Point-Scoped Local Pointer Template
 
@@ -52,6 +53,8 @@ Primary Second Brain entry note:
 Read the vault-level `AGENTS.md` from the configured vault root.
 
 Start memory lookup from notes linked to this entry note before widening search.
+
+Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate Second Brain note linked from the primary entry note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
 ```
 
 The local pointer should name only the primary entry note. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there.
@@ -70,6 +73,8 @@ Read the vault-level `AGENTS.md` from the configured vault root.
 Start memory lookup from the vault root note and relevant Type, Topic, Responsibility, Source, Question, Concept, Procedure, and Inbox/Unprocessed notes before widening search.
 
 Do not create or link a primary entry note for this workspace unless the user explicitly asks.
+
+Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable vault knowledge. If it is durable, write or update the appropriate Second Brain note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
 ```
 
 ## Guardrails
@@ -78,3 +83,5 @@ Do not create or link a primary entry note for this workspace unless the user ex
 - Use `Belongs to`, `Related to`, and `Has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.
+
+Do not let a workspace `docs/` folder become a second project memory system. Use it only for implementation-local, generated, or explicitly transient material; promote durable knowledge into the vault.

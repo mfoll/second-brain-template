@@ -98,6 +98,8 @@ Each skill is a thin activation wrapper under `.agents/skills/`. The portable wo
 
 Keep root compatibility shims such as `CLAUDE.md` when deploying the template. They are lightweight pointers for agent tools and Tolaria's compatibility checks; shared instructions still belong in `AGENTS.md`.
 
+Project workspaces may keep scripts, prototypes, fixtures, generated outputs, and implementation-local notes beside the code. Durable project knowledge should live in the vault: design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should become typed notes linked from the relevant Project or entry note instead of accumulating in a workspace `docs/` folder.
+
 ## Automations
 
 Automations are per-vault and are not active in the template. Use [[vault-automations]] after deployment to document any local jobs that process inbox content, run lint, or review vault health.

@@ -14,6 +14,8 @@ When prior context may help, read relevant vault notes before answering. If the 
 
 When outside a specific project, search conservatively from the vault rules, project notes, indexes, topics, recent notes, and Inbox/Unprocessed notes.
 
+Do not let workspace `docs/` folders become parallel Second Brain stores. Keep scripts, prototypes, fixtures, generated outputs, and implementation-local notes in the workspace. Durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state belong in the relevant vault as typed notes linked from the project or entry note.
+
 If a workspace expects Second Brain memory but the vault root is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
 
 Read from the vault when useful. Write to it only when the user explicitly asks to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.

@@ -65,3 +65,4 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - YYYY-MM-DD: Template includes a deployment propagation checkpoint for generic workflow and convention changes.
 - YYYY-MM-DD: Template documents that ordinary deployed vaults should delete or archive template-only residue after converting it into implemented local guidance.
 - YYYY-MM-DD: Template initialize-project-memory uses one primary entry note in workspace-local `AGENTS.md`; secondary relationships stay in the entry note.
+- YYYY-MM-DD: Template keeps scripts, prototypes, fixtures, generated outputs, and implementation-local notes in workspaces, but promotes durable project documentation into the vault instead of letting workspace `docs/` folders become parallel memory stores.

@@ -25,6 +25,7 @@ Second Brain guidance is split across three layers:
 
 - Global agent instructions identify the configured vault root on a specific machine.
 - Project-local `AGENTS.md` files are scope pointers that name the primary Project note for a workspace.
+- Project workspace documentation should not become a parallel memory store. Durable design docs, research notes, workflow decisions, open questions, tool evaluations, and project state belong in the vault as typed notes linked from the primary entry note. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient; otherwise promote it into the vault and leave scripts, prototypes, fixtures, and temporary outputs in the workspace.
 - This vault-level `AGENTS.md` is the portable source of truth for vault conventions and safety rules.
 
 If an external workspace expects Second Brain memory but the configured vault root is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct path. Do not guess a path or create a new vault.
@@ -135,6 +136,8 @@ A `## Current Answer` does not automatically mean the Question is answered.
 Project workspaces may contain a local `AGENTS.md` that points to a primary Project note. When such a pointer exists, use that Project note and linked notes as the default memory scope before searching the whole vault.
 
 Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should not copy full vault rules or embed machine-specific paths.
+
+Project-local `AGENTS.md` files should also include a short workspace documentation rule: before creating or extending Markdown documentation in the workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate vault note instead of creating a parallel `docs/` knowledge base beside the code or scripts.
 
 When initializing project memory, follow [[procedures/initialize-project-memory]].
 
