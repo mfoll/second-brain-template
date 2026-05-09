@@ -17,7 +17,7 @@ Assess the vault as a thinking and retrieval system, not only as a mechanically 
 
 ## Checks
 
-- Whether Projects expose outcome, current context, important notes, active workflows, next actions, and open questions.
+- Whether Projects expose outcome, current state, scope and boundaries, important notes, active workflows when applicable, next actions, open questions, and maintenance history.
 - Whether Responsibilities capture ongoing ownership that should not be treated as finite projects.
 - Whether Topics provide useful retrieval surfaces without becoming vague tags.
 - Whether Questions are visible, statused, and not buried in project prose or next actions.

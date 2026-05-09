@@ -66,6 +66,8 @@ For Project notes, `Has` should be selective rather than exhaustive. Use body se
 
 Before removing a Project `Has` link, make sure the target note still has a retrieval path through its own relationships, a Project body link, another hub note, a saved view, or an explicit inbox/archive convention.
 
+Project notes are the live human and agent entry points for projects. Follow the structure in [[project]] when creating or refreshing them: keep `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Next Actions`, `## Open Questions`, `## Important Notes`, and `## Maintenance Log` predictable, while allowing project-specific middle sections such as `Working Thesis`, `Current Principles`, `Candidate Tools`, or `Draft Artifacts`. Do not flatten rich project knowledge just to fit the template; move detailed material into linked typed notes only when that improves retrieval.
+
 ## Wikilinks
 
 - Root notes may use filename-stem links such as `[[vault]]`.
@@ -116,6 +118,7 @@ Define the vault in agent-neutral terms. Mention specific products only for conc
 - Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
 - Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
+- When ingestion or automation updates linked project material, update the relevant Project note when the change affects project state, next actions, open questions, active workflows, important notes, or guardrails. Project notes should not drift away from the linked notes they summarize.
 - When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope. For changes that require deployment-machine setup, such as Codex config, persisted approvals, automation definitions, local databases, skill symlinks, or tool prerequisites, also update deployment-facing guidance such as `README.md`, `deploy-vault-from-template.md`, [[vault-automations]], and the affected Procedure notes so future deployed vaults inherit the policy.
 
 When editing Question notes, reconcile `status` with the body and active Project usage:

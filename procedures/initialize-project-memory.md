@@ -30,7 +30,7 @@ The memory scope can be:
 5. For Entry-point-scoped work, search existing vault notes across all Types before creating a new entry note.
 6. If a matching entry note exists, propose using it. If none exists, propose a kebab-case filename, Type, and concise initial structure.
 7. Decide relationships using `Belongs to`, `Related to`, and `Has`. Explain only high-confidence relationships before writing.
-8. Create or update the entry note with purpose, scope, current context, important links, next actions, open questions, and a Maintenance Log when useful.
+8. Create or update the entry note. When creating a new Project note, instantiate the structure from [[project]]: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 9. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
 10. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
 11. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.

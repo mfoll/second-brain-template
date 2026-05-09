@@ -21,7 +21,7 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 - Broken, ambiguous, or non-portable wikilinks.
 - Type notes with duplicate display metadata aliases or inconsistent Type naming.
 - Saved views with invalid YAML, missing root `all` or `any`, stale field names, or filters that no longer match current conventions.
-- Active Project notes without purpose, scope, next actions, open questions, current context, or important links.
+- Active Project notes without outcome, current state, scope and boundaries, next actions, open questions, important links, or maintenance history.
 - Project `Has` lists that look exhaustive rather than navigational.
 - Question notes missing status or using statuses outside `Open`, `Answered`, `Deferred`, and `Superseded` without explanation.
 - Source notes without provenance such as `url`, `source_file`, citation data, or an explicit reason provenance is unavailable.

@@ -8,13 +8,17 @@ _organized: true
 
 This is the root project note for this vault.
 
-## Purpose
+## Outcome
 
-Describe what this vault is for.
+Describe what this vault should help a future human or agent do.
 
-## Scope
+## Current State
 
-Describe what belongs here and what does not.
+This is a template root Project note. Replace this section during deployment with the current state of the deployed vault.
+
+## Scope and Boundaries
+
+Describe what belongs here, what does not, and any privacy or routing boundaries.
 
 ## Active Workflows
 
@@ -45,6 +49,14 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 
 - What should this vault store permanently?
 - What should stay transient or outside the vault?
+
+## Important Notes
+
+- [[AGENTS]]
+- [[README]]
+- [[procedures/initialize-project-memory|Initialize Project Memory]]
+- [[procedures/update-project-summary|Update Project Summary]]
+- [[procedures/update-project-next-actions|Update Project Next Actions]]
 
 ## Maintenance Log
 

@@ -35,12 +35,12 @@ Keep a Project note's `## Next Actions` section aligned with actual project stat
 9. If an action answers an existing Question, update that Question's status or current answer instead of leaving it stale.
 10. Keep the list scannable. A short list is preferred, but do not enforce an arbitrary count when the active project genuinely needs more.
 11. Add a short Maintenance Log entry for meaningful state changes.
-12. If the next-action update changes project context, run or apply [[procedures/update-project-summary]].
+12. If the next-action update changes project state, important context, scope, open questions, important notes, active workflows, or guardrails, run or apply [[procedures/update-project-summary]] so the Project note stays current as the live project home.
 13. Review the diff and report remaining work.
 
 ## Style
 
-Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later.
+Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later. Preserve the standard Project structure from [[project]] when editing: Outcome, Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, and Maintenance Log should remain easy to find in active Project notes.
 
 
 ## Guardrails

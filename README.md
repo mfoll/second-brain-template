@@ -72,7 +72,7 @@ Do not activate that workflow in ordinary personal, research, project, or team v
 
 Capture quickly, organize later. Put ambiguous material in unprocessed notes or [[ready-to-ingest]] until there is a clear retrieval path.
 
-Use Projects as work entry points. Project notes should summarize purpose, context, active workflows, next actions, open questions, and important linked notes.
+Use Projects as work entry points. Project notes are the live human and agent home for a project: keep Outcome, Current State, Scope and Boundaries, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, and Maintenance Log predictable, while keeping detailed knowledge in linked notes.
 
 Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval. Ingestion feedback is advisory and should not block safe processing, commit, or push.
 
