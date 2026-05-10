@@ -24,12 +24,34 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
 6. Add only strong relationships. Use `Belongs to` when the source belongs to a project or collection; use `Related to` for concepts, questions, topics, tools, or methods; use `Has` only for selected child notes or deliverables.
 7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail.
-8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates. Do not create exhaustive derived notes from long sources by default.
+8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default.
 9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
-10. If the source changes an active Project's understanding, update that Project's summary or next actions using the matching procedure.
+10. Run the bounded propagation pass below when the source changes durable understanding, evidence, caveats, open questions, active workflows, opinions, or next actions.
 11. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
 12. Prepare advisory ingestion feedback using the standard below.
 13. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
+
+## Propagation Pass
+
+Propagation means updating the few existing synthesis notes whose current understanding should change because of the source. It is not a global cascade and it should not create exhaustive backlinks.
+
+Use this pass when the source affects a durable note that the user or an agent is likely to revisit. Decide target notes from the vault's current Type notes and the source's actual impact rather than from a fixed list of categories.
+
+Default process:
+
+1. Identify candidate target notes from the relationships and searches already performed during ingestion.
+2. Edit only direct, high-confidence targets. About 3-5 target notes is a useful default cap for ordinary ingestion.
+3. Prefer synthesis surfaces over raw link growth. Use the current Type set as the routing map; common examples include:
+   - Project notes: update Current State, Next Actions, Open Questions, Important Notes, Active Workflows, or Maintenance Log.
+   - Question notes: update Current Answer, Open Threads, Signals To Revisit, or status when the answer is genuinely settled.
+   - Concept notes: add or refine reusable distinctions, methods, terms, or models.
+   - Procedure notes: update repeatable workflow steps only when the source improves the current procedure.
+   - Opinion notes: record whether the source supports, weakens, contradicts, or refines the working stance.
+   - ADRs: update only by creating or linking a new decision when the source changes a durable architecture or workflow choice.
+   - Future Types: use any newer Type note when it fits the source's durable implication better than the examples above.
+4. Preserve provenance by linking back to the Source note or citing the source URL/file in the edited note when the claim depends on that source.
+5. If wider effects are plausible but not obvious, add a focused follow-up or leave them for [[procedures/review-vault-health|Review Vault Health]].
+6. When useful, include a short `## Propagated Updates` section in the Source note listing which notes were changed and which likely targets were intentionally left unchanged.
 
 ## Ingestion Feedback
 
@@ -43,6 +65,7 @@ Include concise feedback in the final response or automation report:
 - which questions the source contains or raises;
 - which questions the agent answered during ingestion;
 - which durable questions, next actions, or synthesis updates were created or changed;
+- which propagation updates were made, deferred, or intentionally skipped;
 - which Opinions may need to be created, revised, superseded, or explicitly left unchanged;
 - which optional discussion points the user may want to revisit.
 
