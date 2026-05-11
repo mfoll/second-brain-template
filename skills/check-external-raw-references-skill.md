@@ -16,4 +16,7 @@ Activates the external raw-file reference maintenance workflow for `root_key` pl
 
 The durable workflow source is [[procedures/check-external-raw-references|Check External Raw References]]. The package under `.agents/skills/check-external-raw-references/` is the agent activation wrapper and includes the deterministic refresh script.
 
-Package file: [SKILL.md](../.agents/skills/check-external-raw-references/SKILL.md)
+Package files:
+
+- [SKILL.md](../.agents/skills/check-external-raw-references/SKILL.md)
+- [check_external_raw_references.py](../.agents/skills/check-external-raw-references/scripts/check_external_raw_references.py)
