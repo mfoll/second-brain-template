@@ -2,6 +2,8 @@
 type: Procedure
 status: Active
 Belongs to: "[[vault]]"
+Related to:
+  - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
 
@@ -35,13 +37,16 @@ The Project note should stay coherent enough that opening it gives the current s
 8. Check whether changed context should create or update typed notes such as Question, Concept, Responsibility, Procedure, ADR, Source, or another current Type.
 9. Make only direct high-confidence typed-note updates. Defer broad cascade effects to [[procedures/review-vault-health]].
 10. Add a dated Maintenance Log entry when the update changes project state.
-11. Review the diff and report what changed.
+11. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the summary update changes current drafts, deliverables, decision-driving Questions, active workflows, key Sources, or the notes a human should open next.
+12. Review the diff and report what changed.
 
 ## Output Standard
 
 After the update, the Project note should tell a future human or agent where to start, what is current, what is in or out of scope, what is unresolved, what to do next, and which linked notes matter most.
 
 Ingestion can update any relevant note. When ingestion changes project-level understanding, actions, open questions, important sources, active workflows, or guardrails, update the Project note as the live project home as well.
+
+If the project is active and does not have `Project view: false`, keep its saved view as a small human working set. The view should usually contain 3-5 notes, not every linked note.
 
 
 ## Guardrails

@@ -4,6 +4,7 @@ status: Active
 Belongs to: "[[vault]]"
 Related to:
   - "[[procedures/update-project-summary]]"
+  - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
 
@@ -36,11 +37,12 @@ Keep a Project note's `## Next Actions` section aligned with actual project stat
 10. Keep the list scannable. A short list is preferred, but do not enforce an arbitrary count when the active project genuinely needs more.
 11. Add a short Maintenance Log entry for meaningful state changes.
 12. If the next-action update changes project state, important context, scope, open questions, important notes, active workflows, or guardrails, run or apply [[procedures/update-project-summary]] so the Project note stays current as the live project home.
-13. Review the diff and report remaining work.
+13. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the next-action change affects what a human should open next.
+14. Review the diff and report remaining work.
 
 ## Style
 
-Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later. Preserve the standard Project structure from [[project]] when editing: Outcome, Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, and Maintenance Log should remain easy to find in active Project notes.
+Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later. Preserve the standard Project structure from [[project]] when editing: Outcome, Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, and Maintenance Log should remain easy to find in active Project notes. Keep `Surface for` markers limited to the small human-facing project view; do not add every note touched by a next action.
 
 
 ## Guardrails

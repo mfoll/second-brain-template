@@ -2,6 +2,8 @@
 type: Procedure
 status: Active
 Belongs to: "[[vault]]"
+Related to:
+  - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
 
@@ -27,9 +29,10 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default.
 9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
 10. Run the bounded propagation pass below when the source changes durable understanding, evidence, caveats, open questions, active workflows, opinions, or next actions.
-11. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
-12. Prepare advisory ingestion feedback using the standard below.
-13. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
+11. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the source becomes a human-meaningful project artifact or changes what belongs in the Project's saved view.
+12. If the source cannot be confidently scoped, leave it unprocessed or mark `_organized: false` rather than forcing weak links.
+13. Prepare advisory ingestion feedback using the standard below.
+14. Review the diff and report created notes, updated notes, caveats, and unresolved placement questions.
 
 ## Propagation Pass
 
@@ -43,6 +46,7 @@ Default process:
 2. Edit only direct, high-confidence targets. About 3-5 target notes is a useful default cap for ordinary ingestion.
 3. Prefer synthesis surfaces over raw link growth. Use the current Type set as the routing map; common examples include:
    - Project notes: update Current State, Next Actions, Open Questions, Important Notes, Active Workflows, or Maintenance Log.
+   - Project human views: add or remove `Surface for` only when the source changes the small set of notes the user should open.
    - Question notes: update Current Answer, Open Threads, Signals To Revisit, or status when the answer is genuinely settled.
    - Concept notes: add or refine reusable distinctions, methods, terms, or models.
    - Procedure notes: update repeatable workflow steps only when the source improves the current procedure.

@@ -1,6 +1,8 @@
 ---
 type: Guide
 _organized: true
+Surface for:
+  - "[[vault]]"
 ---
 
 # AGENTS.md - Second Brain Vault Template
@@ -69,6 +71,8 @@ Before removing a Project `Has` link, make sure the target note still has a retr
 
 Project notes are the live human and agent entry points for projects. Follow the structure in [[project]] when creating or refreshing them: keep `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Next Actions`, `## Open Questions`, `## Important Notes`, and `## Maintenance Log` predictable, while allowing project-specific middle sections such as `Working Thesis`, `Current Principles`, `Candidate Tools`, or `Draft Artifacts`. Do not flatten rich project knowledge just to fit the template; move detailed material into linked typed notes only when that improves retrieval.
 
+Active Projects normally have a small human-facing saved view unless the Project note has the manual opt-out `Project view: false`. Agents must not add that opt-out unless the user explicitly chooses it. Use `Surface for: [[project-stem]]` only on notes that are meaningful for the user to open as part of that Project's working surface. Aim for 3-5 notes including the Project note; 8-10 is the soft maximum for unusually active projects. Keep agent-only memory, low-level Sources, old captures, archived notes, implementation details, and broad candidate lists out of the view. Follow [[procedures/maintain-project-human-view|Maintain Project Human View]] when creating or reconciling project views.
+
 ## Wikilinks
 
 - Root notes may use filename-stem links such as `[[vault]]`.
@@ -92,6 +96,8 @@ Do not create an `archive/` folder by default. Do not use `status: Archived` as 
 Saved views live in `views/*.yml` and are written as YAML. The filename is the stable view id.
 
 A view must have one root filter group: `all:` or `any:`. Conditions use `field`, `op`, and usually `value`. Relationship filters should use canonical fields such as `Belongs to`, `Related to`, and `Has`.
+
+Project human views should filter on `Surface for` rather than broad `Belongs to`, backlinks, or title lists.
 
 Do not create legacy JSON view files.
 
@@ -143,6 +149,7 @@ A specific external file that should be maintained over time gets its own Source
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
 - Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
 - When ingestion or automation updates linked project material, update the relevant Project note when the change affects project state, next actions, open questions, active workflows, important notes, or guardrails. Project notes should not drift away from the linked notes they summarize.
+- When important project-scoped work changes current drafts, deliverables, next actions, decision-driving Questions, active workflows, or key Source notes, run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] before the Git checkpoint.
 - When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope. For changes that require deployment-machine setup, such as Codex config, persisted approvals, automation definitions, local databases, skill symlinks, or tool prerequisites, also update deployment-facing guidance such as `README.md`, `deploy-vault-from-template.md`, [[vault-automations]], and the affected Procedure notes so future deployed vaults inherit the policy.
 
 When editing Question notes, reconcile `status` with the body and active Project usage:
@@ -206,6 +213,7 @@ Expose or install skills in an agent runtime only during explicit setup. Prefer 
 - Create and edit Type notes at the vault root.
 - Add or modify relationships without breaking wikilinks.
 - Create and edit saved YAML views in `views/`.
+- Keep Project human views small and meaningful, and honor `Project view: false` when the user has opted a Project out.
 - Use procedures and skills for recurring workflows.
 - Activate `review-multi-vault-consistency` only when this vault is the designated main/control brain for a multi-vault setup.
 

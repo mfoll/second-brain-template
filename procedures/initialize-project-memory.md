@@ -5,6 +5,7 @@ Belongs to: "[[vault]]"
 Related to:
   - "[[global-agent-instructions-template]]"
   - "[[project-scoped-memory]]"
+  - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
 
@@ -31,11 +32,12 @@ The memory scope can be:
 6. If a matching entry note exists, propose using it. If none exists, propose a kebab-case filename, Type, and concise initial structure.
 7. Decide relationships using `Belongs to`, `Related to`, and `Has`. Explain only high-confidence relationships before writing.
 8. Create or update the entry note. When creating a new Project note, instantiate the structure from [[project]]: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
-9. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
-10. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
-11. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
-12. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
-13. Review the diff in both the workspace and vault repository before committing.
+9. Unless the user explicitly says the Project does not need a saved view, add `Surface for: [[project-stem]]` to the Project note and create the matching small saved view by following [[procedures/maintain-project-human-view|Maintain Project Human View]]. If the user explicitly opts the Project out of a view, add `Project view: false` to the Project note instead.
+10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
+11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
+12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
+13. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
+14. Review the diff in both the workspace and vault repository before committing.
 
 ## Entry-Point-Scoped Local Pointer Template
 

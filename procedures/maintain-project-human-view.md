@@ -1,0 +1,96 @@
+---
+type: Procedure
+status: Active
+Belongs to:
+  - "[[vault]]"
+Related to:
+  - "[[procedures/update-project-summary|Update Project Summary]]"
+  - "[[procedures/update-project-next-actions|Update Project Next Actions]]"
+_organized: true
+Surface for:
+  - "[[vault]]"
+---
+
+# Maintain Project Human View
+
+Use this procedure when creating, refreshing, or checking the small human-facing saved view for a Project.
+
+## Goal
+
+Keep each active Project's saved view as a small working surface for the user, not a project index. The view should show only the notes a human is likely to open now.
+
+## Frontmatter Contract
+
+Active Projects normally need a saved view unless the Project note has a manual opt-out:
+
+```yaml
+Project view: false
+```
+
+Agents must not add this opt-out unless the user explicitly chooses it.
+
+Notes that belong on the human surface use:
+
+```yaml
+Surface for:
+  - "[[project-stem]]"
+```
+
+The Project note itself counts as part of the view and should usually carry its own `Surface for` marker.
+
+## View Shape
+
+Create the view as `views/<project-stem>.yml` unless a clearer existing filename should be preserved.
+
+```yaml
+name: <Project Title> Surface
+icon: null
+color: null
+sort: modified:desc
+listPropertiesDisplay:
+- type
+- status
+filters:
+  all:
+  - field: Surface for
+    op: contains
+    value: "[[project-stem]]"
+```
+
+## Inclusion Rule
+
+The target size is 3-5 notes including the Project note. A larger active project may temporarily reach 8-10 notes, but more than 10 is a warning sign.
+
+Include only notes that are meaningful to open as a human project surface:
+
+- the Project note;
+- a current draft, deliverable, plan, or review surface;
+- a decision-driving Question;
+- a key source packet or synthesis note;
+- an active workflow note that the user may intentionally open.
+
+Exclude notes that are useful only to agents:
+
+- raw provenance or old captures;
+- low-level Sources and broad candidate lists;
+- stale, archived, superseded, or historical notes;
+- implementation details and hidden package files;
+- notes that are retrievable through backlinks or Project `Important Notes` but do not belong in the human working set.
+
+## Project Surface Check
+
+Run this check after important project-scoped changes and before the Git checkpoint:
+
+1. Identify the affected active Project.
+2. If the Project has `Project view: false`, do not create or require a view.
+3. If the Project is not active, do not require a view unless the user asks.
+4. Inspect the changed notes plus the current view members.
+5. Add `Surface for` only to notes the user is likely to open now.
+6. Remove `Surface for` from stale, archived, superseded, agent-only, or low-level notes.
+7. Keep the view near 3-5 notes when possible; if it would exceed 10, demote lower-priority notes back to normal Project links.
+8. If a surface change is ambiguous, report the proposed add/remove instead of silently changing the view.
+9. Review the diff.
+
+## Output Standard
+
+The saved view should feel like a clean project workbench: open it and see the main Project note, the current work artifacts, and only the few notes that matter for human resumption.

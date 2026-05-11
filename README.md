@@ -2,6 +2,8 @@
 type: Guide
 Related to: "[[vault]]"
 _organized: true
+Surface for:
+  - "[[vault]]"
 ---
 
 # Second Brain Template Repository Guide
@@ -90,6 +92,8 @@ Capture quickly, organize later. Put ambiguous material in unprocessed notes or 
 
 Use Projects as work entry points. Project notes are the live human and agent home for a project: keep Outcome, Current State, Scope and Boundaries, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, and Maintenance Log predictable, while keeping detailed knowledge in linked notes.
 
+Active Projects normally have a small project surface in `views/`, unless the Project note explicitly says `Project view: false`. These views are not complete indexes. They should contain only the Project note plus a few current, human-meaningful notes such as a draft, plan, decision-driving Question, key source packet, or active review surface. A good default is 3-5 notes; more than 10 means the surface has probably become too noisy.
+
 Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval. Ingestion feedback is advisory and should not block safe processing, commit, or push.
 
 For raw files that intentionally remain in an external folder, create a Source note instead of copying the file into the vault by default. Use fields such as:
@@ -122,6 +126,8 @@ Included skill packages:
 - `review-multi-vault-consistency` for a designated main/control vault only
 
 Each skill is a thin activation wrapper under `.agents/skills/`. The portable workflow source of truth remains the matching note in `procedures/`. Visible catalogue entries live in `skills/`.
+
+`maintain-project-human-view` is currently Procedure-only. Create a skill only if it becomes a frequent explicit command.
 
 `review-multi-vault-consistency` is intentionally included in the template inventory but is not a common per-vault workflow. During deployment, leave it dormant in ordinary vaults unless the vault is explicitly promoted to the routing/control role.
 

@@ -2,6 +2,8 @@
 type: Guide
 Related to: "[[vault]]"
 _organized: true
+Surface for:
+  - "[[vault]]"
 ---
 
 # Deploy Vault From Template

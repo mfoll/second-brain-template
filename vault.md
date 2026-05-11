@@ -2,6 +2,8 @@
 type: Project
 status: Active
 _organized: true
+Surface for:
+  - "[[vault]]"
 ---
 
 # <Vault Name>
@@ -27,6 +29,7 @@ Describe what belongs here, what does not, and any privacy or routing boundaries
 - [[procedures/process-ready-ingestion-inbox|Process Ready Ingestion Inbox]]
 - [[procedures/update-project-summary|Update Project Summary]]
 - [[procedures/update-project-next-actions|Update Project Next Actions]]
+- [[procedures/maintain-project-human-view|Maintain Project Human View]]
 - [[procedures/lint-vault|Lint Vault]]
 - [[procedures/check-external-raw-references|Check External Raw References]]
 - [[procedures/review-vault-health|Review Vault Health]]
@@ -59,6 +62,7 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
 - [[procedures/update-project-summary|Update Project Summary]]
 - [[procedures/update-project-next-actions|Update Project Next Actions]]
+- [[procedures/maintain-project-human-view|Maintain Project Human View]]
 - [[procedures/check-external-raw-references|Check External Raw References]]
 
 ## Maintenance Log
@@ -71,3 +75,4 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - YYYY-MM-DD: Template keeps scripts, prototypes, fixtures, generated outputs, and implementation-local notes in workspaces, but promotes durable project documentation into the vault instead of letting workspace `docs/` folders become parallel memory stores.
 - YYYY-MM-DD: Template includes a generic external raw-file reference pattern using `root_key` plus `relative_path`, ignored `.local/roots.yml` root mappings, and [[procedures/check-external-raw-references|Check External Raw References]].
 - YYYY-MM-DD: Template includes [[skills/check-external-raw-references-skill|Check External Raw References Skill]] so maintained external file references can be refreshed through one vault-only workflow.
+- YYYY-MM-DD: Template includes small human-facing project views with `Surface for`, manual `Project view: false` opt-outs, and [[procedures/maintain-project-human-view|Maintain Project Human View]].
