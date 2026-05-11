@@ -25,6 +25,8 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 - Project `Has` lists that look exhaustive rather than navigational.
 - Question notes missing status or using statuses outside `Open`, `Answered`, `Deferred`, and `Superseded` without explanation.
 - Source notes without provenance such as `url`, `source_file`, citation data, or an explicit reason provenance is unavailable.
+- External raw-file Source notes with missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked` fields.
+- External raw-file Source notes that use committed absolute local paths where `root_key` plus `relative_path` should be used.
 - ADRs missing status, context, decision, or consequences.
 - Procedure notes that are too vague for another agent to follow.
 - Visible Skill notes whose `package_path` does not point to an existing `.agents/skills/<name>/` package with `SKILL.md`.
@@ -40,9 +42,10 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 3. Run targeted searches for missing frontmatter, missing H1s, relationship-field drift, broken view fields, local path leakage, and junk files.
 4. Check wikilinks with the portable resolver: exclude `.agents/**`, `.git/**`, `attachments/**`, caches, generated artifacts, and implementation files from normal note resolution; prefer exact vault-relative path-stem matches first; then exact filename-stem matches when unique; use H1/title/humanized-title matching only as fallback and report fallback-required links as non-portable. Report ambiguous links only when more than one normal durable note remains plausible after path-stem and filename-stem precedence. `.agents/skills/**/SKILL.md` files remain part of skill-package consistency checks, not normal wikilink target resolution.
 5. Check visible Skill notes against package directories and package `SKILL.md` files.
-6. Group findings by severity: errors that break retrieval or execution, warnings that reduce portability, and suggestions for later health review.
-7. Stay read-only unless the user explicitly asks for focused fixes.
-8. Recommend follow-up workflows when appropriate, such as [[procedures/process-inbox|Process Inbox]], [[procedures/update-project-summary|Update Project Summary]], [[procedures/update-project-next-actions|Update Project Next Actions]], or [[procedures/review-vault-health|Review Vault Health]].
+6. For Source notes that use external raw-file fields, check that the durable note uses `root_key` plus `relative_path`, not a resolved local absolute path. When the user asks to verify actual external paths, follow [[procedures/check-external-raw-references|Check External Raw References]].
+7. Group findings by severity: errors that break retrieval or execution, warnings that reduce portability, and suggestions for later health review.
+8. Stay read-only unless the user explicitly asks for focused fixes.
+9. Recommend follow-up workflows when appropriate, such as [[procedures/process-inbox|Process Inbox]], [[procedures/update-project-summary|Update Project Summary]], [[procedures/update-project-next-actions|Update Project Next Actions]], [[procedures/check-external-raw-references|Check External Raw References]], or [[procedures/review-vault-health|Review Vault Health]].
 
 ## Output Standard
 

@@ -107,6 +107,27 @@ Do not add local machine paths, cache paths, app metadata, secrets, credentials,
 
 Define the vault in agent-neutral terms. Mention specific products only for concrete compatibility notes, examples, or setup instructions.
 
+## External Raw-File References
+
+Use the vault to remember external raw-file locations, not to duplicate external folders by default.
+
+For important files or folders that remain outside the vault, create or update a `type: Source` note with portable location fields:
+
+```yaml
+source_type: "external file"
+storage_system: External folder
+root_key: documents_basedir
+relative_path: "Example/important-file.pdf"
+access: guarded-write
+last_checked: 2026-05-11
+```
+
+The durable note should store `root_key` plus `relative_path`, not a resolved absolute local path. Machine-specific roots belong in ignored local configuration such as `.local/roots.yml`, environment variables, global/custom agent instructions, or a machine-scoped setup note.
+
+`access: guarded-write` means agents should treat the external location as read-only by default. Listing, existence checks, metadata checks, and explicitly relevant reads are allowed. Writing, renaming, moving, deleting, cleanup, bulk sync, or saving generated files into an external folder is allowed only when the user explicitly asks for that specific write action.
+
+Prefer shallow folder indexes and selected file-level Source notes over deep inventories. Use [[procedures/check-external-raw-references|Check External Raw References]] to verify important pointers and detect drift.
+
 ## Default Agent Behavior
 
 - Read relevant notes before answering when prior vault context matters.

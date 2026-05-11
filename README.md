@@ -25,6 +25,7 @@ It provides:
 - thin skill wrappers for recurring agent workflows;
 - a per-vault automation documentation pattern;
 - saved views for common retrieval surfaces.
+- a generic external raw-file reference pattern for files that stay outside the vault.
 
 ## What This Is Not For
 
@@ -43,6 +44,20 @@ Follow [[deploy-vault-from-template]]. The short version is:
 5. Decide whether this deployed vault is an ordinary vault or the main/control brain for a multi-vault setup.
 6. Review the generic skills and saved views.
 7. Commit and push the customized starting point.
+
+If the deployed vault will point to raw files outside the vault, create the ignored local root resolver at `.local/roots.yml`. The committed vault should store durable file pointers as `root_key` plus `relative_path` in Source notes; `.local/roots.yml` maps those root keys to machine-specific folders.
+
+Generic resolver example:
+
+```yaml
+roots:
+  documents_basedir:
+    access: guarded-write
+    candidates:
+      - "~/Documents"
+```
+
+Do not commit `.local/roots.yml`. Commit the Source notes, procedures, and views that describe how the external raw files are referenced.
 
 ## Template Residue In Deployed Vaults
 
@@ -66,6 +81,7 @@ Do not activate that workflow in ordinary personal, research, project, or team v
 - Use `Belongs to`, `Related to`, and `Has` for canonical relationships.
 - Use `_archived: true` for archived notes.
 - Source notes preserve external provenance; synthesis belongs in Project, Topic, Concept, Question, Procedure, ADR, and Note files.
+- External raw-file Source notes use portable `root_key` plus `relative_path` pointers, resolved through ignored local config such as `.local/roots.yml`.
 - Saved views live in `views/*.yml`.
 
 ## Daily Use
@@ -75,6 +91,20 @@ Capture quickly, organize later. Put ambiguous material in unprocessed notes or 
 Use Projects as work entry points. Project notes are the live human and agent home for a project: keep Outcome, Current State, Scope and Boundaries, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, and Maintenance Log predictable, while keeping detailed knowledge in linked notes.
 
 Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval. Ingestion feedback is advisory and should not block safe processing, commit, or push.
+
+For raw files that intentionally remain in an external folder, create a Source note instead of copying the file into the vault by default. Use fields such as:
+
+```yaml
+type: Source
+source_type: "external file"
+storage_system: External folder
+root_key: documents_basedir
+relative_path: "Example/important-file.pdf"
+access: guarded-write
+last_checked: 2026-05-11
+```
+
+`access: guarded-write` means agents treat the external location as read-only by default. They may list, check existence, and read explicitly relevant files, but they should write only when the user explicitly asks for a specific write action.
 
 ## Agent Skills
 

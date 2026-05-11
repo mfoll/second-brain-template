@@ -106,6 +106,22 @@ find skills .agents/skills -maxdepth 3 -type f | sort
 
 Open each file in `views/` and confirm that filters match the deployed vault's Type and relationship conventions. Active views should normally exclude notes with `_archived: true`.
 
+## Configure External Raw Roots
+
+If the deployed vault will point to raw files that stay outside the vault, create `.local/roots.yml` in the deployed vault root and keep it ignored by Git. This file maps portable `root_key` values in Source notes to local folders on this machine.
+
+Example:
+
+```yaml
+roots:
+  documents_basedir:
+    access: guarded-write
+    candidates:
+      - "~/Documents"
+```
+
+Use [[procedures/check-external-raw-references|Check External Raw References]] to verify the local resolver and any external raw-file Source notes. Do not commit `.local/roots.yml`; commit only the Source notes and portable procedures/views.
+
 ## Configure Per-Vault Automations
 
 Review [[vault-automations]] and decide whether this deployed vault should have local automations.

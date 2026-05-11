@@ -1,0 +1,11 @@
+name: External Raw Sources
+icon: null
+color: null
+sort: "modified:desc"
+filters:
+  all:
+    - field: type
+      op: equals
+      value: Source
+    - field: root_key
+      op: is_not_empty

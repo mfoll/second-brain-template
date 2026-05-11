@@ -28,6 +28,7 @@ Describe what belongs here, what does not, and any privacy or routing boundaries
 - [[procedures/update-project-summary|Update Project Summary]]
 - [[procedures/update-project-next-actions|Update Project Next Actions]]
 - [[procedures/lint-vault|Lint Vault]]
+- [[procedures/check-external-raw-references|Check External Raw References]]
 - [[procedures/review-vault-health|Review Vault Health]]
 - [[vault-automations|Vault Automations]]
 
@@ -42,6 +43,7 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - [ ] Decide whether this vault is an ordinary vault or the main/control brain for multi-vault routing.
 - [ ] Delete or archive template-only notes after converting them into implemented vault guidance.
 - [ ] Decide whether this vault needs local automations and document them in [[vault-automations]].
+- [ ] If the vault will reference external raw files, create ignored `.local/roots.yml` root mappings and test [[procedures/check-external-raw-references|Check External Raw References]].
 - [ ] Create the first real Project, Responsibility, or Source note.
 - [ ] Test source ingestion with one low-risk item.
 
@@ -57,6 +59,7 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
 - [[procedures/update-project-summary|Update Project Summary]]
 - [[procedures/update-project-next-actions|Update Project Next Actions]]
+- [[procedures/check-external-raw-references|Check External Raw References]]
 
 ## Maintenance Log
 
@@ -66,3 +69,4 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - YYYY-MM-DD: Template documents that ordinary deployed vaults should delete or archive template-only residue after converting it into implemented local guidance.
 - YYYY-MM-DD: Template initialize-project-memory uses one primary entry note in workspace-local `AGENTS.md`; secondary relationships stay in the entry note.
 - YYYY-MM-DD: Template keeps scripts, prototypes, fixtures, generated outputs, and implementation-local notes in workspaces, but promotes durable project documentation into the vault instead of letting workspace `docs/` folders become parallel memory stores.
+- YYYY-MM-DD: Template includes a generic external raw-file reference pattern using `root_key` plus `relative_path`, ignored `.local/roots.yml` root mappings, and [[procedures/check-external-raw-references|Check External Raw References]].
