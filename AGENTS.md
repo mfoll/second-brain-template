@@ -128,6 +128,8 @@ The durable note should store `root_key` plus `relative_path`, not a resolved ab
 
 Prefer shallow folder indexes and selected file-level Source notes over deep inventories. Use [[procedures/check-external-raw-references|Check External Raw References]] to verify important pointers and detect drift.
 
+A specific external file that should be maintained over time gets its own Source note. Project notes link to the Source note under External Raw Locations, Sources, or Important Notes; `last_checked` belongs on the Source note, not on the project note or incidental prose reference.
+
 ## Default Agent Behavior
 
 - Read relevant notes before answering when prior vault context matters.

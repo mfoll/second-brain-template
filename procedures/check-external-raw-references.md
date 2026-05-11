@@ -33,6 +33,8 @@ The durable vault note stores `root_key` and `relative_path`, not a resolved abs
 
 `.local/roots.yml` is intentionally gitignored. It is a per-machine adapter, not the durable memory of the external file. When deploying this vault on a new machine, create the resolver before relying on external raw-file references.
 
+A specific external file that should be maintained over time gets its own Source note. Project notes should link to the Source note; they should not carry separate `last_checked` fields for individual file references.
+
 ## Guarded-Write Policy
 
 Treat external raw references as read-only by default. Agents may list folders, check existence, read metadata, and read explicitly relevant files. They must not write, rename, move, delete, clean, reformat, or save generated files into external folders unless the user explicitly asks for that specific write action.
@@ -45,8 +47,9 @@ Treat external raw references as read-only by default. Agents may list folders, 
 4. Join the resolved root and `relative_path`.
 5. Check whether the resulting path exists and whether its kind matches `source_type` as a file, folder, or collection root.
 6. For notes with a shallow folder index, compare the note's index with a shallow read-only listing and report likely additions, removals, or renames.
-7. Update `last_checked` and shallow indexes only when the user has asked to update or maintain the vault. Never modify the external raw folder as part of this procedure.
-8. Report unresolved roots, missing paths, kind mismatches, stale indexes, and notes that use absolute local paths instead of `root_key` plus `relative_path`.
+7. When this procedure is run as a maintenance workflow or through the `check-external-raw-references` skill, update only vault notes: set `last_checked` to today's date and refresh the shallow folder index section when present.
+8. Never modify the external raw folder as part of this procedure.
+9. Report unresolved roots, missing paths, kind mismatches, stale indexes, notes updated in the vault, and notes that use absolute local paths instead of `root_key` plus `relative_path`.
 
 ## Report Shape
 
@@ -56,6 +59,7 @@ Group findings as:
 - Missing external paths.
 - Source-type mismatches.
 - Stale shallow indexes.
+- Vault Source notes updated.
 - Non-portable absolute paths in durable notes.
 - Suggested vault-only updates.
 

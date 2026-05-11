@@ -1,0 +1,4 @@
+interface:
+  display_name: "Check External Raw References"
+  short_description: "Refresh external raw-file Source notes and report drift."
+  default_prompt: "Check and refresh external raw-file references in my Second Brain vault."

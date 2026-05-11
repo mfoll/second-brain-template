@@ -70,3 +70,4 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 - YYYY-MM-DD: Template initialize-project-memory uses one primary entry note in workspace-local `AGENTS.md`; secondary relationships stay in the entry note.
 - YYYY-MM-DD: Template keeps scripts, prototypes, fixtures, generated outputs, and implementation-local notes in workspaces, but promotes durable project documentation into the vault instead of letting workspace `docs/` folders become parallel memory stores.
 - YYYY-MM-DD: Template includes a generic external raw-file reference pattern using `root_key` plus `relative_path`, ignored `.local/roots.yml` root mappings, and [[procedures/check-external-raw-references|Check External Raw References]].
+- YYYY-MM-DD: Template includes [[skills/check-external-raw-references-skill|Check External Raw References Skill]] so maintained external file references can be refreshed through one vault-only workflow.

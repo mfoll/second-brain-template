@@ -116,6 +116,7 @@ Included skill packages:
 - `process-ready-ingestion-inbox`
 - `update-project-summary`
 - `update-project-next-actions`
+- `check-external-raw-references`
 - `lint-vault`
 - `review-vault-health`
 - `review-multi-vault-consistency` for a designated main/control vault only
