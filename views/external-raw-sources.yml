@@ -1,6 +1,6 @@
 name: External Raw Sources
-icon: null
-color: null
+icon: folder-open
+color: blue
 sort: "modified:desc"
 filters:
   all:
