@@ -133,7 +133,9 @@ A `## Current Answer` does not automatically mean the Question is answered.
 
 ## Project-Scoped Memory
 
-Project workspaces may contain a local `AGENTS.md` that points to a primary Project note. When such a pointer exists, use that Project note and linked notes as the default memory scope before searching the whole vault.
+Project workspaces may contain a local `AGENTS.md` that points to a primary Project note. When such a pointer exists, read that Project note and the directly linked notes relevant to the task as the default memory scope before searching the whole vault.
+
+If the user refers to a raw file, folder, dataset, manuscript, external document, or path-like reference from a project workspace, first check the primary entry note and linked Source notes for External Raw Locations or `root_key` plus `relative_path` pointers.
 
 Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should not copy full vault rules or embed machine-specific paths.
 

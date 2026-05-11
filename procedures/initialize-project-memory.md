@@ -52,12 +52,14 @@ Primary Second Brain entry note:
 
 Read the vault-level `AGENTS.md` from the configured vault root.
 
-Start memory lookup from notes linked to this entry note before widening search.
+Before doing project work, read the primary entry note and the directly linked notes that are relevant to the task, especially Source notes, External Raw Locations, active workflows, and important notes.
+
+If the user refers to a file, folder, dataset, manuscript, raw document, or path-like reference, check the primary entry note and linked Source notes for external raw-file pointers before guessing paths or searching broadly.
 
 Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate Second Brain note linked from the primary entry note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
 ```
 
-The local pointer should name only the primary entry note. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there.
+The local pointer should name only the primary entry note and the generic lookup rule above. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there.
 
 ## Vault-Scoped Local Pointer Template
 
