@@ -25,7 +25,7 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 4. Create one `type: Source` note with a kebab-case filename and a clear H1 matching the source title or repository/tool name.
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
 6. Add only strong relationships. Use `Belongs to` when the source belongs to a project or collection; use `Related to` for concepts, questions, topics, tools, or methods; use `Has` only for selected child notes or deliverables.
-7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail.
+7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail. If provenance fields such as `url`, `urls`, `source_file`, DOI, repository, `root_key`, or `relative_path` are present in frontmatter, also include the useful pointer in the readable body, usually as `## Source Links` or `## Source Location`.
 8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default.
 9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
 10. Run the bounded propagation pass below when the source changes durable understanding, evidence, caveats, open questions, active workflows, opinions, or next actions.
@@ -91,6 +91,7 @@ A usable Source note includes:
 - `type: Source` frontmatter;
 - a first H1;
 - provenance sufficient to re-check the source;
+- the useful source link or location repeated in the note body, not only in YAML;
 - a short summary in the vault owner's words;
 - at least one clear retrieval path or an explicit unprocessed state.
 - `_organized: true` when the Source has a clear retrieval path, or `_organized: false` only when placement is still unresolved.

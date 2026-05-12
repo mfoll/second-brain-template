@@ -10,6 +10,8 @@ _organized: true
 
 A Source records external or re-checkable material with provenance, summary, caveats, and links to relevant synthesis.
 
+Provenance should be human-visible in the note body as well as machine-readable in frontmatter. If frontmatter includes `url`, `urls`, `source_file`, DOI, repository, `root_key`, `relative_path`, or another source pointer, include the useful link or location again in a readable section such as `## Source Links` or `## Source Location`.
+
 ## External Raw Files
 
 For raw files or folders that intentionally remain outside the vault, use Source notes as portable pointers and retrieval hooks. Store `storage_system`, `root_key`, `relative_path`, `access`, and `last_checked` rather than a committed absolute local path.

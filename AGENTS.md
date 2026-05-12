@@ -130,6 +130,8 @@ last_checked: 2026-05-11
 
 The durable note should store `root_key` plus `relative_path`, not a resolved absolute local path. Machine-specific roots belong in ignored local configuration such as `.local/roots.yml`, environment variables, global/custom agent instructions, or a machine-scoped setup note.
 
+Source provenance must be visible to humans in the note body, not only stored in YAML. When a Source note has `url`, `urls`, `source_file`, `root_key`, `relative_path`, DOI, repository, or other provenance fields in frontmatter, include the same useful pointer in a readable body section such as `## Source Links` or `## Source Location`.
+
 `access: guarded-write` means agents should treat the external location as read-only by default. Listing, existence checks, metadata checks, and explicitly relevant reads are allowed. Writing, renaming, moving, deleting, cleanup, bulk sync, or saving generated files into an external folder is allowed only when the user explicitly asks for that specific write action.
 
 Prefer shallow folder indexes and selected file-level Source notes over deep inventories. Use [[procedures/check-external-raw-references|Check External Raw References]] to verify important pointers and detect drift.
