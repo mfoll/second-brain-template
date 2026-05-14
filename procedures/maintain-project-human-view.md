@@ -33,14 +33,14 @@ Notes that belong on the human surface use:
 
 ```yaml
 Surface for:
-  - "[[project-stem]]"
+  - "[[vault]]" # replace with the real Project note wikilink
 ```
 
 The Project note itself counts as part of the view and should usually carry its own `Surface for` marker.
 
 ## View Shape
 
-Create the view as `views/<project-stem>.yml` unless a clearer existing filename should be preserved.
+Create the view as `views/<project-stem>.yml` unless a clearer existing filename should be preserved. In YAML examples, replace `[[vault]]` with the real Project note wikilink.
 
 ```yaml
 name: <Project Title> Surface
@@ -54,7 +54,7 @@ filters:
   all:
   - field: Surface for
     op: contains
-    value: "[[project-stem]]"
+    value: "[[vault]]" # replace with the real Project note wikilink
 ```
 
 ## Inclusion Rule

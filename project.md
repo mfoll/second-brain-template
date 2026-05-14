@@ -14,7 +14,7 @@ A Project's frontmatter relationships should support navigation and project resu
 
 Project notes are the live entry points for human and agent work. They are not just summaries and they are not full archives: they should stay coherent enough that opening the Project note tells the user or an agent what the project is, where it stands, what to read first, and what to do next.
 
-Active Projects normally have a small human-facing saved view unless the Project note has `Project view: false`. The view is a human working surface, not an index: aim for 3-5 notes including the Project note, and use 8-10 only as a soft maximum for unusually active projects. Use `Surface for: [[project-stem]]` only on notes the user is likely to open now. Keep agent-only memory and low-level support notes linked elsewhere, not in the view.
+Active Projects normally have a small human-facing saved view unless the Project note has `Project view: false`. The view is a human working surface, not an index: aim for 3-5 notes including the Project note, and use 8-10 only as a soft maximum for unusually active projects. Use `Surface for` with the real Project wikilink only on notes the user is likely to open now. Keep agent-only memory and low-level support notes linked elsewhere, not in the view.
 
 ## Project Note Structure
 
