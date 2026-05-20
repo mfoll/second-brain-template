@@ -45,7 +45,7 @@ If an external workspace expects Second Brain memory but the configured vault ro
 
 ## Types
 
-Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Topic, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
+Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Topic, Person, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
 
 Type notes are structural notes and should normally be `_organized: true`, unless a new Type is still a draft.
 
