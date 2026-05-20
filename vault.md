@@ -68,6 +68,7 @@ Optional only if this vault is the designated main/control brain for a multi-vau
 ## Maintenance Log
 
 - YYYY-MM-DD: Deployed from `second-brain-template`.
+- YYYY-MM-DD: Template includes canonical `Operation` and `Event` types, PORT action-axis guidance, and localized type-display guidance through `_sidebar_label`.
 - YYYY-MM-DD: Template includes advisory ingestion feedback in source, inbox, and ready-ingestion workflows; feedback should not block safe ingestion.
 - YYYY-MM-DD: Template includes a deployment propagation checkpoint for generic workflow and convention changes.
 - YYYY-MM-DD: Template documents that ordinary deployed vaults should delete or archive template-only residue after converting it into implemented local guidance.

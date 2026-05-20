@@ -82,6 +82,7 @@ Do not activate that workflow in ordinary personal, research, project, or team v
 - Note type is stored in `type:` frontmatter.
 - Use `Belongs to`, `Related to`, and `Has` for canonical relationships.
 - Use `_archived: true` for archived notes.
+- Canonical type names stay in English across vaults. A localized vault can display translated labels through Type-note metadata such as `_sidebar_label` without changing filenames, H1s, or `type:` values.
 - Source notes preserve external provenance; synthesis belongs in Project, Topic, Concept, Question, Procedure, ADR, and Note files.
 - External raw-file Source notes use portable `root_key` plus `relative_path` pointers, resolved through ignored local config such as `.local/roots.yml`.
 - Saved views live in `views/*.yml`.
@@ -91,6 +92,10 @@ Do not activate that workflow in ordinary personal, research, project, or team v
 Capture quickly, organize later. Put ambiguous material in unprocessed notes or [[ready-to-ingest]] until there is a clear retrieval path.
 
 Use Projects as work entry points. Project notes are the live human and agent home for a project: keep Outcome, Current State, Scope and Boundaries, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, and Maintenance Log predictable, while keeping detailed knowledge in linked notes.
+
+Use the PORT action axes when choosing between action-like note types: `Responsibility` is recurring work larger than one sitting, `Project` is one-off work larger than one sitting, `Operation` is recurring work that can usually be completed in one sitting, and one-off `Task` notes should not be created by default. Keep one-off tasks in Project `## Next Actions` or a dedicated task manager unless the user explicitly chooses a task system.
+
+Use Event notes for meetings, conversations, rollouts, incidents, milestones, decision events, achievements, external changes, or historical records that should remain findable later.
 
 Active Projects normally have a small project surface in `views/`, unless the Project note explicitly says `Project view: false`. These views are not complete indexes. They should contain only the Project note plus a few current, human-meaningful notes such as a draft, plan, decision-driving Question, key source packet, or active review surface. A good default is 3-5 notes; more than 10 means the surface has probably become too noisy.
 

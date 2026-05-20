@@ -86,6 +86,18 @@ Keep the vault conventions, but update wording that should name the concrete vau
 
 Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not duplicate the full instruction body into the shim.
 
+## Customize Type Localization
+
+Keep canonical type identity stable across vaults: filenames, H1s, and `type:` values should stay in English, for example `Person`, `Project`, `Operation`, and `Event`.
+
+If the deployed vault should display localized type names, set `_sidebar_label` on the Type note instead of translating the canonical type. For a French personal vault, use labels such as:
+
+```yaml
+_sidebar_label: Personnes
+```
+
+Do not create translated type identities such as `Personne` unless the user explicitly wants an incompatible local ontology. If an older deployed vault already has translated type identities, rename the Type note to the canonical English filename/H1, update existing note `type:` values, and preserve the user-facing language through `_sidebar_label`.
+
 ## Customize Global Instruction Placeholders
 
 Use [[global-agent-instructions-template]] to create the machine-local global instruction text. Replace `<VAULT_ROOT>` only in the machine-local instruction surface, not in portable vault notes unless the note is explicitly a local setup note.

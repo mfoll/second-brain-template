@@ -45,11 +45,22 @@ If an external workspace expects Second Brain memory but the configured vault ro
 
 ## Types
 
-Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Topic, Person, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
+Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Operation, Event, Topic, Person, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
 
 Type notes are structural notes and should normally be `_organized: true`, unless a new Type is still a draft.
 
 Do not add a new Type until there is a recurring retrieval need that existing types do not cover cleanly.
+
+Type identity should stay portable across deployed vaults. Use the canonical English type name in the filename, H1, and `type:` values, for example `Person`, `Project`, or `Operation`. If a deployed vault should display a localized label, keep the canonical type name and set `_sidebar_label` on the Type note instead of creating a translated type such as `Personne`.
+
+For action-like notes, use the PORT axes from the Portent model:
+
+- `Responsibility`: recurring work larger than one sitting.
+- `Project`: one-off work larger than one sitting.
+- `Operation`: recurring work that can usually be completed in one sitting. Use it for scheduled or repeated runs, and link it to the Procedure that explains how to do it.
+- `Task`: one-off work that can usually be completed in one sitting. Do not create Task notes by default; keep these in Project `## Next Actions` or an external task manager unless the user explicitly chooses a task system.
+
+Use `Event` for something that happened and should remain findable later, such as a meeting, rollout, incident, milestone, decision event, or external change.
 
 ## Relationships
 
