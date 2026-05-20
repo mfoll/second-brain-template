@@ -7,6 +7,6 @@ listPropertiesDisplay:
 - status
 filters:
   all:
-  - field: Surface for
+  - field: surface_for
     op: contains
     value: "[[vault]]"

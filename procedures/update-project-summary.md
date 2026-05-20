@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
@@ -29,7 +29,7 @@ The Project note should stay coherent enough that opening it gives the current s
 
 1. Identify the active Project note from the user request, workspace pointer, or linked context.
 2. Read the Project note's current structure before editing.
-3. Review relevant linked notes through `Belongs to`, `Related to`, `Has`, backlinks, body links, and saved views.
+3. Review relevant linked notes through `belongs_to`, `related_to`, `has`, backlinks, body links, and saved views.
 4. Normalize the note toward the Project structure in [[project]] when it has drifted: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 5. Update only affected sections, commonly `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Active Workflows`, `## Important Notes`, `## Sources`, `## Open Questions`, `## Next Actions`, and `## Maintenance Log`.
 6. Preserve uncertainty. Do not present provisional answers, unverified source claims, or user ideas as settled policy.
@@ -52,6 +52,6 @@ If the project is active and does not have `Project view: false`, keep its saved
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

@@ -1,7 +1,7 @@
 ---
 type: Guide
 _organized: true
-Surface for:
+surface_for:
   - "[[vault]]"
 ---
 
@@ -64,25 +64,25 @@ Use `Event` for something that happened and should remain findable later, such a
 
 ## Relationships
 
-Any frontmatter property whose value contains wikilinks may act as a relationship.
+Any frontmatter property whose value contains wikilinks may act as a relationship. Tolaria's default relationship fields are `belongs_to`, `related_to`, and `has`; use those exact lower-snake-case field names for normal vault relationships.
 
 Canonical relationship fields:
 
-- `Belongs to`: parent, container, workspace, responsibility, larger project, or durable context.
-- `Related to`: lateral conceptual relevance.
-- `Has`: selected child note, active workflow, open question, ADR, procedure, skill, deliverable, or structural entry point.
+- `belongs_to`: parent, container, workspace, responsibility, larger project, or durable context.
+- `related_to`: lateral conceptual relevance.
+- `has`: selected child note, active workflow, open question, ADR, procedure, skill, deliverable, or structural entry point.
 
-For new and normalized notes, use `Belongs to`, `Related to`, and `Has`. Do not create new notes with legacy lowercase keys such as `belongs_to` or `related_to`.
+For new and normalized notes, use `belongs_to`, `related_to`, and `has`. Do not create or preserve title-case relationship fields such as `Belongs to`, `Related to`, `Has`, or `Surface for`.
 
 Use quoted wikilinks for scalar frontmatter values and YAML lists for multiple relationships.
 
-For Project notes, `Has` should be selective rather than exhaustive. Use body sections, backlinks, views, and `Belongs to` relationships for long lists.
+For Project notes, `has` should be selective rather than exhaustive. Use body sections, backlinks, views, and `belongs_to` relationships for long lists.
 
-Before removing a Project `Has` link, make sure the target note still has a retrieval path through its own relationships, a Project body link, another hub note, a saved view, or an explicit inbox/archive convention.
+Before removing a Project `has` link, make sure the target note still has a retrieval path through its own relationships, a Project body link, another hub note, a saved view, or an explicit inbox/archive convention.
 
 Project notes are the live human and agent entry points for projects. Follow the structure in [[project]] when creating or refreshing them: keep `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Next Actions`, `## Open Questions`, `## Important Notes`, and `## Maintenance Log` predictable, while allowing project-specific middle sections such as `Working Thesis`, `Current Principles`, `Candidate Tools`, or `Draft Artifacts`. Do not flatten rich project knowledge just to fit the template; move detailed material into linked typed notes only when that improves retrieval.
 
-Active Projects normally have a small human-facing saved view unless the Project note has the manual opt-out `Project view: false`. Agents must not add that opt-out unless the user explicitly chooses it. Use `Surface for` with the real Project wikilink only on notes that are meaningful for the user to open as part of that Project's working surface. Aim for 3-5 notes including the Project note; 8-10 is the soft maximum for unusually active projects. Keep agent-only memory, low-level Sources, old captures, archived notes, implementation details, and broad candidate lists out of the view. Follow [[procedures/maintain-project-human-view|Maintain Project Human View]] when creating or reconciling project views.
+Active Projects normally have a small human-facing saved view unless the Project note has the manual opt-out `Project view: false`. Agents must not add that opt-out unless the user explicitly chooses it. Use `surface_for` with the real Project wikilink only on notes that are meaningful for the user to open as part of that Project's working surface. Aim for 3-5 notes including the Project note; 8-10 is the soft maximum for unusually active projects. Keep agent-only memory, low-level Sources, old captures, archived notes, implementation details, and broad candidate lists out of the view. Follow [[procedures/maintain-project-human-view|Maintain Project Human View]] when creating or reconciling project views.
 
 ## Wikilinks
 
@@ -106,9 +106,9 @@ Do not create an `archive/` folder by default. Do not use `status: Archived` as 
 
 Saved views live in `views/*.yml` and are written as YAML. The filename is the stable view id.
 
-A view must have one root filter group: `all:` or `any:`. Conditions use `field`, `op`, and usually `value`. Relationship filters should use canonical fields such as `Belongs to`, `Related to`, and `Has`.
+A view must have one root filter group: `all:` or `any:`. Conditions use `field`, `op`, and usually `value`. Relationship filters should use canonical fields such as `belongs_to`, `related_to`, and `has`.
 
-Project human views should filter on `Surface for` rather than broad `Belongs to`, backlinks, or title lists.
+Project human views should filter on `surface_for` rather than broad `belongs_to`, backlinks, or title lists.
 
 Do not create legacy JSON view files.
 

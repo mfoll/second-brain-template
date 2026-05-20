@@ -7,8 +7,8 @@ _order: 9
 _list_properties_display:
   - status
   - Cadence
-  - Belongs to
-  - Related to
+  - belongs_to
+  - related_to
 ---
 
 # Operation

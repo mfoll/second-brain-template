@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
@@ -41,6 +41,6 @@ Ask before pushing broad diffs, attachments, secrets, credentials, sensitive doc
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

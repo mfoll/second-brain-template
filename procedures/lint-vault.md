@@ -1,7 +1,7 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
+belongs_to: "[[vault]]"
 _organized: true
 ---
 
@@ -17,15 +17,15 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 
 - Markdown notes missing YAML frontmatter or a first H1.
 - Frontmatter that is invalid YAML or uses unexpected relationship fields.
-- Durable notes using relationship keys other than `Belongs to`, `Related to`, and `Has` for normal vault relationships.
+- Durable notes using relationship keys other than `belongs_to`, `related_to`, and `has` for normal vault relationships.
 - Broken, ambiguous, or non-portable wikilinks.
 - Type notes with duplicate display metadata aliases or inconsistent Type naming.
 - Saved views with invalid YAML, missing root `all` or `any`, stale field names, or filters that no longer match current conventions.
 - Active Project notes without outcome, current state, scope and boundaries, next actions, open questions, important links, or maintenance history.
-- Project `Has` lists that look exhaustive rather than navigational.
+- Project `has` lists that look exhaustive rather than navigational.
 - Project notes with `status: Active` without a matching human-facing saved view unless `Project view: false` is set. Project notes with `status: Idea` do not need a view.
-- Project human views that exceed 10 `Surface for` members, include archived or superseded notes, or use title-only filters where `Surface for` should be used.
-- `Surface for` values that do not resolve to a Project note.
+- Project human views that exceed 10 `surface_for` members, include archived or superseded notes, or use title-only filters where `surface_for` should be used.
+- `surface_for` values that do not resolve to a Project note.
 - Question notes missing status or using statuses outside `Open`, `Answered`, `Deferred`, and `Superseded` without explanation.
 - Source notes without provenance such as `url`, `source_file`, citation data, or an explicit reason provenance is unavailable.
 - External raw-file Source notes with missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked` fields.
@@ -46,7 +46,7 @@ Find concrete issues that reduce retrieval, provenance, portability, or agent us
 4. Check wikilinks with the portable resolver: exclude `.agents/**`, `.git/**`, `attachments/**`, caches, generated artifacts, and implementation files from normal note resolution; prefer exact vault-relative path-stem matches first; then exact filename-stem matches when unique; use H1/title/humanized-title matching only as fallback and report fallback-required links as non-portable. Report ambiguous links only when more than one normal durable note remains plausible after path-stem and filename-stem precedence. `.agents/skills/**/SKILL.md` files remain part of skill-package consistency checks, not normal wikilink target resolution.
 5. Check visible Skill notes against package directories and package `SKILL.md` files.
 6. For Source notes that use external raw-file fields, check that the durable note uses `root_key` plus `relative_path`, not a resolved local absolute path. When the user asks to verify actual external paths, follow [[procedures/check-external-raw-references|Check External Raw References]].
-7. For Project human views, require either a saved view in `views/*.yml` filtering on `Surface for` with that Project's wikilink, or an explicit `Project view: false` opt-out only for Project notes with `status: Active`. Do not require views for `status: Idea` Projects. Do not automatically add opt-outs; only the user chooses them. Do not automatically expand project views during lint.
+7. For Project human views, require either a saved view in `views/*.yml` filtering on `surface_for` with that Project's wikilink, or an explicit `Project view: false` opt-out only for Project notes with `status: Active`. Do not require views for `status: Idea` Projects. Do not automatically add opt-outs; only the user chooses them. Do not automatically expand project views during lint.
 8. Group findings by severity: errors that break retrieval or execution, warnings that reduce portability, and suggestions for later health review.
 9. Stay read-only unless the user explicitly asks for focused fixes.
 10. Recommend follow-up workflows when appropriate, such as [[procedures/process-inbox|Process Inbox]], [[procedures/update-project-summary|Update Project Summary]], [[procedures/update-project-next-actions|Update Project Next Actions]], [[procedures/maintain-project-human-view|Maintain Project Human View]], [[procedures/check-external-raw-references|Check External Raw References]], or [[procedures/review-vault-health|Review Vault Health]].
@@ -59,6 +59,6 @@ Lead with findings, ordered by severity. Include file paths and line numbers whe
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

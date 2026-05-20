@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/lint-vault|Lint Vault]]"
 package_path: ".agents/skills/lint-vault/"

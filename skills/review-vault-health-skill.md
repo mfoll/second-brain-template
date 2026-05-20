@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/review-vault-health|Review Vault Health]]"
 package_path: ".agents/skills/review-vault-health/"

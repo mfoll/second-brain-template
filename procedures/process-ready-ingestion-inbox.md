@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/process-inbox]]"
   - "[[procedures/ingest-source]]"
 _organized: true
@@ -67,6 +67,6 @@ Stop and ask before committing or pushing if the diff includes unrelated edits, 
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[global-agent-instructions-template]]"
   - "[[project-scoped-memory]]"
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
@@ -30,9 +30,9 @@ The memory scope can be:
 4. Ask or infer the workspace title, purpose, scope, and whether it is Entry-point-scoped or Vault-scoped.
 5. For Entry-point-scoped work, search existing vault notes across all Types before creating a new entry note.
 6. If a matching entry note exists, propose using it. If none exists, propose a kebab-case filename, Type, and concise initial structure.
-7. Decide relationships using `Belongs to`, `Related to`, and `Has`. Explain only high-confidence relationships before writing.
+7. Decide relationships using `belongs_to`, `related_to`, and `has`. Explain only high-confidence relationships before writing.
 8. Create or update the entry note. When creating a new Project note, instantiate the structure from [[project]]: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
-9. Unless the user explicitly says the Project does not need a saved view, add `Surface for` with the real Project wikilink to the Project note and create the matching small saved view by following [[procedures/maintain-project-human-view|Maintain Project Human View]]. If the user explicitly opts the Project out of a view, add `Project view: false` to the Project note instead.
+9. Unless the user explicitly says the Project does not need a saved view, add `surface_for` with the real Project wikilink to the Project note and create the matching small saved view by following [[procedures/maintain-project-human-view|Maintain Project Human View]]. If the user explicitly opts the Project out of a view, add `Project view: false` to the Project note instead.
 10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
 11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
 12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
@@ -84,7 +84,7 @@ Workspace documentation rule: before creating or extending Markdown documentatio
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant entry note or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.
 

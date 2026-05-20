@@ -6,8 +6,8 @@ _organized: true
 _order: 10
 _list_properties_display:
   - date
-  - Belongs to
-  - Related to
+  - belongs_to
+  - related_to
 ---
 
 # Event

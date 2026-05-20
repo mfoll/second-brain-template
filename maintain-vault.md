@@ -1,6 +1,6 @@
 ---
 type: Responsibility
-Belongs to: "[[vault]]"
+belongs_to: "[[vault]]"
 _organized: true
 ---
 

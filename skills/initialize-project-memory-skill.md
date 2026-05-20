@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/initialize-project-memory|Initialize Project Memory]]"
 package_path: ".agents/skills/initialize-project-memory/"

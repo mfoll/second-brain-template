@@ -1,7 +1,7 @@
 ---
 type: ADR
 status: Accepted
-Belongs to: "[[vault]]"
+belongs_to: "[[vault]]"
 _organized: true
 ---
 

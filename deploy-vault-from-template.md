@@ -1,8 +1,8 @@
 ---
 type: Guide
-Related to: "[[vault]]"
+related_to: "[[vault]]"
 _organized: true
-Surface for:
+surface_for:
   - "[[vault]]"
 ---
 

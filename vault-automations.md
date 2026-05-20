@@ -1,6 +1,6 @@
 ---
 type: Guide
-Related to: "[[vault]]"
+related_to: "[[vault]]"
 _organized: true
 ---
 

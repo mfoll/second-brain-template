@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[source]]"
 _organized: true
 ---

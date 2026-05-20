@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/ingest-source|Ingest Source]]"
 package_path: ".agents/skills/ingest-source/"

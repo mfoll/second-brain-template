@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
 ---
@@ -24,7 +24,7 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 3. Search the vault for likely Projects, Responsibilities, Topics, Concepts, Opinions, Questions, Procedures, ADRs, and existing Source notes before creating a new note.
 4. Create one `type: Source` note with a kebab-case filename and a clear H1 matching the source title or repository/tool name.
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
-6. Add only strong relationships. Use `Belongs to` when the source belongs to a project or collection; use `Related to` for concepts, questions, topics, tools, or methods; use `Has` only for selected child notes or deliverables.
+6. Add only strong relationships. Use `belongs_to` when the source belongs to a project or collection; use `related_to` for concepts, questions, topics, tools, or methods; use `has` only for selected child notes or deliverables.
 7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail. If provenance fields such as `url`, `urls`, `source_file`, DOI, repository, `root_key`, or `relative_path` are present in frontmatter, also include the useful pointer in the readable body, usually as `## Source Links` or `## Source Location`.
 8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default.
 9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
@@ -46,7 +46,7 @@ Default process:
 2. Edit only direct, high-confidence targets. About 3-5 target notes is a useful default cap for ordinary ingestion.
 3. Prefer synthesis surfaces over raw link growth. Use the current Type set as the routing map; common examples include:
    - Project notes: update Current State, Next Actions, Open Questions, Important Notes, Active Workflows, or Maintenance Log.
-   - Project human views: add or remove `Surface for` only when the source changes the small set of notes the user should open.
+   - Project human views: add or remove `surface_for` only when the source changes the small set of notes the user should open.
    - Question notes: update Current Answer, Open Threads, Signals To Revisit, or status when the answer is genuinely settled.
    - Concept notes: add or refine reusable distinctions, methods, terms, or models.
    - Procedure notes: update repeatable workflow steps only when the source improves the current procedure.
@@ -100,6 +100,6 @@ A usable Source note includes:
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/lint-vault]]"
 _organized: true
 ---
@@ -25,7 +25,7 @@ Assess the vault as a thinking and retrieval system, not only as a mechanically 
 - Whether Sources preserve provenance and feed synthesis instead of becoming a raw archive.
 - Whether Procedures and Skills cover recurring workflows without duplicating each other.
 - Whether ADRs capture durable decisions rather than rewriting history silently.
-- Whether Project `Has` relationships are selective and navigational.
+- Whether Project `has` relationships are selective and navigational.
 - Whether archived, deferred, or unprocessed notes still have clear lifecycle signals.
 - Whether views help users and agents resume work.
 
@@ -48,6 +48,6 @@ Lead with judgment: structurally sound or not, expressive enough or not, and the
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

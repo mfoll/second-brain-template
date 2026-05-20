@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/update-project-next-actions|Update Project Next Actions]]"
 package_path: ".agents/skills/update-project-next-actions/"

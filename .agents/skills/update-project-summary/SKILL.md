@@ -19,7 +19,7 @@ Read the vault rules and detailed procedure before making changes.
 
 1. Identify the active Project note from the workspace `AGENTS.md`, explicit user request, or Tolaria context.
 2. Read the Project note and identify its current structure.
-3. Find relevant linked notes through `Belongs to`, `Related to`, `Has`, backlinks, and obvious saved views.
+3. Find relevant linked notes through `belongs_to`, `related_to`, `has`, backlinks, and obvious saved views.
 4. Review recent or important linked notes before editing.
 5. Preserve or normalize the standard Project structure from `project.md`: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 6. Update only the sections affected by the work, such as Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, Active Workflows, Do Not Do Yet, and Maintenance Log.

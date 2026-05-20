@@ -1,7 +1,7 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
+belongs_to: "[[vault]]"
 _organized: true
 ---
 

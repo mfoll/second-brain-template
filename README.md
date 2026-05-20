@@ -1,8 +1,8 @@
 ---
 type: Guide
-Related to: "[[vault]]"
+related_to: "[[vault]]"
 _organized: true
-Surface for:
+surface_for:
   - "[[vault]]"
 ---
 
@@ -80,7 +80,7 @@ Do not activate that workflow in ordinary personal, research, project, or team v
 - One note per Markdown file.
 - The first H1 is the preferred display title.
 - Note type is stored in `type:` frontmatter.
-- Use `Belongs to`, `Related to`, and `Has` for canonical relationships.
+- Use `belongs_to`, `related_to`, and `has` for canonical relationships.
 - Use `_archived: true` for archived notes.
 - Canonical type names stay in English across vaults. A localized vault can display translated labels through Type-note metadata such as `_sidebar_label` without changing filenames, H1s, or `type:` values.
 - Source notes preserve external provenance; synthesis belongs in Project, Topic, Concept, Question, Procedure, ADR, and Note files.

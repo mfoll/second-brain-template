@@ -1,13 +1,13 @@
 ---
 type: Procedure
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
-Related to:
+related_to:
   - "[[procedures/update-project-summary|Update Project Summary]]"
   - "[[procedures/update-project-next-actions|Update Project Next Actions]]"
 _organized: true
-Surface for:
+surface_for:
   - "[[vault]]"
 ---
 
@@ -32,11 +32,11 @@ Agents must not add this opt-out unless the user explicitly chooses it.
 Notes that belong on the human surface use:
 
 ```yaml
-Surface for:
+surface_for:
   - "[[vault]]" # replace with the real Project note wikilink
 ```
 
-The Project note itself counts as part of the view and should usually carry its own `Surface for` marker.
+The Project note itself counts as part of the view and should usually carry its own `surface_for` marker.
 
 ## View Shape
 
@@ -52,7 +52,7 @@ listPropertiesDisplay:
 - status
 filters:
   all:
-  - field: Surface for
+  - field: surface_for
     op: contains
     value: "[[vault]]" # replace with the real Project note wikilink
 ```
@@ -85,8 +85,8 @@ Run this check after important project-scoped changes and before the Git checkpo
 2. If the Project has `Project view: false`, do not create or require a view.
 3. If the Project is not active, do not require a view unless the user asks.
 4. Inspect the changed notes plus the current view members.
-5. Add `Surface for` only to notes the user is likely to open now.
-6. Remove `Surface for` from stale, archived, superseded, agent-only, or low-level notes.
+5. Add `surface_for` only to notes the user is likely to open now.
+6. Remove `surface_for` from stale, archived, superseded, agent-only, or low-level notes.
 7. Keep the view near 3-5 notes when possible; if it would exceed 10, demote lower-priority notes back to normal Project links.
 8. If a surface change is ambiguous, report the proposed add/remove instead of silently changing the view.
 9. Review the diff.

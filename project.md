@@ -10,11 +10,11 @@ _order: 0
 
 A Project is a finite effort larger than one sitting. It has an intended outcome, active context, and eventually an end state.
 
-A Project's frontmatter relationships should support navigation and project resumption. They do not need to exhaustively list every note that mentions the project. Notes that belong to the project should normally link back through their own `Belongs to` relationship or appear in relevant Project body sections or views.
+A Project's frontmatter relationships should support navigation and project resumption. They do not need to exhaustively list every note that mentions the project. Notes that belong to the project should normally link back through their own `belongs_to` relationship or appear in relevant Project body sections or views.
 
 Project notes are the live entry points for human and agent work. They are not just summaries and they are not full archives: they should stay coherent enough that opening the Project note tells the user or an agent what the project is, where it stands, what to read first, and what to do next.
 
-Active Projects normally have a small human-facing saved view unless the Project note has `Project view: false`. The view is a human working surface, not an index: aim for 3-5 notes including the Project note, and use 8-10 only as a soft maximum for unusually active projects. Use `Surface for` with the real Project wikilink only on notes the user is likely to open now. Keep agent-only memory and low-level support notes linked elsewhere, not in the view.
+Active Projects normally have a small human-facing saved view unless the Project note has `Project view: false`. The view is a human working surface, not an index: aim for 3-5 notes including the Project note, and use 8-10 only as a soft maximum for unusually active projects. Use `surface_for` with the real Project wikilink only on notes the user is likely to open now. Keep agent-only memory and low-level support notes linked elsewhere, not in the view.
 
 ## Project Note Structure
 

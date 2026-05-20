@@ -1,8 +1,8 @@
 ---
 type: Procedure
 status: Active
-Belongs to: "[[vault]]"
-Related to:
+belongs_to: "[[vault]]"
+related_to:
   - "[[procedures/update-project-summary]]"
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
 _organized: true
@@ -32,7 +32,7 @@ Keep a Project note's `## Next Actions` section aligned with actual project stat
 5. Remove stale or duplicate actions that no longer help project resumption.
 6. Add new durable actions as outcome-oriented checkboxes or bullets, preserving the Project's existing style.
 7. For each added or changed action, decide whether it implies a durable typed note such as Question, Concept, Responsibility, Procedure, ADR, Source, or Project.
-8. Create or update typed notes only when the need is direct and high-confidence. Link them from `## Open Questions`, `## Important Notes`, `## Active Workflows`, `Has`, `Related to`, or another appropriate section.
+8. Create or update typed notes only when the need is direct and high-confidence. Link them from `## Open Questions`, `## Important Notes`, `## Active Workflows`, `has`, `related_to`, or another appropriate section.
 9. If an action answers an existing Question, update that Question's status or current answer instead of leaving it stale.
 10. Keep the list scannable. A short list is preferred, but do not enforce an arbitrary count when the active project genuinely needs more.
 11. Add a short Maintenance Log entry for meaningful state changes.
@@ -42,12 +42,12 @@ Keep a Project note's `## Next Actions` section aligned with actual project stat
 
 ## Style
 
-Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later. Preserve the standard Project structure from [[project]] when editing: Outcome, Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, and Maintenance Log should remain easy to find in active Project notes. Keep `Surface for` markers limited to the small human-facing project view; do not add every note touched by a next action.
+Phrase actions as resumable outcomes, not tiny implementation steps. Keep one-off microtasks in the active chat or external task system. Do not hide durable questions inside next actions; promote them to Question notes when they should be findable later. Preserve the standard Project structure from [[project]] when editing: Outcome, Current State, Scope and Boundaries, Next Actions, Open Questions, Important Notes, and Maintenance Log should remain easy to find in active Project notes. Keep `surface_for` markers limited to the small human-facing project view; do not add every note touched by a next action.
 
 
 ## Guardrails
 
 - Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `Belongs to`, `Related to`, and `Has` for relationships.
+- Use `belongs_to`, `related_to`, and `has` for relationships.
 - Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
 - Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.

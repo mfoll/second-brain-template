@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]]"
 package_path: ".agents/skills/review-multi-vault-consistency/"

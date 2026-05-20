@@ -6,8 +6,8 @@ _organized: true
 _order: 9
 _list_properties_display:
   - status
-  - Belongs to
-  - Related to
+  - belongs_to
+  - related_to
 ---
 
 # Person

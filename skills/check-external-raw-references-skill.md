@@ -1,9 +1,9 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
-Related to:
+related_to:
   - "[[agent-skill]]"
 wraps: "[[procedures/check-external-raw-references|Check External Raw References]]"
 package_path: ".agents/skills/check-external-raw-references/"

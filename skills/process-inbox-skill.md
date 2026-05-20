@@ -1,7 +1,7 @@
 ---
 type: Skill
 status: Active
-Belongs to:
+belongs_to:
   - "[[vault]]"
 wraps: "[[procedures/process-inbox|Process Inbox]]"
 package_path: ".agents/skills/process-inbox/"
