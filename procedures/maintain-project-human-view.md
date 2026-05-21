@@ -40,10 +40,10 @@ The Project note itself counts as part of the view and should usually carry its 
 
 ## View Shape
 
-Create the view as `views/<project-stem>.yml` unless a clearer existing filename should be preserved. In YAML examples, replace `[[vault]]` with the real Project note wikilink.
+Create the view as `views/surface-<project-stem>.yml` unless a clearer existing filename should be preserved. Use a plain human-facing view name without a `Surface` prefix or suffix; the filename already carries the surface role. In YAML examples, replace `[[vault]]` with the real Project note wikilink.
 
 ```yaml
-name: <Project Title> Surface
+name: <Project Title>
 icon: null
 color: null
 sort: modified:desc

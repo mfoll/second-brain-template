@@ -106,9 +106,13 @@ Do not create an `archive/` folder by default. Do not use `status: Archived` as 
 
 Saved views live in `views/*.yml` and are written as YAML. The filename is the stable view id.
 
+Before creating a new view, note, type, procedure, or other repeated vault artifact, inspect nearby existing examples and follow the current dominant convention unless the user explicitly asks to change it. When the written instruction and existing practice diverge, pause to reconcile the convention instead of adding another variant.
+
 A view must have one root filter group: `all:` or `any:`. Conditions use `field`, `op`, and usually `value`. Relationship filters should use canonical fields such as `belongs_to`, `related_to`, and `has`.
 
 Project human views should filter on `surface_for` rather than broad `belongs_to`, backlinks, or title lists.
+
+Project human views should use `views/surface-<project-stem>.yml` as the file id but a plain display name such as `<Project Title>`, without adding `Surface` to the visible `name`.
 
 Do not create legacy JSON view files.
 
