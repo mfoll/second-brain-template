@@ -161,6 +161,7 @@ A specific external file that should be maintained over time gets its own Source
 - Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
 - Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
+- After significant project work, whether from a project-local workspace or directly inside this vault, agents may directly apply high-confidence updates to the relevant Project note and directly affected linked notes, then report them. Broad or uncertain cascade maintenance across multiple projects, concepts, responsibilities, views, or unrelated notes must be proposed for user validation instead of applied silently.
 - When ingestion or automation updates linked project material, update the relevant Project note when the change affects project state, next actions, open questions, active workflows, important notes, or guardrails. Project notes should not drift away from the linked notes they summarize.
 - When important project-scoped work changes current drafts, deliverables, next actions, decision-driving Questions, active workflows, or key Source notes, run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] before the Git checkpoint.
 - When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope. For changes that require deployment-machine setup, such as Codex config, persisted approvals, automation definitions, local databases, skill symlinks, or tool prerequisites, also update deployment-facing guidance such as `README.md`, `deploy-vault-from-template.md`, [[vault-automations]], and the affected Procedure notes so future deployed vaults inherit the policy.
@@ -183,6 +184,8 @@ If the user refers to a raw file, folder, dataset, manuscript, external document
 Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should not copy full vault rules or embed machine-specific paths.
 
 Project-local `AGENTS.md` files should also include a short workspace documentation rule: before creating or extending Markdown documentation in the workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate vault note instead of creating a parallel `docs/` knowledge base beside the code or scripts.
+
+Project-local `AGENTS.md` pointers should include the same project-memory writeback check so this behavior also happens when work starts outside the vault.
 
 When initializing project memory, follow [[procedures/initialize-project-memory]].
 
