@@ -36,8 +36,9 @@ The memory scope can be:
 10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
 11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
 12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
-13. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
-14. Review the diff in both the workspace and vault repository before committing.
+13. Add the project memory writeback rule to Entry-point-scoped local `AGENTS.md` pointers so agents working outside the vault check whether the linked project memory needs updates before finishing significant work.
+14. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
+15. Review the diff in both the workspace and vault repository before committing.
 
 ## Entry-Point-Scoped Local Pointer Template
 
@@ -59,6 +60,8 @@ Before doing project work, read the primary entry note and the directly linked n
 If the user refers to a file, folder, dataset, manuscript, raw document, or path-like reference, check the primary entry note and linked Source notes for external raw-file pointers before guessing paths or searching broadly.
 
 Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate Second Brain note linked from the primary entry note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
+
+Project memory writeback: before finishing significant project work, check whether the linked project memory needs an update. Use the primary entry note as the entry point and resumption surface, but update the most appropriate durable note(s). This may mean refreshing the Project note's `Current State`, `Next Actions`, `Open Questions`, `Important Notes`, or `Maintenance Log`; updating linked Source, Procedure, ADR, Question, Concept, Skill, Responsibility, or other typed notes when the durable change belongs there; or adding a new typed note only when it improves retrieval or separates a stable decision, source, workflow, or question from project-summary prose. Keep the primary entry note coherent after related-note edits: if a linked note changes the project's state, next actions, active workflows, boundaries, or important starting points, reflect that briefly in the primary entry note too. If no memory update is needed, say so briefly in the final response.
 ```
 
 The local pointer should name only the primary entry note and the generic lookup rule above. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there.
