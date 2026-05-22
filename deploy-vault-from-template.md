@@ -84,6 +84,8 @@ Update the README so it describes the concrete vault rather than the template. R
 
 Keep the vault conventions, but update wording that should name the concrete vault scope. Do not add machine-local paths.
 
+Customize the deployed vault's `AGENTS.md` for the vault's purpose, privacy boundary, evidence standards, and domain-specific workflows. Do not copy every template, work/control-vault, or personal-vault rule wholesale when the deployed vault has a different role.
+
 Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not duplicate the full instruction body into the shim.
 
 ## Customize Type Localization
