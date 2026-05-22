@@ -25,12 +25,12 @@ After deployment, ordinary vaults should not keep reusable template notes active
 
 Second Brain guidance is split across three layers:
 
-- Global agent instructions identify the configured vault root on a specific machine.
-- Project-local `AGENTS.md` files are scope pointers that name the primary Project note for a workspace.
+- Global agent instructions identify the configured vault root and stable logical vault role on a specific machine.
+- Project-local `AGENTS.md` files are scope pointers that name the logical vault role and the primary Project note for a workspace.
 - Project workspace documentation should not become a parallel memory store. Durable design docs, research notes, workflow decisions, open questions, tool evaluations, and project state belong in the vault as typed notes linked from the primary entry note. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient; otherwise promote it into the vault and leave scripts, prototypes, fixtures, and temporary outputs in the workspace.
 - This vault-level `AGENTS.md` is the portable source of truth for vault conventions and safety rules.
 
-If an external workspace expects Second Brain memory but the configured vault root is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct path. Do not guess a path or create a new vault.
+If an external workspace expects Second Brain memory but the configured root for its named vault role is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct path. Do not guess a path or create a new vault.
 
 ## Core Conventions
 
@@ -185,7 +185,7 @@ Project workspaces may contain a local `AGENTS.md` that points to a primary Proj
 
 If the user refers to a raw file, folder, dataset, manuscript, external document, or path-like reference from a project workspace, first check the primary entry note and linked Source notes for External Raw Locations or `root_key` plus `relative_path` pointers.
 
-Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should not copy full vault rules or embed machine-specific paths.
+Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should name the deployed vault's logical role, such as `personal`, `work/control`, `research`, or `team`, but should not copy full vault rules or embed machine-specific paths.
 
 Project-local `AGENTS.md` files should also include a short workspace documentation rule: before creating or extending Markdown documentation in the workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate vault note instead of creating a parallel `docs/` knowledge base beside the code or scripts.
 

@@ -102,7 +102,9 @@ Do not create translated type identities such as `Personne` unless the user expl
 
 ## Customize Global Instruction Placeholders
 
-Use [[global-agent-instructions-template]] to create the machine-local global instruction text. Replace `<VAULT_ROOT>` only in the machine-local instruction surface, not in portable vault notes unless the note is explicitly a local setup note.
+Use [[global-agent-instructions-template]] to create the machine-local global instruction text. Replace `<VAULT_ROOT>` and choose a stable `<VAULT_ROLE>` only in the machine-local instruction surface or generic templates, not in ordinary portable vault notes unless the note is explicitly a local setup note.
+
+When preparing project-local `AGENTS.md` pointers for workspaces attached to this deployed vault, include the deployed vault's logical role, such as `personal`, `work/control`, `research`, or `team`, and continue to omit concrete local vault paths.
 
 After the installed global instructions are configured, decide whether `global-agent-instructions-template.md` still belongs in the deployed vault. For ordinary deployed vaults in a multi-vault setup, it usually does not: delete it or archive it as provenance, and rely on the work/control vault's global-instruction source plus this vault's implemented `AGENTS.md`. Keep an active local global-instruction template only for a standalone vault that must bootstrap itself without a separate control vault or template repository.
 

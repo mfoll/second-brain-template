@@ -6,7 +6,7 @@ Use this skill when the user asks to run the `initialize-project-memory` workflo
 
 1. Read the vault-level `AGENTS.md`.
 2. Read `procedures/initialize-project-memory.md`.
-3. Follow that procedure as the source of truth.
+3. Follow that procedure as the source of truth, including its requirement that generated workspace pointers name the logical vault role without embedding local paths.
 4. Keep edits scoped to the user's request.
 5. Report changed files, validation, and follow-up.
 

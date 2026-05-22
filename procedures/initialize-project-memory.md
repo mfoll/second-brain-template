@@ -25,7 +25,7 @@ The memory scope can be:
 ## Steps
 
 1. Inspect or create the target workspace folder before asking the user to create or open it as a Codex project.
-2. Confirm that the configured vault root is known, readable, and contains `AGENTS.md`. If not, stop and ask the user to configure global instructions from [[global-agent-instructions-template]].
+2. Confirm that the configured vault root and its short logical vault role are known. The role should be a stable label such as `personal`, `work/control`, `research`, or `team`; it may appear in project-local `AGENTS.md`, but concrete local paths must not. Confirm that the root is readable and contains `AGENTS.md`. If not, stop and ask the user to configure global instructions from [[global-agent-instructions-template]].
 3. Read the vault-level `AGENTS.md` and discover current Type notes at the vault root.
 4. Ask or infer the workspace title, purpose, scope, and whether it is Entry-point-scoped or Vault-scoped.
 5. For Entry-point-scoped work, search existing vault notes across all Types before creating a new entry note.
@@ -33,7 +33,7 @@ The memory scope can be:
 7. Decide relationships using `belongs_to`, `related_to`, and `has`. Explain only high-confidence relationships before writing.
 8. Create or update the entry note. When creating a new Project note, instantiate the structure from [[project]]: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 9. Unless the user explicitly says the Project does not need a saved view, add `surface_for` with the real Project wikilink to the Project note and create the matching small saved view by following [[procedures/maintain-project-human-view|Maintain Project Human View]]. If the user explicitly opts the Project out of a view, add `Project view: false` to the Project note instead.
-10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name only the primary entry note and tell agents to read the configured vault root's `AGENTS.md`.
+10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name the logical vault role, name only the primary entry note, and tell agents to read the configured root's `AGENTS.md` for that named role.
 11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
 12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
 13. Add the project memory writeback rule to Entry-point-scoped local `AGENTS.md` pointers so agents working outside the vault check whether the linked project memory needs updates before finishing significant work.
@@ -47,13 +47,15 @@ The memory scope can be:
 
 This workspace uses entry-point-scoped Second Brain memory.
 
-The agent must know the configured vault root from global/user instructions. If the vault root is unknown or unreadable, stop and ask the user to configure global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
+Second Brain vault: `<vault-role>`
+
+The agent must know the configured `<vault-role>` vault root from global/user instructions. If the `<vault-role>` vault root is unknown or unreadable, stop and ask the user to configure global Second Brain instructions with the correct `<vault-role>` vault path. Do not guess the path or create a new vault.
 
 Primary Second Brain entry note:
 
 `<entry-note-wikilink>`
 
-Read the vault-level `AGENTS.md` from the configured vault root.
+Read the vault-level `AGENTS.md` from the configured `<vault-role>` vault root.
 
 Before doing project work, read the primary entry note and the directly linked notes that are relevant to the task, especially Source notes, External Raw Locations, active workflows, and important notes.
 
@@ -64,7 +66,7 @@ Workspace documentation rule: before creating or extending Markdown documentatio
 Project memory writeback: before finishing significant project work, check whether the linked project memory needs an update. Use the primary entry note as the entry point and resumption surface, but update the most appropriate durable notes. For direct, high-confidence project-memory changes, update the relevant note(s) without asking first, then report the change in the final response. This includes refreshing the Project note's `Current State`, `Next Actions`, `Open Questions`, `Important Notes`, or `Maintenance Log`; updating directly linked Source, Procedure, ADR, Question, Concept, Skill, Responsibility, or other typed notes when the durable change clearly belongs there; or adding a new typed note when it is the obvious retrieval target for a stable decision, source, workflow, or question. Keep the primary entry note coherent after related-note edits: if a linked note changes the project's state, next actions, active workflows, boundaries, or important starting points, reflect that briefly in the primary entry note too. Do not perform broad or uncertain cascade maintenance silently. If the work might require wider updates across multiple projects, concepts, responsibilities, views, or unrelated notes, report the proposed update for user validation instead of applying it automatically.
 ```
 
-The local pointer should name only the primary entry note and the generic lookup rule above. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there. Do not add project-specific artifact sections such as local working files, deliverables, datasets, outputs, or workflow handoffs to the workspace `AGENTS.md`; record those in the primary entry note or an appropriate linked typed note instead.
+The local pointer should name the logical vault role, only the primary entry note, and the generic lookup rule above. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there. Do not add project-specific artifact sections such as local working files, deliverables, datasets, outputs, or workflow handoffs to the workspace `AGENTS.md`; record those in the primary entry note or an appropriate linked typed note instead.
 
 ## Vault-Scoped Local Pointer Template
 
@@ -73,9 +75,11 @@ The local pointer should name only the primary entry note and the generic lookup
 
 This workspace uses vault-scoped Second Brain memory. It is intentionally not linked to a primary entry note.
 
-The agent must know the configured vault root from global/user instructions. If the vault root is unknown or unreadable, stop and ask the user to configure global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
+Second Brain vault: `<vault-role>`
 
-Read the vault-level `AGENTS.md` from the configured vault root.
+The agent must know the configured `<vault-role>` vault root from global/user instructions. If the `<vault-role>` vault root is unknown or unreadable, stop and ask the user to configure global Second Brain instructions with the correct `<vault-role>` vault path. Do not guess the path or create a new vault.
+
+Read the vault-level `AGENTS.md` from the configured `<vault-role>` vault root.
 
 Start memory lookup from the vault root note and relevant Type, Topic, Responsibility, Source, Question, Concept, Procedure, and Inbox/Unprocessed notes before widening search.
 
