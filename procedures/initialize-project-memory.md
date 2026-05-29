@@ -37,8 +37,12 @@ The memory scope can be:
 11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
 12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
 13. Add the project memory writeback rule to Entry-point-scoped local `AGENTS.md` pointers so agents working outside the vault check whether the linked project memory needs updates before finishing significant work.
-14. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
-15. Review the diff in both the workspace and vault repository before committing.
+14. Apply the workspace repository and backup decision:
+   - a folder that only contains an `AGENTS.md` pointer is acceptable as a short bootstrap state, but should not remain the steady-state form of a proper instantiated project workspace;
+   - when the workspace is meant to contain code, scripts, manuscript inputs, generated-but-useful artifacts, configs, or project-specific tooling, initialize a local Git repository and an appropriate private remote by default, unless the workspace is explicitly disposable, sensitive/local-only, or backed by another canonical system;
+   - keep raw data, shared-drive dumps, credentials, `.env` files, local root resolvers, caches, virtual environments, controlled data, and large generated outputs out of the project remote; represent maintained external raw locations with Source notes or external storage pointers, and use Git LFS only when deliberately appropriate.
+15. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
+16. Review the diff in both the workspace and vault repository before committing.
 
 ## Entry-Point-Scoped Local Pointer Template
 
