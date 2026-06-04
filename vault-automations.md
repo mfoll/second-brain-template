@@ -28,7 +28,7 @@ Cross-vault consistency review is a routing/control-vault responsibility, not a 
 
 Common starting points:
 
-- process the reusable [[ready-to-ingest]] note with [[procedures/process-ready-ingestion-inbox]], normally every 12 hours unless the deployed vault has a reason for a different cadence;
+- process the reusable [[ready-to-ingest]] note with [[procedures/process-ready-ingestion-inbox]], either manually/paused for low-frequency use or on an explicit schedule such as daily at 09:00 local time;
 - run read-only mechanical diagnostics with [[procedures/lint-vault]];
 - run read-only strategic review with [[procedures/review-vault-health]].
 
@@ -50,7 +50,7 @@ For ready-ingestion automation, advisory feedback should not block safe ingestio
 
 Stagger schedules across vaults so jobs do not collide. For example, if the work/control vault runs lint at 09:00, a personal vault could run lint at 09:15.
 
-Ready-ingestion inbox processing should default to every 12 hours. Use explicit times in the deployed vault's automation guide. In the user's current multi-vault setup, the work/control vault starts at 00:30 and the personal vault starts at 00:45, then each repeats every 12 hours.
+Ready-ingestion inbox processing can stay paused for manual triggering when captures are infrequent. If a deployed vault schedules it, use explicit times in that vault's automation guide and verify both the automation file and local database row. In the user's current multi-vault setup, the work/control and personal ready-ingestion automations are intentionally paused for manual triggering, with stored schedules of daily 09:00 local time if later re-enabled.
 
 ## Deployment Checklist
 
