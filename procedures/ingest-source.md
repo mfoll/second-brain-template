@@ -26,7 +26,7 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
 6. Add only strong relationships. Use `belongs_to` when the source belongs to a project or collection; use `related_to` for concepts, questions, topics, tools, or methods; use `has` only for selected child notes or deliverables.
 7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail. If provenance fields such as `url`, `urls`, `source_file`, DOI, repository, `root_key`, or `relative_path` are present in frontmatter, also include the useful pointer in the readable body, usually as `## Source Links` or `## Source Location`.
-8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default.
+8. Extract separate typed notes only when the user asks, when a point is clearly central to an active project, or when the source changes an existing durable decision, workflow, question, next action, or project-level understanding. Common extractions are Concepts, Questions, Procedures, ADRs, Responsibilities, or Project updates, but use the vault's current Type notes as the routing set. Do not create exhaustive derived notes from long sources by default. For question-shaped material, use the answer-first standard below before creating or updating a `Question` note.
 9. Compare the source against relevant `Opinion` notes. Treat Opinions as working stances, not dogma: note whether the source supports, weakens, contradicts, depends on, or should prompt revision of an Opinion.
 10. Run the bounded propagation pass below when the source changes durable understanding, evidence, caveats, open questions, active workflows, opinions, or next actions.
 11. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the source becomes a human-meaningful project artifact or changes what belongs in the Project's saved view.
@@ -57,6 +57,17 @@ Default process:
 5. If wider effects are plausible but not obvious, add a focused follow-up or leave them for [[procedures/review-vault-health|Review Vault Health]].
 6. When useful, include a short `## Propagated Updates` section in the Source note listing which notes were changed and which likely targets were intentionally left unchanged.
 
+## Answer-First Question Handling
+
+Question-shaped material is not automatically a durable `Question` note. During ingestion, classify each question or uncertainty before writing it into the graph:
+
+- `Resolved now`: answer it from the source plus relevant vault context, state the answer in the ingestion feedback, and update the relevant Source, Project, Concept, Procedure, ADR, Opinion, or existing Question only when that answer changes durable understanding.
+- `Durable open issue`: create or update a `Question` note only when the issue is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a future retrieval anchor.
+- `Optional discussion point`: mention it in the user-facing feedback, but do not create a durable note.
+- `True blocker`: use `## Ingestion Questions` on the original intake note only when user input is required before safe routing, privacy handling, destructive edits, structural changes, or coherent processing can continue.
+
+Normal ingestion should create zero new `Question` notes by default. Creating one or two is reasonable when the durable-use rationale is clear; creating more should be called out in the final report with the reason they are worth maintaining.
+
 ## Ingestion Feedback
 
 Every source ingestion should tell the user what the agent noticed. This is a feedback layer, not an approval gate.
@@ -79,10 +90,10 @@ Stop and ask before completing ingestion only when the missing answer is require
 
 When the source contains questions:
 
-- Answer what can be answered from the source plus relevant vault context.
-- Create or update durable `Question` notes when the question should remain findable.
-- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion.
-- Use `## Ingestion Questions` on the original intake note only when user input is required before the material can be safely or coherently processed.
+- Answer what can be answered from the source plus relevant vault context, using explicit assumptions when needed.
+- Create or update durable `Question` notes only for unresolved issues that pass the durable open issue standard above.
+- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion or writing them into durable notes.
+- Use `## Ingestion Questions` on the original intake note only for true blockers where user input is required before the material can be safely or coherently processed.
 
 ## Source Note Minimum
 

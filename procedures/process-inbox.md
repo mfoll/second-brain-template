@@ -56,10 +56,11 @@ Stop and ask only when the missing answer is required to avoid misrouting, priva
 
 When a capture contains questions:
 
-- Answer what can be answered from the capture plus relevant vault context.
-- Create or update durable `Question` notes when the question should remain findable.
-- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion.
-- Keep the original material visible with `## Ingestion Questions` only when user input is required before the capture can be safely or coherently processed.
+- Answer what can be answered from the capture plus relevant vault context, using explicit assumptions when needed.
+- Create or update durable `Question` notes only when the unresolved issue is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a future retrieval anchor.
+- Leave optional discussion prompts in the user-facing feedback instead of blocking ingestion or writing them into durable notes.
+- Keep the original material visible with `## Ingestion Questions` only for true blockers where user input is required before the capture can be safely or coherently processed.
+- Normal Inbox processing should create zero new `Question` notes by default. If it creates any, report why they are worth maintaining.
 
 ## Organization Standard
 

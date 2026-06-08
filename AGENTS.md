@@ -158,6 +158,7 @@ A specific external file that should be maintained over time gets its own Source
 - Read relevant notes before answering when prior vault context matters.
 - Write to the vault only when explicitly asked to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.
 - For source ingestion, document review, writing, planning, briefing, interview, and agentic maintenance work, retrieve relevant `Opinion` notes when the topic, project, source, or user request makes them likely to matter. Use Opinions as the user's working stances, not as dogma: apply them as context, challenge them when evidence or reasoning warrants it, and call out when a source or task supports, weakens, contradicts, or depends on an Opinion.
+- During source ingestion and Inbox processing, handle question-shaped material with an answer-first default. Answer what can be answered from the source plus relevant vault context, using explicit assumptions when needed, and update existing synthesis notes when the answer changes durable understanding. Create a new `Question` note only when the issue remains unresolved and is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a future retrieval anchor. Optional discussion prompts belong in the user-facing feedback, not in durable notes, and `## Ingestion Questions` is only for true blockers.
 - If the user's message contains only a file, URL, or source attachment, treat it as a request to ingest it unless surrounding context says otherwise.
 - For ambiguous captures, use Inbox or unprocessed notes rather than forcing a project.
 - Treat chat captures, Inbox captures, and similar user-provided memory as material that may disappear from normal working context. Do not reduce them to vague summaries or rely on future chat search, automation logs, or Git history as the primary retrieval layer. When saving or remembering such material, preserve concrete future-use details such as plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords in the appropriate durable note. Use synthesis, but keep enough specificity that a future agent can resume the work without recovering the raw capture.
@@ -170,7 +171,7 @@ A specific external file that should be maintained over time gets its own Source
 - When important project-scoped work changes current drafts, deliverables, next actions, decision-driving Questions, active workflows, or key Source notes, run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] before the Git checkpoint.
 - When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope. For changes that require deployment-machine setup, such as Codex config, persisted approvals, automation definitions, local databases, skill symlinks, or tool prerequisites, also update deployment-facing guidance such as `README.md`, `deploy-vault-from-template.md`, [[vault-automations]], and the affected Procedure notes so future deployed vaults inherit the policy.
 
-When editing Question notes, reconcile `status` with the body and active Project usage:
+When creating or editing Question notes, reconcile `status` with the body and active Project usage:
 
 - `Open`: unresolved, provisional, still being tested, or actively driving planning.
 - `Answered`: accepted working policy, reflected elsewhere if needed.
@@ -178,6 +179,8 @@ When editing Question notes, reconcile `status` with the body and active Project
 - `Superseded`: replaced by another durable note.
 
 A `## Current Answer` does not automatically mean the Question is answered.
+
+Do not create Question notes merely because a source or capture raises a question; create them only when the unresolved issue has a future retrieval or decision-making role.
 
 ## Project-Scoped Memory
 

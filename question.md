@@ -10,6 +10,14 @@ _organized: true
 
 A Question records an unresolved issue, uncertainty, or research direction that should remain findable.
 
+## Creation Standard
+
+Create a Question only when the unresolved issue should remain findable and has a plausible future use: it is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a retrieval anchor.
+
+Do not create Question notes for rhetorical prompts, curiosity-only points, optional discussion prompts, questions answerable from the current source plus relevant context, or issues with no plausible owner or future path to answer. During ingestion and Inbox processing, prefer answering question-shaped material first, then update the relevant Source, Project, Concept, Procedure, ADR, Opinion, or existing Question only when the answer changes durable understanding.
+
+Normal ingestion should create zero new Question notes by default. If an ingestion creates one or two, the final report should state why they are worth maintaining. More than that usually means the source needs synthesis or advisory feedback rather than a batch of new open Questions.
+
 ## Status Lifecycle
 
 Recommended Question statuses:

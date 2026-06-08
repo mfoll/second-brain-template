@@ -41,7 +41,7 @@ If the pre-ingestion push is blocked by network, authentication, privacy, unrela
 5. Create or update only notes directly required by the ready-marked content.
 6. Clear processed body content from [[ready-to-ingest]] only after it has been moved, synthesized, archived, or deliberately discarded.
 7. Preserve the frontmatter, H1, and `ingest_ready: true` flag on [[ready-to-ingest]].
-8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the processed body, and report the optional discussion point in the automation result or a durable linked `Question` or `Next Actions` item.
+8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the processed body, and report the optional discussion point in the automation result. Create a `Question` or `Next Actions` item only when the issue is durable, decision-driving, or creates real follow-up work.
 9. If user input is required to know what the content is, where it belongs, whether it is safe or private, or whether a broad structural change is approved, keep the original content visible and add a concrete `## Ingestion Questions` section.
 10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material. For scheduled main-branch jobs, use an explicit command such as `git push origin main` rather than a bare `git push`, so persisted approvals can stay command-scoped.
 
@@ -54,10 +54,10 @@ Use the feedback standards from [[procedures/process-inbox]] and delegated workf
 - what was ingested or organized;
 - what was new, useful, weak, duplicate, or intentionally ignored;
 - which existing notes or projects the material connected to;
-- which questions were answered, created as durable `Question` notes, or left as optional discussion points;
+- which questions were answered, created as durable `Question` notes with a maintenance rationale, or left as optional discussion points;
 - whether any material remains blocked in [[ready-to-ingest]] under `## Ingestion Questions`.
 
-Do not leave optional feedback inside [[ready-to-ingest]] if the underlying content has already been safely processed. Use `## Ingestion Questions` there only for true blockers.
+Do not leave optional feedback inside [[ready-to-ingest]] if the underlying content has already been safely processed. Use `## Ingestion Questions` there only for true blockers. Ready-ingestion should create zero new `Question` notes by default; create them only when the unresolved issue is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a future retrieval anchor.
 
 ## Stop Conditions
 
