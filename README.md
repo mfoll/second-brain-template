@@ -26,8 +26,9 @@ It provides:
 - reusable procedures for capture, ingestion, project memory, linting, review, Git checkpoints, and optional control-vault consistency review;
 - thin skill wrappers for recurring agent workflows;
 - a per-vault automation documentation pattern;
-- saved views for common retrieval surfaces.
-- a generic external raw-file reference pattern for files that stay outside the vault.
+- saved views for common retrieval surfaces;
+- a generic external raw-file reference pattern for files that stay outside the vault;
+- optional local retrieval-index guidance for deployments that need fuzzy recall over larger Markdown corpora.
 
 ## What This Is Not For
 
@@ -60,6 +61,14 @@ roots:
 ```
 
 Do not commit `.local/roots.yml`. Commit the Source notes, procedures, and views that describe how the external raw files are referenced.
+
+## Optional Local Retrieval Indexes
+
+A deployed vault may use a local retrieval index such as QMD when the Markdown corpus becomes large enough that fuzzy recall saves agent reading time. Treat such indexes as machine-local caches, not as the source of truth and not as committed vault state. Markdown files, frontmatter, wikilinks, saved views, and Git remain authoritative.
+
+If a deployed vault chooses QMD or another local index, document the index name, collection boundaries, context hints, model choice if non-default, refresh commands, and refresh cadence in the deployed vault's README, AGENTS, or a Procedure note. A good default cadence is on-demand refresh after meaningful indexed Markdown changes, and before important fuzzy retrieval, rather than after every small edit. Agents should still inspect the underlying Markdown and relationships before making claims or edits.
+
+Do not enable graph-memory services, MCP servers, or background index daemons by default in the template. Make each deployed vault's retrieval layer an explicit local decision with a clear fallback to direct `rg`, frontmatter, wikilinks, saved views, and file inspection.
 
 ## Template Residue In Deployed Vaults
 

@@ -110,6 +110,22 @@ After the installed global instructions are configured, decide whether `global-a
 
 Likewise, keep deployment guides only when they remain useful. If retained only as deployment provenance, mark them `_archived: true` and state that they are not active workflows.
 
+## Decide Local Retrieval Indexing
+
+Decide whether the deployed vault needs a local fuzzy retrieval index such as QMD. Small or simple vaults can rely on direct `rg`, frontmatter, wikilinks, saved views, and file inspection. Larger vaults with many scattered notes may benefit from QMD as a recall layer.
+
+If QMD is used, keep the index and model cache machine-local. Do not commit index databases, model caches, or resolved local paths. In the deployed vault, document:
+
+- the named index;
+- collection names and glob masks;
+- context hints added to the index;
+- any non-default embedding or reranking model;
+- routine refresh commands, normally `qmd update` followed by `qmd embed`;
+- the refresh cadence, normally after meaningful indexed Markdown changes and before important fuzzy retrieval;
+- fallback behavior when QMD is unavailable or stale.
+
+If the deployed vault participates in a multi-vault setup, update the machine-local global agent instructions so agents know whether and when to use that vault's index from external workspaces.
+
 ## Review Generic Skills
 
 Keep only the generic skills that make sense for the new vault. Remove or archive unused visible Skill notes only if they would confuse users or agents.
