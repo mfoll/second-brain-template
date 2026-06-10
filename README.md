@@ -66,7 +66,9 @@ Do not commit `.local/roots.yml`. Commit the Source notes, procedures, and views
 
 A deployed vault may use a local retrieval index such as QMD when the Markdown corpus becomes large enough that fuzzy recall saves agent reading time. Treat such indexes as machine-local caches, not as the source of truth and not as committed vault state. Markdown files, frontmatter, wikilinks, saved views, and Git remain authoritative.
 
-If a deployed vault chooses QMD or another local index, document the index name, collection boundaries, context hints, model choice if non-default, refresh commands, and refresh cadence in the deployed vault's README, AGENTS, or a Procedure note. A good default cadence is on-demand refresh after meaningful indexed Markdown changes, and before important fuzzy retrieval, rather than after every small edit. Agents should still inspect the underlying Markdown and relationships before making claims or edits.
+If a deployed vault chooses QMD or another local index, document the index name, collection boundaries, context hints, model choice if non-default, refresh commands, refresh cadence, and retrieval decision rule in the deployed vault's README, AGENTS, or a Procedure note. A good default cadence is on-demand refresh after meaningful indexed Markdown changes, and before important fuzzy retrieval, rather than after every small edit. Agents should still inspect the underlying Markdown and relationships before making claims or edits.
+
+Do not restructure a Tolaria vault just to satisfy a local retrieval index. Type and relationships live in frontmatter and wikilinks; if type-level index noise becomes a real problem, prefer an ignored generated mirror or symlink layer under `.local/` over moving durable notes.
 
 Do not enable graph-memory services, MCP servers, or background index daemons by default in the template. Make each deployed vault's retrieval layer an explicit local decision with a clear fallback to direct `rg`, frontmatter, wikilinks, saved views, and file inspection.
 

@@ -164,7 +164,7 @@ A specific external file that should be maintained over time gets its own Source
 - Treat chat captures, Inbox captures, and similar user-provided memory as material that may disappear from normal working context. Do not reduce them to vague summaries or rely on future chat search, automation logs, or Git history as the primary retrieval layer. When saving or remembering such material, preserve concrete future-use details such as plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords in the appropriate durable note. Use synthesis, but keep enough specificity that a future agent can resume the work without recovering the raw capture.
 - Before bulk edits or reorganizations, summarize intended changes and review the diff.
 - Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
-- If a deployed vault documents a local retrieval index such as QMD, treat it as a fuzzy recall cache only: use it to find candidate notes, then inspect the underlying Markdown, frontmatter, wikilinks, and saved views before making claims or edits. Refresh the index only according to the deployed vault's documented cadence.
+- If a deployed vault documents a local retrieval index such as QMD, treat it as a fuzzy recall cache only. Classify the task first: project-scoped work starts from the Project note and linked notes; exact lookup starts with `rg`, known paths, frontmatter, wikilinks, saved views, or Type notes; fuzzy recall may use the deployed index; and sensitive or cross-vault retrieval must respect the vault's privacy boundary. After candidate discovery, inspect the underlying Markdown, frontmatter, wikilinks, saved views, and graph relationships before making claims or edits. Refresh the index only according to the deployed vault's documented cadence.
 - When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
 - Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
 - After significant project work, whether from a project-local workspace or directly inside this vault, agents may directly apply high-confidence updates to the relevant Project note and directly affected linked notes, then report them. Broad or uncertain cascade maintenance across multiple projects, concepts, responsibilities, views, or unrelated notes must be proposed for user validation instead of applied silently.
@@ -182,6 +182,18 @@ When creating or editing Question notes, reconcile `status` with the body and ac
 A `## Current Answer` does not automatically mean the Question is answered.
 
 Do not create Question notes merely because a source or capture raises a question; create them only when the unresolved issue has a future retrieval or decision-making role.
+
+## Graph Orientation During Retrieval
+
+When reading a candidate note, build a small task-local orientation frame before following more links:
+
+- Identity: file path, H1, `type`, `status`, and organized/archive flags.
+- Role: why this note was opened, and whether it is project state, source evidence, synthesis, opinion, procedure, ADR, type definition, view config, or archive material.
+- Type semantics: the first time a note type matters in a task, inspect the matching Type note, such as `project.md`, `source.md`, or `question.md`, especially before creating, editing, normalizing, or relying on expected sections.
+- Graph position: read `belongs_to` as parent context, `has` as curated child or entry points, `related_to` as lateral context, `surface_for` as human workbench membership, and body wikilinks as local prose links.
+- Next hop: decide whether to deepen, move laterally, return to the Project note, use the deployed local index or `rg` for a missing piece, or stop.
+
+Do not follow links as a random walk. Each hop should answer a retrieval question.
 
 ## Project-Scoped Memory
 

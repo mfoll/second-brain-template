@@ -122,7 +122,10 @@ If QMD is used, keep the index and model cache machine-local. Do not commit inde
 - any non-default embedding or reranking model;
 - routine refresh commands, normally `qmd update` followed by `qmd embed`;
 - the refresh cadence, normally after meaningful indexed Markdown changes and before important fuzzy retrieval;
-- fallback behavior when QMD is unavailable or stale.
+- fallback behavior when QMD is unavailable or stale;
+- the graph-orientation rule agents should use after candidate discovery.
+
+Do not move durable notes to make QMD collections cleaner. If type-level retrieval needs emerge, create an ignored generated mirror or symlink layer under `.local/` rather than changing the Tolaria vault structure.
 
 If the deployed vault participates in a multi-vault setup, update the machine-local global agent instructions so agents know whether and when to use that vault's index from external workspaces.
 
