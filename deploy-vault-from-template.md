@@ -110,22 +110,21 @@ After the installed global instructions are configured, decide whether `global-a
 
 Likewise, keep deployment guides only when they remain useful. If retained only as deployment provenance, mark them `_archived: true` and state that they are not active workflows.
 
-## Decide Local Retrieval Indexing
+## Decide Retrieval Needs
 
-Decide whether the deployed vault needs a local fuzzy retrieval index such as QMD. Small or simple vaults can rely on direct `rg`, frontmatter, wikilinks, saved views, and file inspection. Larger vaults with many scattered notes may benefit from QMD as a recall layer.
+Start with direct graph-aware retrieval: Project notes, Type notes, frontmatter, wikilinks, saved views, source notes, `rg`, and file inspection. Small and medium vaults should not need a local retrieval index when notes have clear types, project entry points, and relationships.
 
-If QMD is used, keep the index and model cache machine-local. Do not commit index databases, model caches, or resolved local paths. In the deployed vault, document:
+Add a local retrieval index only after real use shows a repeated retrieval failure or excessive reading cost. If an index is added, keep the index and model cache machine-local. Do not commit index databases, model caches, or resolved local paths. In the deployed vault, document:
 
-- the named index;
-- collection names and glob masks;
-- context hints added to the index;
-- any non-default embedding or reranking model;
-- routine refresh commands, normally `qmd update` followed by `qmd embed`;
-- the refresh cadence, normally after meaningful indexed Markdown changes and before important fuzzy retrieval;
-- fallback behavior when QMD is unavailable or stale;
+- the benchmarked retrieval problem;
+- index scope and privacy boundary;
+- collection names or path filters;
+- any non-default model or tool dependency;
+- refresh cadence and maintenance owner;
+- fallback behavior when the index is unavailable or stale;
 - the graph-orientation rule agents should use after candidate discovery.
 
-Do not move durable notes to make QMD collections cleaner. If type-level retrieval needs emerge, create an ignored generated mirror or symlink layer under `.local/` rather than changing the Tolaria vault structure.
+Do not move durable notes to make local indexes cleaner. If type-level retrieval needs emerge, create an ignored generated mirror or symlink layer under `.local/` rather than changing the Tolaria vault structure.
 
 If the deployed vault participates in a multi-vault setup, update the machine-local global agent instructions so agents know whether and when to use that vault's index from external workspaces.
 
