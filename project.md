@@ -63,7 +63,7 @@ Optional guardrails against premature work, unsafe automation, or distracting im
 
 ## Maintenance Log
 
-Dated project-state changes. Keep this as a short audit trail, not a full transcript.
+Dated project-state changes. Keep this as a short audit trail, not a full transcript. When the reason will matter later, include a compact decision trace: what changed, what context or precedent was used, what ambiguity or exception mattered, who or what authorized it when relevant, and what should trigger revisit.
 ```
 
 Sections may be omitted only when they would be empty or misleading. Domain-specific middle sections are welcome, but `Outcome`, `Current State`, `Scope and Boundaries`, `Next Actions`, `Open Questions`, `Important Notes`, and `Maintenance Log` should remain predictable in active Project notes.

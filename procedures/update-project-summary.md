@@ -32,13 +32,14 @@ The Project note should stay coherent enough that opening it gives the current s
 3. Review relevant linked notes through `belongs_to`, `related_to`, `has`, backlinks, body links, and saved views.
 4. Normalize the note toward the Project structure in [[project]] when it has drifted: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
 5. Update only affected sections, commonly `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Active Workflows`, `## Important Notes`, `## Sources`, `## Open Questions`, `## Next Actions`, and `## Maintenance Log`.
-6. Preserve uncertainty. Do not present provisional answers, unverified source claims, or user ideas as settled policy.
-7. Link to detailed notes instead of copying long content into the Project note.
-8. Check whether changed context should create or update typed notes such as Question, Concept, Responsibility, Procedure, ADR, Source, or another current Type.
-9. Make only direct high-confidence typed-note updates. Defer broad cascade effects to [[procedures/review-vault-health]].
-10. Add a dated Maintenance Log entry when the update changes project state.
-11. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the summary update changes current drafts, deliverables, decision-driving Questions, active workflows, key Sources, or the notes a human should open next.
-12. Review the diff and report what changed.
+6. When the work creates a reusable precedent, exception, workflow choice, approval, rejected option, or cross-source synthesis, preserve a compact decision trace in the best durable target, usually the Project `## Maintenance Log`, a linked `Question`, an ADR, a `Source`, or a `Procedure`. Capture the decision, context used, rule, policy, or precedent applied, exception or ambiguity, authorization when relevant, artifact changed, and revisit trigger. Do not record routine deterministic steps or model chain-of-thought.
+7. Preserve uncertainty. Do not present provisional answers, unverified source claims, or user ideas as settled policy.
+8. Link to detailed notes instead of copying long content into the Project note.
+9. Check whether changed context should create or update typed notes such as Question, Concept, Responsibility, Procedure, ADR, Source, or another current Type.
+10. Make only direct high-confidence typed-note updates. Defer broad cascade effects to [[procedures/review-vault-health]].
+11. Add a dated Maintenance Log entry when the update changes project state.
+12. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the summary update changes current drafts, deliverables, decision-driving Questions, active workflows, key Sources, or the notes a human should open next.
+13. Review the diff and report what changed.
 
 ## Output Standard
 
