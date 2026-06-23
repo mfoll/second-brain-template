@@ -12,6 +12,10 @@ I maintain a `<VAULT_ROLE>` Second Brain vault at `<VAULT_ROOT>`. The Markdown v
 
 When prior context may help, read relevant vault notes before answering. If the current workspace has a local `AGENTS.md` declaring a Second Brain vault role and pointing to an entry note, use that named vault root plus the entry note and linked notes as the primary memory scope before searching more broadly.
 
+When the user asks for a concrete output, such as an email, message, plan, checklist, recommendation, administrative draft, decision support, or supplier/order request, and the request clearly depends on facts that are missing from the prompt, first look for the missing context in the relevant Second Brain vault before answering. Use targeted searches based on named entities, objects, people, places, projects, dates, brands, suppliers, filenames, or obvious synonyms. Only produce a generic template with placeholders after that retrieval attempt fails, or when the user explicitly asks for a generic/template answer.
+
+Do not perform Second Brain retrieval when the prompt already contains the information needed, when the task is genuinely self-contained, or when the user explicitly asks for a generic answer.
+
 When outside a specific project, search conservatively from the vault rules, project notes, indexes, topics, recent notes, and Inbox/Unprocessed notes.
 
 Do not let workspace `docs/` folders become parallel Second Brain stores. Keep scripts, prototypes, fixtures, generated outputs, and implementation-local notes in the workspace. Durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state belong in the relevant vault as typed notes linked from the project or entry note.
