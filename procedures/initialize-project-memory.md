@@ -35,13 +35,13 @@ The memory scope can be:
 9. Unless the user explicitly says the Project does not need a saved view, add `surface_for` with the real Project wikilink to the Project note and create the matching small saved view by following [[procedures/maintain-project-human-view|Maintain Project Human View]]. If the user explicitly opts the Project out of a view, add `Project view: false` to the Project note instead.
 10. Create or update the workspace-local `AGENTS.md` as a short pointer. It should name the logical vault role, name only the primary entry note, and tell agents to read the configured root's `AGENTS.md` for that named role.
 11. For Vault-scoped work, create or update the workspace-local `AGENTS.md` without naming a primary entry note.
-12. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material.
-13. Add the project memory writeback rule to Entry-point-scoped local `AGENTS.md` pointers so agents working outside the vault check whether the linked project memory needs updates before finishing significant work.
+12. Add or verify a project-local `CLAUDE.md` compatibility shim that imports the local `AGENTS.md` with `@AGENTS.md`, unless an existing custom `CLAUDE.md` deliberately contains Claude-specific instructions.
+13. Add the workspace documentation rule to the local `AGENTS.md` pointer: durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should be written into the selected vault as typed notes linked from the primary entry note; keep workspace `docs/` only for implementation-local, generated, or explicitly transient material. Do not duplicate the vault-level project memory writeback rule in the local pointer.
 14. Apply the workspace repository and backup decision:
    - a folder that only contains an `AGENTS.md` pointer is acceptable as a short bootstrap state, but should not remain the steady-state form of a proper instantiated project workspace;
    - when the workspace is meant to contain code, scripts, manuscript inputs, generated-but-useful artifacts, configs, or project-specific tooling, initialize a local Git repository and an appropriate private remote by default, unless the workspace is explicitly disposable, sensitive/local-only, or backed by another canonical system;
    - keep raw data, shared-drive dumps, credentials, `.env` files, local root resolvers, caches, virtual environments, controlled data, and large generated outputs out of the project remote; represent maintained external raw locations with Source notes or external storage pointers, and use Git LFS only when deliberately appropriate.
-15. After the target folder and `AGENTS.md` pointer exist, ask the user to create or open the Codex project and point it to that prepared folder.
+15. After the target folder, `AGENTS.md` pointer, and any needed `CLAUDE.md` shim exist, ask the user to create or open the Codex project and point it to that prepared folder.
 16. Review the diff in both the workspace and vault repository before committing.
 
 ## Entry-Point-Scoped Local Pointer Template
@@ -67,10 +67,21 @@ If the user refers to a file, folder, dataset, manuscript, raw document, or path
 
 Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate Second Brain note linked from the primary entry note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
 
-Project memory writeback: before finishing significant project work, check whether the linked project memory needs an update. Use the primary entry note as the entry point and resumption surface, but update the most appropriate durable notes. For direct, high-confidence project-memory changes, update the relevant note(s) without asking first, then report the change in the final response. This includes refreshing the Project note's `Current State`, `Next Actions`, `Open Questions`, `Important Notes`, or `Maintenance Log`; updating directly linked Source, Procedure, ADR, Question, Concept, Skill, Responsibility, or other typed notes when the durable change clearly belongs there; or adding a new typed note when it is the obvious retrieval target for a stable decision, source, workflow, or question. Keep the primary entry note coherent after related-note edits: if a linked note changes the project's state, next actions, active workflows, boundaries, or important starting points, reflect that briefly in the primary entry note too. Do not perform broad or uncertain cascade maintenance silently. If the work might require wider updates across multiple projects, concepts, responsibilities, views, or unrelated notes, report the proposed update for user validation instead of applying it automatically.
 ```
 
-The local pointer should name the logical vault role, only the primary entry note, and the generic lookup rule above. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there. Do not add project-specific artifact sections such as local working files, deliverables, datasets, outputs, or workflow handoffs to the workspace `AGENTS.md`; record those in the primary entry note or an appropriate linked typed note instead.
+The local pointer should name the logical vault role, only the primary entry note, and the generic lookup rule above. Do not duplicate the vault-level project memory writeback rule in the local pointer. Do not add a hand-picked list of secondary notes, procedures, responsibilities, sources, raw folders, or topics to the workspace `AGENTS.md`; those relationships belong in the entry note and evolve there. Do not add project-specific artifact sections such as local working files, deliverables, datasets, outputs, or workflow handoffs to the workspace `AGENTS.md`; record those in the primary entry note or an appropriate linked typed note instead.
+
+## Claude Code Compatibility Shim
+
+When Claude Code may use the workspace, create this beside the local `AGENTS.md` unless an existing `CLAUDE.md` intentionally carries custom Claude-specific instructions:
+
+```md
+# Claude Code Compatibility
+
+@AGENTS.md
+
+This file is only a Claude Code compatibility shim. Keep shared agent instructions in `AGENTS.md`.
+```
 
 ## Vault-Scoped Local Pointer Template
 
@@ -90,6 +101,7 @@ Start memory lookup from the vault root note and relevant Type, Topic, Responsib
 Do not create or link a primary entry note for this workspace unless the user explicitly asks.
 
 Workspace documentation rule: before creating or extending Markdown documentation in this workspace, decide whether it is durable vault knowledge. If it is durable, write or update the appropriate Second Brain note instead of creating a parallel `docs/` knowledge base. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient.
+
 ```
 
 ## Guardrails

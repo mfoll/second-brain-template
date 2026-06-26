@@ -44,7 +44,7 @@ Follow [[deploy-vault-from-template]]. The short version is:
 2. Clone it into the destination folder for the new vault.
 3. Rename and customize [[vault]].
 4. Configure global or local agent instructions from [[global-agent-instructions-template]], including a stable logical vault role such as `personal`, `work/control`, `research`, or `team`.
-5. Decide whether this deployed vault is an ordinary vault or the main/control brain for a multi-vault setup, and make sure generated project-local `AGENTS.md` pointers use the chosen logical vault role rather than a local path.
+5. Decide whether this deployed vault is an ordinary vault or the main/control brain for a multi-vault setup, and make sure generated project-local `AGENTS.md` pointers use the chosen logical vault role rather than a local path. Add project-local `CLAUDE.md` shims for Claude Code workspaces.
 6. Review the generic skills and saved views.
 7. Commit and push the customized starting point.
 
