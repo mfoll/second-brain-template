@@ -10,6 +10,8 @@ _organized: true
 
 A Source records external or re-checkable material with provenance, summary, caveats, and links to relevant synthesis.
 
+Detailed evidence may remain long, but a Source above roughly 2,000 words should open with a 100–150-word `## At a Glance` or `## Summary` so readers can decide whether deeper inspection is necessary.
+
 Provenance should be human-visible in the note body as well as machine-readable in frontmatter. If frontmatter includes `url`, `urls`, `source_file`, DOI, repository, `root_key`, `relative_path`, or another source pointer, include the useful link or location again in a readable section such as `## Source Links` or `## Source Location`.
 
 ## External Raw Files

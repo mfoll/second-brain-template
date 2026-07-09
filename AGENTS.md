@@ -5,261 +5,85 @@ surface_for:
   - "[[vault]]"
 ---
 
-# AGENTS.md - Second Brain Vault Template
+# AGENTS.md — Second Brain Vault Template
 
-This is a vault-level instruction file for a portable Markdown Second Brain vault. The Markdown files, YAML frontmatter, wikilinks, procedures, ADRs, views, skills, and Git history are the durable source of truth.
+This repository is a neutral deployable Markdown Second Brain template. Markdown files, YAML frontmatter, wikilinks, saved views, and Git history are the durable source of truth. Customize this file during deployment for the vault's real scope, privacy boundary, and evidence needs.
 
-## Vault Purpose
+Keep changes small, portable, and easy to review. Current user instructions override this guide.
 
-Use this vault as a scoped memory layer for humans and agents. It should store durable context, sources, synthesis, decisions, procedures, and project state that must survive beyond a single chat or tool session.
+## Instruction ownership
 
-The root Project note is [[vault]]. Start there, then follow linked procedures, ADRs, views, and project notes.
+- Machine-local global instructions resolve logical vault roles to local roots and hold cross-context authorization rules.
+- Project-local `AGENTS.md` files are short pointers: one logical vault role, one entry note (or explicit vault scope), and a missing-root guard.
+- This file owns vault-wide invariants and routing.
+- Root Type notes define note semantics. Procedures own detailed workflows. Skill packages are thin activation wrappers.
 
-This repository is the generic source for deployable vault conventions. When changing a generic procedure, skill, vault convention, automation pattern, or `AGENTS.md` behavior here, proactively check whether currently deployed vaults should receive the compatible change too. Port only generic, safe changes; deployed-vault-specific privacy, scope, and content rules remain local.
+Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. Keep implementation-local, generated, or transient documentation beside project artifacts; promote durable context, decisions, questions, and state into typed vault notes.
 
-The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] and its skill package for deployments that become the main/control brain of a multi-vault setup. Do not activate, schedule, or use that workflow in ordinary deployed vaults by default; it should remain dormant unless the vault is explicitly responsible for routing, template coordination, and cross-vault interface review.
+## Retrieval
 
-After deployment, ordinary vaults should not keep reusable template notes active. Convert template guidance into implemented local `AGENTS.md`, `README.md`, root Project, automation guide, and procedure content. Customize the deployed vault's `AGENTS.md` for its purpose, privacy boundary, evidence standards, and domain-specific workflows instead of copying every template or control-vault rule wholesale. Delete template-only notes that no longer serve the deployed vault, or mark provenance-only deployment notes with `_archived: true`.
+Start from the narrowest durable surface:
 
-## Instruction Layers
+1. For project work, read the workspace pointer, its entry note, the project view, and only task-relevant linked notes.
+2. For exact lookup, use known paths, frontmatter, wikilinks, saved views, and direct file search.
+3. For fuzzy recall, start from likely Projects, Responsibilities, Topics, Sources, Opinions, Questions, Concepts, recent Events, and Inbox surfaces before widening.
 
-Second Brain guidance is split across three layers:
+Read progressively: inspect frontmatter, H1, the opening summary, and headings first; then relevant sections. Read a full long note only when complete evidence or wording is required. Broad search output is scouting, not proof; inspect the underlying Markdown before making claims or edits.
 
-- Global agent instructions identify the configured vault root and stable logical vault role on a specific machine.
-- Project-local `AGENTS.md` files are scope pointers that name the logical vault role and the primary Project note for a workspace.
-- Project workspace documentation should not become a parallel memory store. Durable design docs, research notes, workflow decisions, open questions, tool evaluations, and project state belong in the vault as typed notes linked from the primary entry note. Keep workspace `docs/` material only when it is implementation-local, generated, or explicitly transient; otherwise promote it into the vault and leave scripts, prototypes, fixtures, and temporary outputs in the workspace.
-- This vault-level `AGENTS.md` is the portable source of truth for vault conventions and safety rules.
+Do not depend on machine-local retrieval indexes by default. Any optional index must be documented as a disposable cache with a benchmarked need, privacy scope, refresh path, and Markdown fallback.
 
-If an external workspace expects Second Brain memory but the configured root for its named vault role is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct path. Do not guess a path or create a new vault.
+## Note and graph contract
 
-## Core Conventions
+- One Markdown note per file; use kebab-case filenames.
+- Durable notes need YAML frontmatter, a canonical English `type`, a first H1, and `_organized: true` once they have a retrieval path.
+- Type definitions remain root notes. Inspect the relevant Type before creating or materially reshaping a note.
+- Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces.
+- Root wikilinks use filename stems; folder notes use vault-relative path stems.
+- Use `_archived: true` for retained material removed from active use. Delete only when useful content and provenance have a better durable home.
 
-- One Markdown note per file.
-- The first H1 in the body is the preferred display title.
-- Store note type in the `type:` frontmatter field.
-- Agent-created or agent-routed notes should include `_organized: true` once they have a clear retrieval path. Keep `_organized: false` only for deliberately unprocessed captures such as [[ready-to-ingest]].
-- Type definitions live at the vault root unless the user reorganizes the vault intentionally.
-- Saved views live in `views/*.yml`.
-- Files in `attachments/` are assets, not notes or types.
-- Frontmatter properties that start with `_` are usually app-managed state. Leave them alone unless the user asks to change them.
+Project notes are compact resumption surfaces, not archives. Follow [[project]]:
 
-## Types
+- 600–1,200 words by default; a complex umbrella may reach about 1,500.
+- `Current State`: current truth only, normally no more than five bullets or 250 words.
+- `Next Actions`: 3–7 outcome-level actions; review lists above 10.
+- `Open Questions` and `Important Notes`: normally 3–7 prioritized links each.
+- `Maintenance Log`: the latest 3–5 meaningful milestones; Git carries routine edit history.
 
-Types are Markdown notes with `type: Type`. Keep type notes generic and portable. Common starter types include Project, Responsibility, Operation, Event, Topic, Person, Source, Concept, Question, Procedure, ADR, Guide, Note, and Skill.
+Replace or reconcile old synthesis instead of appending another dated report. Keep each fact in one canonical durable note and link to it. Long Sources, Events, and Methods may preserve their payload, but should open with a 100–150-word summary above roughly 2,000 words. Review Questions above roughly 750 words for answers or analysis that belong in a maintained synthesis note.
 
-Type notes are structural notes and should normally be `_organized: true`, unless a new Type is still a draft.
+## Writing and evidence
 
-Do not add a new Type until there is a recurring retrieval need that existing types do not cover cleanly.
+Read whenever prior vault context matters. Write only when the user asks to save, remember, ingest, process, organize, update, or maintain durable knowledge, except for direct high-confidence project writeback after significant work in a linked workspace.
 
-Type identity should stay portable across deployed vaults. Use the canonical English type name in the filename, H1, and `type:` values, for example `Person`, `Project`, or `Operation`. If a deployed vault should display a localized label, keep the canonical type name and set `_sidebar_label` on the Type note instead of creating a translated type such as `Personne`.
+Keep project writeback proportional: update the entry Project and directly affected notes, reconcile its summary, actions, and human view, and propose broad or uncertain cascades before applying them.
 
-For action-like notes, use the PORT axes from the Portent model:
+Sources preserve provenance in both frontmatter and readable body sections. External raw-file notes use portable `root_key` plus `relative_path`; `access: guarded-write` means read-only unless the user authorizes the specific external write.
 
-- `Responsibility`: recurring work larger than one sitting.
-- `Project`: one-off work larger than one sitting.
-- `Operation`: recurring work that can usually be completed in one sitting. Use it for scheduled or repeated runs, and link it to the Procedure that explains how to do it.
-- `Task`: one-off work that can usually be completed in one sitting. Do not create Task notes by default; keep these in Project `## Next Actions` or an external task manager unless the user explicitly chooses a task system.
+During ingestion, answer resolvable question-shaped material first. Create a Question only when the unresolved issue is consequential, recurring, decision-driving, or a needed retrieval anchor. Treat Opinions as challengeable user context, not evidence.
 
-Use `Event` for something that happened and should remain findable later, such as a meeting, rollout, incident, milestone, decision event, or external change.
+## Workflow router
 
-## Relationships
+| Work | Source of truth |
+| --- | --- |
+| Create or normalize a note | Matching root Type note |
+| Refresh project state or actions | [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] |
+| Maintain a project workbench | [[procedures/maintain-project-human-view|Maintain Project Human View]] |
+| Process Inbox or ingest a source | [[procedures/process-inbox|Process Inbox]] or [[procedures/ingest-source|Ingest Source]] |
+| Verify external raw locations | [[procedures/check-external-raw-references|Check External Raw References]] |
+| Diagnose structure or review strategy | [[procedures/lint-vault|Lint Vault]] or [[procedures/review-vault-health|Review Vault Health]] |
+| Initialize a project pointer | [[procedures/initialize-project-memory|Initialize Project Memory]] |
+| Checkpoint authorized edits | [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]] |
 
-Any frontmatter property whose value contains wikilinks may act as a relationship. Tolaria's default relationship fields are `belongs_to`, `related_to`, and `has`; use those exact lower-snake-case field names for normal vault relationships.
+The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only for deployments explicitly designated as routing/control vaults. Ordinary deployed vaults should omit or leave it dormant and must not schedule it.
 
-Canonical relationship fields:
+## Template and deployment boundary
 
-- `belongs_to`: parent, container, workspace, responsibility, larger project, or durable context.
-- `related_to`: lateral conceptual relevance.
-- `has`: selected child note, active workflow, open question, ADR, procedure, skill, deliverable, or structural entry point.
+This repository is structure, not memory. Do not add private or work content, credentials, local paths, caches, or generated dumps. After deployment, replace placeholders, customize scope and privacy, and delete or archive template-only residue.
 
-For new and normalized notes, use `belongs_to`, `related_to`, and `has`. Do not create or preserve title-case relationship fields such as `Belongs to`, `Related to`, `Has`, or `Surface for`.
+When a generic rule changes, update the template first, then deliberately port compatible changes to selected deployed-vault interface files. Preserve intentional local differences and do not inspect private content as part of propagation.
 
-Use quoted wikilinks for scalar frontmatter values and YAML lists for multiple relationships.
+## Git and safety
 
-For Project notes, `has` should be selective rather than exhaustive. Use body sections, backlinks, views, and `belongs_to` relationships for long lists.
+Review status and diff, preserve unrelated user changes, and stage only task-scoped files. A local commit may accompany an authorized vault edit. Push requires explicit authorization through the user's current global or vault policy; a persisted approval never broadens task scope. Never force-push without explicit approval for that rewrite.
 
-Before removing a Project `has` link, make sure the target note still has a retrieval path through its own relationships, a Project body link, another hub note, a saved view, or an explicit inbox/archive convention.
-
-Project notes are the live human and agent entry points for projects. Follow the structure in [[project]] when creating or refreshing them: keep `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Next Actions`, `## Open Questions`, `## Important Notes`, and `## Maintenance Log` predictable, while allowing project-specific middle sections such as `Working Thesis`, `Current Principles`, `Candidate Tools`, or `Draft Artifacts`. Do not flatten rich project knowledge just to fit the template; move detailed material into linked typed notes only when that improves retrieval.
-
-Active Projects normally have a small human-facing saved view unless the Project note has the manual opt-out `Project view: false`. Agents must not add that opt-out unless the user explicitly chooses it. Use `surface_for` with the real Project wikilink only on notes that are meaningful for the user to open as part of that Project's working surface. Aim for 3-5 notes including the Project note; 8-10 is the soft maximum for unusually active projects. Keep agent-only memory, low-level Sources, old captures, archived notes, implementation details, and broad candidate lists out of the view. Follow [[procedures/maintain-project-human-view|Maintain Project Human View]] when creating or reconciling project views.
-
-## Wikilinks
-
-- Root notes may use filename-stem links such as `[[vault]]`.
-- Notes in folders must use vault-relative path-stem links such as `[[procedures/lint-vault|Lint Vault]]` or `[[skills/lint-vault-skill|lint-vault skill]]`.
-- Repository guides should be linked as `[[README]]`, not by reusing the root Project alias.
-- Compatibility shims should be linked explicitly as `[[CLAUDE]]` or `[[GEMINI]]` only when discussing the shim itself.
-- Use pipe display text when a nicer label helps, such as `[[procedures/ingest-source|Ingest Source]]`.
-- Do not rely on H1/title matching when a filename-stem or path-stem target exists.
-- Hidden skill packages under `.agents/skills/` are implementation files, not normal durable note targets. Link visible Skill catalogue notes in `skills/` when the skill itself is the graph target.
-- Avoid giving a Guide, README, compatibility shim, visible Skill note, or package `SKILL.md` the same H1 as a Project, Procedure, or root note. Use disambiguating titles such as "Repository Guide", "Compatibility Shim", or "Skill Package" where needed.
-- When renaming or moving notes outside a vault UI, update affected wikilinks in the same change or run [[procedures/lint-vault|Lint Vault]].
-
-## Archived Notes
-
-Use `_archived: true` as a lightweight lifecycle flag for notes that should be retained but excluded from normal active resumption.
-
-Do not create an `archive/` folder by default. Do not use `status: Archived` as the default archive mechanism. `status` should keep type-specific meanings such as `Open`, `Answered`, `Active`, `Processed`, `Accepted`, or `Superseded`.
-
-## Views
-
-Saved views live in `views/*.yml` and are written as YAML. The filename is the stable view id.
-
-Before creating a new view, note, type, procedure, or other repeated vault artifact, inspect nearby existing examples and follow the current dominant convention unless the user explicitly asks to change it. When the written instruction and existing practice diverge, pause to reconcile the convention instead of adding another variant.
-
-A view must have one root filter group: `all:` or `any:`. Conditions use `field`, `op`, and usually `value`. Relationship filters should use canonical fields such as `belongs_to`, `related_to`, and `has`.
-
-Project human views should filter on `surface_for` rather than broad `belongs_to`, backlinks, or title lists.
-
-Project human views should use `views/surface-<project-stem>.yml` as the file id but a plain display name such as `<Project Title>`, without adding `Surface` to the visible `name`.
-
-Do not create legacy JSON view files.
-
-## Filenames
-
-Use kebab-case filenames. Keep one note per file.
-
-## Portability
-
-Keep durable vault content portable across machines, agents, and Markdown viewers. Prefer placeholders, configured-root language, vault-relative paths, and generic examples over machine-specific paths.
-
-Do not add local machine paths, cache paths, app metadata, secrets, credentials, or temporary directories to durable template content.
-
-Define the vault in agent-neutral terms. Mention specific products only for concrete compatibility notes, examples, or setup instructions.
-
-## External Raw-File References
-
-Use the vault to remember external raw-file locations, not to duplicate external folders by default.
-
-For important files or folders that remain outside the vault, create or update a `type: Source` note with portable location fields:
-
-```yaml
-source_type: "external file"
-storage_system: External folder
-root_key: documents_basedir
-relative_path: "Example/important-file.pdf"
-access: guarded-write
-last_checked: 2026-05-11
-```
-
-The durable note should store `root_key` plus `relative_path`, not a resolved absolute local path. Machine-specific roots belong in ignored local configuration such as `.local/roots.yml`, environment variables, global/custom agent instructions, or a machine-scoped setup note.
-
-Source provenance must be visible to humans in the note body, not only stored in YAML. When a Source note has `url`, `urls`, `source_file`, `root_key`, `relative_path`, DOI, repository, or other provenance fields in frontmatter, include the same useful pointer in a readable body section such as `## Source Links` or `## Source Location`.
-
-`access: guarded-write` means agents should treat the external location as read-only by default. Listing, existence checks, metadata checks, and explicitly relevant reads are allowed. Writing, renaming, moving, deleting, cleanup, bulk sync, or saving generated files into an external folder is allowed only when the user explicitly asks for that specific write action.
-
-Prefer shallow folder indexes and selected file-level Source notes over deep inventories. Use [[procedures/check-external-raw-references|Check External Raw References]] to verify important pointers and detect drift.
-
-A specific external file that should be maintained over time gets its own Source note. Project notes link to the Source note under External Raw Locations, Sources, or Important Notes; `last_checked` belongs on the Source note, not on the project note or incidental prose reference.
-
-## Default Agent Behavior
-
-- Read relevant notes before answering when prior vault context matters.
-- When the user asks for a concrete output, such as an email, message, plan, checklist, recommendation, administrative draft, decision support, or supplier/order request, and the request clearly depends on facts that are missing from the prompt, first look for the missing context in the relevant Second Brain vault before answering. Use targeted searches based on named entities, objects, people, places, projects, dates, brands, suppliers, filenames, or obvious synonyms. Only produce a generic template with placeholders after that retrieval attempt fails, or when the user explicitly asks for a generic/template answer. Do not perform Second Brain retrieval when the prompt already contains the information needed, when the task is genuinely self-contained, or when the user explicitly asks for a generic answer.
-- Write to the vault only when explicitly asked to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.
-- For source ingestion, document review, writing, planning, briefing, interview, and agentic maintenance work, retrieve relevant `Opinion` notes when the topic, project, source, or user request makes them likely to matter. Use Opinions as the user's working stances, not as dogma: apply them as context, challenge them when evidence or reasoning warrants it, and call out when a source or task supports, weakens, contradicts, or depends on an Opinion.
-- During source ingestion and Inbox processing, handle question-shaped material with an answer-first default. Answer what can be answered from the source plus relevant vault context, using explicit assumptions when needed, and update existing synthesis notes when the answer changes durable understanding. Create a new `Question` note only when the issue remains unresolved and is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a future retrieval anchor. Optional discussion prompts belong in the user-facing feedback, not in durable notes, and `## Ingestion Questions` is only for true blockers.
-- If the user's message contains only a file, URL, or source attachment, treat it as a request to ingest it unless surrounding context says otherwise.
-- For ambiguous captures, use Inbox or unprocessed notes rather than forcing a project.
-- Treat chat captures, Inbox captures, and similar user-provided memory as material that may disappear from normal working context. Do not reduce them to vague summaries or rely on future chat search, automation logs, or Git history as the primary retrieval layer. When saving or remembering such material, preserve concrete future-use details such as plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords in the appropriate durable note. Use synthesis, but keep enough specificity that a future agent can resume the work without recovering the raw capture.
-- Before bulk edits or reorganizations, summarize intended changes and review the diff.
-- Before broad searches, start from likely Project notes, indexes, topics, recent notes, and unprocessed notes.
-- Default retrieval uses the Markdown graph directly. Classify the task first: project-scoped work starts from the Project note and linked notes; exact lookup starts with `rg`, known paths, frontmatter, wikilinks, saved views, or Type notes; fuzzy recall starts from likely Project, Topic, Source, Opinion, Question, Procedure, recent-note, and Inbox surfaces before broad vault-wide search; and sensitive or cross-vault retrieval must respect the vault's privacy boundary. Inspect the underlying Markdown, frontmatter, wikilinks, saved views, and graph relationships before making claims or edits. Add a local retrieval index only after a deployed vault documents a benchmarked need, privacy boundary, and maintenance plan.
-- When work creates a reusable precedent, exception, workflow choice, approval, rejected option, or cross-source synthesis, preserve a short decision trace in the appropriate durable note. Capture the decision, context used, rule, policy, or precedent applied, exception or ambiguity, authorization when relevant, artifact changed, and revisit trigger. Do not record routine deterministic steps or model chain-of-thought.
-- When documenting a third-party tool, repository, package, parser, or service, include the canonical source URL or provenance link.
-- Do not attempt global cascade maintenance during ordinary edits. Make local, high-confidence updates and record broader uncertainty as follow-up.
-- After significant project work, whether from a project-local workspace or directly inside this vault, agents may directly apply high-confidence updates to the relevant Project note and directly affected linked notes, then report them. Use the primary Project or entry note as the resumption surface, but update the most appropriate durable notes. This includes refreshing Project note fields such as `Current State`, `Next Actions`, `Open Questions`, `Important Notes`, or `Maintenance Log`; updating directly linked Source, Procedure, ADR, Question, Concept, Skill, Responsibility, or other typed notes when the durable change clearly belongs there; or adding a new typed note when it is the obvious retrieval target for a stable decision, source, workflow, or question. Keep the primary entry note coherent after related-note edits: if a linked note changes project state, next actions, active workflows, boundaries, or important starting points, reflect that briefly in the primary entry note too. Broad or uncertain cascade maintenance across multiple projects, concepts, responsibilities, views, or unrelated notes must be proposed for user validation instead of applied silently.
-- When ingestion or automation updates linked project material, update the relevant Project note when the change affects project state, next actions, open questions, active workflows, important notes, or guardrails. Project notes should not drift away from the linked notes they summarize.
-- When important project-scoped work changes current drafts, deliverables, next actions, decision-driving Questions, active workflows, or key Source notes, run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] before the Git checkpoint.
-- When a template workflow or convention changes, perform a deployment propagation checkpoint before the final report: identify which deployed vaults should receive the compatible change now, which should intentionally diverge, and which need user approval because of privacy or scope. For changes that require deployment-machine setup, such as Codex config, persisted approvals, automation definitions, local databases, skill symlinks, or tool prerequisites, also update deployment-facing guidance such as `README.md`, `deploy-vault-from-template.md`, [[vault-automations]], and the affected Procedure notes so future deployed vaults inherit the policy.
-
-When creating or editing Question notes, reconcile `status` with the body and active Project usage:
-
-- `Open`: unresolved, provisional, still being tested, or actively driving planning.
-- `Answered`: accepted working policy, reflected elsewhere if needed.
-- `Deferred`: valid but inactive.
-- `Superseded`: replaced by another durable note.
-
-A `## Current Answer` does not automatically mean the Question is answered.
-
-Do not create Question notes merely because a source or capture raises a question; create them only when the unresolved issue has a future retrieval or decision-making role.
-
-## Graph Orientation During Retrieval
-
-When reading a candidate note, build a small task-local orientation frame before following more links:
-
-- Identity: file path, H1, `type`, `status`, and organized/archive flags.
-- Role: why this note was opened, and whether it is project state, source evidence, synthesis, opinion, procedure, ADR, type definition, view config, or archive material.
-- Type semantics: the first time a note type matters in a task, inspect the matching Type note, such as `project.md`, `source.md`, or `question.md`, especially before creating, editing, normalizing, or relying on expected sections.
-- Graph position: read `belongs_to` as parent context, `has` as curated child or entry points, `related_to` as lateral context, `surface_for` as human workbench membership, and body wikilinks as local prose links.
-- Next hop: decide whether to deepen, move laterally, return to the Project note, use the deployed local index or `rg` for a missing piece, or stop.
-
-Do not follow links as a random walk. Each hop should answer a retrieval question.
-
-## Project-Scoped Memory
-
-Project workspaces may contain a local `AGENTS.md` that points to a primary Project note. When such a pointer exists, read that Project note and the directly linked notes relevant to the task as the default memory scope before searching the whole vault.
-
-If the user refers to a raw file, folder, dataset, manuscript, external document, or path-like reference from a project workspace, first check the primary entry note and linked Source notes for External Raw Locations or `root_key` plus `relative_path` pointers.
-
-Project-local `AGENTS.md` files should rely on the configured vault root from global instructions. They should name the deployed vault's logical role, such as `personal`, `work/control`, `research`, or `team`, but should not copy full vault rules or embed machine-specific paths.
-
-Project-local `AGENTS.md` files should also include a short workspace documentation rule: before creating or extending Markdown documentation in the workspace, decide whether it is durable project knowledge. If it is durable, write or update the appropriate vault note instead of creating a parallel `docs/` knowledge base beside the code or scripts.
-
-Project-local `AGENTS.md` pointers should not duplicate the full project-memory writeback rule; that generic policy lives in this vault-level `AGENTS.md`.
-
-When initializing project memory, follow [[procedures/initialize-project-memory]].
-
-## ADR Policy
-
-Major vault, workflow, and agent-operation decisions belong in `adr/` as ADR notes with `type: ADR`.
-
-Use `status` to track lifecycle. Common values are `Proposed`, `Accepted`, `Superseded`, and `Rejected`.
-
-Do not silently rewrite prior ADR decisions. If direction changes, create a new ADR that supersedes the old one and link between them.
-
-## Procedures
-
-Recurring workflows are described in `procedures/` as `type: Procedure` notes. Follow the relevant Procedure when the user asks for that workflow.
-
-The Procedure note is the portable source of truth. Skill wrappers should activate the workflow, not duplicate it.
-
-`review-multi-vault-consistency` is a special case: the template carries it so a designated main/control brain can be deployed from the same starter kit, but ordinary vaults should not list it as an active workflow or create automations for it.
-
-## Git Checkpoints
-
-After an agent changes the vault, normally run [[procedures/git-checkpoint-vault-changes]] unless the user asks not to commit or push.
-
-Review changed scope first, exclude local junk and unrelated edits, commit a coherent checkpoint, push when approved or expected by the workflow, and report the final state.
-
-Ask before pushing broad diffs, vault-structure changes, attachments, secrets, credentials, sensitive documents, generated dumps, or anything not clearly covered by the request.
-
-External or machine-local memory summaries are hints, not authority. If remembered guidance conflicts with current vault files, project-local `AGENTS.md`, procedures, ADRs, or the user's current instruction, follow the live vault instruction and treat the remembered guidance as stale.
-
-## Agent Skills
-
-Vault-owned skills live under `.agents/skills/`. They are reusable activation wrappers around procedures, not replacements for Procedure notes.
-
-Visible Skill catalogue notes live in `skills/` and point to the hidden package path.
-
-Expose or install skills in an agent runtime only during explicit setup. Prefer links to the vault-owned package over copied wrappers when the runtime supports it.
-
-## What Agents Should Do
-
-- Create and edit notes using frontmatter and H1 conventions.
-- Create and edit Type notes at the vault root.
-- Add or modify relationships without breaking wikilinks.
-- Create and edit saved YAML views in `views/`.
-- Keep Project human views small and meaningful, and honor `Project view: false` when the user has opted a Project out.
-- Use procedures and skills for recurring workflows.
-- Activate `review-multi-vault-consistency` only when this vault is the designated main/control brain for a multi-vault setup.
-
-## What Agents Should Avoid
-
-- Do not move existing Type files unless asked.
-- Do not treat files in `attachments/` as notes, types, or view definitions.
-- Do not silently overwrite a custom `AGENTS.md`.
-- Do not rewrite installation-specific app configuration unless asked.
-- Do not use `review-multi-vault-consistency` to inspect another vault's private content unless the user explicitly approves that scope.
-- Do not commit machine-local metadata, cache paths, temporary files, secrets, or credentials.
+Read-only automations never stage, commit, or push. Write-capable automations operate only within their documented vault, scope, and command authorization.

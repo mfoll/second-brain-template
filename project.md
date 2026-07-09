@@ -8,17 +8,25 @@ _order: 0
 
 # Project
 
-A Project is a finite effort larger than one sitting. It has an intended outcome, active context, and eventually an end state.
+A Project is a finite effort larger than one sitting. Its note is the live resumption surface for humans and agents, not a full archive or task database.
 
-A Project's frontmatter relationships should support navigation and project resumption. They do not need to exhaustively list every note that mentions the project. Notes that belong to the project should normally link back through their own `belongs_to` relationship or appear in relevant Project body sections or views.
+## Compact front-page contract
 
-Project notes are the live entry points for human and agent work. They are not just summaries and they are not full archives: they should stay coherent enough that opening the Project note tells the user or an agent what the project is, where it stands, what to read first, and what to do next.
+- Target 600–1,200 words; a complex umbrella may reach about 1,500.
+- `Current State` contains current truth only: normally no more than five bullets or 250 words.
+- `Next Actions` contains 3–7 outcome-level actions. Keep microtasks in the active chat or task system.
+- `Open Questions` and `Important Notes` normally contain 3–7 prioritized links each.
+- `Maintenance Log` keeps the latest 3–5 meaningful milestones. Git carries routine edit history.
+- Replace or reconcile old synthesis when work changes; do not append another dated mini-report.
+- Keep each fact in one canonical durable note and link to it from the Project.
 
-Active Projects normally have a small human-facing saved view unless the Project note has `Project view: false`. The view is a human working surface, not an index: aim for 3-5 notes including the Project note, and use 8-10 only as a soft maximum for unusually active projects. Use `surface_for` with the real Project wikilink only on notes the user is likely to open now. Keep agent-only memory and low-level support notes linked elsewhere, not in the view.
+Project frontmatter is navigational, not exhaustive. Child notes normally link back with `belongs_to`; use Project `has` only for active subprojects and high-value entry points. Active Projects normally have a 3–5-note human view following [[procedures/maintain-project-human-view|Maintain Project Human View]], unless the user has set `Project view: false`.
 
-## Project Note Structure
+## Umbrellas and subprojects
 
-Use this structure for new Project notes and as the normalization target when refreshing existing Project notes:
+Create a child Project when a work package has its own outcome, state, actions, collaborators, artifacts, or publication trajectory. The umbrella keeps shared context and a selective subproject list; it does not repeat child details. Use `belongs_to` from child to umbrella and point project workspaces to the most specific active entry note.
+
+## Template
 
 ```md
 # Project Name
@@ -31,39 +39,39 @@ What success means.
 
 ## Current State
 
-Where the project stands now. Keep this short and update it when ingestion, project work, or decisions change the project state.
+- Current facts, blockers, and active decisions only.
 
 ## Scope and Boundaries
 
-What belongs in the project, what does not, and any important privacy, routing, or responsibility boundaries.
+What belongs here, what does not, and important responsibility or privacy boundaries.
 
 ## Working Context
 
-Domain-specific synthesis. Rename or split this section when a clearer project-specific heading is useful, such as `Working Thesis`, `Current Principles`, `Candidate Tools`, `Draft Artifacts`, or `Package Management Policy`.
+Only the synthesis needed for resumption. Rename this section when a project-specific heading is clearer.
 
 ## Active Workflows
 
-Procedures, automations, recurring routines, active work surfaces, or operating loops.
+Current procedures, recurring loops, or work surfaces.
 
 ## Next Actions
 
-Small, scannable resumption list.
+- [ ] Three to seven outcome-level actions.
 
 ## Open Questions
 
-Links to Question notes, plus only short inline questions that do not yet deserve their own note.
+- Prioritized Question links.
 
 ## Important Notes
 
-Curated links a human or agent should read first. Do not list every backlink.
+- The few notes worth opening next.
 
 ## Do Not Do Yet
 
-Optional guardrails against premature work, unsafe automation, or distracting implementation paths.
+Optional guardrails against premature or unsafe work.
 
 ## Maintenance Log
 
-Dated project-state changes. Keep this as a short audit trail, not a full transcript. When the reason will matter later, include a compact decision trace: what changed, what context or precedent was used, what ambiguity or exception mattered, who or what authorized it when relevant, and what should trigger revisit.
+- YYYY-MM-DD: Meaningful state transition or decision; include a compact decision trace only when it will matter later.
 ```
 
-Sections may be omitted only when they would be empty or misleading. Domain-specific middle sections are welcome, but `Outcome`, `Current State`, `Scope and Boundaries`, `Next Actions`, `Open Questions`, `Important Notes`, and `Maintenance Log` should remain predictable in active Project notes.
+Omit a section only when it would be empty or misleading. Detailed evidence, chronology, exact methods, and reusable decisions belong in linked Sources, Events, Concepts, Questions, Opinions, Procedures, ADRs, or any other suitable Type present in the deployed vault.

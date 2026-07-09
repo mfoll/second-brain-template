@@ -1,13 +1,21 @@
+---
+name: review-vault-health
+description: Use for a strategic review of whether the current vault is useful, expressive, compact, and aligned with the user's working model.
+---
+
 # Review Vault Health
 
-Use this skill when the user asks to run the `review-vault-health` workflow for this vault.
+## Source of truth
 
-## Workflow
+- Vault rules: `AGENTS.md`
+- Complete workflow: `procedures/review-vault-health.md`
+- Helper: `.agents/skills/lint-vault/scripts/compactness_audit.py`
 
-1. Read the vault-level `AGENTS.md`.
-2. Read `procedures/review-vault-health.md`.
-3. Follow that procedure as the source of truth.
-4. Keep edits scoped to the user's request.
-5. Report changed files, validation, and follow-up.
+## Guardrails
 
-Do not duplicate or replace the procedure body here; this package is only an activation wrapper.
+- Default to read-only and inventory canonical notes only.
+- Inspect entry points, Types, active Projects and Responsibilities, views, Questions, synthesis, Procedures, ADRs, and skills.
+- Judge low counts rather than enforcing quotas.
+- Distinguish lint findings from strategic issues such as overloaded entry notes, append-only writeback, weak resumption, or hidden knowledge.
+- Use compactness metrics as evidence, not a reason to shorten cold Sources or Events.
+- Prefer a few high-value recommendations and propose broad changes before applying them.

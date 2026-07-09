@@ -1,13 +1,21 @@
+---
+name: lint-vault
+description: Use to diagnose mechanical, structural, retrieval, compactness, or convention problems in the current vault without broad rewrites.
+---
+
 # Lint Vault
 
-Use this skill when the user asks to run the `lint-vault` workflow for this vault.
+## Source of truth
 
-## Workflow
+- Vault rules: `AGENTS.md`
+- Checks and severity: `procedures/lint-vault.md`
+- Helper: `.agents/skills/lint-vault/scripts/compactness_audit.py`
 
-1. Read the vault-level `AGENTS.md`.
-2. Read `procedures/lint-vault.md`.
-3. Follow that procedure as the source of truth.
-4. Keep edits scoped to the user's request.
-5. Report changed files, validation, and follow-up.
+## Guardrails
 
-Do not duplicate or replace the procedure body here; this package is only an activation wrapper.
+- Inventory canonical tracked notes and exclude implementation, local, generated, cache, attachment, and support trees.
+- Use the helper for deterministic warnings, then inspect actual notes before conclusions.
+- Compactness thresholds are review signals, not blanket failures for long evidence.
+- Respect `Project view: false`, Inbox boundaries, UI-authored Type state, and deliberate local conventions.
+- Do not process Inbox, rewrite summaries, normalize broad relationships, delete notes, or apply fixes unless authorized.
+- Route strategic questions to `review-vault-health`.

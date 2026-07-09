@@ -8,165 +8,80 @@ surface_for:
 
 # Second Brain Template Repository Guide
 
-This repository is an empty Markdown Second Brain vault template.
+This repository is a neutral, empty Markdown Second Brain template. It provides portable note types, vault instructions, procedures, thin skill wrappers, saved views, and automation documentation without becoming a living memory store.
 
-It is intended to deploy a concrete vault, such as a work vault, private vault, research-project vault, or other scoped knowledge vault.
+Do not add personal or work context, raw source dumps, credentials, attachments, local roots, caches, or generated agent state here.
 
-The template contains reusable note types, generic agent instructions, generic procedures, generic skill wrappers, saved views, and deployment instructions. It must not contain private memory, work memory, raw source dumps, or machine-specific paths.
+## What it provides
 
-## What This Is For
+- [[vault]] as the deployable root Project;
+- root Type notes for the starter ontology;
+- [`AGENTS.md`](AGENTS.md) as the generic vault contract;
+- [`procedures/`](procedures) as portable workflow sources of truth;
+- [`.agents/skills/`](.agents/skills) as thin activation wrappers;
+- [`skills/`](skills) as visible Skill catalogue notes;
+- [`views/`](views) as starter Tolaria work surfaces;
+- [[vault-automations]] as a per-vault automation documentation pattern;
+- portable external-file pointers using `root_key` plus `relative_path`.
 
-Use this template to create a portable Markdown knowledge vault with enough structure for humans and agents to maintain it safely.
+The template also contains [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] for deployments explicitly designated as routing/control vaults. Ordinary personal, research, project, or team vaults should not install it as an active workflow or automation.
 
-It provides:
+## Deploy
 
-- a root Project note for the vault itself;
-- generic Type notes;
-- vault-level agent instructions;
-- reusable procedures for capture, ingestion, project memory, linting, review, Git checkpoints, and optional control-vault consistency review;
-- thin skill wrappers for recurring agent workflows;
-- a per-vault automation documentation pattern;
-- saved views for common retrieval surfaces;
-- a generic external raw-file reference pattern for files that stay outside the vault;
-- optional local retrieval-index guidance for deployments that need fuzzy recall over larger Markdown corpora.
+Follow [[deploy-vault-from-template]]. In outline:
 
-## What This Is Not For
+1. Create and clone the destination repository.
+2. Rename and customize [[vault]], `AGENTS.md`, this README, and the automation guide for the deployed scope and privacy boundary.
+3. Configure a stable logical vault role through the user's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
+4. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
+5. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
+6. If external files remain outside the vault, create ignored `.local/roots.yml` mappings and Source bridges, then run [[procedures/check-external-raw-references|Check External Raw References]].
+7. Review the customized diff and checkpoint it under the user's current Git authorization policy.
 
-This repository is not a living memory vault. Do not add private context, current project notes, generated dumps, attachments, credentials, or machine-local paths to the template.
+## Core model
 
-It is also not a replacement for a reference manager, task manager, document store, or chat archive. Link to those systems when useful, but keep the Markdown graph as the durable synthesis layer.
+Markdown, YAML frontmatter, wikilinks, saved views, and Git are authoritative. Tolaria is a viewer, not the storage layer. Agents should retrieve progressively from the smallest high-signal entry note and inspect underlying files before making claims or edits.
 
-## How To Deploy
+Project notes are compact resumption surfaces: normally 600–1,200 words, with concise current state, 3–7 actions, prioritized Questions and Important Notes, and only 3–5 milestones. Detailed evidence and reusable knowledge live in linked Sources, Events, Concepts, Methods, Opinions, Questions, Procedures, or ADRs. Long evidence/reference notes keep their payload but start with a short summary.
 
-Follow [[deploy-vault-from-template]]. The short version is:
+Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surface_for`. Canonical Type identities remain in English; deployed vaults may use Type display metadata such as `_sidebar_label` for localization.
 
-1. Create a new repository from this template.
-2. Clone it into the destination folder for the new vault.
-3. Rename and customize [[vault]].
-4. Configure global or local agent instructions from [[global-agent-instructions-template]], including a stable logical vault role such as `personal`, `work/control`, `research`, or `team`.
-5. Decide whether this deployed vault is an ordinary vault or the main/control brain for a multi-vault setup, and make sure generated project-local `AGENTS.md` pointers use the chosen logical vault role rather than a local path. Add project-local `CLAUDE.md` shims for Claude Code workspaces.
-6. Review the generic skills and saved views.
-7. Commit and push the customized starting point.
+## Normal use after deployment
 
-If the deployed vault will point to raw files outside the vault, create the ignored local root resolver at `.local/roots.yml`. The committed vault should store durable file pointers as `root_key` plus `relative_path` in Source notes; `.local/roots.yml` maps those root keys to machine-specific folders.
+- Capture ambiguous material in unprocessed notes or [[ready-to-ingest]].
+- Ingest external material through [[procedures/ingest-source|Ingest Source]] with visible provenance.
+- Resume work from Project or Responsibility entry notes, not broad searches.
+- Refresh project synthesis with [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] instead of appending chronology.
+- Keep active Project views small with [[procedures/maintain-project-human-view|Maintain Project Human View]].
+- Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
-Generic resolver example:
+Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; workspace documentation remains implementation-local, generated, or transient.
 
-```yaml
-roots:
-  documents_basedir:
-    access: guarded-write
-    candidates:
-      - "~/Documents"
-```
+## External raw files
 
-Do not commit `.local/roots.yml`. Commit the Source notes, procedures, and views that describe how the external raw files are referenced.
-
-## Retrieval
-
-The default retrieval system is portable Markdown plus direct search: Project notes, Type notes, saved views, frontmatter relationships, wikilinks, source notes, `rg`, and inspected file content. Markdown files, frontmatter, wikilinks, saved views, and Git remain authoritative.
-
-Agents should classify the task before searching, start from the smallest high-signal surface, and inspect the underlying Markdown and relationships before making claims or edits. Broad `rg` searches and file lists are scouting layers, not evidence.
-
-If a deployed vault later chooses a local retrieval index, document the benchmarked need, privacy boundary, index scope, machine-local storage, refresh cadence, fallback behavior, and maintenance owner. Treat the index as a disposable cache, not as committed vault state or source of truth.
-
-Do not restructure a Tolaria vault just to satisfy a local retrieval index. Type and relationships live in frontmatter and wikilinks. Do not enable graph-memory services, MCP servers, or background index daemons by default in the template.
-
-## Template Residue In Deployed Vaults
-
-After deployment, a concrete vault should mostly contain implemented guidance, not reusable template copies.
-
-Keep template-only files active in this repository. In an ordinary deployed vault, delete or archive template-only notes once they have served deployment. For example, `global-agent-instructions-template.md` should normally stay in this template repository; a multi-vault setup should instead use the work/control vault's global-instruction source and the deployed vault's own `AGENTS.md`.
-
-Archived deployment provenance is fine when it is explicitly marked `_archived: true` and not treated as an active workflow.
-
-## Control-Vault Workflow
-
-The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] and its skill package so a main/control brain can audit routing, deployed vaults, template drift, and local automations.
-
-Do not activate that workflow in ordinary personal, research, project, or team vaults by default. For those vaults, keep it out of the root Project's active workflows and do not schedule an automation for it. Activate it only in the vault explicitly designated as the main/control brain for multi-vault routing and template coordination.
-
-## Core Conventions
-
-- One note per Markdown file.
-- The first H1 is the preferred display title.
-- Note type is stored in `type:` frontmatter.
-- Use `belongs_to`, `related_to`, and `has` for canonical relationships.
-- Use `_archived: true` for archived notes.
-- Canonical type names stay in English across vaults. A localized vault can display translated labels through Type-note metadata such as `_sidebar_label` without changing filenames, H1s, or `type:` values.
-- Source notes preserve external provenance; synthesis belongs in Project, Topic, Concept, Question, Procedure, ADR, and Note files.
-- External raw-file Source notes use portable `root_key` plus `relative_path` pointers, resolved through ignored local config such as `.local/roots.yml`.
-- Saved views live in `views/*.yml`.
-
-## Daily Use
-
-Capture quickly, organize later. Put ambiguous material in unprocessed notes or [[ready-to-ingest]] until there is a clear retrieval path.
-
-Use Projects as work entry points. Project notes are the live human and agent home for a project: keep Outcome, Current State, Scope and Boundaries, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, and Maintenance Log predictable, while keeping detailed knowledge in linked notes.
-
-Use the PORT action axes when choosing between action-like note types: `Responsibility` is recurring work larger than one sitting, `Project` is one-off work larger than one sitting, `Operation` is recurring work that can usually be completed in one sitting, and one-off `Task` notes should not be created by default. Keep one-off tasks in Project `## Next Actions` or a dedicated task manager unless the user explicitly chooses a task system.
-
-Use Event notes for meetings, conversations, rollouts, incidents, milestones, decision events, achievements, external changes, or historical records that should remain findable later.
-
-Active Projects normally have a small project surface in `views/`, unless the Project note explicitly says `Project view: false`. These views are not complete indexes. They should contain only the Project note plus a few current, human-meaningful notes such as a draft, plan, decision-driving Question, key source packet, or active review surface. A good default is 3-5 notes; more than 10 means the surface has probably become too noisy.
-
-Use Source notes for external material that can be re-checked. Extract Concepts, Questions, Procedures, ADRs, or Project updates only when that improves future retrieval. Ingestion feedback is advisory and should not block safe processing, commit, or push.
-
-For raw files that intentionally remain in an external folder, create a Source note instead of copying the file into the vault by default. Use fields such as:
+Do not copy maintained external folders into the vault by default. Use a `Source` note with fields such as:
 
 ```yaml
 type: Source
-source_type: "external file"
 storage_system: External folder
 root_key: documents_basedir
 relative_path: "Example/important-file.pdf"
 access: guarded-write
-last_checked: 2026-05-11
+last_checked: YYYY-MM-DD
 ```
 
-`access: guarded-write` means agents treat the external location as read-only by default. They may list, check existence, and read explicitly relevant files, but they should write only when the user explicitly asks for a specific write action.
+Machine-specific candidates belong in ignored `.local/roots.yml`. `guarded-write` means read-only by default; writing requires explicit authorization for the specific external action.
 
-## Agent Skills
+## Skills and automations
 
-Included skill packages:
+Procedures contain the full workflows. Skill packages should contain only activation, prerequisites, source pointers, and guardrails. Do not create one skill per Procedure unless repeated use shows that discovery is the actual problem.
 
-- `initialize-project-memory`
-- `ingest-source`
-- `process-inbox`
-- `process-ready-ingestion-inbox`
-- `update-project-summary`
-- `update-project-next-actions`
-- `check-external-raw-references`
-- `lint-vault`
-- `review-vault-health`
-- `review-multi-vault-consistency` for a designated main/control vault only
+The template creates no active automations. A deployed vault documents its jobs in [[vault-automations]], uses its own working directory and privacy policy, keeps read-only jobs read-only, and gives write-capable jobs narrow authorization. Cross-vault review remains exclusive to a designated routing/control vault.
 
-Each skill is a thin activation wrapper under `.agents/skills/`. The portable workflow source of truth remains the matching note in `procedures/`. Visible catalogue entries live in `skills/`.
+## Git and safety
 
-`maintain-project-human-view` is currently Procedure-only. Create a skill only if it becomes a frequent explicit command.
-
-`review-multi-vault-consistency` is intentionally included in the template inventory but is not a common per-vault workflow. During deployment, leave it dormant in ordinary vaults unless the vault is explicitly promoted to the routing/control role.
-
-## Compatibility Shims
-
-Keep root compatibility shims such as `CLAUDE.md` when deploying the template. They are lightweight pointers for agent tools and Tolaria's compatibility checks; shared instructions still belong in `AGENTS.md`.
-
-Project workspaces may keep scripts, prototypes, fixtures, generated outputs, and implementation-local notes beside the code. Durable project knowledge should live in the vault: design docs, workflow decisions, research notes, open questions, tool evaluations, and project state should become typed notes linked from the relevant Project or entry note instead of accumulating in a workspace `docs/` folder.
-
-## Automations
-
-Automations are per-vault and are not active in the template. Use [[vault-automations]] after deployment to document any local jobs that process inbox content, run lint, or review vault health.
-
-Each automation should run with the deployed vault as its working directory and follow that vault's `AGENTS.md`, Procedure notes, Skill packages, privacy boundary, and Git checkpoint policy.
-
-For write-capable Codex automations, do not rely on broad global full access. Document the exact Git command the automation is allowed to use, prefer a command-scoped persisted approval such as `git push origin main` for scheduled main-branch vault jobs, and record the stop conditions in the deployed vault's automation guide. Persisted push approval is not general permission to push from arbitrary Codex contexts.
-
-Cross-vault consistency review is included as an optional control-vault workflow, not as a generic per-vault automation. It belongs only in a vault explicitly designated as the routing/control vault for a multi-vault setup.
-
-## Git Checkpoints
-
-Use [[procedures/git-checkpoint-vault-changes]] after agent-managed vault edits unless the user asks not to commit or push. Review the changed scope, exclude local junk and unrelated files, commit a coherent checkpoint, push, and report the final state.
+Git is the audit and rollback layer. Follow [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]]: preserve unrelated edits, stage only authorized files, separate local commit from network push authorization, and never force-push without explicit approval.
 
 ## Status
 
-This is a starter template. Customize the root note, scope, global instruction placeholders, and first Project or Responsibility before using it as a real vault.
+This is a starter template. A useful deployment replaces placeholders and acquires real scope; the template itself remains neutral and content-free.

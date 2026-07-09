@@ -10,6 +10,8 @@ _organized: true
 
 A Question records an unresolved issue, uncertainty, or research direction that should remain findable.
 
+About 750 words is a review threshold, not a hard cap. When a Current Answer or evidence review becomes maintained synthesis, move it to an appropriate Concept, Opinion, ADR, Project, Source, or other suitable Type and leave the Question as a concise pointer to what remains unresolved.
+
 ## Creation Standard
 
 Create a Question only when the unresolved issue should remain findable and has a plausible future use: it is consequential, likely to recur, decision-driving, expected to guide active work, or needed as a retrieval anchor.

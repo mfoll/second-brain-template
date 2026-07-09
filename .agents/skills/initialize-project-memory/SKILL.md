@@ -1,13 +1,21 @@
+---
+name: initialize-project-memory
+description: Use when creating or updating a workspace so it points to the correct vault and one entry note, or deliberately uses vault-scoped memory.
+---
+
 # Initialize Project Memory
 
-Use this skill when the user asks to run the `initialize-project-memory` workflow for this vault.
+## Source of truth
 
-## Workflow
+- Vault rules: `AGENTS.md`
+- Complete workflow and pointer templates: `procedures/initialize-project-memory.md`
 
-1. Read the vault-level `AGENTS.md`.
-2. Read `procedures/initialize-project-memory.md`.
-3. Follow that procedure as the source of truth, including its requirement that generated workspace pointers name the logical vault role without embedding local paths.
-4. Keep edits scoped to the user's request.
-5. Report changed files, validation, and follow-up.
+## Guardrails
 
-Do not duplicate or replace the procedure body here; this package is only an activation wrapper.
+- Resolve the logical vault role from global instructions; never guess a path.
+- Confirm entry-point versus vault scope before creating notes.
+- Keep pointers near 80 words and target one entry note. Do not copy vault rules, raw paths, inventories, or project documentation.
+- Preserve custom local instructions and add only the minimal Claude import shim when appropriate.
+- Do not deep-scan shared or private roots. Use confirmed Source bridges for maintained external files.
+- Prepare the final folder, review affected diffs, and tell the user the exact folder to open.
+- Apply the user's repository policy and push only with current explicit authorization.

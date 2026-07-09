@@ -4,55 +4,31 @@ status: Active
 belongs_to: "[[vault]]"
 related_to:
   - "[[procedures/maintain-project-human-view|Maintain Project Human View]]"
+  - "[[procedures/update-project-next-actions|Update Project Next Actions]]"
 _organized: true
 ---
 
 # Update Project Summary
 
-Use this procedure when project-scoped work changes what a future human or agent needs to know to resume the project.
+Use this procedure after significant project work, ingestion, or a direct request would otherwise leave the Project entry note stale.
 
-## Goal
+## Contract
 
-Keep a Project note useful as the live human and agent entry point without turning it into a full archive.
+Follow [[project]]: 600–1,200 words by default, up to about 1,500 for a complex umbrella; no more than roughly five Current State bullets or 250 words; 3–7 actions; 3–7 prioritized Questions and Important Notes; and 3–5 meaningful milestones.
 
-The Project note should stay coherent enough that opening it gives the current state, the intended outcome, the key boundaries, the next useful actions, the unresolved questions, and the few notes worth reading first.
-
-## When To Run
-
-- The user asks to update, refresh, reconcile, maintain, or save project state.
-- Source ingestion changes project-level understanding, evidence, caveats, open questions, important notes, active workflows, or next steps.
-- Project work changes outcome, scope, status, active workflows, important sources, ADRs, open questions, or several linked notes.
-- A lint or health review reports that the Project note appears stale.
-- Next-action reconciliation changes enough context that the summary would mislead future work.
+The Project is current synthesis, not an archive. Replace superseded text instead of appending another dated report. Keep each fact in one canonical linked note; use Git for routine chronology.
 
 ## Steps
 
-1. Identify the active Project note from the user request, workspace pointer, or linked context.
-2. Read the Project note's current structure before editing.
-3. Review relevant linked notes through `belongs_to`, `related_to`, `has`, backlinks, body links, and saved views.
-4. Normalize the note toward the Project structure in [[project]] when it has drifted: Outcome, Current State, Scope and Boundaries, useful project-specific working context, Active Workflows when applicable, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
-5. Update only affected sections, commonly `## Outcome`, `## Current State`, `## Scope and Boundaries`, `## Active Workflows`, `## Important Notes`, `## Sources`, `## Open Questions`, `## Next Actions`, and `## Maintenance Log`.
-6. When the work creates a reusable precedent, exception, workflow choice, approval, rejected option, or cross-source synthesis, preserve a compact decision trace in the best durable target, usually the Project `## Maintenance Log`, a linked `Question`, an ADR, a `Source`, or a `Procedure`. Capture the decision, context used, rule, policy, or precedent applied, exception or ambiguity, authorization when relevant, artifact changed, and revisit trigger. Do not record routine deterministic steps or model chain-of-thought.
-7. Preserve uncertainty. Do not present provisional answers, unverified source claims, or user ideas as settled policy.
-8. Link to detailed notes instead of copying long content into the Project note.
-9. Check whether changed context should create or update typed notes such as Question, Concept, Responsibility, Procedure, ADR, Source, or another current Type.
-10. Make only direct high-confidence typed-note updates. Defer broad cascade effects to [[procedures/review-vault-health]].
-11. Add a dated Maintenance Log entry when the update changes project state.
-12. Run a Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] when the summary update changes current drafts, deliverables, decision-driving Questions, active workflows, key Sources, or the notes a human should open next.
-13. Review the diff and report what changed.
+1. Read frontmatter, H1, opening summary, and headings; open only the sections and linked notes needed for the change.
+2. Check relationships, backlinks, and the current human view for relevant context.
+3. Refresh the affected sections: Outcome, Current State, Scope and Boundaries, project-specific working context, Active Workflows, Next Actions, Open Questions, Important Notes, optional Do Not Do Yet, and Maintenance Log.
+4. Remove stale or duplicated synthesis. Route detailed evidence, chronology, reusable knowledge, consequential uncertainty, repeatable workflows, and decisions to the appropriate existing Type.
+5. Update directly affected typed notes only when the implication is high-confidence. Preserve provenance and uncertainty; defer broad cascades.
+6. Reconcile Next Actions through [[procedures/update-project-next-actions|Update Project Next Actions]].
+7. Run the Project Surface Check in [[procedures/maintain-project-human-view|Maintain Project Human View]] when the notes a human should open next changed.
+8. Review the diff before checkpointing.
 
-## Output Standard
+## Output standard
 
-After the update, the Project note should tell a future human or agent where to start, what is current, what is in or out of scope, what is unresolved, what to do next, and which linked notes matter most.
-
-Ingestion can update any relevant note. When ingestion changes project-level understanding, actions, open questions, important sources, active workflows, or guardrails, update the Project note as the live project home as well.
-
-If the project is active and does not have `Project view: false`, keep its saved view as a small human working set. The view should usually contain 3-5 notes, not every linked note.
-
-
-## Guardrails
-
-- Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `belongs_to`, `related_to`, and `has` for relationships.
-- Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
-- Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.
+A returning human or agent should be able to identify the outcome, current state, boundaries, blockers, next actions, open decisions, and best notes to open within a few minutes.

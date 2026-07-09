@@ -9,38 +9,23 @@ _organized: true
 
 # Git Checkpoint Vault Changes
 
-Use this procedure after an agent changes vault files and the user has not asked to leave the work uncommitted.
+Use this procedure after an authorized vault edit when the work should receive a reviewed local checkpoint. Commit and network push are separate authorization decisions.
 
-## Goal
+## Authorization
 
-Keep Git as the audit trail, backup layer, and rollback path while avoiding accidental commits of unrelated or sensitive material.
+- A request to change, save, ingest, organize, or maintain the vault may authorize a task-scoped local commit under the deployed vault's policy.
+- Push only when the current user instruction, approved shortcut, publish flow, or narrowly configured automation explicitly authorizes it.
+- Persisted command approval is an execution mechanism, never broader permission.
+- Ask before mixing unrelated work, broad restructuring, bulk ingestion, attachments, credentials, sensitive documents, generated dumps, or unclear scope.
 
 ## Steps
 
-1. Check repository state with `git status --short --branch`.
-2. Review changed scope with `git diff --stat` and `git diff` when useful.
-3. Exclude local junk such as `.DS_Store`, caches, temporary renders, generated dumps, and unrelated files.
-4. If unrelated user edits are present, stage only task-scoped files or ask before mixing them into the commit.
-5. If the diff contains important project-scoped changes, confirm the Project Surface Check from [[procedures/maintain-project-human-view|Maintain Project Human View]] has been applied or intentionally skipped because the Project has `Project view: false`.
-6. Stage the intended files.
-7. Review staged scope with `git diff --cached --stat` and `git diff --cached --name-only`.
-8. Commit with a concise message describing the knowledge, workflow, or structural change.
-9. Push the current branch only when the user requested it, the workflow explicitly allows it, or the repository's operating policy makes push part of normal checkpointing.
-10. Verify final state with `git status --short --branch`.
-11. Report branch, commit hash, push result, files changed, and any files intentionally left uncommitted.
+1. Check branch and status.
+2. Reconcile affected Project summaries, actions, and human views when state changed.
+3. Review the relevant full diff and preserve unrelated user changes.
+4. Stage only task-scoped files and review the staged file list and high-risk content.
+5. Commit with a concise description of the durable change.
+6. Push only when explicitly authorized, never with force unless that exact rewrite was approved after its risk was stated.
+7. Verify final status and report the commit, push result, and intentionally uncommitted files.
 
-## Branch Policy
-
-Use direct commits to `main` for small coherent vault maintenance changes. Use a short-lived branch such as `codex/<topic>` for broad, risky, experimental, or review-heavy changes.
-
-## Stop Conditions
-
-Ask before pushing broad diffs, attachments, secrets, credentials, sensitive documents, generated dumps, visibility changes, or changes outside the stated task scope. Never force-push unless the user explicitly asks and the risk has been stated.
-
-
-## Guardrails
-
-- Keep edits scoped to the user's request and the relevant Project or Source.
-- Use `belongs_to`, `related_to`, and `has` for relationships.
-- Do not add secrets, credentials, local cache paths, generated dumps, or machine-specific setup details unless the note is explicitly about that local setup.
-- Ask before creating new Types, broad relationship rewrites, mass moves, deletions, or public/private visibility changes.
+Use a `codex/<topic>` branch for broad, risky, experimental, or review-heavy changes. Read-only automations never stage, commit, or push; write-capable jobs operate only within their documented vault, scope, and command authorization.
