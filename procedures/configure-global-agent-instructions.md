@@ -19,7 +19,7 @@ Install or check machine-local global agent instructions from [[global-agent-ins
 4. Copy the template text from [[global-agent-instructions-template]] into the machine-local instruction surface.
 5. Replace `<VAULT_ROOT>` only in that machine-local instruction surface.
 6. Verify that the configured vault root is readable and contains `AGENTS.md`.
-7. Compare the installed instruction text against [[global-agent-instructions-template]]. Expected differences should be limited to the concrete vault root and any wording required by the target agent's instruction surface.
+7. Compare the installed instruction text against [[global-agent-instructions-template]]. Expected differences should be limited to the concrete vault root and wording required by the target agent's instruction surface. Confirm that authoritative-vault routing, typed memory capture, stale-model comparison, and explicit push authorization remain present.
 8. If the installed instructions contain stale vault roots, copied project-local rules, or machine-specific details that belong elsewhere, report the drift and ask before rewriting broad sections.
 9. Report the final configured root, the instruction surface checked or updated, and any intentional remaining placeholders.
 

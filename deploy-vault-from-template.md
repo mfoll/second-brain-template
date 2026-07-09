@@ -20,6 +20,7 @@ Collect these values before changing files:
 - `<LOCAL_DESTINATION_ROOT>`
 - `<VAULT_SCOPE>`
 - `<VAULT_ROOT_NOTE>`
+- `<TARGET_BRANCH>`: the branch intended for the first reviewed checkpoint, normally `main` for a new deployment.
 - `<VISIBILITY_FLAG>`: use `--private` or `--public`; default to `--private` when unsure.
 
 ## Preflight Checks
@@ -162,17 +163,17 @@ Use [[procedures/check-external-raw-references|Check External Raw References]] t
 
 Review [[vault-automations]] and decide whether this deployed vault should have local automations.
 
-Start with read-only jobs unless the user explicitly wants a write-capable intake job. Common candidates are:
+Leave ready ingestion disabled and manual-first by default. Start with read-only jobs unless the user explicitly wants a write-capable intake job. Common candidates are:
 
-- process [[ready-to-ingest]] with [[procedures/process-ready-ingestion-inbox]], normally every 12 hours;
+- process [[ready-to-ingest]] manually with [[procedures/process-ready-ingestion-inbox]], then schedule it only after the workflow and privacy boundary have been observed;
 - run read-only [[procedures/lint-vault]];
 - run read-only [[procedures/review-vault-health]].
 
 Do not deploy `review-multi-vault-consistency` into ordinary vaults. That workflow belongs only in a vault explicitly designated as the routing/control vault for a multi-vault setup.
 
-Each automation must run with this deployed vault as its working directory, not with another vault's working directory. Stagger schedules across vaults so jobs do not collide. For the user's current setup, ready-ingestion starts at 00:30 in the work/control vault and 00:45 in the personal vault, then repeats every 12 hours. Record active jobs in the deployed vault's automation guide.
+Each automation must run with this deployed vault as its working directory, not with another vault's working directory. If the user enables a schedule, let them choose the cadence, record its time zone and active or paused state in the deployed vault's automation guide, and stagger it against other vault jobs. The template defines no default ready-ingestion cadence or start time.
 
-For any write-capable automation that should push unattended, decide and document the exact allowed Git command before enabling the job. Prefer narrow persisted command approval such as `git push origin main` for scheduled main-branch vault jobs, not broad global full access. Update the deployed vault's automation guide and the machine-local global agent instructions with the automation name, working directory, allowed command, and stop conditions. Read-only automations must explicitly say not to edit, stage, commit, or push.
+For any write-capable automation that should push unattended, decide and document the exact allowed Git command before enabling the job. Prefer narrow persisted command approval such as `git push origin <TARGET_BRANCH>`, after verifying the intended remote and branch, rather than broad global full access. This is only an execution mechanism; the automation still needs explicit repository, scope, and push authorization. Update the deployed vault's automation guide and the machine-local global agent instructions with the automation name, working directory, allowed command, and stop conditions. Read-only automations must explicitly say not to edit, stage, commit, or push.
 
 Do not let a work/control vault automation read or maintain a private vault's contents unless the user explicitly asks for that vault to be inspected.
 
@@ -190,7 +191,7 @@ Expected placeholders may remain in this deployment guide and in [[global-agent-
 
 Review the changed files and confirm that the deployed vault contains only content appropriate for `<VAULT_SCOPE>`. Remove template-only examples, private material that does not belong in the new vault, generated dumps, local machine paths, credentials, and unrelated project content before committing.
 
-## Commit And Push
+## Checkpoint And Optional Push
 
 Review the changed scope:
 
@@ -200,15 +201,25 @@ git diff --stat
 git diff
 ```
 
-Commit and push the customized starting point:
+Stage only the reviewed deployment files. Replace the example paths with the exact task-scoped files; do not use `git add .`:
 
 ```bash
-git add .
+git add -- <PATH_1> <PATH_2>
 git diff --cached --stat
 git diff --cached --name-only
+git diff --cached
 git commit -m "Deploy <NEW_VAULT_NAME> from template"
-git push
 ```
+
+Push only when the user's current authorization permits it and after verifying the intended remote and branch:
+
+```bash
+git remote -v
+git branch --show-current
+git push origin <TARGET_BRANCH>
+```
+
+If push is not authorized, stop after the local commit and report that the checkpoint remains local. Follow [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]] for scope review and authorization.
 
 ## Report Final State
 
@@ -219,5 +230,6 @@ Report:
 - visibility;
 - root note name;
 - commit hash;
+- whether push was authorized and performed, including the remote and branch when applicable;
 - any placeholders intentionally left in template or setup guides;
 - any validation warnings.

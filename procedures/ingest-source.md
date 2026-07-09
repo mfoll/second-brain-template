@@ -60,8 +60,9 @@ Default process:
 
 1. Identify candidate target notes from the relationships and searches already performed during ingestion.
 2. Edit only direct, high-confidence targets. About 3-5 target notes is a useful default cap for ordinary ingestion.
-3. Prefer synthesis surfaces over raw link growth. Use the current Type set as the routing map; common examples include:
-   - Project notes: update Current State, Next Actions, Open Questions, Important Notes, Active Workflows, or Maintenance Log.
+3. Before changing a Project, read its existing synthesis and reconcile it in place. Replace stale or duplicate statements; do not append another dated mini-report. Keep only the source's current project implication and a link, while detailed evidence and chronology remain in the Source, an appropriate Event or Method, or Git history.
+4. Prefer synthesis surfaces over raw link growth. Use the current Type set as the routing map; common examples include:
+   - Project notes: replace or reconcile Current State, Next Actions, Open Questions, Important Notes, Active Workflows, or Maintenance Log instead of accumulating parallel updates.
    - Project human views: add or remove `surface_for` only when the source changes the small set of notes the user should open.
    - Question notes: update Current Answer, Open Threads, Signals To Revisit, or status when the answer is genuinely settled.
    - Concept notes: add or refine reusable distinctions, methods, terms, or models.
@@ -69,10 +70,10 @@ Default process:
    - Opinion notes: record whether the source supports, weakens, contradicts, or refines the working stance.
    - ADRs: update only by creating or linking a new decision when the source changes a durable architecture or workflow choice.
    - Future Types: use any newer Type note when it fits the source's durable implication better than the examples above.
-4. Preserve provenance by linking back to the Source note or citing the source URL/file in the edited note when the claim depends on that source.
-5. If wider effects are plausible but not obvious, add a focused follow-up or leave them for [[procedures/review-vault-health|Review Vault Health]].
-6. When useful, include a short `## Propagated Updates` section in the Source note listing which notes were changed and which likely targets were intentionally left unchanged.
-7. When useful, include a short `## Proposed Propagation For Validation` section for broader implications that may matter for future use but are not high-confidence enough for direct editing.
+5. Preserve provenance by linking back to the Source note or citing the source URL/file in the edited note when the claim depends on that source.
+6. If wider effects are plausible but not obvious, add a focused follow-up or leave them for [[procedures/review-vault-health|Review Vault Health]].
+7. When useful, include a short `## Propagated Updates` section in the Source note listing which notes were changed and which likely targets were intentionally left unchanged.
+8. When useful, include a short `## Proposed Propagation For Validation` section for broader implications that may matter for future use but are not high-confidence enough for direct editing.
 
 ## Answer-First Question Handling
 

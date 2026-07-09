@@ -43,7 +43,7 @@ When deploying the designated main/control vault:
 - Routing docs: compare `AGENTS.md`, `README.md`, root Project notes, and global-instruction templates for obvious contradictions.
 - Generic workflow inventory: compare procedure and skill package names across the template and deployed vaults, allowing deliberate vault-specific additions and omissions.
 - Automation registry: compare live automation definitions against each vault's automation guide. Confirm each automation uses the correct working directory, schedule, model, and read/write policy.
-- Ready-ingestion cadence: confirm every active ready-ingestion automation runs every 12 hours unless the vault explicitly documents a different cadence.
+- Ready-ingestion state: confirm deployments are manual-first by default; for each explicitly enabled schedule, verify that its user-chosen cadence, time zone, active or paused state, and working directory are documented accurately.
 - Privacy boundaries: confirm control-vault automation does not read or maintain private vault contents, and private-vault automations preserve their own privacy rules.
 - Template drift: identify generic improvements that should be made in the template first and then deliberately ported into selected deployed vaults.
 - Propagation drift: identify recent generic workflow or structural changes that should have been checked against the template and deployed vault interface files before checkpointing.

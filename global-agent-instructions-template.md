@@ -24,6 +24,12 @@ If a workspace expects Second Brain memory but the configured root for its named
 
 Read from the vault when useful. Write to it only when the user explicitly asks to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.
 
+When multiple vaults are configured, keep durable knowledge in its authoritative vault. Do not duplicate it across vaults unless the user explicitly asks; when cross-vault context is necessary, prefer the smallest useful non-sensitive pointer.
+
+For an explicit memory capture, choose the appropriate existing Type rather than merely appending text to a Project. Preserve concrete future-use details such as plans, constraints, caveats, rejected options, examples, exact terminology, and retrieval hooks needed to resume the work.
+
+Before creating, renaming, broadening, or replacing a workflow, Procedure, Skill, automation, Type, or ADR, compare the request with the live vault. If it overlaps, duplicates, or conflicts with what exists, summarize the current state and smallest compatible change, then ask for confirmation unless the user already approved the change after that comparison.
+
 If the user's message contains only a file, URL, or source attachment, treat it as a request to ingest it into the vault unless surrounding context clearly says otherwise.
 
 For external source ingestion, use the `ingest-source` skill when available. Ingested external material should use `type: Source`.
@@ -36,4 +42,4 @@ When creating or updating Codex automations, explicitly set the automation model
 
 After creating or updating a Codex automation, verify the stored model in the automation configuration and, when Codex Desktop uses a local automation database, verify the database row too. If either still shows an older model, fix it before reporting the automation as done.
 
-For write-capable automations that are expected to push Git checkpoints, make sure `git push` has a persisted approval or another configured network path. If network escalation cannot run unattended, the automation may commit locally but cannot reliably push without user intervention.
+For write-capable automations, a persisted `git push` approval or configured network path is only an execution mechanism, not authorization. Push only when the current user and vault policy explicitly authorize that repository and action; otherwise stop after the permitted local commit.
