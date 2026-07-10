@@ -10,6 +10,8 @@ description: Use when checking, refreshing, or auditing external raw-file Source
 - Vault rules: `AGENTS.md`
 - Complete workflow: `procedures/check-external-raw-references.md`
 
+Read the vault rules and Procedure completely before acting.
+
 ## Guardrails
 
 - Resolve roots from ignored local configuration; never commit machine-specific mappings to portable notes.

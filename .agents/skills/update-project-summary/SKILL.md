@@ -11,7 +11,7 @@ description: Use when a Project summary must be refreshed or significant project
 - Project contract: `project.md`
 - Complete workflow: `procedures/update-project-summary.md`
 
-Read these before editing.
+Read the vault rules, Project Type, and Procedure completely before acting.
 
 ## Guardrails
 

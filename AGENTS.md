@@ -24,9 +24,11 @@ Do not duplicate policy across layers or let workspace `docs/` become a parallel
 
 Start from the narrowest durable surface:
 
-1. For project work, read the workspace pointer, its entry note, the project view, and only task-relevant linked notes.
+1. For project work, read the workspace pointer, its entry note, the project view, and only task-relevant linked or vault-routed notes.
 2. For exact lookup, use known paths, frontmatter, wikilinks, saved views, and direct file search.
 3. For fuzzy recall, start from likely Projects, Responsibilities, Topics, Sources, Opinions, Questions, Concepts, recent Events, and Inbox surfaces before widening.
+
+If the user refers to a raw file, folder, dataset, manuscript, external document, or path-like reference from a project workspace, first check the entry note and linked Source notes for External Raw Locations or `root_key` plus `relative_path` pointers before guessing paths or searching broadly.
 
 Read progressively: inspect frontmatter, H1, the opening summary, and headings first; then relevant sections. Read a full long note only when complete evidence or wording is required. Broad search output is scouting, not proof; inspect the underlying Markdown before making claims or edits.
 
@@ -36,10 +38,12 @@ Do not depend on machine-local retrieval indexes by default. Any optional index 
 
 - One Markdown note per file; use kebab-case filenames.
 - Durable notes need YAML frontmatter, a canonical English `type`, a first H1, and `_organized: true` once they have a retrieval path.
-- Type definitions remain root notes. Inspect the relevant Type before creating or materially reshaping a note.
+- Type definitions remain root notes. When a note Type affects selection, interpretation, lifecycle, structure, or an edit, inspect the matching root Type note before relying on its semantics.
 - Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces.
 - Root wikilinks use filename stems; folder notes use vault-relative path stems.
 - Use `_archived: true` for retained material removed from active use. Delete only when useful content and provenance have a better durable home.
+
+Before creating a view, Type, Procedure, or other repeated vault artifact, inspect nearby examples and follow the current dominant convention. If written guidance and existing practice diverge, reconcile them before adding another variant.
 
 Project notes are compact resumption surfaces, not archives. Follow [[project]]:
 
@@ -59,9 +63,11 @@ Keep project writeback proportional: update the entry Project and directly affec
 
 Sources preserve provenance in both frontmatter and readable body sections. External raw-file notes use portable `root_key` plus `relative_path`; `access: guarded-write` means read-only unless the user authorizes the specific external write.
 
-During ingestion, answer resolvable question-shaped material first. Create a Question only when the unresolved issue is consequential, recurring, decision-driving, or a needed retrieval anchor. Treat Opinions as challengeable user context, not evidence.
+Retrieve relevant Opinion notes whenever the user's stance materially affects drafting, planning, review, briefing, maintenance, or ingestion. Treat Opinions as challengeable context, not evidence. During ingestion, answer resolvable question-shaped material first and create a Question only when the unresolved issue is consequential, recurring, decision-driving, or a needed retrieval anchor.
 
 ## Workflow router
+
+When a task matches an existing Procedure, read and follow it before acting. Use the common router below and search `procedures/` when the workflow is not listed.
 
 | Work | Source of truth |
 | --- | --- |
@@ -85,5 +91,7 @@ When a generic rule changes, update the template first, then deliberately port c
 ## Git and safety
 
 Review status and diff, preserve unrelated user changes, and stage only task-scoped files. A local commit may accompany an authorized vault edit. Push requires explicit authorization through the user's current global or vault policy; a persisted approval never broadens task scope. Never force-push without explicit approval for that rewrite.
+
+Do not silently rewrite an accepted ADR. When a durable decision changes, create a superseding ADR and link the old and new decisions.
 
 Read-only automations never stage, commit, or push. Write-capable automations operate only within their documented vault, scope, and command authorization.

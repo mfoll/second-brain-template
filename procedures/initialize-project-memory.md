@@ -33,7 +33,7 @@ Use this procedure to connect a workspace to a configured Second Brain vault thr
 
 Vault role: `<vault-role>`. Entry note: `<confirmed-wikilink>`.
 
-Resolve the vault root from global instructions. If it is unknown or unreadable, stop and ask; do not guess or create a vault. Read the vault `AGENTS.md`, then the entry note and only task-relevant linked notes. Keep durable knowledge in the vault; workspace Markdown remains implementation-local, generated, or transient.
+Resolve the vault root from global instructions. If it is unknown or unreadable, stop and ask; do not guess or create a vault. Read the vault `AGENTS.md`, then the entry note and only task-relevant linked or vault-routed notes. Keep durable knowledge in the vault; workspace Markdown remains implementation-local, generated, or transient.
 ```
 
 ## Vault-scoped pointer

@@ -11,6 +11,8 @@ description: Use for a strategic review of whether the current vault is useful, 
 - Complete workflow: `procedures/review-vault-health.md`
 - Helper: `.agents/skills/lint-vault/scripts/compactness_audit.py`
 
+Read the vault rules and Procedure completely before acting.
+
 ## Guardrails
 
 - Default to read-only and inventory canonical notes only.

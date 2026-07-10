@@ -11,6 +11,8 @@ description: Use to diagnose mechanical, structural, retrieval, compactness, or 
 - Checks and severity: `procedures/lint-vault.md`
 - Helper: `.agents/skills/lint-vault/scripts/compactness_audit.py`
 
+Read the vault rules and Procedure completely before acting.
+
 ## Guardrails
 
 - Inventory canonical tracked notes and exclude implementation, local, generated, cache, attachment, and support trees.

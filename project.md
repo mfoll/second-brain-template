@@ -22,6 +22,8 @@ A Project is a finite effort larger than one sitting. Its note is the live resum
 
 Project frontmatter is navigational, not exhaustive. Child notes normally link back with `belongs_to`; use Project `has` only for active subprojects and high-value entry points. Active Projects normally have a 3–5-note human view following [[procedures/maintain-project-human-view|Maintain Project Human View]], unless the user has set `Project view: false`.
 
+Before removing a Project `has` value or body entry-point link, verify that the target remains findable through its own relationships, another hub or Project link, a saved view, backlinks, or an explicit Inbox/archive convention.
+
 ## Umbrellas and subprojects
 
 Create a child Project when a work package has its own outcome, state, actions, collaborators, artifacts, or publication trajectory. The umbrella keeps shared context and a selective subproject list; it does not repeat child details. Use `belongs_to` from child to umbrella and point project workspaces to the most specific active entry note.

@@ -10,6 +10,8 @@ description: Use when creating or updating a workspace so it points to the corre
 - Vault rules: `AGENTS.md`
 - Complete workflow and pointer templates: `procedures/initialize-project-memory.md`
 
+Read the vault rules and Procedure completely before acting.
+
 ## Guardrails
 
 - Resolve the logical vault role from global instructions; never guess a path.

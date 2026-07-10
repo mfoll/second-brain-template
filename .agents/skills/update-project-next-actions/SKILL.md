@@ -11,6 +11,8 @@ description: Use when completed, changed, or newly created project work should b
 - Project contract: `project.md`
 - Complete workflow: `procedures/update-project-next-actions.md`
 
+Read the vault rules, Project Type, and Procedure completely before acting.
+
 ## Guardrails
 
 - Keep 3–7 outcome-level actions; review lists above 10.
