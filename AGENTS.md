@@ -32,28 +32,23 @@ If the user refers to a raw file, folder, dataset, manuscript, external document
 
 Read progressively: inspect frontmatter, H1, the opening summary, and headings first; then relevant sections. Read a full long note only when complete evidence or wording is required. Broad search output is scouting, not proof; inspect the underlying Markdown before making claims or edits.
 
+Orient candidates by path, H1, `type`, lifecycle state, task role, `belongs_to`, `has`, `related_to`, `surface_for`, and body links. Follow only links that answer a retrieval question.
+
 Do not depend on machine-local retrieval indexes by default. Any optional index must be documented as a disposable cache with a benchmarked need, privacy scope, refresh path, and Markdown fallback.
 
 ## Note and graph contract
 
 - One Markdown note per file; use kebab-case filenames.
-- Durable notes need YAML frontmatter, a canonical English `type`, a first H1, and `_organized: true` once they have a retrieval path.
+- Durable notes need YAML frontmatter, a canonical English `type`, a first H1, and `_organized: true` once they have a retrieval path. The first H1 is the display title; do not add `title:`.
 - Type definitions remain root notes. When a note Type affects selection, interpretation, lifecycle, structure, or an edit, inspect the matching root Type note before relying on its semantics.
-- Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces.
+- Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces. Quote scalar wikilinks, use YAML lists for multiple values, and preserve valid custom relationship keys unless explicitly normalizing.
 - Root wikilinks use filename stems; folder notes use vault-relative path stems.
-- Use `_archived: true` for retained material removed from active use. Delete only when useful content and provenance have a better durable home.
+- Frontmatter keys beginning with `_` are normally viewer-managed; change them only when requested or required by a Type or Procedure. `attachments/` contains assets, not notes or Types.
+- Use `_archived: true` for retained inactive material and exclude it from active views. Do not default to an `archive/` folder or `status: Archived`. Delete only when useful content and provenance have a better durable home.
 
 Before creating a view, Type, Procedure, or other repeated vault artifact, inspect nearby examples and follow the current dominant convention. If written guidance and existing practice diverge, reconcile them before adding another variant.
 
-Project notes are compact resumption surfaces, not archives. Follow [[project]]:
-
-- 600–1,200 words by default; a complex umbrella may reach about 1,500.
-- `Current State`: current truth only, normally no more than five bullets or 250 words.
-- `Next Actions`: 3–7 outcome-level actions; review lists above 10.
-- `Open Questions` and `Important Notes`: normally 3–7 prioritized links each.
-- `Maintenance Log`: the latest 3–5 meaningful milestones; Git carries routine edit history.
-
-Replace or reconcile old synthesis instead of appending another dated report. Keep each fact in one canonical durable note and link to it. Long Sources, Events, and Methods may preserve their payload, but should open with a 100–150-word summary above roughly 2,000 words. Review Questions above roughly 750 words for answers or analysis that belong in a maintained synthesis note.
+Project notes are compact resumption surfaces, not archives. Follow [[project]]; reconcile rather than append synthesis, keep facts in canonical typed notes, and use links or Git for detail and routine history.
 
 ## Writing and evidence
 
@@ -72,6 +67,8 @@ When a task matches an existing Procedure, read and follow it before acting. Use
 | Work | Source of truth |
 | --- | --- |
 | Create or normalize a note | Matching root Type note |
+| Create or edit a saved view | [[tolaria-saved-views|Tolaria Saved Views]]; for a Project surface, also [[procedures/maintain-project-human-view|Maintain Project Human View]] |
+| Move or rename notes | Update affected links in the same change and run [[procedures/lint-vault|Lint Vault]] before and after |
 | Refresh project state or actions | [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] |
 | Maintain a project workbench | [[procedures/maintain-project-human-view|Maintain Project Human View]] |
 | Process Inbox or ingest a source | [[procedures/process-inbox|Process Inbox]] or [[procedures/ingest-source|Ingest Source]] |

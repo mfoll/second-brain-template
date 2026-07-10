@@ -9,3 +9,6 @@ filters:
       value: Source
     - field: root_key
       op: is_not_empty
+    - field: _archived
+      op: not_equals
+      value: true

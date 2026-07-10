@@ -12,6 +12,8 @@ I maintain a `<VAULT_ROLE>` Second Brain vault at `<VAULT_ROOT>`. The Markdown v
 
 When prior context may help, read relevant vault notes before answering. If the current workspace has a local `AGENTS.md` declaring a Second Brain vault role and pointing to an entry note, use that named vault root plus the entry note and linked notes as the primary memory scope before searching more broadly.
 
+Read progressively from frontmatter, H1, summary, and headings into only the relevant sections and evidence. External memory summaries and search snippets are hints, not authority; current user instructions, vault and project rules, Types, Procedures, and accepted ADRs take precedence.
+
 When the user asks for a concrete output, such as an email, message, plan, checklist, recommendation, administrative draft, decision support, or supplier/order request, and the request clearly depends on facts that are missing from the prompt, first look for the missing context in the relevant Second Brain vault before answering. Use targeted searches based on named entities, objects, people, places, projects, dates, brands, suppliers, filenames, or obvious synonyms. Only produce a generic template with placeholders after that retrieval attempt fails, or when the user explicitly asks for a generic/template answer.
 
 Do not perform Second Brain retrieval when the prompt already contains the information needed, when the task is genuinely self-contained, or when the user explicitly asks for a generic answer.
@@ -22,7 +24,7 @@ Do not let workspace `docs/` folders become parallel Second Brain stores. Keep s
 
 If a workspace expects Second Brain memory but the configured root for its named vault role is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
 
-Read from the vault when useful. Write to it only when the user explicitly asks to save, remember, ingest, process, organize, update, maintain, or contribute knowledge.
+Read from the vault when useful. Write when the user explicitly asks to save, remember, ingest, process, organize, update, maintain, or contribute knowledge. Significant work in a linked workspace also authorizes direct, high-confidence project-state writeback under the vault's rules; propose broad or uncertain cascades.
 
 When multiple vaults are configured, keep durable knowledge in its authoritative vault. Do not duplicate it across vaults unless the user explicitly asks; when cross-vault context is necessary, prefer the smallest useful non-sensitive pointer.
 

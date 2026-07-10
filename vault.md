@@ -50,6 +50,7 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [[AGENTS]]
 - [[README]]
 - [[project]]
+- [[tolaria-saved-views|Tolaria Saved Views]]
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
 - [[vault-automations|Vault Automations]]
 

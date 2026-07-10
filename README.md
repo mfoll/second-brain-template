@@ -21,6 +21,7 @@ Do not add personal or work context, raw source dumps, credentials, attachments,
 - [`.agents/skills/`](.agents/skills) as thin activation wrappers;
 - [`skills/`](skills) as visible Skill catalogue notes;
 - [`views/`](views) as starter Tolaria work surfaces;
+- [[tolaria-saved-views]] as the on-demand saved-view syntax reference;
 - [[vault-automations]] as a per-vault automation documentation pattern;
 - portable external-file pointers using `root_key` plus `relative_path`.
 
@@ -42,7 +43,7 @@ Follow [[deploy-vault-from-template]]. In outline:
 
 Markdown, YAML frontmatter, wikilinks, saved views, and Git are authoritative. Tolaria is a viewer, not the storage layer. Agents should retrieve progressively from the smallest high-signal entry note and inspect underlying files before making claims or edits.
 
-Project notes are compact resumption surfaces: normally 600–1,200 words, with concise current state, 3–7 actions, prioritized Questions and Important Notes, and only 3–5 milestones. Detailed evidence and reusable knowledge live in linked Sources, Events, Concepts, Methods, Opinions, Questions, Procedures, or ADRs. Long evidence/reference notes keep their payload but start with a short summary.
+Project notes are compact resumption surfaces: normally 600–1,200 words, with concise current state, 3–7 actions, prioritized Questions and Important Notes, and only 3–5 milestones. Detailed evidence and reusable knowledge live in linked Sources, Events, Concepts, Opinions, Questions, Procedures, or ADRs. Long evidence/reference notes keep their payload but start with a short summary.
 
 Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surface_for`. Canonical Type identities remain in English; deployed vaults may use Type display metadata such as `_sidebar_label` for localization.
 
@@ -53,6 +54,7 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Resume work from Project or Responsibility entry notes, not broad searches.
 - Refresh project synthesis with [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] instead of appending chronology.
 - Keep active Project views small with [[procedures/maintain-project-human-view|Maintain Project Human View]].
+- Create or repair saved-view YAML through [[tolaria-saved-views|Tolaria Saved Views]].
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
 Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; workspace documentation remains implementation-local, generated, or transient.

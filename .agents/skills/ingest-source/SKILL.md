@@ -1,13 +1,8 @@
+---
+name: ingest-source
+description: Use when saving, ingesting, processing, extracting from, or summarizing external material in the current vault.
+---
+
 # Ingest Source
 
-Use this skill when the user asks to run the `ingest-source` workflow for this vault.
-
-## Workflow
-
-1. Read the vault-level `AGENTS.md`.
-2. Read `procedures/ingest-source.md`.
-3. Follow that procedure as the source of truth.
-4. Keep edits scoped to the user's request.
-5. Report changed files, validation, and follow-up.
-
-Do not duplicate or replace the procedure body here; this package is only an activation wrapper.
+Read the vault `AGENTS.md` and `procedures/ingest-source.md` completely, then follow the Procedure as the source of truth. Keep edits task-scoped and report changed files, validation, and follow-up. This package activates the workflow; it does not duplicate it.

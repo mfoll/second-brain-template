@@ -10,3 +10,6 @@ filters:
     - field: maturity
       op: equals
       value: Evergreen
+    - field: _archived
+      op: not_equals
+      value: true

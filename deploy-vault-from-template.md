@@ -141,7 +141,7 @@ find skills .agents/skills -maxdepth 3 -type f | sort
 
 ## Review Saved Views
 
-Open each file in `views/` and confirm that filters match the deployed vault's Type and relationship conventions. Active views should normally exclude notes with `_archived: true`.
+Open each file in `views/` and confirm that filters match the deployed vault's Type and relationship conventions. Follow [[tolaria-saved-views|Tolaria Saved Views]] for the current file contract. Active views should normally exclude notes with `_archived: true`.
 
 ## Configure External Raw Roots
 

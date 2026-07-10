@@ -21,7 +21,7 @@ Use this procedure to connect a workspace to a configured Second Brain vault thr
 5. Read the selected vault's `AGENTS.md` and relevant Type. Create or update the entry note with compact current synthesis and high-confidence relationships.
 6. Link maintained external files through confirmed Source notes. Do not deep-scan shared or private roots.
 7. For a new active Project, follow [[project]] and create its small human view unless the user explicitly chooses `Project view: false`.
-8. Create or update only the marked memory section of workspace `AGENTS.md`, keeping the complete pointer near 80 words. Do not copy vault rules, secondary notes, raw paths, artifact inventories, or runbooks.
+8. Create or update only the marked memory section of workspace `AGENTS.md`, keeping the complete pointer near 80 words. Preserve deliberate custom instructions outside that section; if no safely replaceable section exists, propose the insertion instead of overwriting the file. Do not copy vault rules, secondary notes, raw paths, artifact inventories, or runbooks.
 9. Add a minimal `CLAUDE.md` containing `@AGENTS.md` when Claude Code may use the workspace and no deliberate custom shim exists.
 10. Apply the user's local repository and backup policy, keeping credentials, raw data, controlled material, caches, environments, and generated bulk out of Git.
 11. Review workspace and vault diffs, then tell the user the exact absolute folder to open.
