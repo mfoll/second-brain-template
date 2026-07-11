@@ -25,19 +25,21 @@ Do not add personal or work context, raw source dumps, credentials, attachments,
 - [[vault-automations]] as a per-vault automation documentation pattern;
 - portable external-file pointers using `root_key` plus `relative_path`.
 
-The template also contains [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] for deployments explicitly designated as routing/control vaults. Ordinary personal, research, project, or team vaults should not install it as an active workflow or automation.
+The template also contains [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] for deployments explicitly designated as routing/control vaults. Ordinary personal, research, project, or team deployments remove its installed Skill package and active routes; they may retain only the Procedure as clearly archived provenance.
 
-## Deploy
+## Deploy or upgrade
 
-Follow [[deploy-vault-from-template]]. In outline:
+For a new repository, follow [[deploy-vault-from-template]]. For an existing deployed vault, follow [[upgrade-existing-vault-from-template]] and port reviewed interfaces selectively; never overlay or merge the template wholesale.
 
-1. Create and clone the destination repository.
+New deployment, in outline:
+
+1. Verify the reviewed template commit is the exact GitHub default-branch tip, then create and clone the destination repository and compare its tree hash.
 2. Rename and customize [[vault]], `AGENTS.md`, this README, and the automation guide for the deployed scope and privacy boundary.
 3. Configure a stable logical vault role through the user's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
 4. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
 5. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
 6. If external files remain outside the vault, create ignored `.local/roots.yml` mappings and Source bridges, then run [[procedures/check-external-raw-references|Check External Raw References]].
-7. Review the customized diff and checkpoint it under the user's current Git authorization policy.
+7. Run mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
 
 ## Core model
 

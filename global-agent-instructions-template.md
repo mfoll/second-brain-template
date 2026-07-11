@@ -6,6 +6,8 @@ _organized: true
 
 # Global Agent Instructions Template
 
+Use this text only to bootstrap a standalone vault. If an existing routing/control vault or configuration repository owns generated global instructions, follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] and update that executable source instead; do not install this template as a competing instruction layer.
+
 ## Second Brain Memory
 
 I maintain a `<VAULT_ROLE>` Second Brain vault at `<VAULT_ROOT>`. The Markdown vault is the durable source of truth. Vault-level rules are in `<VAULT_ROOT>/AGENTS.md`.

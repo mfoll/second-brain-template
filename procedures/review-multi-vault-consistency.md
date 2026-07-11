@@ -28,7 +28,7 @@ When deploying an ordinary vault:
 - do not add this procedure to the root Project's active workflows;
 - do not create a Codex automation for this workflow;
 - do not use this vault to inspect or maintain another vault's private content;
-- keep any local copy dormant unless the vault is later promoted to the routing/control role.
+- remove the installed skill package and archive or remove its catalogue note and active routes; retain the Procedure only as clearly archived provenance if useful.
 
 When deploying the designated main/control vault:
 
@@ -40,8 +40,8 @@ When deploying the designated main/control vault:
 ## Checks
 
 - Repository roles: confirm each configured root exists, is a Git repository, and matches the documented role.
-- Routing docs: compare `AGENTS.md`, `README.md`, root Project notes, and global-instruction templates for obvious contradictions.
-- Generic workflow inventory: compare procedure and skill package names across the template and deployed vaults, allowing deliberate vault-specific additions and omissions.
+- Routing docs: compare `AGENTS.md`, README, and root Project notes. For standalone vaults, include the global-instruction template and installed surface; for controlled systems, compare the executable source, generated artifacts, and installed surfaces rather than treating a neutral template as authoritative.
+- Generic workflow inventory: compare Procedures and coherent Skill catalogue/package pairs across the template and deployed vaults, allowing deliberate vault-specific additions and omissions. For each retained Skill, verify `package_path`, package `name`, Procedure linkage, purpose, lifecycle, and named support files.
 - Automation registry: compare live automation definitions against each vault's automation guide. Confirm each automation uses the correct working directory, schedule, model, and read/write policy.
 - Ready-ingestion state: confirm deployments are manual-first by default; for each explicitly enabled schedule, verify that its user-chosen cadence, time zone, active or paused state, and working directory are documented accurately.
 - Privacy boundaries: confirm control-vault automation does not read or maintain private vault contents, and private-vault automations preserve their own privacy rules.
@@ -57,10 +57,10 @@ Ask for explicit current-turn approval before reading sensitive sources, Inbox c
 
 ## Steps
 
-1. Read this vault's routing decision notes, global instruction template, and automation guide.
+1. Read this vault's routing decision notes and automation guide, then identify the global-instruction owner: standalone template, or controlled executable source plus generated and installed artifacts.
 2. Inspect configured vault/template roots and the live automation list.
 3. Compare routing and automation documentation across the main/control vault, deployed vaults, and template.
-4. Compare procedure and skill inventories by filename/package name, not by assuming identical content is always required.
+4. Compare Procedure inventories and Skill pairs. Do not treat matching filenames as sufficient: verify that each visible note and package satisfy [[skill]], while allowing intentional vault-specific content and documented runtime-only exceptions.
 5. For recent changes to generic workflows, procedures, skills, automation rules, vault conventions, or `AGENTS.md`, check whether the change was also considered for the template and selected deployed vaults.
 6. Separate findings into:
    - hard inconsistencies that should be fixed;

@@ -24,7 +24,8 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 - Active Projects missing useful resumption sections or a human view unless `Project view: false` is set.
 - Project `has` lists or views that have become exhaustive rather than selective.
 - Sources without human-visible provenance; external Source bridges missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked`.
-- ADRs, Procedures, skill packages, catalogue notes, and project pointers that violate their current contracts.
+- ADRs, Procedures, and project pointers that violate their current contracts.
+- Skill pair drift: a visible active Skill without its `package_path`, an installed package without an active catalogue note, a package-directory/`name` mismatch, divergent Procedure pointers, lifecycle or purpose drift, a named support file that is missing, or an archived catalogue note whose package remains discoverable under `.agents/skills/`. Allow only documented runtime-only exceptions.
 - Unscoped local paths, credentials, caches, or generated dumps in portable notes.
 
 Type-aware compactness warnings:
