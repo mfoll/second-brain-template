@@ -110,17 +110,17 @@ Read both Type definitions before changing a note contract. Preserve canonical T
 
 ### Procedures and Skills
 
-Port a workflow only when the deployed vault needs it. Procedures own full execution details; skill packages remain thin activation wrappers.
+Port a workflow only when the deployed vault needs it. Reusable vault workflows remain in Procedures; their packages require the complete Procedure, which is authoritative on conflict, and may retain operational detail. Prefer thinning only after a clause audit. Preserve an intentional specialized standalone Skill only when no durable Procedure owns it and its catalogue note explicitly identifies the package as the workflow owner.
 
 Treat every installed vault-owned Skill as a coherent pair:
 
-- one visible `type: Skill` catalogue note with `status`, `wraps`, and `package_path`;
+- one visible active `type: Skill` catalogue note with `status` and `package_path`;
 - one matching `.agents/skills/<skill-name>/SKILL.md` whose frontmatter `name` matches the package directory;
-- both sides point to the same existing Procedure and describe the same active lifecycle and purpose;
-- scripts or supporting files named by either side exist;
+- both sides describe the same active lifecycle, purpose, and ownership mode: matching `wraps` plus Procedure pointer, or explicit specialized standalone package ownership;
+- package-bundled relative scripts or support files named by either side exist, while external or project-local prerequisites are documented for execution checks;
 - no active note or package is left orphaned unless a documented runtime-only exception is intentional.
 
-Add or update both sides together. To retire a Skill, remove its installed package and archive or remove the catalogue note and active routes; do not leave a dormant package discoverable under `.agents/skills/`. Do not copy a detailed Procedure into the wrapper.
+Update both sides when shared purpose, ownership, name, path, or lifecycle changes. To retire a Skill, remove its installed package and archive or remove the catalogue note and active routes; do not leave a dormant package discoverable under `.agents/skills/`. Do not force a standalone package into a fictitious Procedure merely for template conformity; for a Procedure-backed package, the Procedure wins on conflict and duplication is reduced only after a clause audit.
 
 ### Views and automations
 

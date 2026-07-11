@@ -6,4 +6,4 @@ _organized: true
 
 # Agent Skill
 
-An agent skill is a thin activation wrapper around a portable Procedure. The Procedure remains the durable workflow source of truth. A vault-owned installed skill keeps a coherent visible catalogue note and executable package pair as defined by [[skill]].
+An agent skill is an executable package. A Procedure-backed package requires the complete Procedure, which is authoritative on conflict, and may retain operational detail. A genuinely specialized package may own execution when no Procedure does. Every installed vault-owned skill keeps the coherent catalogue/package pair defined by [[skill]].

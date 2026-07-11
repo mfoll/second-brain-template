@@ -182,7 +182,7 @@ find skills -maxdepth 1 -type f -name '*-skill.md' | sort
 find .agents/skills -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort
 ```
 
-For each active pair, verify that the visible note's `package_path` exists, its `wraps` link resolves to an existing Procedure, the package directory matches the package `name`, and both sides name the same Procedure, purpose, and lifecycle. Verify named scripts or support files. Add or update both sides together. To retire a Skill, remove the installed package and archive or remove its catalogue note and active routes; record any intentional runtime-only exception.
+For each active pair, verify the visible note's `package_path`, matching package-directory `name`, catalogue lifecycle, and package-bundled relative support files. A Procedure-backed pair must have a resolvable `wraps` link and name the same Procedure on both sides; a specialized standalone pair must explicitly say that the package owns execution and must not duplicate an existing Procedure. Check documented external prerequisites at execution. Update both sides when shared purpose, ownership, name, path, or lifecycle changes; package-only implementation edits need not churn the catalogue. To retire a Skill, remove the installed package and archive or remove its catalogue note and active routes; record any intentional runtime-only exception.
 
 ## Review Saved Views
 
@@ -245,7 +245,7 @@ Do not checkpoint or report the deployment complete until all four groups pass. 
 - Follow [[procedures/lint-vault|Lint Vault]] and run `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections and deliberate 4–10-note human views unless explicitly opted out.
-- Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has a resolvable Procedure.
+- Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.
 - Re-run the placeholder and scope checks, then inspect the complete Git diff.
 
 ### Semantic validation

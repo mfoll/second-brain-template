@@ -78,7 +78,7 @@ Machine-specific candidates belong in ignored `.local/roots.yml`. `guarded-write
 
 ## Skills and automations
 
-Procedures contain the full workflows. Skill packages should contain only activation, prerequisites, source pointers, and guardrails. Do not create one skill per Procedure unless repeated use shows that discovery is the actual problem.
+Procedures contain full reusable workflows. Their Skill packages require the complete Procedure, which is authoritative on conflict, and may retain operational detail; prefer thinness only after a clause audit shows that no trigger, prerequisite, hard guard, command, or bundled-resource instruction will be lost. A genuinely specialized Skill may instead own its executable detail when no durable Procedure does; its catalogue note must make that ownership explicit. Do not create one skill per Procedure unless repeated use shows that discovery is the actual problem.
 
 The template creates no active automations. A deployed vault documents its jobs in [[vault-automations]], uses its own working directory and privacy policy, keeps read-only jobs read-only, and gives write-capable jobs narrow authorization. Cross-vault review remains exclusive to a designated routing/control vault.
 

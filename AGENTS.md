@@ -16,7 +16,7 @@ Keep changes small, portable, and easy to review. Current user instructions over
 - Machine-local global instructions resolve logical vault roles to local roots and hold cross-context authorization rules.
 - Project-local `AGENTS.md` files are short pointers: one logical vault role, one entry note (or explicit vault scope), and a missing-root guard.
 - This file owns vault-wide invariants and routing.
-- Root Type notes define note semantics. Procedures own detailed workflows. Skill packages are thin activation wrappers.
+- Root Type notes define note semantics. Procedures own reusable workflows. Skills activate a Procedure or, when explicitly specialized, own executable detail as defined by [[skill]].
 
 Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. Keep implementation-local, generated, or transient documentation beside project artifacts; promote durable context, decisions, questions, and state into typed vault notes.
 
