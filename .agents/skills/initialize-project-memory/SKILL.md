@@ -18,6 +18,6 @@ Read the vault rules and Procedure completely before acting.
 - Confirm entry-point versus vault scope before creating notes.
 - Keep pointers near 80 words and target one entry note. Do not copy vault rules, raw paths, inventories, or project documentation.
 - Preserve custom local instructions and add only the minimal Claude import shim when appropriate.
-- Do not deep-scan shared or private roots. Use confirmed Source bridges for maintained external files.
+- Do not deep-scan shared or private roots. Resolve the deployed external-project-file strategy and use confirmed Source bridges for maintained inputs, outputs, deliverables, or folders.
 - Prepare the final folder, review affected diffs, and tell the user the exact folder to open.
 - Apply the user's repository policy and push only with current explicit authorization.

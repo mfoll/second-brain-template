@@ -23,6 +23,8 @@ Collect these values before changing files:
 - `<LOCAL_DESTINATION_ROOT>`
 - `<VAULT_SCOPE>`
 - `<VAULT_ROOT_NOTE>`
+- `<EXTERNAL_PROJECT_FILE_STRATEGY>`: choose `convention-based`, `linked-per-project`, or `workspace-only`.
+- `<ATTACHMENTS_POLICY>`: choose `disabled` or `tracked-vault-assets-only`.
 - `<TARGET_BRANCH>`: the branch intended for the first reviewed checkpoint, normally `main` for a new deployment.
 - `<VISIBILITY_FLAG>`: use `--private` or `--public`; default to `--private` when unsure.
 
@@ -121,6 +123,18 @@ Customize the deployed vault's `AGENTS.md` for the vault's purpose, privacy boun
 
 Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not duplicate the full instruction body into the shim.
 
+## Choose External Project File Strategy
+
+Choose and record one default strategy in the deployed README and `AGENTS.md`:
+
+- `convention-based`: durable non-versioned project files live beneath one configured external root, normally in `<project-slug>/`;
+- `linked-per-project`: each Project links a confirmed external folder through a dedicated Source note; use this when folders are assigned independently, such as per-project shared-drive or OneDrive locations;
+- `workspace-only`: the deployment expects only Git-tracked or reproducible project artifacts until a Project explicitly adds an external Source location.
+
+For every strategy, keep concrete machine paths out of committed vault rules. Resolve external roots through ignored `.local/roots.yml`; store only `root_key` plus `relative_path` in Source notes. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files.
+
+Choose `<ATTACHMENTS_POLICY>` separately. `disabled` forbids a generic vault `attachments/` folder. `tracked-vault-assets-only` permits only small assets that are intentionally tracked by Git and belong to the vault itself; it never permits durable unversioned project outputs.
+
 ## Customize Type Localization
 
 Keep canonical type identity stable across vaults: filenames, H1s, and `type:` values should stay in English, for example `Person`, `Project`, `Operation`, and `Event`.
@@ -188,9 +202,9 @@ For each active pair, verify the visible note's `package_path`, matching package
 
 Open each file in `views/` and confirm that filters match the deployed vault's Type and relationship conventions. Follow [[tolaria-saved-views|Tolaria Saved Views]] for the current file contract. Active views should normally exclude notes with `_archived: true`.
 
-## Configure External Raw Roots
+## Configure External Project File Roots
 
-If the deployed vault will point to raw files that stay outside the vault, create `.local/roots.yml` in the deployed vault root and keep it ignored by Git. This file maps portable `root_key` values in Source notes to local folders on this machine.
+If the deployed vault will point to maintained inputs, outputs, or deliverables outside Git, create `.local/roots.yml` in the deployed vault root and keep it ignored by Git. This file maps portable `root_key` values in Source notes to local folders on this machine.
 
 Example:
 

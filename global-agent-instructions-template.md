@@ -22,7 +22,7 @@ Do not perform Second Brain retrieval when the prompt already contains the infor
 
 When outside a specific project, search conservatively from the vault rules, project notes, indexes, topics, recent notes, and Inbox/Unprocessed notes.
 
-Do not let workspace `docs/` folders become parallel Second Brain stores. Keep scripts, prototypes, fixtures, generated outputs, and implementation-local notes in the workspace. Durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state belong in the relevant vault as typed notes linked from the project or entry note.
+Do not let workspace `docs/` folders become parallel Second Brain stores. Keep scripts, prototypes, fixtures, implementation-local notes, and versioned or reproducible build outputs in the workspace. Route durable non-versioned inputs, outputs, and deliverables through the deployed vault's configured external-project-file strategy and linked Source notes. Durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state belong in the relevant vault as typed notes linked from the project or entry note.
 
 If a workspace expects Second Brain memory but the configured root for its named vault role is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
 

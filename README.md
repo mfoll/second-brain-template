@@ -36,10 +36,10 @@ New deployment, in outline:
 1. Verify the reviewed template commit is the exact GitHub default-branch tip, then create and clone the destination repository and compare its tree hash.
 2. Rename and customize [[vault]], `AGENTS.md`, this README, and the automation guide for the deployed scope and privacy boundary.
 3. Configure a stable logical vault role through the user's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
-4. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
-5. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
-6. If external files remain outside the vault, create ignored `.local/roots.yml` mappings and Source bridges, then run [[procedures/check-external-raw-references|Check External Raw References]].
-7. Run mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
+4. Choose the external-project-file strategy and `attachments/` policy. Configure ignored `.local/roots.yml` mappings and Source bridges when durable files stay outside Git.
+5. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
+6. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
+7. Run external-reference, mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
 
 ## Core model
 
@@ -59,11 +59,17 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Create or repair saved-view YAML through [[tolaria-saved-views|Tolaria Saved Views]].
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
-Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; workspace documentation remains implementation-local, generated, or transient.
+Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; implementation-local, versioned or reproducible generated, and transient material may stay in the workspace. Durable non-versioned files follow the project's linked external location.
 
-## External raw files
+## External project files
 
-Do not copy maintained external folders into the vault by default. Use a `Source` note with fields such as:
+Do not copy maintained external folders into the vault by default. A deployment chooses one default strategy:
+
+- `convention-based`: derive each project folder from a configured external root and project slug;
+- `linked-per-project`: confirm and link a distinct external folder for each project;
+- `workspace-only`: allow no durable non-versioned outputs unless a project explicitly adds an external location.
+
+Use a `Source` note for maintained inputs, outputs, or deliverables with fields such as:
 
 ```yaml
 type: Source
@@ -75,6 +81,8 @@ last_checked: YYYY-MM-DD
 ```
 
 Machine-specific candidates belong in ignored `.local/roots.yml`. `guarded-write` means read-only by default; writing requires explicit authorization for the specific external action.
+
+A deployed vault may disable `attachments/` or reserve it for small Git-tracked vault assets. It must not become a generic store for durable unversioned outputs. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files.
 
 ## Skills and automations
 

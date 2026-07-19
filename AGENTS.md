@@ -18,7 +18,7 @@ Keep changes small, portable, and easy to review. Current user instructions over
 - This file owns vault-wide invariants and routing.
 - Root Type notes define note semantics. Procedures own reusable workflows. Skills activate a Procedure or, when explicitly specialized, own executable detail as defined by [[skill]].
 
-Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. Keep implementation-local, generated, or transient documentation beside project artifacts; promote durable context, decisions, questions, and state into typed vault notes.
+Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. Keep implementation-local, reproducible, and transient material beside project artifacts; promote durable context, decisions, questions, and state into typed vault notes. Route durable non-versioned files through the deployed external-file strategy and Source notes.
 
 ## Retrieval
 
@@ -28,7 +28,7 @@ Start from the narrowest durable surface:
 2. For exact lookup, use known paths, frontmatter, wikilinks, saved views, and direct file search.
 3. For fuzzy recall, start from likely Projects, Responsibilities, Topics, Sources, Opinions, Questions, Concepts, recent Events, and Inbox surfaces before widening.
 
-If the user refers to a raw file, folder, dataset, manuscript, external document, or path-like reference from a project workspace, first check the entry note and linked Source notes for External Raw Locations or `root_key` plus `relative_path` pointers before guessing paths or searching broadly.
+If the user refers to a project file, folder, dataset, manuscript, external document, output, deliverable, or path-like reference from a project workspace, first check the entry note and linked Source notes for external project locations or `root_key` plus `relative_path` pointers before guessing paths or searching broadly.
 
 Read progressively: inspect frontmatter, H1, the opening summary, and headings first; then relevant sections. Read a full long note only when complete evidence or wording is required. Broad search output is scouting, not proof; inspect the underlying Markdown before making claims or edits.
 
@@ -43,7 +43,7 @@ Do not depend on machine-local retrieval indexes by default. Any optional index 
 - Type definitions remain root notes. When a note Type affects selection, interpretation, lifecycle, structure, or an edit, inspect the matching root Type note before relying on its semantics.
 - Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces. Quote scalar wikilinks, use YAML lists for multiple values, and preserve valid custom relationship keys unless explicitly normalizing.
 - Root wikilinks use filename stems; folder notes use vault-relative path stems.
-- Frontmatter keys beginning with `_` are normally viewer-managed; change them only when requested or required by a Type or Procedure. `attachments/` contains assets, not notes or Types.
+- Frontmatter keys beginning with `_` are normally viewer-managed; change them only when requested or required by a Type or Procedure. Disable `attachments/` or reserve it for small Git-tracked vault assets, never durable unversioned outputs.
 - Use `_archived: true` for retained inactive material and exclude it from active views. Do not default to an `archive/` folder or `status: Archived`. Delete only when useful content and provenance have a better durable home.
 
 Before creating a view, Type, Procedure, or other repeated vault artifact, inspect nearby examples and follow the current dominant convention. If written guidance and existing practice diverge, reconcile them before adding another variant.
@@ -56,7 +56,7 @@ Read whenever prior vault context matters. Write only when the user asks to save
 
 Keep project writeback proportional: update the entry Project and directly affected notes, reconcile its summary, actions, and human view, and propose broad or uncertain cascades before applying them.
 
-Sources preserve provenance in both frontmatter and readable body sections. External raw-file notes use portable `root_key` plus `relative_path`; `access: guarded-write` means read-only unless the user authorizes the specific external write.
+Sources preserve provenance in both frontmatter and readable body sections. External project-file notes use portable `root_key` plus `relative_path`; `access: guarded-write` means read-only unless the user authorizes the specific external write.
 
 Retrieve relevant Opinion notes whenever the user's stance materially affects drafting, planning, review, briefing, maintenance, or ingestion. Treat Opinions as challengeable context, not evidence. During ingestion, answer resolvable question-shaped material first and create a Question only when the unresolved issue is consequential, recurring, decision-driving, or a needed retrieval anchor.
 
@@ -82,7 +82,7 @@ The template includes [[procedures/review-multi-vault-consistency|Review Multi-V
 
 ## Template and deployment boundary
 
-This repository is structure, not memory. Do not add private or work content, credentials, local paths, caches, or generated dumps. After deployment, replace placeholders, customize scope and privacy, and delete or archive template-only residue.
+This repository is structure, not memory. Do not add private or work content, credentials, local paths, caches, or generated dumps. After deployment, replace placeholders, customize scope and privacy, choose an external-project-file strategy and `attachments/` policy, and delete or archive template-only residue.
 
 When a generic rule changes, update the template first, then deliberately port compatible changes to selected deployed-vault interface files. Preserve intentional local differences and do not inspect private content as part of propagation.
 
