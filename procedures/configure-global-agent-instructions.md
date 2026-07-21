@@ -20,6 +20,16 @@ Read `AGENTS.md` and inspect the current machine-local instruction surface befor
 
 If ownership is unclear, stop and ask. Do not combine the two modes.
 
+## Select runtime instruction surfaces
+
+Configure each agent runtime that will work from the vault or from linked project workspaces:
+
+- Codex: use the controlled configuration source when one exists; for a standalone setup, merge the block into `${CODEX_HOME:-$HOME/.codex}/AGENTS.md`.
+- Claude Code: use the controlled configuration source when one exists; for a standalone setup, merge the block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Retain the vault-root and project-local `CLAUDE.md` shims that import their adjacent `AGENTS.md`.
+- Another agent: use only its documented user and project instruction surfaces. When it supports imports, make its project entry point import `AGENTS.md`; otherwise maintain the smallest adapter possible and keep `AGENTS.md` authoritative.
+
+Do not assume that instruction loading also enables Skill discovery. Configure retained Skill packages separately through [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]].
+
 ## Controlled multi-vault steps
 
 1. Read the routing/control vault's global-instruction architecture note and the executable source's own instructions.
@@ -42,6 +52,7 @@ If ownership is unclear, stop and ask. Do not combine the two modes.
 
 For either mode:
 
+- verify every selected runtime loads its intended machine-global instruction surface;
 - test role-to-root resolution from a workspace pointer;
 - read the resolved vault `AGENTS.md` and entry note without using an embedded project-local root;
 - confirm stale roots, copied project rules, or broad machine details are absent from portable notes;

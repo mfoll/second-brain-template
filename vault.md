@@ -37,6 +37,7 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [ ] Define the deployed vault's purpose, scope, privacy boundary, and logical role.
 - [ ] Replace template placeholders and remove workflows the vault does not need.
 - [ ] Configure compact project pointers and any optional automations.
+- [ ] Configure and verify Skill discovery for each selected agent runtime.
 - [ ] Create the first real Project, Responsibility, or Source and test retrieval.
 - [ ] If external raw files are needed, configure ignored root mappings and verify Source bridges.
 
@@ -53,6 +54,7 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [[tolaria-saved-views|Tolaria Saved Views]]
 - [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]]
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
+- [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]]
 - [[vault-automations|Vault Automations]]
 
 ## Maintenance Log

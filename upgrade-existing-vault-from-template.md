@@ -122,6 +122,8 @@ Treat every installed vault-owned Skill as a coherent pair:
 
 Update both sides when shared purpose, ownership, name, path, or lifecycle changes. To retire a Skill, remove its installed package and archive or remove the catalogue note and active routes; do not leave a dormant package discoverable under `.agents/skills/`. Do not force a standalone package into a fictitious Procedure merely for template conformity; for a Procedure-backed package, the Procedure wins on conflict and duplication is reduced only after a clause audit.
 
+If the upgrade includes runtime discovery, port [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] and `scripts/configure-agent-skills.sh` together. Run the installer only after the retained Skill set is final. Preserve an existing controlled multi-vault installer and collision policy; do not add a competing set of links.
+
 ### Views and automations
 
 Validate saved-view syntax against [[tolaria-saved-views|Tolaria Saved Views]], preserve deliberate local display choices, and exclude `_archived: true` from active views. Do not activate a schedule merely because the template documents one. Cross-vault review belongs only in a designated routing/control vault.
@@ -135,6 +137,7 @@ Do not checkpoint an upgrade until all four validation groups pass. Resolve hard
 - Run [[procedures/lint-vault|Lint Vault]] and its compactness helper.
 - Check frontmatter, first H1s, Type resolution, portable wikilinks, relationships, views, active Project surfaces, and orphaned active notes.
 - Confirm each installed Skill catalogue/package pair satisfies [[skill]].
+- For every runtime included in the upgrade, run the authoritative Skill installer in check mode and require zero missing or conflicting retained packages.
 - Inspect `git status`, the complete task-scoped diff, and changed-file list.
 
 ### Semantic
@@ -153,6 +156,8 @@ Test from the same entry surfaces an agent will use:
 3. retrieve one linked detailed or historical fact without reading unrelated notes;
 4. retrieve one Procedure through its task route and, when installed, through its Skill package;
 5. resolve one saved project view and one Source provenance or external-location pointer when those features are used.
+
+When runtime discovery changed, perform step 4 through each configured runtime's actual Skill discovery surface.
 
 Record the query, expected answer or path, files read, and result. Compare against the baseline packet recorded before editing. A link checker alone is not a retrieval test.
 

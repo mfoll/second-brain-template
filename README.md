@@ -20,6 +20,7 @@ Do not add personal or work context, raw source dumps, credentials, attachments,
 - [`procedures/`](procedures) as portable workflow sources of truth;
 - [`.agents/skills/`](.agents/skills) as thin activation wrappers;
 - [`skills/`](skills) as visible Skill catalogue notes;
+- [`scripts/configure-agent-skills.sh`](scripts/configure-agent-skills.sh) as the machine-local Codex, Claude Code, or explicit Agent Skills discovery bridge;
 - [`views/`](views) as starter Tolaria work surfaces;
 - [[tolaria-saved-views]] as the on-demand saved-view syntax reference;
 - [[vault-automations]] as a per-vault automation documentation pattern;
@@ -35,11 +36,48 @@ New deployment, in outline:
 
 1. Verify the reviewed template commit is the exact GitHub default-branch tip, then create and clone the destination repository and compare its tree hash.
 2. Rename and customize [[vault]], `AGENTS.md`, this README, and the automation guide for the deployed scope and privacy boundary.
-3. Configure a stable logical vault role through the user's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
+3. Configure a stable logical vault role through each selected runtime's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
 4. Choose the external-project-file strategy and `attachments/` policy. Configure ignored `.local/roots.yml` mappings and Source bridges when durable files stay outside Git.
 5. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
-6. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
-7. Run external-reference, mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
+6. Follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for each runtime that should discover the retained Skill packages.
+7. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
+8. Run external-reference, mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
+
+## Agent runtime setup
+
+Agent compatibility has two independent layers. Configure both for every runtime that should use the deployed vault:
+
+| Layer | Canonical source | Runtime adapter |
+| --- | --- | --- |
+| Always-loaded instructions and vault routing | Vault and workspace `AGENTS.md` files | The runtime's machine-global and project instruction surfaces |
+| On-demand workflows | Retained `.agents/skills/<skill-name>/` packages | Symlinks in the runtime's documented Agent Skills directory |
+
+For a standalone Codex deployment, merge [[global-agent-instructions-template]] into `${CODEX_HOME:-$HOME/.codex}/AGENTS.md`. Codex uses the vault and project `AGENTS.md` hierarchy directly. After removing unneeded Skill packages, install and verify the retained set:
+
+```bash
+./scripts/configure-agent-skills.sh --runtime codex
+./scripts/configure-agent-skills.sh --runtime codex --check
+```
+
+For a standalone Claude Code deployment, merge the same global block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Keep this repository's root `CLAUDE.md`, and add the same minimal shim beside each project pointer; each shim imports its adjacent `AGENTS.md` with `@AGENTS.md`. Then install and verify the retained Skill set:
+
+```bash
+./scripts/configure-agent-skills.sh --runtime claude
+./scripts/configure-agent-skills.sh --runtime claude --check
+```
+
+For another agent, first confirm its documented user/project instruction files and Agent Skills discovery directory. Keep `AGENTS.md` authoritative, add the smallest supported instruction adapter, and pass the documented skills directory explicitly:
+
+```bash
+./scripts/configure-agent-skills.sh --target <RUNTIME_SKILLS_DIRECTORY>
+./scripts/configure-agent-skills.sh --target <RUNTIME_SKILLS_DIRECTORY> --check
+```
+
+Do not guess a path merely because an agent understands `SKILL.md`. If it has no compatible discovery mechanism, agents can still follow the Procedures routed from `AGENTS.md`, but automatic Skill activation is unavailable.
+
+The installer links every package still present under `.agents/skills/`; prune the deployment first. It preflights the complete target, never overwrites a same-name entry, and makes no changes when a conflict exists. Runtime links are machine-local and are not committed. In a controlled multi-vault setup, use the existing configuration source and installer instead of creating a competing global instruction file or second set of links.
+
+See [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] and [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for ownership choices, validation, collision handling, and deployment-ledger requirements.
 
 ## Core model
 
@@ -60,6 +98,8 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
 Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; implementation-local, versioned or reproducible generated, and transient material may stay in the workspace. Durable non-versioned files follow the project's linked external location.
+
+The canonical Skill packages remain under `.agents/skills/`. After deployment and pruning, [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] links those packages into Codex, Claude Code, or another runtime's documented Agent Skills directory. Runtime links are machine-local adapters, not copied workflow sources.
 
 ## External project files
 

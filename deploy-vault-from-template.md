@@ -163,6 +163,8 @@ Use [[global-agent-instructions-template]] as the source for the Second Brain bl
 
 For either mode, project-local `AGENTS.md` pointers name the logical role and entry note but omit concrete roots. Add a minimal project-local `CLAUDE.md` shim importing `AGENTS.md` when needed. Do not duplicate vault policy into project pointers.
 
+Configure every selected runtime's concrete instruction surface as listed in [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]], then configure Skill discovery separately after pruning the retained packages.
+
 Likewise, keep deployment guides only when they remain useful. If retained only as provenance, mark them `_archived: true`, remove them from active `AGENTS.md`, README, root-Project, and `surface_for` routes, and state that they are not active workflows. If deleting one, update every backlink in the same change and pass link validation.
 
 ## Decide Retrieval Needs
@@ -197,6 +199,17 @@ find .agents/skills -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort
 ```
 
 For each active pair, verify the visible note's `package_path`, matching package-directory `name`, catalogue lifecycle, and package-bundled relative support files. A Procedure-backed pair must have a resolvable `wraps` link and name the same Procedure on both sides; a specialized standalone pair must explicitly say that the package owns execution and must not duplicate an existing Procedure. Check documented external prerequisites at execution. Update both sides when shared purpose, ownership, name, path, or lifecycle changes; package-only implementation edits need not churn the catalogue. To retire a Skill, remove the installed package and archive or remove its catalogue note and active routes; record any intentional runtime-only exception.
+
+## Configure Agent Skill Discovery
+
+After pruning the Skill set, follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for every runtime that should discover it. Keep `.agents/skills/` canonical and use the provided installer to create machine-local links:
+
+```bash
+./scripts/configure-agent-skills.sh --runtime codex
+./scripts/configure-agent-skills.sh --runtime codex --check
+```
+
+Replace `codex` with `claude` for Claude Code. For another Agent Skills-compatible runtime, pass its documented discovery directory with `--target`; do not guess unsupported paths. In a controlled multi-vault system, use its existing installer and collision policy rather than layering this standalone installer over it.
 
 ## Review Saved Views
 
@@ -260,6 +273,7 @@ Do not checkpoint or report the deployment complete until all four groups pass. 
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections and deliberate 4–10-note human views unless explicitly opted out.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.
+- Follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] and require its `--check` mode to report zero unresolved entries for every selected runtime.
 - Re-run the placeholder and scope checks, then inspect the complete Git diff.
 
 ### Semantic validation
@@ -278,6 +292,8 @@ Test the deployed system through its intended entry points:
 3. follow one project view to a relevant linked note;
 4. retrieve one Procedure through a task route and, when retained, its Skill package;
 5. retrieve one Source provenance or external-location pointer when the vault uses external files.
+
+For every configured runtime, perform the Skill-package retrieval through that runtime's actual discovery surface rather than only opening `.agents/skills/` directly.
 
 Record the query, expected result, files read, and actual result. Link resolution alone does not prove useful retrieval.
 

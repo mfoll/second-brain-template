@@ -7,9 +7,9 @@ surface_for:
 
 # AGENTS.md — Second Brain Vault Template
 
-This repository is a neutral deployable Markdown Second Brain template. Markdown files, YAML frontmatter, wikilinks, saved views, and Git history are the durable source of truth. Customize this file during deployment for the vault's real scope, privacy boundary, and evidence needs.
+This repository is a neutral Second Brain template. Markdown, YAML frontmatter, wikilinks, saved views, and Git are authoritative. Customize this file during deployment for the vault's scope, privacy boundary, and evidence needs.
 
-Keep changes small, portable, and easy to review. Current user instructions override this guide.
+Keep changes small, portable, and reviewable. Current user instructions override this guide.
 
 ## Instruction ownership
 
@@ -76,6 +76,7 @@ When a task matches an existing Procedure, read and follow it before acting. Use
 | Verify external raw locations | [[procedures/check-external-raw-references|Check External Raw References]] |
 | Diagnose structure or review strategy | [[procedures/lint-vault|Lint Vault]] or [[procedures/review-vault-health|Review Vault Health]] |
 | Initialize a project pointer | [[procedures/initialize-project-memory|Initialize Project Memory]] |
+| Expose retained Skills to an agent runtime | [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] |
 | Checkpoint authorized edits | [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]] |
 
 The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only for routing/control vaults. Ordinary deployments remove its installed Skill package and active routes and must not schedule it.
