@@ -44,6 +44,7 @@ Do not depend on machine-local retrieval indexes by default. Any optional index 
 - Use lowercase relationships: `belongs_to` for parent context, `related_to` for lateral relevance, `has` for selective child or entry-point links, and `surface_for` only for small human project surfaces. Quote scalar wikilinks, use YAML lists for multiple values, and preserve valid custom relationship keys unless explicitly normalizing.
 - Root wikilinks use filename stems; folder notes use vault-relative path stems.
 - Frontmatter keys beginning with `_` are normally viewer-managed; change them only when requested or required by a Type or Procedure. Disable `attachments/` or reserve it for small Git-tracked vault assets, never durable unversioned outputs.
+- Tolaria callouts are selective presentation aids inside note sections. Follow [[tolaria-callouts]] for the verified portable form and semantic use; do not use them instead of headings, typed notes, frontmatter, durable Questions, or Project Next Actions.
 - Use `_archived: true` for retained inactive material and exclude it from active views. Do not default to an `archive/` folder or `status: Archived`. Delete only when useful content and provenance have a better durable home.
 
 Before creating a view, Type, Procedure, or other repeated vault artifact, inspect nearby examples and follow the current dominant convention. If written guidance and existing practice diverge, reconcile them before adding another variant.

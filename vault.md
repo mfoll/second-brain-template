@@ -51,6 +51,7 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [[AGENTS]]
 - [[README]]
 - [[project]]
+- [[tolaria-callouts|Tolaria Callouts]]
 - [[tolaria-saved-views|Tolaria Saved Views]]
 - [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]]
 - [[procedures/initialize-project-memory|Initialize Project Memory]]

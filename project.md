@@ -69,7 +69,8 @@ Current procedures, recurring loops, or work surfaces.
 
 ## Do Not Do Yet
 
-Optional guardrails against premature or unsafe work.
+> [!danger]
+> Optional guardrails against premature or unsafe work.
 
 ## Maintenance Log
 
@@ -77,3 +78,5 @@ Optional guardrails against premature or unsafe work.
 ```
 
 Omit a section only when it would be empty or misleading. Detailed evidence, chronology, exact methods, and reusable decisions belong in linked Sources, Events, Concepts, Questions, Opinions, Procedures, ADRs, or any other suitable Type present in the deployed vault.
+
+Use the `danger` callout shown in the template only when the section contains one compact prose block. Keep lists and multi-block sections as ordinary Markdown. See [[tolaria-callouts]] for the vault-wide convention.

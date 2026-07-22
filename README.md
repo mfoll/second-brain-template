@@ -23,6 +23,7 @@ Do not add personal or work context, raw source dumps, credentials, attachments,
 - [`scripts/configure-agent-skills.sh`](scripts/configure-agent-skills.sh) as the machine-local Codex, Claude Code, or explicit Agent Skills discovery bridge;
 - [`views/`](views) as starter Tolaria work surfaces;
 - [[tolaria-saved-views]] as the on-demand saved-view syntax reference;
+- [[tolaria-callouts]] as the portable callout syntax and restraint reference;
 - [[vault-automations]] as a per-vault automation documentation pattern;
 - portable external-file pointers using `root_key` plus `relative_path`.
 
@@ -95,6 +96,7 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Refresh project synthesis with [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] instead of appending chronology.
 - Keep active Project views small with [[procedures/maintain-project-human-view|Maintain Project Human View]].
 - Create or repair saved-view YAML through [[tolaria-saved-views|Tolaria Saved Views]].
+- Use [[tolaria-callouts|Tolaria Callouts]] only for compact, semantically useful opening prose blocks.
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
 Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; implementation-local, versioned or reproducible generated, and transient material may stay in the workspace. Durable non-versioned files follow the project's linked external location.
