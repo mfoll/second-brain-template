@@ -21,7 +21,7 @@ Cross-vault consistency review belongs only to a vault explicitly designated as 
 ## Candidate jobs
 
 - Process [[ready-to-ingest]] through [[procedures/process-ready-ingestion-inbox|Process Ready Ingestion Inbox]] in manual or scheduled write mode.
-- Run [[procedures/lint-vault|Lint Vault]] read-only, including the type-aware compactness helper.
+- Run [[procedures/lint-vault|Lint Vault]] read-only, including the type-aware compactness and Tolaria icon helpers.
 - Run [[procedures/review-vault-health|Review Vault Health]] read-only for strategic drift and overloaded hot paths.
 
 Start with manual runs. Add a schedule only after the workflow, privacy boundary, failure behavior, and value have been observed.

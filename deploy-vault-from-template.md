@@ -189,7 +189,7 @@ If the deployed vault participates in a multi-vault setup, update the machine-lo
 
 Keep only the generic skills that make sense for the new vault. For an unused vault-owned Skill, remove its installed package and archive or remove its visible catalogue note plus active routes in the same change. Do not leave a dormant package under `.agents/skills/`, where runtimes may still discover it.
 
-Keep the `lint-vault` package available through mandatory validation. If the final deployment intentionally omits it, validate first, remove its pair and routes, then rerun the mechanical checks with the helper from the reviewed template checkout or an equivalent reviewed tool.
+Keep the `lint-vault` package available through mandatory validation. If the final deployment intentionally omits it, validate first, remove its pair and routes, then rerun the mechanical checks with the helpers from the reviewed template checkout or equivalent reviewed tools.
 
 Treat every retained vault-owned Skill as the coherent catalogue/package pair defined by [[skill]]. List both sides:
 
@@ -269,7 +269,7 @@ Do not checkpoint or report the deployment complete until all four groups pass. 
 
 ### Mechanical validation
 
-- Follow [[procedures/lint-vault|Lint Vault]] and run `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
+- Follow [[procedures/lint-vault|Lint Vault]] and run both `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections and deliberate 4–10-note human views unless explicitly opted out.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.

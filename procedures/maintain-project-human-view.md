@@ -89,7 +89,8 @@ Run this check after important project-scoped changes and before the Git checkpo
 6. Remove `surface_for` from stale, archived, superseded, agent-only, or low-level notes.
 7. Keep the view near 3-5 notes when possible; if it would exceed 10, demote lower-priority notes back to normal Project links.
 8. If a surface change is ambiguous, report the proposed add/remove instead of silently changing the view.
-9. Review the diff.
+9. Run `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>`, reload Tolaria, and confirm that any configured icon renders.
+10. Review the diff.
 
 ## Output Standard
 

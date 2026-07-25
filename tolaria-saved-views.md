@@ -43,4 +43,10 @@ filters:
 - Operators are `equals`, `not_equals`, `contains`, `not_contains`, `any_of`, `none_of`, `is_empty`, `is_not_empty`, `before`, and `after`. `any_of` and `none_of` take YAML lists. `regex: true` works with equality and containment operators.
 - Relationship filters use canonical lowercase fields and quoted wikilinks, for example `value: "[[vault]]"`.
 
+## Icon contract
+
+Tolaria accepts three forms: a name from its curated icon registry, one emoji, or an HTTP(S) image URL. For a named icon, Phosphor-style kebab-case is necessary but not sufficient: a plausible name may still resolve to no glyph. Prefer choosing the icon in the current Tolaria picker. When editing YAML directly, use only a name already verified by that picker and by `.agents/skills/lint-vault/references/tolaria-icon-names.txt`; never infer a name from Lucide or from the full Phosphor catalogue. Keep `icon: null` when no verified icon is needed.
+
+After any direct view edit, run `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>`, reload Tolaria, and confirm that the glyph is visible. The helper certifies names present in the snapshot; it reports non-registry values, including emoji and URLs, for visual confirmation without claiming to validate them. The current picker remains authoritative. If it offers a name missing from the bundled snapshot, refresh the reference in the neutral template first, then port the reviewed update to deployed vaults.
+
 Project human views use `views/surface-<project-stem>.yml`, a plain display name, and `surface_for` rather than broad `belongs_to`, backlinks, or title lists. Follow [[procedures/maintain-project-human-view|Maintain Project Human View]] for membership and size. Run [[procedures/lint-vault|Lint Vault]] after structural view changes.

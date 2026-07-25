@@ -1,6 +1,6 @@
 ---
 type: Type
-_icon: message-square
+_icon: chat-dots
 _color: "#ec4899"
 _order: 11
 _organized: true

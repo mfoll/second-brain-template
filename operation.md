@@ -1,6 +1,6 @@
 ---
 type: Type
-_icon: repeat-2
+_icon: arrows-clockwise
 _color: "#06b6d4"
 _organized: true
 _order: 9

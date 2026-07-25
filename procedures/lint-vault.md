@@ -20,7 +20,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 
 - Missing or invalid frontmatter, H1, canonical Type, status, or required lifecycle fields.
 - Broken, ambiguous, title-fallback-only, or non-portable wikilinks; orphaned or unreachable active notes.
-- Relationship-key drift, duplicated aliases, invalid `surface_for`, and saved-view filters using obsolete fields.
+- Relationship-key drift, duplicated aliases, invalid `surface_for`, saved-view filters using obsolete fields, and configured icons absent from Tolaria's curated registry.
 - Active Projects missing useful resumption sections or a human view unless `Project view: false` is set.
 - Project `has` lists or views that have become exhaustive rather than selective.
 - Sources without human-visible provenance; external Source bridges missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked`.
@@ -39,7 +39,7 @@ Type-aware compactness warnings:
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.
-2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings.
+2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names. Verify warned emoji or URL icons in the current Tolaria UI.
 3. Verify findings against the actual files; broad search output is not proof.
 4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.

@@ -134,7 +134,7 @@ Do not checkpoint an upgrade until all four validation groups pass. Resolve hard
 
 ### Mechanical
 
-- Run [[procedures/lint-vault|Lint Vault]] and its compactness helper.
+- Run [[procedures/lint-vault|Lint Vault]] and both bundled helpers: `compactness_audit.py` and `tolaria_icon_audit.py`.
 - Check frontmatter, first H1s, Type resolution, portable wikilinks, relationships, views, active Project surfaces, and orphaned active notes.
 - Confirm each installed Skill catalogue/package pair satisfies [[skill]].
 - For every runtime included in the upgrade, run the authoritative Skill installer in check mode and require zero missing or conflicting retained packages.

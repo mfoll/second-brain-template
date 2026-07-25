@@ -1,6 +1,6 @@
 ---
 type: Type
-_icon: repeat
+_icon: target
 _color: "#ef4444"
 _order: 8
 _organized: true
