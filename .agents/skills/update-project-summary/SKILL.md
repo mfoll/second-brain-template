@@ -18,7 +18,10 @@ Read the vault rules, Project Type, and Procedure completely before acting.
 - Start from the Project, its human view, and only task-relevant linked notes.
 - Keep the front page near 600–1,200 words and preserve its standard resumption sections.
 - Replace stale synthesis instead of appending chronology; keep details in canonical linked notes.
+- Before shortening, build a preservation ledger for every removed block and verify its inspected destination. Thresholds never authorize lossy deletion.
+- Never treat Git as the sole home for decisions, exact parameters, provenance, caveats, rejected options, approvals, identifiers, handoffs, or revisit triggers.
+- If durable detail has no verified destination, create or propose one, or leave a justified compactness exception.
 - Keep Current State concise, actions and links prioritized, and Maintenance Log to meaningful milestones.
 - Preserve uncertainty and provenance. Update directly affected notes only when high-confidence; defer broad cascades.
 - Reconcile the human view when the notes a person should open next changed.
-- Review the diff before checkpointing; push only with current explicit authorization.
+- Review the diff against the preservation ledger before checkpointing; push only with current explicit authorization.

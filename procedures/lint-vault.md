@@ -36,6 +36,8 @@ Type-aware compactness warnings:
 - Question above 750 body words: review whether its answer or analysis belongs in maintained synthesis.
 - Source, Event, or Method above 2,000 body words: preserve the payload, but require a concise opening summary rather than blanket shortening.
 
+Compactness findings are triage signals only. Recommended follow-up must say `review and route` rather than imply blanket shortening. A focused fix must not delete unique durable content until a preservation ledger identifies and verifies a canonical destination for each removed block.
+
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.

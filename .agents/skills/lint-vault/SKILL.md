@@ -20,6 +20,7 @@ Read the vault rules and Procedure completely before acting.
 - Inventory canonical tracked notes and exclude implementation, local, generated, cache, attachment, and support trees.
 - Use both helpers for deterministic warnings, then inspect actual notes before conclusions. The current Tolaria icon picker remains authoritative when it differs from the bundled snapshot.
 - Compactness thresholds are review signals, not blanket failures for long evidence.
+- Recommend preservation-led routing, never blanket shortening; a threshold does not authorize deletion.
 - Respect `Project view: false`, Inbox boundaries, UI-authored Type state, and deliberate local conventions.
 - Do not process Inbox, rewrite summaries, normalize broad relationships, delete notes, or apply fixes unless authorized.
 - Route strategic questions to `review-vault-health`.

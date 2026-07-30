@@ -19,6 +19,7 @@ A Project is a finite effort larger than one sitting. Its note is the live resum
 - `Maintenance Log` keeps the latest 3–5 meaningful milestones. Git carries routine edit history.
 - Replace or reconcile old synthesis when work changes; do not append another dated mini-report.
 - Keep each fact in one canonical durable note and link to it from the Project.
+- Compactness is subordinate to preservation. A long Project may be a justified temporary state when unique durable details have not yet been routed safely.
 
 Project frontmatter is navigational, not exhaustive. Child notes normally link back with `belongs_to`; use Project `has` only for active subprojects and high-value entry points. Active Projects normally have a 3–5-note human view following [[procedures/maintain-project-human-view|Maintain Project Human View]], unless the user has set `Project view: false`.
 
@@ -77,6 +78,6 @@ Current procedures, recurring loops, or work surfaces.
 - YYYY-MM-DD: Meaningful state transition or decision; include a compact decision trace only when it will matter later.
 ```
 
-Omit a section only when it would be empty or misleading. Detailed evidence, chronology, exact methods, and reusable decisions belong in linked Sources, Events, Concepts, Questions, Opinions, Procedures, ADRs, or any other suitable Type present in the deployed vault.
+Omit a section only when it would be empty or misleading. Detailed evidence, chronology, exact methods, and reusable decisions belong in linked Sources, Events, Concepts, Questions, Opinions, Procedures, ADRs, or any other suitable Type present in the deployed vault. Before removing them from a Project, inspect and update the destination; a link or filename alone is not proof that the payload was preserved. Git may carry routine edit history, but it is not the sole durable home for future-use decisions or exact project context.
 
 Use the `danger` callout shown in the template only when the section contains one compact prose block. Keep lists and multi-block sections as ordinary Markdown. See [[tolaria-callouts]] for the vault-wide convention.
