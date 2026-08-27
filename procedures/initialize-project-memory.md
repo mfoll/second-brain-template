@@ -24,7 +24,7 @@ Use this procedure to connect a workspace to a configured Second Brain vault thr
    - for `linked-per-project`, confirm a distinct external folder and do not infer one from unrelated folders;
    - for `workspace-only`, keep only Git-tracked or reproducible artifacts until the user explicitly adds an external location.
    Link maintained inputs, outputs, deliverables, or folders through confirmed Source notes with `root_key` plus `relative_path`. Do not deep-scan shared or private roots.
-7. For a new active Project, follow [[project]] and create its small human view unless the user explicitly chooses `Project view: false`.
+7. For a new active Project, follow [[project]] and create a small human view only when it would add a useful working surface. Absence of a view is valid and does not require `Project view: false`.
 8. Create or update only the marked memory section of workspace `AGENTS.md`, keeping the complete pointer near 80 words. Preserve deliberate custom instructions outside that section; if no safely replaceable section exists, propose the insertion instead of overwriting the file. Do not copy vault rules, secondary notes, raw paths, artifact inventories, or runbooks.
 9. Add a minimal `CLAUDE.md` containing `@AGENTS.md` when Claude Code may use the workspace and no deliberate custom shim exists.
 10. Apply the user's local repository and backup policy. Keep credentials, raw data, controlled material, caches, environments, and unversioned durable outputs out of Git. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files. Apply the deployed `attachments/` policy rather than creating that folder by default.

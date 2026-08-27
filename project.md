@@ -21,7 +21,7 @@ A Project is a finite effort larger than one sitting. Its note is the live resum
 - Keep each fact in one canonical durable note and link to it from the Project.
 - Compactness is subordinate to preservation. A long Project may be a justified temporary state when unique durable details have not yet been routed safely.
 
-Project frontmatter is navigational, not exhaustive. Child notes normally link back with `belongs_to`; use Project `has` only for active subprojects and high-value entry points. Active Projects normally have a 3–5-note human view following [[procedures/maintain-project-human-view|Maintain Project Human View]], unless the user has set `Project view: false`.
+Project frontmatter is navigational, not exhaustive. Child notes normally link back with `belongs_to`; use Project `has` only for active subprojects and high-value entry points. Active Projects may have a 3–5-note human view following [[procedures/maintain-project-human-view|Maintain Project Human View]] when a saved-view workbench adds value. Some active Projects may not benefit from a human view; `Project view: false` can record an explicit opt-out, but it is not required merely because no view exists.
 
 Before removing a Project `has` value or body entry-point link, verify that the target remains findable through its own relationships, another hub or Project link, a saved view, backlinks, or an explicit Inbox/archive convention.
 

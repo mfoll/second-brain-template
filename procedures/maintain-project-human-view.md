@@ -17,17 +17,19 @@ Use this procedure when creating, refreshing, or checking the small human-facing
 
 ## Goal
 
-Keep each active Project's saved view as a small working surface for the user, not a project index. The view should show only the notes a human is likely to open now.
+Keep an active Project's saved view small when a human workbench is useful, not as a project index. Not every Project needs a saved view; some are better resumed from the Project note, linked notes, or other existing surfaces.
 
 ## Frontmatter Contract
 
-Active Projects normally need a saved view unless the Project note has a manual opt-out:
+Human views are optional. Create one when a small saved-view workbench would help the user resume the Project. A Project may remain without a view when that workbench does not add enough value.
+
+The Project note may record an explicit opt-out when useful:
 
 ```yaml
 Project view: false
 ```
 
-Agents must not add this opt-out unless the user explicitly chooses it.
+Agents must not add this opt-out unless the user explicitly chooses it. The absence of a view does not itself require this marker.
 
 Notes that belong on the human surface use:
 
@@ -82,15 +84,16 @@ Exclude notes that are useful only to agents:
 Run this check after important project-scoped changes and before the Git checkpoint:
 
 1. Identify the affected active Project.
-2. If the Project has `Project view: false`, do not create or require a view.
-3. If the Project is not active, do not require a view unless the user asks.
-4. Inspect the changed notes plus the current view members.
-5. Add `surface_for` only to notes the user is likely to open now.
-6. Remove `surface_for` from stale, archived, superseded, agent-only, or low-level notes.
-7. Keep the view near 3-5 notes when possible; if it would exceed 10, demote lower-priority notes back to normal Project links.
-8. If a surface change is ambiguous, report the proposed add/remove instead of silently changing the view.
-9. Run `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>`, reload Tolaria, and confirm that any configured icon renders.
-10. Review the diff.
+2. If no useful saved-view workbench is warranted, leave the Project without a view and do not treat that absence as a defect.
+3. If the Project has `Project view: false`, do not create a view.
+4. If the Project is not active, do not require a view unless the user asks.
+5. Inspect the changed notes plus the current view members when a view exists.
+6. Add `surface_for` only to notes the user is likely to open now.
+7. Remove `surface_for` from stale, archived, superseded, agent-only, or low-level notes.
+8. Keep the view near 3-5 notes when possible; if it would exceed 10, demote lower-priority notes back to normal Project links.
+9. If a surface change is ambiguous, report the proposed add/remove instead of silently changing the view.
+10. Run `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>`, reload Tolaria, and confirm that any configured icon renders.
+11. Review the diff.
 
 ## Output Standard
 

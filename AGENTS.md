@@ -24,7 +24,7 @@ Do not duplicate policy across layers or let workspace `docs/` become a parallel
 
 Start from the narrowest durable surface:
 
-1. For project work, read the workspace pointer, its entry note, the project view, and only task-relevant linked or vault-routed notes.
+1. For project work, read the workspace pointer, its entry note, the project view when present, and only task-relevant linked or vault-routed notes.
 2. For exact lookup, use known paths, frontmatter, wikilinks, saved views, and direct file search.
 3. For fuzzy recall, start from likely Projects, Responsibilities, Topics, Sources, Opinions, Questions, Concepts, recent Events, and Inbox surfaces before widening.
 
@@ -55,7 +55,7 @@ Project notes are compact resumption surfaces, not archives. Follow [[project]];
 
 Read whenever prior vault context matters. Write only when the user asks to save, remember, ingest, process, organize, update, or maintain durable knowledge, except for direct high-confidence project writeback after significant work in a linked workspace.
 
-Keep project writeback proportional: update the entry Project and directly affected notes, reconcile its summary, actions, and human view, and propose broad or uncertain cascades before applying them.
+Keep project writeback proportional: update the entry Project and directly affected notes, reconcile its summary, actions, and any useful existing human view, and propose broad or uncertain cascades before applying them.
 
 Sources preserve provenance in both frontmatter and readable body sections. External project-file notes use portable `root_key` plus `relative_path`; `access: guarded-write` means read-only unless the user authorizes the specific external write.
 

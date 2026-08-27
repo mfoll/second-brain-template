@@ -66,8 +66,8 @@ def main() -> int:
         totals["notes"] += 1
         totals["words"] += body_words
 
-        if relative == "AGENTS.md" and words(text) > 1200:
-            warnings.append(("instructions", relative, f"{words(text)} words; target <=1200"))
+        if relative == "AGENTS.md" and words(text) > 1500:
+            warnings.append(("instructions", relative, f"{words(text)} words; target <=1500"))
 
         if note_type == "Project" and status == "Active":
             totals["projects"] += 1

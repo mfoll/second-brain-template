@@ -21,7 +21,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 - Missing or invalid frontmatter, H1, canonical Type, status, or required lifecycle fields.
 - Broken, ambiguous, title-fallback-only, or non-portable wikilinks; orphaned or unreachable active notes.
 - Relationship-key drift, duplicated aliases, invalid `surface_for`, saved-view filters using obsolete fields, and configured icons absent from Tolaria's curated registry.
-- Active Projects missing useful resumption sections or a human view unless `Project view: false` is set.
+- Active Projects missing useful resumption sections; validate human-view contracts only when a saved view exists. A missing human view is not itself a lint finding, and `Project view: false` is optional documentation rather than a required exemption.
 - Project `has` lists or views that have become exhaustive rather than selective.
 - Sources without human-visible provenance; external Source bridges missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked`.
 - ADRs, Procedures, and project pointers that violate their current contracts.
@@ -30,20 +30,26 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 
 Type-aware compactness warnings:
 
-- `AGENTS.md` above 1,200 words; ordinary workspace pointer above 80 words; specialized pointer above 300 without a real safety reason.
+- `AGENTS.md` above 1,500 words; ordinary workspace pointer above 80 words; specialized pointer above 300 without a real safety reason.
 - Active Project above 1,500 body words; above 3,000 requires a structural split or explicit justification.
 - Project Current State above 250 words, more than 10 unchecked actions, or more than five Maintenance Log entries.
 - Question above 750 body words: review whether its answer or analysis belongs in maintained synthesis.
 - Source, Event, or Method above 2,000 body words: preserve the payload, but require a concise opening summary rather than blanket shortening.
 
-Compactness findings are triage signals only. Recommended follow-up must say `review and route` rather than imply blanket shortening. A focused fix must not delete unique durable content until a preservation ledger identifies and verifies a canonical destination for each removed block.
+Compactness findings are triage signals only. The goal is the smallest trustworthy resumption surface, not a lower word count or fewer notes for its own sake. Valid outcomes include no change, safe wording reduction, reorganization or better routing, and a structural split. Reorganization is often the right response when detail remains useful but obscures current state. Recommended follow-up must say `review and route` rather than imply blanket shortening. A focused fix must not delete unique durable content until a preservation ledger identifies and verifies a canonical destination for each removed block.
+
+## Follow-up routing and confirmation
+
+For a scheduled diagnostic run, identify the current responsible Codex task, if one exists, for each actionable finding. Match narrowly from the affected Project or workspace, exact task title, and recent activity; task summaries are orientation only, not authority.
+
+Report the candidate task, why it appears responsible, and the proposed focused workflow to the user. Do not message or resume that task until the user confirms. If no relevant task is found, say so and propose completing the focused follow-up in the current task. After confirmation, send a preservation-first brief that names the finding, canonical procedure, validation required, and the prohibition on deleting unique information or pushing without separate authorization.
 
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.
 2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names. Verify warned emoji or URL icons in the current Tolaria UI.
 3. Verify findings against the actual files; broad search output is not proof.
-4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures.
+4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures. Include responsible-task candidates and proposed follow-up workflows, but wait for user confirmation before contacting a task.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.
 
 ## Wikilink precedence

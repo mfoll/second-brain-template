@@ -12,8 +12,9 @@ Use this guide to document automations after deployment. The template defines no
 
 - Each job runs from one deployed vault and follows that vault's `AGENTS.md`, Procedure, Skill, privacy boundary, and Git policy.
 - Read-only lint and health jobs never stage, commit, or push.
+- A scheduled lint job diagnoses and proposes ownership. It may identify a responsible Codex task, but must report the candidate and wait for user confirmation before contacting it. If none exists, it proposes doing the focused follow-up in the current task.
 - Write-capable jobs need an explicit scope and narrowly authorized commands. Persisted network approval is only an execution mechanism, not general permission.
-- Set the latest available default-capable Codex model unless the user requests another, then verify the stored automation file and local database state.
+- Set the deployment's approved standalone automation model and reasoning effort. For the current Codex deployment, use `gpt-5.6-luna` with `max` unless the user requests another model or effort. Same-task heartbeats inherit their attached task's settings, so verify that task instead.
 - Stagger schedules across vaults and document whether a job is active, paused, or manual.
 
 Cross-vault consistency review belongs only to a vault explicitly designated as routing/control. Ordinary personal, research, project, or team vaults must not schedule it.
@@ -29,7 +30,7 @@ Start with manual runs. Add a schedule only after the workflow, privacy boundary
 ## Thin prompt pattern
 
 ```text
-In <VAULT_ROOT>, run the <skill-name> skill. Follow AGENTS.md, the skill, and the linked Procedure. Keep the run <read-only or task-scoped write mode>. Report findings or checkpoint only as authorized.
+In <VAULT_ROOT>, run the <skill-name> skill. Follow AGENTS.md, the skill, and the linked Procedure. Keep the run <read-only or task-scoped write mode>. For lint, preserve important information: compactness is not a goal by itself and may call for no change, careful reduction, reorganization, routing, or structural splitting. Identify any current responsible Codex task, report the candidate and proposed workflow, and wait for user confirmation before contacting it. If none exists, say so and offer to perform the focused follow-up in the current task. Report findings or checkpoint only as authorized.
 ```
 
 For sensitive vaults, add an explicit stop rule before private sources or Inbox bodies. Advisory feedback should not block safe ingestion; durable user questions should be reserved for genuine routing or safety blockers.
@@ -40,5 +41,5 @@ For sensitive vaults, add an explicit stop rule before private sources or Inbox 
 - Keep prompts thin and route logic to Procedures.
 - Verify read-only jobs cannot write.
 - Give write jobs task-scoped commit rules and separate push authorization.
-- Check both automation files and any local database row after schedule or model changes.
+- Check both automation files and any local database row after schedule or model changes. For the current Codex deployment, both must show `gpt-5.6-luna` and `max`; for a heartbeat, verify the attached task's inherited settings.
 - Do not copy another vault's automation unchanged without reviewing scope and privacy.

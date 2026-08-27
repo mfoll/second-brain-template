@@ -94,7 +94,7 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Ingest external material through [[procedures/ingest-source|Ingest Source]] with visible provenance.
 - Resume work from Project or Responsibility entry notes, not broad searches.
 - Refresh project synthesis with [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] instead of appending chronology.
-- Keep active Project views small with [[procedures/maintain-project-human-view|Maintain Project Human View]].
+- Keep Project views small when used with [[procedures/maintain-project-human-view|Maintain Project Human View]].
 - Create or repair saved-view YAML through [[tolaria-saved-views|Tolaria Saved Views]].
 - Use [[tolaria-callouts|Tolaria Callouts]] only for compact, semantically useful opening prose blocks.
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
