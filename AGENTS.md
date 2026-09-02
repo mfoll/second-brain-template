@@ -20,6 +20,8 @@ Keep changes small, portable, and reviewable. Current user instructions override
 
 Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. A Brain Project does not require a matching folder or agent-application project. Follow [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]] before creating either. Keep implementation-local, reproducible, and transient material beside substantive project artifacts; promote durable context, decisions, questions, and state into typed vault notes. Route durable non-versioned files through the deployed external-file strategy and Source notes.
 
+For delegated tasks routed through the vault, use the saved project checkout directly by default. Use an isolated Git worktree only for bounded concurrent changes or an intentionally isolated review branch, and state the isolation, integration, and cleanup plan before creating it.
+
 ## Retrieval
 
 Start from the narrowest durable surface:
