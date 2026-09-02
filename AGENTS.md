@@ -14,11 +14,11 @@ Keep changes small, portable, and reviewable. Current user instructions override
 ## Instruction ownership
 
 - Machine-local global instructions resolve logical vault roles to local roots and hold cross-context authorization rules.
-- Project-local `AGENTS.md` files are short pointers: one logical vault role, one entry note (or explicit vault scope), and a missing-root guard.
+- Project-local `AGENTS.md` files are short pointers only inside substantive technical workspaces; never create a folder merely to host one. Each pointer names one logical vault role, one entry note (or explicit vault scope), and a missing-root guard.
 - This file owns vault-wide invariants and routing.
 - Root Type notes define note semantics. Procedures own reusable workflows. Skills activate a Procedure or, when explicitly specialized, own executable detail as defined by [[skill]].
 
-Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. Keep implementation-local, reproducible, and transient material beside project artifacts; promote durable context, decisions, questions, and state into typed vault notes. Route durable non-versioned files through the deployed external-file strategy and Source notes.
+Do not duplicate policy across layers or let workspace `docs/` become a parallel memory store. A Brain Project does not require a matching folder or agent-application project. Follow [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]] before creating either. Keep implementation-local, reproducible, and transient material beside substantive project artifacts; promote durable context, decisions, questions, and state into typed vault notes. Route durable non-versioned files through the deployed external-file strategy and Source notes.
 
 ## Retrieval
 
@@ -77,6 +77,7 @@ When a task matches an existing Procedure, read and follow it before acting. Use
 | Verify external raw locations | [[procedures/check-external-raw-references|Check External Raw References]] |
 | Diagnose structure or review strategy | [[procedures/lint-vault|Lint Vault]] or [[procedures/review-vault-health|Review Vault Health]] |
 | Initialize a project pointer | [[procedures/initialize-project-memory|Initialize Project Memory]] |
+| Decide whether work needs a folder, repository, agent project, or cloud Working area | [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]] |
 | Expose retained Skills to an agent runtime | [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] |
 | Checkpoint authorized edits | [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]] |
 

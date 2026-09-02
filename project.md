@@ -29,6 +29,10 @@ Before removing a Project `has` value or body entry-point link, verify that the 
 
 Create a child Project when a work package has its own outcome, state, actions, collaborators, artifacts, or publication trajectory. The umbrella keeps shared context and a selective subproject list; it does not repeat child details. Use `belongs_to` from child to umbrella and point project workspaces to the most specific active entry note.
 
+## Workspace promotion
+
+A Project note does not imply a matching filesystem folder, repository, or agent-application project. Follow [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]]. Promote to a dedicated workspace only for durable technical artifacts, specialized local requirements, persistent execution, collaboration, or an artifact set that has outgrown the deployment's cloud `Working/` convention. Never create an `AGENTS.md`-only folder as the default representation of a Project.
+
 ## Template
 
 ```md

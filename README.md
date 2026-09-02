@@ -99,7 +99,7 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 - Use [[tolaria-callouts|Tolaria Callouts]] only for compact, semantically useful opening prose blocks.
 - Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
 
-Workspace-local `AGENTS.md` files are pointers, not handbooks. [[procedures/initialize-project-memory|Initialize Project Memory]] keeps them near 80 words, targets one entry note or explicit vault scope, and adds a minimal Claude shim when needed. Durable project knowledge stays in the vault; implementation-local, versioned or reproducible generated, and transient material may stay in the workspace. Durable non-versioned files follow the project's linked external location.
+Brain Projects do not require matching folders or agent-application projects. [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]] defines the promotion gate and cloud `Working/` fallback. Inside a justified technical workspace, `AGENTS.md` is a pointer, not a handbook; [[procedures/initialize-project-memory|Initialize Project Memory]] keeps it near 80 words and adds a minimal Claude shim when needed.
 
 The canonical Skill packages remain under `.agents/skills/`. After deployment and pruning, [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] links those packages into Codex, Claude Code, or another runtime's documented Agent Skills directory. Runtime links are machine-local adapters, not copied workflow sources.
 
@@ -124,7 +124,7 @@ last_checked: YYYY-MM-DD
 
 Machine-specific candidates belong in ignored `.local/roots.yml`. `guarded-write` means read-only by default; writing requires explicit authorization for the specific external action.
 
-A deployed vault may disable `attachments/` or reserve it for small Git-tracked vault assets. It must not become a generic store for durable unversioned outputs. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files.
+A deployed vault may disable `attachments/` or reserve it for small Git-tracked vault assets. It must not become a generic store for durable unversioned outputs. Configure `Working/<project-or-context-slug>/` under the chosen cloud root for retained work before a dedicated external folder is justified. Use an ignored workspace `.tmp/` only for reproducible or disposable intermediates and `/tmp/` for truly disposable files.
 
 ## Skills and automations
 
