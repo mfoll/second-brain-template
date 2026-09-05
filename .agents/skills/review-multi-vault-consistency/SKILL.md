@@ -1,6 +1,6 @@
 ---
 name: review-multi-vault-consistency
-description: Use in a designated routing/control vault to check interface consistency across deployed vaults, the template, and automations.
+description: "Review work, personal and template interfaces from the control vault; read-only unless fixes are requested."
 ---
 
 # Review Multi-Vault Consistency

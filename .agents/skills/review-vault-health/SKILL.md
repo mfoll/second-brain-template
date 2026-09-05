@@ -1,6 +1,6 @@
 ---
 name: review-vault-health
-description: Use for a strategic review of whether the current vault is useful, expressive, compact, and aligned with the user's working model.
+description: "Review vault health and maintenance priorities in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Review Vault Health
@@ -21,3 +21,5 @@ Read the vault rules and Procedure completely before acting.
 - Distinguish lint findings from strategic issues such as overloaded entry notes, append-only writeback, weak resumption, or hidden knowledge.
 - Use compactness metrics as evidence, not a reason to shorten cold Sources or Events.
 - Prefer a few high-value recommendations and propose broad changes before applying them.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.

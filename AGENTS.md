@@ -98,3 +98,7 @@ Review status and diff, preserve unrelated user changes, and stage only task-sco
 Do not silently rewrite an accepted ADR. When a durable decision changes, create a superseding ADR and link the old and new decisions.
 
 Read-only automations never stage, commit, or push. Write-capable automations operate only within their documented vault, scope, and command authorization.
+
+## Scoped instruction use
+
+Resolve the target vault before selecting a same-name skill. Read the matching Procedure in full on first use; reuse it while current instead of rereading it for each step. Read Type definitions when semantics, lifecycle or structure are affected; a wording-only correction does not require unrelated Type research. Explicit authorization persists for the same scope throughout the session. Preserve any specific privacy, external-write and Git boundaries.

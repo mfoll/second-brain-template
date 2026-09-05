@@ -1,6 +1,6 @@
 ---
 name: initialize-project-memory
-description: Use when establishing project memory and deciding whether the work also needs a substantive workspace, repository, agent-application project, or cloud Working area.
+description: "Initialize project memory for a substantive workspace in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Initialize Project Memory
@@ -23,3 +23,5 @@ Read the vault rules and Procedure completely before acting.
 - Do not deep-scan shared or private roots. Resolve the deployed external-project-file strategy and use confirmed Source bridges for maintained inputs, outputs, deliverables, or folders.
 - When a workspace is justified, prepare it before handoff and decide separately whether an agent-application project is needed. Otherwise state that the Brain entry point is sufficient.
 - Apply the user's repository policy and push only with current explicit authorization.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.

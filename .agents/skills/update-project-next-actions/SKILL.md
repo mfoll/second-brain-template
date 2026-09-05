@@ -1,6 +1,6 @@
 ---
 name: update-project-next-actions
-description: Use when completed, changed, or newly created project work should be reconciled with a Project note's Next Actions.
+description: "Reconcile project next actions in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Update Project Next Actions
@@ -21,3 +21,5 @@ Read the vault rules, Project Type, and Procedure completely before acting.
 - Refresh Project state, questions, links, workflows, or guardrails when action changes affect them.
 - Add a milestone only for a meaningful state transition and reconcile the human view when needed.
 - Avoid broad cascades, preserve unrelated edits, review the diff, and push only with current explicit authorization.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.

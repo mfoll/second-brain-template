@@ -1,6 +1,6 @@
 ---
 name: check-external-raw-references
-description: Use when checking, refreshing, or auditing external raw-file Source notes that use root_key plus relative_path.
+description: "Verify external Source locations in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Check External Raw References
@@ -20,3 +20,5 @@ Read the vault rules and Procedure completely before acting.
 - Preserve human-visible provenance and report unresolved roots, missing paths, and drift clearly.
 - Avoid deep inventories, unrelated cleanup, credentials, and external moves or deletions.
 - Review task-scoped diffs before checkpointing; push only with current explicit authorization.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.

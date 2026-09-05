@@ -1,6 +1,6 @@
 ---
 name: update-project-summary
-description: Use when a Project summary must be refreshed or significant project work changed current state, scope, evidence, workflows, questions, actions, or key entry points.
+description: "Refresh compact project state in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Update Project Summary
@@ -25,3 +25,5 @@ Read the vault rules, Project Type, and Procedure completely before acting.
 - Preserve uncertainty and provenance. Update directly affected notes only when high-confidence; defer broad cascades.
 - Reconcile any existing human view when the notes a person should open next changed.
 - Review the diff against the preservation ledger before checkpointing; push only with current explicit authorization.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.

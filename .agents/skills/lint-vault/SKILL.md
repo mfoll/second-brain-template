@@ -1,6 +1,6 @@
 ---
 name: lint-vault
-description: Use to diagnose mechanical, structural, retrieval, compactness, or convention problems in the current vault without broad rewrites.
+description: "Diagnose vault structure without automatic fixes in the selected deployed vault; use that vault’s rules and Procedure."
 ---
 
 # Lint Vault
@@ -25,3 +25,5 @@ Read the vault rules and Procedure completely before acting.
 - Project human views are optional. Validate existing views, but do not report absence solely because an active Project has no saved-view surface; honor an explicit `Project view: false` marker. Respect Inbox boundaries, UI-authored Type state, and deliberate local conventions.
 - Do not process Inbox, rewrite summaries, normalize broad relationships, delete notes, or apply fixes unless authorized.
 - Route strategic questions to `review-vault-health`.
+
+Select this package by the requested vault role, not its name alone. Reuse rules and the complete Procedure already read in this session while they remain current; reread after a relevant change.
