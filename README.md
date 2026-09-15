@@ -90,6 +90,8 @@ Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surfac
 
 ## Normal use after deployment
 
+Optional extension: [[recap|Recap]] provides curated daily, monthly, and yearly conversational memory through [[procedures/prepare-recording-recaps]]. It is disabled until explicitly configured and is not required for the core vault. Deployments may omit the Type, Procedure, preference guide, and their links together. No recorder or scheduled job is bundled or enabled by these notes.
+
 - Capture ambiguous material in unprocessed notes or [[ready-to-ingest]].
 - Ingest external material through [[procedures/ingest-source|Ingest Source]] with visible provenance.
 - Resume work from Project or Responsibility entry notes, not broad searches.

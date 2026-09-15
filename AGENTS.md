@@ -38,6 +38,8 @@ Orient candidates by path, H1, `type`, lifecycle state, task role, `belongs_to`,
 
 Do not depend on machine-local retrieval indexes by default. Any optional index must be documented as a disposable cache with a benchmarked need, privacy scope, refresh path, and Markdown fallback.
 
+If the optional [[recap|Recap]] extension is enabled, search canonical notes first, then relevant Recaps for past discussions, rationale, or decision evolution; check later corrections before stating the final decision. Follow [[procedures/prepare-recording-recaps]] for preparation, review, feedback, and raw retention. Its presence does not activate capture or automation.
+
 ## Note and graph contract
 
 - One Markdown note per file; use kebab-case filenames.

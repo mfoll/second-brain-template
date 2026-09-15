@@ -1,0 +1,43 @@
+---
+type: Type
+_icon: calendar
+_color: "#6366f1"
+_organized: true
+_list_properties_display:
+  - period
+  - period_start
+  - review_status
+---
+
+# Recap
+
+An optional, curated memory of useful discussions over a day, month, or year. A Recap preserves what was decided, why, alternatives, constraints, and unresolved points without retaining a raw transcript or paraphrasing every exchange.
+
+This Type and the associated capture workflow are opt-in extensions, not requirements for using the vault. A deployment may omit them. Their presence never enables a recorder, a scheduled job, private-source access, automatic ingestion, or deletion.
+
+## Contract
+
+- `period`: `daily`, `monthly`, or `yearly`.
+- `period_start` and `period_end`: inclusive local calendar dates (`YYYY-MM-DD`); equal for a daily Recap, full calendar bounds for monthly/yearly Recaps.
+- `timezone`: the configured IANA timezone used to interpret source times and date boundaries.
+- `review_status`: `reviewed` for accepted daily content, `derived` for a roll-up of accepted content, or `needs-review` when a material correction remains unresolved. Proposals stay outside the durable vault until authorized.
+- `related_to`: relevant canonical Project, Person, Topic, Responsibility, or other note links in this vault.
+- `based_on`: daily Recap links for a monthly Recap, monthly links for a yearly Recap. Add direct daily anchors when needed to preserve important decision evidence.
+- `source_runs`: optional stable preparation IDs, not raw text, credentials, device identifiers, or machine paths.
+- `updated`: last meaningful synthesis revision date.
+
+Suggested paths: `recaps/daily/YYYY/YYYY-MM-DD.md`, `recaps/monthly/YYYY/YYYY-MM.md`, and `recaps/yearly/YYYY.md`. Do not create empty daily notes just to complete a calendar.
+
+## Selection and retrieval
+
+Use the most specific canonical note for current truth and actionable knowledge. Use Recaps for historical conversational context, including useful material deliberately kept as recap-only. Do not create a daily Event or generic Note as a substitute. Use Event when a distinct occurrence independently deserves a note, not merely because recording happened that day.
+
+Search canonical structure first. For remembered discussions, dates, rationale, or decision evolution, also search relevant Recaps and follow their links. Check later corrections and superseding decisions before answering what was finally decided. A summary is not a verbatim quotation or proof of speaker identity.
+
+## Body and retention
+
+Organize by topic, not minute or clip. Preserve concrete decisions, rationale, conditions, owners, dates, numbers, rejected options, and useful uncertainty. Distinguish a suggestion from a decision and a mentioned task from an assigned commitment. Link canonical updates instead of copying them in full.
+
+Retain approved daily Recaps indefinitely unless the user asks otherwise. Monthly/yearly notes are maintained topic-based syntheses and navigation, not replacements for dailies. Do not recursively compress away qualifiers or resolve contradictions by guessing. Revisit daily evidence when a roll-up is ambiguous. Late sources or corrections update the affected daily, monthly, and yearly notes without duplicating accepted topics.
+
+Follow [[procedures/prepare-recording-recaps|Prepare Recording Recaps]] and the vault's [[capture-preferences|Capture Preferences]] when this extension is enabled.
