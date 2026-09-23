@@ -25,7 +25,7 @@ If ownership is unclear, stop and ask. Do not combine the two modes.
 Configure each agent runtime that will work from the vault or from linked project workspaces:
 
 - Codex: use the controlled configuration source when one exists; for a standalone setup, merge the block into `${CODEX_HOME:-$HOME/.codex}/AGENTS.md`.
-- Claude Code: use the controlled configuration source when one exists; for a standalone setup, merge the block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Retain the vault-root and project-local `CLAUDE.md` shims that import their adjacent `AGENTS.md`.
+- Claude Code: use the controlled configuration source when one exists; for a standalone setup, merge the block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Retain the vault-root `CLAUDE.md` shim. Project workspaces need none because Claude Code reads `AGENTS.md` directly, unless the deployment uses a provider or setting where that loading is unavailable.
 - Another agent: use only its documented user and project instruction surfaces. When it supports imports, make its project entry point import `AGENTS.md`; otherwise maintain the smallest adapter possible and keep `AGENTS.md` authoritative.
 
 Do not assume that instruction loading also enables Skill discovery. Configure retained Skill packages separately through [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]].

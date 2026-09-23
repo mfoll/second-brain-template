@@ -14,7 +14,7 @@ _organized: true
 
 Expose the deployed vault's retained Agent Skills packages to a supported runtime without copying or forking them. The canonical packages remain under `.agents/skills/`; runtime directories contain machine-local symlinks only.
 
-Instructions and skills are separate interfaces. `AGENTS.md` owns shared vault policy, `CLAUDE.md` imports that policy for Claude Code, and this procedure configures on-demand Skill discovery.
+Instructions and skills are separate interfaces. `AGENTS.md` owns shared vault policy, which Claude Code reads directly or through the vault-root `CLAUDE.md` import, and this procedure configures on-demand Skill discovery.
 
 ## Before installation
 
@@ -53,7 +53,7 @@ Do not infer an undocumented path merely because the runtime uses `SKILL.md`. If
 ## Runtime-specific instruction bridge
 
 - Codex reads the vault and workspace `AGENTS.md` instruction hierarchy directly in the supported setup.
-- Claude Code reads `CLAUDE.md`; retain the root shim and project-local shims that import `@AGENTS.md`.
+- Claude Code v2.1.277 or later reads a workspace `AGENTS.md` directly when no `CLAUDE.md` or `CLAUDE.local.md` exists in that directory or above it; retain the vault-root `@AGENTS.md` shim and add project shims only where direct loading is unavailable.
 - For another agent, add only the smallest documented compatibility entry point that loads `AGENTS.md`. Keep shared policy in `AGENTS.md` and do not maintain a copied instruction body.
 
 Machine-global instructions must resolve the deployed vault's logical role and root as described by [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]]. Skill links do not replace that routing.

@@ -27,7 +27,7 @@ Use this procedure to establish project memory and, only when justified, connect
    Link maintained inputs, outputs, deliverables, or folders through confirmed Source notes with `root_key` plus `relative_path`. Do not deep-scan shared or private roots.
 7. For a new active Project, follow [[project]] and create a small human view only when it would add a useful working surface. Absence of a view is valid and does not require `Project view: false`.
 8. Only inside a justified substantive workspace, create or update the marked memory section of `AGENTS.md`, keeping the complete pointer near 80 words. Never create a folder merely for this pointer.
-9. Add a minimal `CLAUDE.md` containing `@AGENTS.md` when Claude Code may use the workspace and no deliberate custom shim exists.
+9. Do not add a project `CLAUDE.md` by default; Claude Code reads the local `AGENTS.md` directly. Add a minimal `CLAUDE.md` containing `@AGENTS.md` only for deliberate Claude-specific instructions or where direct loading is unavailable.
 10. Apply the user's local repository and backup policy. Keep credentials, raw data, controlled material, caches, environments, and unversioned durable outputs out of Git. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files. Apply the deployed `attachments/` policy rather than creating that folder by default.
 11. Review workspace and vault diffs. If a workspace was promoted, report its exact path and whether an agent-application project is justified; otherwise state that the Brain entry point is sufficient.
 

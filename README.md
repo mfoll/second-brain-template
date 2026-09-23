@@ -60,7 +60,7 @@ For a standalone Codex deployment, merge [[global-agent-instructions-template]] 
 ./scripts/configure-agent-skills.sh --runtime codex --check
 ```
 
-For a standalone Claude Code deployment, merge the same global block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Keep this repository's root `CLAUDE.md`, and add the same minimal shim beside each project pointer; each shim imports its adjacent `AGENTS.md` with `@AGENTS.md`. Then install and verify the retained Skill set:
+For a standalone Claude Code deployment, merge the same global block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Keep this repository's root `CLAUDE.md`. Project pointers need no shim because Claude Code reads `AGENTS.md` directly; add a `CLAUDE.md` containing `@AGENTS.md` only where that direct loading is unavailable. Then install and verify the retained Skill set:
 
 ```bash
 ./scripts/configure-agent-skills.sh --runtime claude

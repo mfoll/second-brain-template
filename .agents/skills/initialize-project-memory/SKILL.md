@@ -19,7 +19,7 @@ Read the vault rules and Procedure completely before acting.
 - Do not create a folder or agent-application project merely to host a pointer. Stop at the Brain entry point when no workspace promotion condition is met.
 - Confirm entry-point versus vault scope before creating notes.
 - Keep pointers near 80 words and target one entry note. Do not copy vault rules, raw paths, inventories, or project documentation.
-- Preserve custom local instructions and add only the minimal Claude import shim when appropriate.
+- Preserve custom local instructions. Do not add a Claude import shim unless direct `AGENTS.md` loading is unavailable.
 - Do not deep-scan shared or private roots. Resolve the deployed external-project-file strategy and use confirmed Source bridges for maintained inputs, outputs, deliverables, or folders.
 - When a workspace is justified, prepare it before handoff and decide separately whether an agent-application project is needed. Otherwise state that the Brain entry point is sufficient.
 - Apply the user's repository policy and push only with current explicit authorization.

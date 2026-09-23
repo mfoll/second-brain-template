@@ -121,7 +121,7 @@ Keep the vault conventions, but update wording that should name the concrete vau
 
 Customize the deployed vault's `AGENTS.md` for the vault's purpose, privacy boundary, evidence standards, and domain-specific workflows. Do not copy every template, work/control-vault, or personal-vault rule wholesale when the deployed vault has a different role.
 
-Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`. Do not duplicate the full instruction body into the shim.
+Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`; Tolaria maintains it as a vault guidance file. Do not duplicate the full instruction body into the shim.
 
 ## Choose External Project File Strategy
 
@@ -161,7 +161,7 @@ After verification, retain the deployed `global-agent-instructions-template.md` 
 
 Use [[global-agent-instructions-template]] as the source for the Second Brain block in the machine-local instruction surface. Replace `<VAULT_ROOT>` and `<VAULT_ROLE>` only there, merge narrowly around unrelated custom guidance, and verify the configured root contains this vault's `AGENTS.md`.
 
-For either mode, project-local `AGENTS.md` pointers name the logical role and entry note but omit concrete roots. Add a minimal project-local `CLAUDE.md` shim importing `AGENTS.md` when needed. Do not duplicate vault policy into project pointers.
+For either mode, project-local `AGENTS.md` pointers name the logical role and entry note but omit concrete roots. Claude Code v2.1.277 or later reads a workspace `AGENTS.md` directly when no `CLAUDE.md` or `CLAUDE.local.md` exists in that directory or above it, so project workspaces need no `CLAUDE.md` shim. Add one importing `@AGENTS.md` only where Claude Code cannot load `AGENTS.md` itself, such as sessions on third-party providers or with telemetry disabled. Do not duplicate vault policy into project pointers.
 
 Configure every selected runtime's concrete instruction surface as listed in [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]], then configure Skill discovery separately after pruning the retained packages.
 
