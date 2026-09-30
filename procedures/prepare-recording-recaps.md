@@ -33,6 +33,12 @@ Read each destination's rules and Capture Preferences. Use only small, relevant 
 
 Remove obvious repetitions, silence hallucinations, filler, and fragments with no defensible meaning. Flag low-confidence or contradictory passages, uncertain speaker attribution, missing audio, and suspected broadcast/overheard content. Do not manufacture a coherent story from noise. Report useful coverage and quality counts without preserving discarded content.
 
+### Optional conversation participants
+
+When a deployment enables participant suggestions, infer the people involved at conversation level during preparation using explicit conversation evidence, small relevant reviewed Person/Project slices, and only configured, authorized calendar context. Invitations and people merely mentioned do not prove attendance or identify a sentence's speaker. Calendar-only or relationship-only matches remain tentative; leave competing or weak identities unresolved. Keep calendar metadata transient and preserve each destination's privacy boundary.
+
+Review the proposed participants once per conversation, sharing the selection across its related topics. Allow corrections, additional people, unidentified participants and an explicit unknown choice through the normal review submission. Preserve unsubmitted edits and existing immutable review packets. Retain only approved identities and relevant links in Recaps; unknown identities may accompany useful retained content. Confirmation of presence never establishes sentence-level attribution or ownership of an action. Put host-specific scope, adapter fields, review controls and decision-receipt details in deployment documentation, not in this generic contract.
+
 ## 3. Prepare the review
 
 Split work and personal topics into their respective destinations; do not copy personal details into a control vault. Keep ambiguous routing unresolved rather than guessing. Reconcile overlap with existing notes and other enabled capture sources, including meeting recordings.

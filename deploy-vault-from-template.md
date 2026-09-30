@@ -231,6 +231,10 @@ roots:
 
 Use [[procedures/check-external-raw-references|Check External Raw References]] to verify the local resolver and any external raw-file Source notes. Do not commit `.local/roots.yml`; commit only the Source notes and portable procedures/views.
 
+## Optional recording Recaps
+
+If the user enables [[recap|Recap]], follow [[procedures/prepare-recording-recaps]] and document the selected sources, destination vaults, preparation/review hosts, timezone, retention and review authority in a deployment guide. Participant suggestions are separately optional: specify the authorized calendar scope, relevant reviewed Person context, conversation-level confirmation and explicit unknown choice. Verify scoped calendar access and the review/decision path before claiming deployment works; observe an ordinary scheduled cycle separately. Keep machine-local calendar identifiers, raw recordings and runtime state outside Git and the template. Existing pending reviews must survive upgrades. This interface does not install a recorder, enable a schedule or authorize personal-calendar access.
+
 ## Configure Per-Vault Automations
 
 Review [[vault-automations]] and decide whether this deployed vault should have local automations.
