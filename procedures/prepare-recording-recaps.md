@@ -56,7 +56,7 @@ Deliver one review, with the preparation status and gaps visible. Pass a content
 
 ## 4. Apply decisions and maintain Recaps
 
-Apply only authorized topic dispositions. Follow each target Type and normal writeback rules. Update current synthesis and owners rather than appending a transcript chronology. Write approved daily Recaps using [[recap]], retaining enough detail to answer what was decided and why. Do not create daily Events, generic Notes, or empty recaps automatically.
+Apply only authorized topic dispositions. Follow each target Type and normal writeback rules. Update current synthesis and owners rather than appending a transcript chronology. Write approved daily Recaps using [[recap]], retaining enough detail to answer what was decided and why. Apply the Recap Type’s readable-prose contract before writeback; separate technical receipts from content and check link labels. Do not create daily Events, generic Notes, or empty recaps automatically.
 
 Maintain affected monthly and yearly Recaps by topic from accepted lower-level notes, with traceable links and important date/decision anchors. Preserve all dailies. Revisit daily evidence where higher-level summaries conflict or lose qualifiers. Corrections and late arrivals update the existing period notes; user exclusions also propagate to current roll-ups.
 

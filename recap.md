@@ -24,6 +24,7 @@ This Type and the associated capture workflow are opt-in extensions, not require
 - `related_to`: relevant canonical Project, Person, Topic, Responsibility, or other note links in this vault.
 - `based_on`: daily Recap links for a monthly Recap, monthly links for a yearly Recap. Add direct daily anchors when needed to preserve important decision evidence.
 - `source_runs`: optional stable preparation IDs, not raw text, credentials, device identifiers, or machine paths.
+- `review_refs`: optional review-decision references without raw text; selected message IDs may remain in source metadata.
 - `updated`: last meaningful synthesis revision date.
 
 Suggested paths: `recaps/daily/YYYY/YYYY-MM-DD.md`, `recaps/monthly/YYYY/YYYY-MM.md`, and `recaps/yearly/YYYY.md`. Do not create empty daily notes just to complete a calendar.
@@ -35,6 +36,8 @@ Use the most specific canonical note for current truth and actionable knowledge.
 Search canonical structure first. For remembered discussions, dates, rationale, or decision evolution, also search relevant Recaps and follow their links. Check later corrections and superseding decisions before answering what was finally decided. A summary is not a verbatim quotation or proof of speaker identity.
 
 ## Body and retention
+
+Write for human reading: topic headings without proposal numbers, with prose centred on decisions, rationale, alternatives and meaningful limits. Topic IDs, submission references, UUIDs, hashes, clip counts and approval receipts belong in structured metadata or existing private receipts, not the body. Omit narration about capture operations and actions the agent did not perform. Retain coverage limits only where they affect interpretation, in readable terms. Keep useful canonical wikilinks with explicit labels; reading copies replace them with those labels, without vault paths or import footers. Never remove a factual qualification, attribution or decision merely because it expresses uncertainty.
 
 Organize by topic, not minute or clip. Preserve concrete decisions, rationale, conditions, owners, dates, numbers, rejected options, and useful uncertainty. Distinguish a suggestion from a decision and a mentioned task from an assigned commitment. Link canonical updates instead of copying them in full.
 
