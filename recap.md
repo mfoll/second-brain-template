@@ -11,7 +11,7 @@ _list_properties_display:
 
 # Recap
 
-An optional, curated memory of useful discussions over a day, month, or year. A Recap preserves what was decided, why, alternatives, constraints, and unresolved points without retaining a raw transcript or paraphrasing every exchange.
+An optional, curated memory of useful discussions, activities and captured knowledge over a day, month, or year. A Recap preserves what was decided, why, alternatives, constraints, and unresolved points without retaining a raw transcript or paraphrasing every exchange.
 
 This Type and the associated capture workflow are opt-in extensions, not requirements for using the vault. A deployment may omit them. Their presence never enables a recorder, a scheduled job, private-source access, automatic ingestion, or deletion.
 
@@ -25,6 +25,7 @@ This Type and the associated capture workflow are opt-in extensions, not require
 - `based_on`: daily Recap links for a monthly Recap, monthly links for a yearly Recap. Add direct daily anchors when needed to preserve important decision evidence.
 - `source_runs`: optional stable preparation IDs, not raw text, credentials, device identifiers, or machine paths.
 - `review_refs`: optional review-decision references without raw text; selected message IDs may remain in source metadata.
+- `capture_refs`: optional captured-topic references, each with `id` (unified topic), `decision_ref` (explicit approval), and `captured_on` (capture date). Used for deduplication and verification, never displayed in the body.
 - `updated`: last meaningful synthesis revision date.
 
 Suggested paths: `recaps/daily/YYYY/YYYY-MM-DD.md`, `recaps/monthly/YYYY/YYYY-MM.md`, and `recaps/yearly/YYYY.md`. Do not create empty daily notes just to complete a calendar.
