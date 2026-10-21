@@ -100,6 +100,11 @@ def resolve_source_target(root: Path, relative_path: str) -> Path:
     target = (resolved_root / relative).resolve()
     if not target.is_relative_to(resolved_root):
         raise ValueError("symlink resolves outside the configured root")
+    # Non-strict resolve/exists can suppress symlink-loop errors on newer Python.
+    try:
+        target.stat()
+    except (FileNotFoundError, NotADirectoryError):
+        pass
     return target
 
 

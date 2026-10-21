@@ -45,10 +45,12 @@ class ReferenceScopeTests(unittest.TestCase):
 
     def test_unsafe_paths_and_linked_notes_remain_unchanged(self) -> None:
         (self.allowed / "escape").symlink_to(self.outside, target_is_directory=True)
+        (self.allowed / "loop").symlink_to("loop")
         cases = {
             "absolute.md": str(self.outside),
             "parent.md": "../outside",
             "symlink.md": "escape",
+            "loop.md": "loop",
         }
         originals = {}
         for name, relative in cases.items():
@@ -65,7 +67,7 @@ class ReferenceScopeTests(unittest.TestCase):
         for path, original in originals.items():
             with self.subTest(path=path.name):
                 self.assertEqual(path.read_text(encoding="utf-8"), original)
-        self.assertEqual(result.stdout.count("WARN unsafe or unresolvable relative_path"), 3)
+        self.assertEqual(result.stdout.count("WARN unsafe or unresolvable relative_path"), 4)
         self.assertNotIn(str(self.root), result.stdout)
 
     def test_valid_indexes_refresh_without_following_directory_symlinks(self) -> None:
