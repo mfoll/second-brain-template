@@ -1,3 +1,4 @@
-name: process-inbox
-description: Activate the Process Inbox procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Process Inbox"
+  short_description: "Organize captures into retrievable vault notes."
+  default_prompt: "Use $process-inbox in the selected vault, following its AGENTS.md and Procedure."

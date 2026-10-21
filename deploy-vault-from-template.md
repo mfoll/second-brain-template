@@ -10,9 +10,34 @@ surface_for:
 
 Use this guide to create a new concrete vault from this template. If the destination repository or vault already exists, stop and follow [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]] instead. Do not reuse the fresh-deployment commands as an upgrade mechanism.
 
+## Choose the setup path
+
+Start with the folder setup below. The later GitHub walkthrough is optional when repository history, a verified template snapshot and rollback tags are useful. Global routing, Skills, external-file helpers and automation are separate choices; configure only the features selected by the user.
+
+## Minimal folder setup
+
+1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool. Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
+2. Open the folder in the existing Markdown editor. Name [[vault]] and give it a purpose, scope and privacy boundary. Keep existing project documents, repositories and task tools in their canonical locations.
+3. If agents will use the vault, customize its `AGENTS.md` for that scope and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair and active routes, as described below.
+4. Create one Project and a non-sensitive Source, with a useful link between them. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. No audit helper or Skill installation is required for this first check.
+5. Agree source, tool, backup and retention boundaries once through [[README]]. Use the existing backup method, adding Git history only if selected. Keep `LICENSE` and applicable `THIRD_PARTY_NOTICES.txt` with retained template material; added content keeps its own ownership and confidentiality.
+
+Stop here for a basic notes setup. Report what works and any optional choices still open; do not call unselected integrations installed or failed.
+
+## Optional connections
+
+- To use the Brain from other project folders, follow [[procedures/configure-global-agent-instructions]] to add a small global routing block. Preserve existing instructions and use their generator when applicable.
+- To connect a particular existing project, add a marked memory section through [[procedures/initialize-project-memory]], preserving its technical rules.
+- For discoverable workflow shortcuts, select retained Skills and follow [[procedures/configure-agent-skill-discovery]]. The link installer does not install instruction files.
+- For external-file helpers, saved views or automation, use only the corresponding sections below. Basic note use needs no Python, shell installer, service or schedule.
+
+## Optional GitHub walkthrough
+
+The remaining steps provide a reproducible Git-backed deployment. Keep the template snapshot, rollback and content-review checks when using this route; apply integration sections only to the features selected during setup.
+
 ## Inputs
 
-Collect these values before changing files:
+For the GitHub route, collect these values before changing files; external-file settings are needed only when that feature is selected:
 
 - `<NEW_VAULT_NAME>`
 - `<TEMPLATE_REPOSITORY>`: the reviewed GitHub template in `OWNER/REPOSITORY` form.
@@ -121,11 +146,13 @@ Keep the vault conventions, but update wording that should name the concrete vau
 
 Customize the deployed vault's `AGENTS.md` for the vault's purpose, privacy boundary, evidence standards, and domain-specific workflows. Do not copy every template, work/control-vault, or personal-vault rule wholesale when the deployed vault has a different role.
 
-Keep `CLAUDE.md` as a root compatibility shim pointing to `AGENTS.md`; Tolaria maintains it as a vault guidance file. Do not duplicate the full instruction body into the shim.
+Use the responsible-use section in [[README]] to agree source scope, AI tools/accounts, storage destinations, backup and retention during setup. Record those choices in the deployed README or its linked setup guide. Reuse them for routine work; ask when a material new risk or change of scope requires a decision.
+
+Keep `CLAUDE.md` and `GEMINI.md` as small runtime imports of the daily vault `AGENTS.md`. Preserve runtime-specific instructions when adding an import to an existing file. Do not copy the full rulebook into each runtime file, and do not generate per-runtime vault copies merely because global instructions elsewhere are generated.
 
 ## Choose External Project File Strategy
 
-Choose and record one default strategy in the deployed README and `AGENTS.md`:
+If external project files need a configured strategy, choose and record one in the deployed README or linked setup guide. Preserve established file locations; this is not a requirement to move existing documents:
 
 - `convention-based`: durable non-versioned project files live beneath one configured external root, normally in `<project-slug>/`;
 - `linked-per-project`: each Project links a confirmed external folder through a dedicated Source note; use this when folders are assigned independently, such as per-project shared-drive or OneDrive locations;
@@ -149,7 +176,7 @@ Do not create translated type identities such as `Personne` unless the user expl
 
 ## Configure Global Instruction Routing
 
-First choose one of the two deployment modes in [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]]. Do not combine them.
+This connection is optional for work from other folders. If selected, follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]], preview the exact diff and preserve a private recovery copy. Choose one instruction owner for each selected runtime; preserve unrelated guidance and update an existing Brain section rather than adding a duplicate.
 
 ### Existing controlled multi-vault system
 
@@ -159,11 +186,11 @@ After verification, retain the deployed `global-agent-instructions-template.md` 
 
 ### Standalone vault
 
-Use [[global-agent-instructions-template]] as the source for the Second Brain block in the machine-local instruction surface. Replace `<VAULT_ROOT>` and `<VAULT_ROLE>` only there, merge narrowly around unrelated custom guidance, and verify the configured root contains this vault's `AGENTS.md`.
+Use only the marked block in [[global-agent-instructions-template]]. Replace `<VAULT_ROOT>` and `<VAULT_ROLE>` in the machine-local copy, add or update that block alongside existing guidance, and verify the root contains this vault's `AGENTS.md`. Keep runtime-specific and user instructions intact.
 
-For either mode, project-local `AGENTS.md` pointers name the logical role and entry note but omit concrete roots. Claude Code v2.1.277 or later reads a workspace `AGENTS.md` directly when no `CLAUDE.md` or `CLAUDE.local.md` exists in that directory or above it, so project workspaces need no `CLAUDE.md` shim. Add one importing `@AGENTS.md` only where Claude Code cannot load `AGENTS.md` itself, such as sessions on third-party providers or with telemetry disabled. Do not duplicate vault policy into project pointers.
+For either mode, an optional memory section in a project's existing instructions names the logical role and entry note but omits concrete roots. Preserve the rest of the file and any generator that owns it. Claude Code v2.1.277 or later can read workspace `AGENTS.md` directly in supported setups. Add a Claude or Gemini import only where the selected runtime needs it, preserving existing content and avoiding a duplicate import.
 
-Configure every selected runtime's concrete instruction surface as listed in [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]], then configure Skill discovery separately after pruning the retained packages.
+Verify instruction loading for the runtimes selected for this connection. Skill discovery is a separate optional step after reviewing retained packages.
 
 Likewise, keep deployment guides only when they remain useful. If retained only as provenance, mark them `_archived: true`, remove them from active `AGENTS.md`, README, root-Project, and `surface_for` routes, and state that they are not active workflows. If deleting one, update every backlink in the same change and pass link validation.
 
@@ -189,7 +216,7 @@ If the deployed vault participates in a multi-vault setup, update the machine-lo
 
 Keep only the generic skills that make sense for the new vault. For an unused vault-owned Skill, remove its installed package and archive or remove its visible catalogue note plus active routes in the same change. Do not leave a dormant package under `.agents/skills/`, where runtimes may still discover it.
 
-Keep the `lint-vault` package available through mandatory validation. If the final deployment intentionally omits it, validate first, remove its pair and routes, then rerun the mechanical checks with the helpers from the reviewed template checkout or equivalent reviewed tools.
+Python-assisted audits are optional. If selected, keep the helpers available until their checks pass. They can run from the reviewed template checkout without installing Skills globally; basic manual validation needs no package installation.
 
 Treat every retained vault-owned Skill as the coherent catalogue/package pair defined by [[skill]]. List both sides:
 
@@ -202,7 +229,7 @@ For each active pair, verify the visible note's `package_path`, matching package
 
 ## Configure Agent Skill Discovery
 
-After pruning the Skill set, follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for every runtime that should discover it. Keep `.agents/skills/` canonical and use the provided installer to create machine-local links:
+Only when Skill installation is selected, follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for those runtimes. Keep `.agents/skills/` canonical and use the provided installer to create machine-local links, preserving existing conflicting entries:
 
 ```bash
 ./scripts/configure-agent-skills.sh --runtime codex
@@ -233,7 +260,7 @@ Use [[procedures/check-external-raw-references|Check External Raw References]] t
 
 ## Optional recording Recaps
 
-If the user enables [[recap|Recap]], follow [[procedures/prepare-recording-recaps]] and document the selected sources, destination vaults, preparation/review hosts, timezone, retention and review authority in a deployment guide. Participant suggestions are separately optional: specify the authorized calendar scope, relevant reviewed Person context, conversation-level confirmation and explicit unknown choice. Verify scoped calendar access and the review/decision path before claiming deployment works; observe an ordinary scheduled cycle separately. Keep machine-local calendar identifiers, raw recordings and runtime state outside Git and the template. Existing pending reviews must survive upgrades. This interface does not install a recorder, enable a schedule or authorize personal-calendar access.
+If the user enables [[recap|Recap]], follow [[procedures/prepare-recording-recaps]] and document the selected meeting sources, destination vaults, preparation/review hosts, timezone, source and summary retention, and review authority in a deployment guide. Reuse the agreed source/tool scope from setup. Participant suggestions are separately optional: specify the authorized calendar scope, relevant reviewed Person context, conversation-level confirmation and explicit unknown choice. Verify scoped calendar access and the review/decision path before claiming deployment works; observe an ordinary scheduled cycle separately if one is configured. Keep machine-local calendar identifiers, raw recordings and runtime state outside Git and the template. Existing pending reviews must survive upgrades. This interface does not record meetings, enable a schedule or authorize personal-calendar access.
 
 ## Configure Per-Vault Automations
 
@@ -267,17 +294,17 @@ Expected placeholders may remain in this deployment guide and in [[global-agent-
 
 Review the changed files and confirm that the deployed vault contains only content appropriate for `<VAULT_SCOPE>`. Remove template-only examples, private material that does not belong in the new vault, generated dumps, local machine paths, credentials, and unrelated project content before committing.
 
-## Mandatory Deployment Validation
+## Validate the selected setup
 
-Do not checkpoint or report the deployment complete until all four groups pass. Resolve hard errors; only non-blocking warnings may remain when their rationale and consequence are explicitly recorded in the deployment ledger.
+For the GitHub walkthrough, complete the applicable checks below before checkpointing and record skipped integrations as unselected. Resolve hard errors in selected features; record the rationale for non-blocking warnings. The basic folder route uses its smaller validation above.
 
 ### Mechanical validation
 
-- Follow [[procedures/lint-vault|Lint Vault]] and run both `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
+- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
-- Confirm active Projects have usable resumption sections and deliberate 4–10-note human views unless explicitly opted out.
+- Confirm active Projects have usable resumption sections. Where a human view exists, validate its small, deliberate membership through [[procedures/maintain-project-human-view|Maintain Project Human View]]; absence of a view is valid.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.
-- Follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] and require its `--check` mode to report zero unresolved entries for every selected runtime.
+- For installed Skills, follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] and require its `--check` mode to report zero unresolved entries in each selected discovery directory.
 - Re-run the placeholder and scope checks, then inspect the complete Git diff.
 
 ### Semantic validation
@@ -291,13 +318,13 @@ Do not checkpoint or report the deployment complete until all four groups pass. 
 
 Test the deployed system through its intended entry points:
 
-1. resolve the logical vault role from installed global instructions;
+1. open the vault directly, or resolve its logical role through global instructions when that connection was installed;
 2. open the root or primary Project and identify its outcome, current blocker, and next three actions;
-3. follow one project view to a relevant linked note;
+3. follow a Project link to a relevant note; also exercise a project view if one was configured;
 4. retrieve one Procedure through a task route and, when retained, its Skill package;
 5. retrieve one Source provenance or external-location pointer when the vault uses external files.
 
-For every configured runtime, perform the Skill-package retrieval through that runtime's actual discovery surface rather than only opening `.agents/skills/` directly.
+For each runtime with Skills installed, perform Skill-package retrieval through its actual discovery surface. For instruction integration, confirm that pre-existing technical guidance still loads alongside the memory section and that a repeated installation would produce no duplicate block.
 
 Record the query, expected result, files read, and actual result. Link resolution alone does not prove useful retrieval.
 
@@ -331,7 +358,7 @@ git diff --cached
 git commit -m "Deploy <NEW_VAULT_NAME> from template"
 ```
 
-After the commit and mandatory validation, create and verify a dated reviewed tag. Use a unique suffix if the name already exists:
+After the commit and applicable validation for this GitHub walkthrough, create and verify a dated reviewed tag. Use a unique suffix if the name already exists:
 
 ```bash
 git tag vault-deployment-reviewed-YYYY-MM-DD

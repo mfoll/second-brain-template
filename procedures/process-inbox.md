@@ -15,11 +15,11 @@ Move captured material from vague storage into retrievable structure, or deliber
 
 ## Preserve Original Captures
 
-Before ingesting an Inbox note in a way that will delete, clear, archive, heavily rewrite, or otherwise obscure the original captured text, make sure the current original capture has already been pushed to the configured Git remote. If the original capture is not yet present remotely, create and push a narrow pre-ingestion checkpoint containing the unprocessed Inbox note before continuing.
+Before ingesting an Inbox note in a way that will delete, clear, archive, heavily rewrite, or otherwise obscure the original captured text, verify that its exact current content is recoverable through the deployment's approved backup method. Reuse that configured method without a new confirmation for each capture. A local checkpoint, protected backup outside Git, or existing remote checkpoint may satisfy this rule when appropriate for the material.
 
-This rule protects the user's raw idea from being lost when processing later clears `ready-to-ingest.md`, archives a capture, deletes a duplicate, or promotes only part of the source material into typed notes. If pushing is blocked, keep the original capture visible and stop rather than performing the destructive part of ingestion.
+Never push raw captures merely to unblock ingestion. A remote checkpoint requires both suitable content and existing push authority. If no approved recovery copy is available, leave the original capture visible and continue only non-destructive preparation. Creating a backup must not introduce an unapproved storage destination or put restricted material into Git.
 
-Before clearing, archiving, deleting, or heavily rewriting an internal user capture, also verify that concrete future-use details have been promoted into retrievable notes. Inbox captures follow the same memory-quality standard as chat captures: preserve plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords when they matter for future resumption. The pre-ingestion Git checkpoint is a recovery and audit layer, not the normal way to find missing details.
+Before clearing, archiving, deleting, or heavily rewriting an internal user capture, also verify that concrete future-use details have been promoted into retrievable notes. Inbox captures follow the same memory-quality standard as chat captures: preserve plans, things to test, constraints, caveats, rejected options, examples, exact terminology, and retrieval keywords when they matter for future resumption. The recovery copy is an audit and rollback layer, not the normal way to find missing details.
 
 ## Steps
 

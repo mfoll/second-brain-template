@@ -1,3 +1,4 @@
-name: review-vault-health
-description: Activate the Review Vault Health procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Review Vault Health"
+  short_description: "Review vault usefulness and maintenance needs."
+  default_prompt: "Use $review-vault-health in the selected vault, following its AGENTS.md and Procedure."

@@ -10,7 +10,7 @@ import re
 from pathlib import Path
 
 
-SKIP_DIRS = {".git", ".agents", ".local", ".tolaria-cache", ".cache", "attachments"}
+SKIP_DIRS = {".git", ".agents", ".local", ".tmp", ".tolaria-cache", ".cache", "attachments"}
 
 
 def parse_roots(path: Path) -> dict[str, list[str]]:
@@ -77,6 +77,8 @@ def iter_markdown_files(root: Path) -> list[Path]:
     for path in root.rglob("*.md"):
         if any(part in SKIP_DIRS for part in path.relative_to(root).parts):
             continue
+        if path.is_symlink():
+            continue
         files.append(path)
     return sorted(files)
 
@@ -88,6 +90,17 @@ def resolve_root(root_key: str, roots: dict[str, list[str]]) -> tuple[Path | Non
         if candidate_path.exists():
             return candidate_path, candidates
     return None, candidates
+
+
+def resolve_source_target(root: Path, relative_path: str) -> Path:
+    relative = Path(relative_path)
+    if relative.is_absolute() or ".." in relative.parts:
+        raise ValueError("expected a relative path without parent traversal")
+    resolved_root = root.resolve()
+    target = (resolved_root / relative).resolve()
+    if not target.is_relative_to(resolved_root):
+        raise ValueError("symlink resolves outside the configured root")
+    return target
 
 
 def source_kind(source_type: str) -> str | None:
@@ -109,14 +122,14 @@ def index_depth(index_scope: str) -> int:
 def shallow_folder_lines(path: Path, checked_date: str, max_depth: int) -> list[str]:
     lines = ["## Shallow Folder Index\n", "\n", f"Observed on {checked_date}:\n", "\n"]
     first_level = sorted(
-        [p for p in path.iterdir() if p.is_dir() and not p.name.startswith(".")],
+        [p for p in path.iterdir() if not p.name.startswith(".") and not p.is_symlink() and p.is_dir()],
         key=lambda p: p.name.casefold(),
     )
     for folder in first_level:
         lines.append(f"- `{folder.name}`\n")
         if max_depth >= 2:
             second_level = sorted(
-                [p for p in folder.iterdir() if p.is_dir() and not p.name.startswith(".")],
+                [p for p in folder.iterdir() if not p.name.startswith(".") and not p.is_symlink() and p.is_dir()],
                 key=lambda p: p.name.casefold(),
             )
             for child in second_level:
@@ -172,20 +185,26 @@ def main() -> int:
         note_label = str(note.relative_to(vault))
         resolved_root, candidates = resolve_root(root_key, roots)
         if not resolved_root:
-            report.append(f"WARN unresolved root {root_key} for {note_label}; candidates: {candidates or 'none'}")
+            report.append(f"WARN unresolved root {root_key} for {note_label}; configured candidates: {len(candidates)}")
             continue
 
-        target = resolved_root / relative_path
+        try:
+            target = resolve_source_target(resolved_root, relative_path)
+        except (ValueError, OSError, RuntimeError):
+            report.append(f"WARN unsafe or unresolvable relative_path for {note_label}; note left unchanged")
+            continue
+
+        reference = f"{root_key}: {relative_path}"
         if not target.exists():
-            report.append(f"WARN missing path for {note_label}: {target}")
+            report.append(f"WARN missing path for {note_label} ({reference})")
         else:
             expected = source_kind(fm.get("source_type", ""))
             if expected == "folder" and not target.is_dir():
-                report.append(f"WARN expected folder for {note_label}, found non-folder: {target}")
+                report.append(f"WARN expected folder for {note_label}, found non-folder ({reference})")
             elif expected == "file" and not target.is_file():
-                report.append(f"WARN expected file for {note_label}, found non-file: {target}")
+                report.append(f"WARN expected file for {note_label}, found non-file ({reference})")
             else:
-                report.append(f"OK {note_label}: {target}")
+                report.append(f"OK {note_label} ({reference})")
 
         new_fm = set_frontmatter_value(fm_lines, "last_checked", args.date)
         new_body = body

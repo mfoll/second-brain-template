@@ -16,6 +16,8 @@ Use this procedure before creating a project folder, repository, or agent-applic
 
 A Project note is sufficient by default. Do not create a filesystem folder or agent-application project merely to hold an `AGENTS.md` pointer to that note. Work from an existing vault project or task and name the Project in the prompt.
 
+For an existing project, preserve its folder layout, technical instructions, tools and canonical documentation. Add a memory section and useful links only when requested. This Procedure helps route new artifacts; it is not authority to migrate an established project into the Brain.
+
 ## Promote to a technical workspace
 
 Create or retain a dedicated workspace only when at least one condition is met:
@@ -30,7 +32,7 @@ When promoted, normally initialize Git and a suitable remote for versionable art
 
 ## Route artifacts
 
-1. Put durable decisions, state, questions, evidence synthesis, and retrieval pointers in typed vault notes.
+1. Put selected durable decisions, state, questions, evidence synthesis and retrieval pointers in typed vault notes. Link existing canonical documents and avoid maintaining a duplicate version.
 2. Keep small assets in the vault only when they are intentionally Git-tracked and directly support a note.
 3. Put durable code and reproducible technical artifacts in a repository.
 4. Put durable non-versioned documents and deliverables in the deployment's confirmed external project location.

@@ -26,11 +26,11 @@ ingest_ready: true
 
 The standing intake note [[ready-to-ingest]] is reusable. Never delete, archive, rename, or move it during this workflow.
 
-## Pre-Ingestion Source Checkpoint
+## Preserve original captures
 
-Because this workflow clears processed body content from [[ready-to-ingest]], verify before ingestion that the current unprocessed body content has already been pushed to the configured Git remote. If it has not, create and push a narrow pre-ingestion checkpoint for [[ready-to-ingest]] before processing begins.
+Before clearing processed body content from [[ready-to-ingest]], follow the original-capture preservation rule in [[procedures/process-inbox]]. Verify an approved recovery copy of the exact current capture; reuse the configured backup method and existing authorization.
 
-If the pre-ingestion push is blocked by network, authentication, privacy, unrelated changes, or sandbox approval, stop before clearing body content and leave the original capture visible. Do not rely on the later post-ingestion checkpoint as the only backup of the raw idea.
+A push is not a prerequisite for ingestion. If no suitable recovery copy is available, keep the original body visible and continue only non-destructive preparation. A later checkpoint of synthesized notes cannot recover original text that was never preserved.
 
 ## Steps
 
@@ -39,15 +39,15 @@ If the pre-ingestion push is blocked by network, authentication, privacy, unrela
 3. For [[ready-to-ingest]], inspect only body content below the H1. If there is no content below the H1, make no changes.
 4. Treat ready body content as unprocessed capture and follow [[procedures/process-inbox]]. Delegate clear external sources to [[procedures/ingest-source]].
 5. Create or update only notes directly required by the ready-marked content.
-6. Clear processed body content from [[ready-to-ingest]] only after it has been moved, synthesized, archived, or deliberately discarded.
+6. Clear processed body content from [[ready-to-ingest]] only after the preservation rule above is satisfied and the content has been moved, synthesized, archived, or deliberately discarded.
 7. Preserve the frontmatter, H1, and `ingest_ready: true` flag on [[ready-to-ingest]].
-8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the processed body, and report the optional discussion point in the automation result. Create a `Question` or `Next Actions` item only when the issue is durable, decision-driving, or creates real follow-up work.
-9. If user input is required to know what the content is, where it belongs, whether it is safe or private, or whether a broad structural change is approved, keep the original content visible and add a concrete `## Ingestion Questions` section.
-10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains no unrelated or sensitive material. For scheduled main-branch jobs, use an explicit command such as `git push origin main` rather than a bare `git push`, so persisted approvals can stay command-scoped.
+8. If user feedback would be useful but is not required for safe processing, ingest anyway, clear the preserved and processed body, and report the optional discussion point in the automation result. Create a `Question` or `Next Actions` item only when the issue is durable, decision-driving, or creates real follow-up work.
+9. If a concrete ambiguity about meaning, routing, a new disclosure risk or a broad structural change requires user input, keep the affected original content visible and add a concrete `## Ingestion Questions` section. Reuse agreed source, tool and destination permissions for routine items.
+10. Review the task-scoped diff. If this runs from automation, commit and push only when the automation has explicit permission and the diff contains only material permitted in that destination. For scheduled main-branch jobs, use an explicit command such as `git push origin main` rather than a bare `git push`, so persisted approvals can stay command-scoped.
 
 ## Ingestion Feedback
 
-Ready-ingestion feedback is advisory, not a blocking gate. The automation should keep ingesting, organizing, committing, and pushing processable material even if the user never answers the feedback.
+Ready-ingestion feedback is advisory, not a blocking gate. Continue processable work without waiting for optional feedback; clear original text only after preservation and commit or push only under existing authorization.
 
 Use the feedback standards from [[procedures/process-inbox]] and delegated workflows such as [[procedures/ingest-source]]. In the automation report, briefly state:
 
@@ -61,7 +61,7 @@ Do not leave optional feedback inside [[ready-to-ingest]] if the underlying cont
 
 ## Stop Conditions
 
-Stop and ask before committing or pushing if the diff includes unrelated edits, attachments, secrets, credentials, sensitive documents, generated dumps, or material not clearly derived from ready-marked notes.
+Keep secrets, credentials, raw sensitive documents and generated dumps out of the checkpoint. Ask before including unrelated edits, attachments, material outside the destination's agreed data scope, or content not clearly derived from ready-marked notes. Reuse existing authorization for content within the agreed scope.
 
 
 ## Guardrails

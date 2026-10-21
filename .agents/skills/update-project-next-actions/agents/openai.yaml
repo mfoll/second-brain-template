@@ -1,3 +1,4 @@
-name: update-project-next-actions
-description: Activate the Update Project Next Actions procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Update Project Next Actions"
+  short_description: "Reconcile a Project's current next actions."
+  default_prompt: "Use $update-project-next-actions in the selected vault, following its AGENTS.md and Procedure."

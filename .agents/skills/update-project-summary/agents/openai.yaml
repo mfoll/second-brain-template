@@ -1,3 +1,4 @@
-name: update-project-summary
-description: Activate the Update Project Summary procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Update Project Summary"
+  short_description: "Refresh a Project's compact resumption summary."
+  default_prompt: "Use $update-project-summary in the selected vault, following its AGENTS.md and Procedure."

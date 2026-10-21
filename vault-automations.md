@@ -33,7 +33,7 @@ Start with manual runs. Add a schedule only after the workflow, privacy boundary
 In <VAULT_ROOT>, run the <skill-name> skill. Follow AGENTS.md, the skill, and the linked Procedure. Keep the run <read-only or task-scoped write mode>. For lint, preserve important information: compactness is not a goal by itself and may call for no change, careful reduction, reorganization, routing, or structural splitting. Identify any current responsible Codex task, report the candidate and proposed workflow, and wait for user confirmation before contacting it. If none exists, say so and offer to perform the focused follow-up in the current task. Report findings or checkpoint only as authorized.
 ```
 
-For sensitive vaults, add an explicit stop rule before private sources or Inbox bodies. Advisory feedback should not block safe ingestion; durable user questions should be reserved for genuine routing or safety blockers.
+Document the job's permitted sources, AI tools and storage destinations during setup, following [[README]]. Reuse that scope on later runs. Stop only the affected operation when it would access an excluded source, disclose content to a new unapproved destination or otherwise exceed its authority. Reuse existing authorization for routine work. Advisory feedback should not block safe ingestion; durable user questions should be reserved for genuine routing or safety blockers.
 
 ## Deployment checklist
 

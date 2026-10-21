@@ -1,3 +1,4 @@
-name: lint-vault
-description: Activate the Lint Vault procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Lint Vault"
+  short_description: "Check vault structure and report focused findings."
+  default_prompt: "Use $lint-vault in the selected vault, following its AGENTS.md and Procedure."

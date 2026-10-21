@@ -26,8 +26,8 @@ Use this procedure to establish project memory and, only when justified, connect
    - when retained work must survive machine loss before a dedicated folder is justified, use the deployment's configured `Working/<project-or-context-slug>/` convention.
    Link maintained inputs, outputs, deliverables, or folders through confirmed Source notes with `root_key` plus `relative_path`. Do not deep-scan shared or private roots.
 7. For a new active Project, follow [[project]] and create a small human view only when it would add a useful working surface. Absence of a view is valid and does not require `Project view: false`.
-8. Only inside a justified substantive workspace, create or update the marked memory section of `AGENTS.md`, keeping the complete pointer near 80 words. Never create a folder merely for this pointer.
-9. Do not add a project `CLAUDE.md` by default; Claude Code reads the local `AGENTS.md` directly. Add a minimal `CLAUDE.md` containing `@AGENTS.md` only for deliberate Claude-specific instructions or where direct loading is unavailable.
+8. Inside an existing or justified workspace, inspect its instruction files and any generator that owns them. Preview the diff and preserve a private recovery copy. Add or update only the marked memory section of `AGENTS.md`, normally near 80 words; preserve the rest of the file. That size target applies to the added section, not the existing technical instructions. Never create a folder merely for a pointer, and avoid a duplicate memory section on repeat runs.
+9. Use the selected runtime's existing instruction-loading mechanism. Claude Code can read local `AGENTS.md` directly in supported setups; add `@AGENTS.md` to its existing `CLAUDE.md` only when needed, preserving its content. Apply the same additive rule for a Gemini `GEMINI.md` import. Keep generated files under their existing source and regeneration mechanism.
 10. Apply the user's local repository and backup policy. Keep credentials, raw data, controlled material, caches, environments, and unversioned durable outputs out of Git. Use an ignored project `.tmp/` for task-specific temporary files and `/tmp/` for truly disposable files. Apply the deployed `attachments/` policy rather than creating that folder by default.
 11. Review workspace and vault diffs. If a workspace was promoted, report its exact path and whether an agent-application project is justified; otherwise state that the Brain entry point is sufficient.
 
@@ -38,7 +38,7 @@ Use this procedure to establish project memory and, only when justified, connect
 
 Vault role: `<vault-role>`. Entry note: `<confirmed-wikilink>`.
 
-Resolve the vault root from global instructions. If it is unknown or unreadable, stop and ask; do not guess or create a vault. Read the vault `AGENTS.md`, then the entry note and only task-relevant linked or vault-routed notes. Keep durable knowledge in the vault; workspace Markdown remains implementation-local, generated, or transient.
+Resolve the vault root from global instructions. If it is unknown or unreadable, ask rather than guessing or creating it. Read its `AGENTS.md`, then the entry note and relevant links. Preserve this project's technical instructions, tools and canonical documentation; save selected durable context in the Brain within the agreed scope.
 ```
 
 ## Vault-scoped pointer

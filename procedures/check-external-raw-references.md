@@ -44,18 +44,19 @@ Treat external raw references as read-only by default. Agents may list folders, 
 1. Find active Source notes where `root_key` and `relative_path` are present, or where `storage_system` suggests an external raw-file system.
 2. For each note, verify `storage_system`, `root_key`, `relative_path`, `access`, and `last_checked` exist.
 3. Resolve `root_key` using `.local/roots.yml` when available. If the local config is missing, report that it should be created before relying on references from this machine.
-4. Join the resolved root and `relative_path`.
+4. Resolve the target within the configured root. Reject absolute paths, parent traversal (`..`) and symlinks that escape that root; leave rejected notes unchanged. Skip symlinked Markdown notes and the checker's local/support exclusions.
 5. Check whether the resulting path exists and whether its kind matches `source_type` as a file, folder, or collection root.
-6. For notes with a shallow folder index, compare the note's index with a shallow read-only listing and report likely additions, removals, or renames.
+6. For notes with a shallow folder index, compare the note's index with a shallow read-only listing and report likely additions, removals, or renames. Omit directory symlinks from generated indexes.
 7. When this procedure is run as a maintenance workflow or through the `check-external-raw-references` skill, update only vault notes: set `last_checked` to today's date and refresh the shallow folder index section when present.
 8. Never modify the external raw folder as part of this procedure.
-9. Report unresolved roots, missing paths, kind mismatches, stale indexes, notes updated in the vault, and notes that use absolute local paths instead of `root_key` plus `relative_path`.
+9. Report unresolved roots, unsafe references, missing paths, kind mismatches, stale indexes, notes updated in the vault, and notes that use absolute local paths instead of `root_key` plus `relative_path`. Use portable note/root-key references in reports; do not print resolved machine paths or configured local root candidates.
 
 ## Report Shape
 
 Group findings as:
 
 - Missing or unresolved roots.
+- Unsafe or unresolvable references left unchanged.
 - Missing external paths.
 - Source-type mismatches.
 - Stale shallow indexes.
@@ -66,3 +67,5 @@ Group findings as:
 ## Validation
 
 The procedure succeeds when all referenced external paths resolve or produce clear warnings, and no external raw folder was modified.
+
+For changes to the bundled checker, run `python3 .agents/skills/check-external-raw-references/scripts/test_check_external_raw_references.py`. Its disposable fixtures verify that outside-root references remain unchanged and valid indexes refresh without following directory symlinks.

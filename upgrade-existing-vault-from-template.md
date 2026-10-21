@@ -14,6 +14,12 @@ Use this guide to port reviewed generic improvements into an existing deployed v
 
 This is a preservation-first comparison, not a template merge. The deployed vault remains authoritative for its content and intentional local behavior. Import only compatible interfaces whose value is understood.
 
+## Folder-only upgrade
+
+For a vault without Git, keep its existing private backup method. Preserve a recovery copy of the files in scope, inspect the current instructions and notes, and port only the selected compatible sections. Compare retrieval before and after the change. Add a memory block or import alongside existing guidance, using its generator if one owns it. Apply the global-routing and Skill procedures only when those integrations are selected.
+
+The remaining walkthrough supplies Git/GitHub provenance, tags and review checkpoints for repositories that use them. A folder-only upgrade does not need those tools or a new repository.
+
 ## Inputs
 
 Confirm:
@@ -93,7 +99,7 @@ Apply the smallest compatible edits manually.
 
 Compare `AGENTS.md` section by section. Preserve the deployed vault's scope, privacy, evidence, language, authorization, automation, and domain-specific rules. Port generic invariants and routes without replacing those local instructions or copying a control vault's policy into an ordinary vault.
 
-Keep project-local pointers short. Preserve deliberate custom workspace instructions outside their managed memory section.
+Keep only the added memory section short; preserve the rest of the project's instruction file and any generator that owns it. Preview the diff, keep a private recovery copy and reuse the same section or import rather than appending duplicates.
 
 If the reviewed interface scope includes global instruction routing, follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] and preserve its single-owner split:
 
@@ -124,20 +130,22 @@ Update both sides when shared purpose, ownership, name, path, or lifecycle chang
 
 If the upgrade includes runtime discovery, port [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] and `scripts/configure-agent-skills.sh` together. Run the installer only after the retained Skill set is final. Preserve an existing controlled multi-vault installer and collision policy; do not add a competing set of links.
 
+Port a changed helper together with its referenced resources and applicable upstream notices. Preserve any existing repository licence; adding MIT-licensed template material is not authority to relicense the vault's other content or overwrite its licence file.
+
 ### Views and automations
 
 Validate saved-view syntax against [[tolaria-saved-views|Tolaria Saved Views]], preserve deliberate local display choices, and exclude `_archived: true` from active views. Do not activate a schedule merely because the template documents one. Cross-vault review belongs only in a designated routing/control vault.
 
-## Mandatory Validation
+## Validation for the selected upgrade
 
-Do not checkpoint an upgrade until all four validation groups pass. Resolve hard errors; only non-blocking warnings may remain when their rationale and consequence are explicitly recorded.
+For the Git-backed walkthrough, complete the applicable groups before checkpointing. Resolve hard errors in changed interfaces and record the rationale for non-blocking warnings. The folder-only route uses the same preservation and retrieval principles without the Git or unselected-integration commands.
 
 ### Mechanical
 
-- Run [[procedures/lint-vault|Lint Vault]] and both bundled helpers: `compactness_audit.py` and `tolaria_icon_audit.py`.
+- Follow [[procedures/lint-vault|Lint Vault]] for affected interfaces. When Python-assisted checks are selected, run the relevant bundled helpers: `compactness_audit.py` and `tolaria_icon_audit.py`.
 - Check frontmatter, first H1s, Type resolution, portable wikilinks, relationships, views, active Project surfaces, and orphaned active notes.
 - Confirm each installed Skill catalogue/package pair satisfies [[skill]].
-- For every runtime included in the upgrade, run the authoritative Skill installer in check mode and require zero missing or conflicting retained packages.
+- For runtime Skill discovery included in the upgrade, run the authoritative installer in check mode and require zero missing or conflicting retained packages. Instruction-only changes need no Skill installation.
 - Inspect `git status`, the complete task-scoped diff, and changed-file list.
 
 ### Semantic

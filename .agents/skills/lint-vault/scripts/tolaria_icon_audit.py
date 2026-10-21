@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Audit Tolaria icon fields, validating every named icon against the registry."""
+"""Audit icon fields against the pinned Phosphor name list; confirm UI rendering separately."""
 
 from __future__ import annotations
 
@@ -12,7 +12,7 @@ from urllib.parse import urlparse
 CATALOG_PATH = (
     Path(__file__).resolve().parent.parent
     / "references"
-    / "tolaria-icon-names.txt"
+    / "phosphor-icon-names.txt"
 )
 FRONTMATTER_END_RE = re.compile(r"(?m)^---\s*$")
 SCALAR_RE_TEMPLATE = r"(?m)^{key}:\s*(.*?)\s*$"
@@ -155,14 +155,14 @@ def main() -> int:
     print(
         "SUMMARY\t"
         f"views={counts['views']}\tnote_icons={counts['note_icons']}\t"
-        f"registry_icons={len(catalog)}\terrors={len(errors)}\twarnings={len(warnings)}"
+        f"catalog_icons={len(catalog)}\terrors={len(errors)}\twarnings={len(warnings)}"
     )
     for relative, line, category, value in sorted(errors):
         print(f"ERROR\t{category}\t{relative}:{line}\t{value}")
     for relative, line, category, value in sorted(warnings):
         print(f"WARN\t{category}\t{relative}:{line}\t{value}")
     if not errors and not warnings:
-        print("OK\tall configured Tolaria named icons are verified")
+        print("OK\tall configured named icons are in the Phosphor catalogue; confirm rendering in the viewer")
     elif not errors:
         print("OK\tall named icons are verified; confirm warned non-registry icons in Tolaria")
     return 1 if errors else 0

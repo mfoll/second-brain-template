@@ -6,138 +6,282 @@ surface_for:
   - "[[vault]]"
 ---
 
-# Second Brain Template Repository Guide
+# Second Brain template
 
-This repository is a neutral, empty Markdown Second Brain template. It provides portable note types, vault instructions, procedures, thin skill wrappers, saved views, and automation documentation without becoming a living memory store.
+A lightweight folder of linked Markdown notes that adds persistent memory to your existing tools. Keep your editor, agent, task manager, project repositories and source documents. Save useful context here so you can resume work and understand decisions after the original conversation is gone.
 
-Do not add personal or work context, raw source dumps, credentials, attachments, local roots, caches, or generated agent state here.
+You can read and edit the files with any Markdown editor. [Tolaria](https://tolaria.md/) provides a vault viewer, and an AI agent can help retrieve and maintain notes. Both are optional. The repository contains note templates, instructions and helper scripts; it installs no applications and enables no scheduled jobs.
 
-## What it provides
+Keep this template free of personal or work content, source dumps, credentials, attachments, local roots, caches and generated agent state. Put real knowledge in your own deployed copy.
 
-- [[vault]] as the deployable root Project;
-- root Type notes for the starter ontology;
-- [`AGENTS.md`](AGENTS.md) as the generic vault contract;
-- [`procedures/`](procedures) as portable workflow sources of truth;
-- [`.agents/skills/`](.agents/skills) as thin activation wrappers;
-- [`skills/`](skills) as visible Skill catalogue notes;
-- [`scripts/configure-agent-skills.sh`](scripts/configure-agent-skills.sh) as the machine-local Codex, Claude Code, or explicit Agent Skills discovery bridge;
-- [`views/`](views) as starter Tolaria work surfaces;
-- [[tolaria-saved-views]] as the on-demand saved-view syntax reference;
-- [[tolaria-callouts]] as the portable callout syntax and restraint reference;
-- [[vault-automations]] as a per-vault automation documentation pattern;
-- portable external-file pointers using `root_key` plus `relative_path`.
+[Start here](#start-here) · [Agent instructions](#agent-instructions) · [Responsible use](#responsible-use) · [Note types](#note-types) · [Files and relationships](#files-and-relationships) · [Note lifecycle](#note-lifecycle) · [Saved views](#saved-views) · [Extending the model](#extending-the-model) · [Obsidian, wikis and OKF](#relationship-to-obsidian-wikis-and-okf) · [Repository map](#repository-map) · [Licence](#licence)
 
-The template also contains [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] for deployments explicitly designated as routing/control vaults. Ordinary personal, research, project, or team deployments remove its installed Skill package and active routes; they may retain only the Procedure as clearly archived provenance.
+## Start here
 
-## Deploy or upgrade
+### Set it up yourself
 
-For a new repository, follow [[deploy-vault-from-template]]. For an existing deployed vault, follow [[upgrade-existing-vault-from-template]] and port reviewed interfaces selectively; never overlay or merge the template wholesale.
+1. Create your own private copy in a new folder, using GitHub's template action when available, a clone, or a downloaded copy. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
+2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
+3. Give [vault.md](vault.md) a name and purpose, and define the copy's scope and privacy boundary in this README. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section. Retain the Type definitions you use; pruning the rest can wait.
+4. Create one Project and one non-sensitive Source using their [definitions and templates](#note-types). Link them and try finding the Source again from the Project.
+5. Use the notes as they are. Add [agent routing](#agent-instructions), Skills, external-file helpers, views or automation only when useful. Keep existing project documentation in its canonical location and link to it.
 
-New deployment, in outline:
+Basic note use needs a text editor. Git adds history and rollback; the optional [GitHub deployment walkthrough](deploy-vault-from-template.md) uses Git and the GitHub CLI (`gh`). Python 3.10 or later is needed only for the bundled audit/reference helpers, and the optional Skill-link installer uses a POSIX shell.
 
-1. Verify the reviewed template commit is the exact GitHub default-branch tip, then create and clone the destination repository and compare its tree hash.
-2. Rename and customize [[vault]], `AGENTS.md`, this README, and the automation guide for the deployed scope and privacy boundary.
-3. Configure a stable logical vault role through each selected runtime's machine-local global instructions. Project pointers use that role, not an embedded local vault path.
-4. Choose the external-project-file strategy and `attachments/` policy. Configure ignored `.local/roots.yml` mappings and Source bridges when durable files stay outside Git.
-5. Review Types, Procedures, skills, views, and optional workflows; remove what the deployed vault does not need.
-6. Follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for each runtime that should discover the retained Skill packages.
-7. Delete or archive template-only residue such as active bootstrap templates in ordinary deployed vaults.
-8. Run external-reference, mechanical, semantic, retrieval, and rollback validation, then review the customized diff and checkpoint it under the user's current Git authorization policy.
+### Ask an agent to set it up
 
-## Agent runtime setup
+Open the template with your agent and adapt this request:
 
-Agent compatibility has two independent layers. Configure both for every runtime that should use the deployed vault:
+```text
+Set up a Second Brain in <DESTINATION> for <PURPOSE> using this template.
+Read README.md and deploy-vault-from-template.md. Inspect the destination first;
+preserve existing content and use the upgrade guide if a vault already exists.
+Start with Markdown notes, customize the entry note and vault instructions,
+and verify that a Project can lead to a useful linked note.
+Keep my existing tools, project documents and instruction files.
+For cross-project memory, offer the small global routing block for the runtimes
+I select. Inspect existing instructions, preview the diff and preserve a recovery
+copy; add or update only the Second Brain section or import. If a generator owns
+the instructions, change its source and use its normal regeneration mechanism.
+Leave optional Skill installation, services and automation off unless selected.
+Report the resulting files, checks and any remaining setup choices.
+```
 
-| Layer | Canonical source | Runtime adapter |
+The [deployment guide](deploy-vault-from-template.md) includes the minimal folder route and a more detailed, verifiable GitHub route. It applies integration checks only to the features selected during setup.
+
+Links in this README work on GitHub. Within the vault, `[[project]]` is a wikilink to `project.md`; YAML between `---` lines stores note metadata. [AGENTS.md](AGENTS.md) defines the conventions for agents.
+
+## Responsible use
+
+Set the boundaries once when configuring a vault: which sources it may use, which AI tools and accounts may process them, who may read the notes, where backups live, and how long material should be retained. Keep professional and private content in their appropriate vaults. These choices should reflect your organization's policies and any obligations attached to the source material.
+
+**AI processing.** An agent may send the contents of files it reads to its model provider, even during a read-only task. Choose tools and account settings appropriate for your data, including provider retention and training terms. Use services approved for the material you work with, and keep personal, confidential or otherwise restricted information out of unsuitable tools and storage. Keep credentials out of model prompts and share only the context needed for the task.
+
+**Meetings and other people.** If you use meeting recordings or transcripts, inform participants and obtain their agreement before recording and for the intended transcription, AI processing, retention and sharing. Respect refusals and off-record discussions. Keep notes about people relevant and proportionate, and exclude incidental or overheard conversations. A summary can still contain personal or confidential information.
+
+**Storage and retention.** A private Git repository can still be copied, cloned and shared with collaborators. Keep raw audio, transcript exports, secrets and sensitive source documents outside Git in suitable storage. `.local/` is ignored for machine-local configuration; the credential-file exclusions in `.gitignore` are an additional safeguard, not a content review. Define retention for both sources and summaries, including correction and deletion handling. Removing a note from the current tree does not erase Git history, backups or provider copies. Preserve original captures through an appropriate backup before clearing them; uploading raw material is never a prerequisite for organizing it.
+
+Agree these boundaries during setup and reuse them for routine work. Seek clarification when a new source, tool, destination or action introduces a material new risk or changes the agreed scope. [AGENTS.md](AGENTS.md) carries this operating rule.
+
+## Note types
+
+The template includes all 17 types below; there is no separate type pack to install. You can start by writing only Projects, Sources and general Notes. The other types are available when useful, and some describe the template's own instructions and workflows. Recap is an explicitly optional extension.
+
+| Note | Purpose |
+| --- | --- |
+| [Note](note.md) | General knowledge that does not yet need a more specific type. |
+| [Project](project.md) | Current outcome, state, next actions and links for a finite effort. |
+| [Responsibility](responsibility.md) | An ongoing area of ownership. |
+| [Operation](operation.md) | A recurring activity, with its cadence and operating state. |
+| [Source](source.md) | External material or a maintained file location, with provenance and a useful summary. |
+| [Topic](topic.md) | A broad entry point for related notes and questions. |
+| [Concept](concept.md) | A reusable idea or method. |
+| [Question](question.md) | A consequential unresolved issue worth returning to. |
+| [Opinion](opinion.md) | Your current stance, kept distinct from evidence. |
+| [Person](person.md) | Relevant relationship, role and collaboration context about someone. |
+| [Event](event.md) | A meeting, milestone or other occurrence worth remembering as an event. |
+| [Recap](recap.md) | Optional reviewed summaries of discussions and activities over a day, month or year. |
+| [Guide](guide.md) | Orientation and reference material, including this README. |
+| [Procedure](procedure.md) | How to perform a repeatable workflow. |
+| [ADR](adr.md) | A lasting design decision, its rationale, alternatives and consequences. |
+| [Skill](skill.md) | The visible catalogue entry for an executable agent Skill package. |
+| [Type](type.md) | The definition, metadata and conventions for a category of notes. |
+
+The [Portent model](https://portent.md/types) classifies work along two dimensions: its size and whether it recurs.
+
+| Work | Usually one sitting | Spans several sittings |
 | --- | --- | --- |
-| Always-loaded instructions and vault routing | Vault and workspace `AGENTS.md` files | The runtime's machine-global and project instruction surfaces |
-| On-demand workflows | Retained `.agents/skills/<skill-name>/` packages | Symlinks in the runtime's documented Agent Skills directory |
+| One-off | Task | Project |
+| Recurring or ongoing | Operation | Responsibility |
 
-For a standalone Codex deployment, merge [[global-agent-instructions-template]] into `${CODEX_HOME:-$HOME/.codex}/AGENTS.md`. Codex uses the vault and project `AGENTS.md` hierarchy directly. After removing unneeded Skill packages, install and verify the retained set:
+This template keeps small tasks in Project action lists or a task manager, so it does not bundle a Task Type. An Operation records that recurring work exists; a Procedure explains how to do it. A Responsibility implies ongoing ownership; a Topic groups knowledge without implying a commitment to maintain an outcome.
 
-```bash
-./scripts/configure-agent-skills.sh --runtime codex
-./scripts/configure-agent-skills.sh --runtime codex --check
-```
+Work and knowledge belong in the same graph. Events, Notes, Topics and People provide context for work; this template adds more specific knowledge and system types. A Source preserves provenance; Concepts, Opinions and Project notes hold the useful synthesis. These choices adapt the model rather than claim conformance to every Portent convention.
 
-For a standalone Claude Code deployment, merge the same global block into `${CLAUDE_CONFIG_DIR:-$HOME/.claude}/CLAUDE.md`. Keep this repository's root `CLAUDE.md`. Project pointers need no shim because Claude Code reads `AGENTS.md` directly; add a `CLAUDE.md` containing `@AGENTS.md` only where that direct loading is unavailable. Then install and verify the retained Skill set:
+You do not need to create examples of every type. When pruning a deployment, keep the definitions needed by its retained notes and remove affected links and workflows together.
 
-```bash
-./scripts/configure-agent-skills.sh --runtime claude
-./scripts/configure-agent-skills.sh --runtime claude --check
-```
+Projects normally contain 600–1,200 words, concise current state, 3–7 actions, prioritized Questions and Important Notes, and 3–5 milestones. Detailed evidence lives in linked notes. Long reference notes retain their payload and start with a short summary. Agents read progressively from the relevant entry point and inspect evidence before making claims.
 
-For another agent, first confirm its documented user/project instruction files and Agent Skills discovery directory. Keep `AGENTS.md` authoritative, add the smallest supported instruction adapter, and pass the documented skills directory explicitly:
+## Files and relationships
 
-```bash
-./scripts/configure-agent-skills.sh --target <RUNTIME_SKILLS_DIRECTORY>
-./scripts/configure-agent-skills.sh --target <RUNTIME_SKILLS_DIRECTORY> --check
-```
+Each note is one UTF-8 `.md` file. Its YAML header, called *frontmatter*, stores structured metadata; the Markdown body holds the text, headings, lists and source links. The first `#` heading is the display title, so a separate `title:` field is unnecessary. Filenames use kebab-case.
 
-Do not guess a path merely because an agent understands `SKILL.md`. If it has no compatible discovery mechanism, agents can still follow the Procedures routed from `AGENTS.md`, but automatic Skill activation is unavailable.
+For example, `planning-reference.md` might contain:
 
-The installer links every package still present under `.agents/skills/`; prune the deployment first. It preflights the complete target, never overwrites a same-name entry, and makes no changes when a conflict exists. Runtime links are machine-local and are not committed. In a controlled multi-vault setup, use the existing configuration source and installer instead of creating a competing global instruction file or second set of links.
-
-See [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] and [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for ownership choices, validation, collision handling, and deployment-ledger requirements.
-
-## Core model
-
-Markdown, YAML frontmatter, wikilinks, saved views, and Git are authoritative. Tolaria is a viewer, not the storage layer. Agents should retrieve progressively from the smallest high-signal entry note and inspect underlying files before making claims or edits.
-
-Project notes are compact resumption surfaces: normally 600–1,200 words, with concise current state, 3–7 actions, prioritized Questions and Important Notes, and only 3–5 milestones. Detailed evidence and reusable knowledge live in linked Sources, Events, Concepts, Opinions, Questions, Procedures, or ADRs. Long evidence/reference notes keep their payload but start with a short summary.
-
-Canonical relationship fields are `belongs_to`, `related_to`, `has`, and `surface_for`. Canonical Type identities remain in English; deployed vaults may use Type display metadata such as `_sidebar_label` for localization.
-
-## Normal use after deployment
-
-Optional extension: [[recap|Recap]] provides curated daily, monthly, and yearly conversational memory through [[procedures/prepare-recording-recaps]]. It is disabled until explicitly configured and is not required for the core vault. Deployments may omit the Type, Procedure, preference guide, and their links together. No recorder or scheduled job is bundled or enabled by these notes.
-
-- Capture ambiguous material in unprocessed notes or [[ready-to-ingest]].
-- Ingest external material through [[procedures/ingest-source|Ingest Source]] with visible provenance.
-- Resume work from Project or Responsibility entry notes, not broad searches.
-- Refresh project synthesis with [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] instead of appending chronology.
-- Keep Project views small when used with [[procedures/maintain-project-human-view|Maintain Project Human View]].
-- Create or repair saved-view YAML through [[tolaria-saved-views|Tolaria Saved Views]].
-- Use [[tolaria-callouts|Tolaria Callouts]] only for compact, semantically useful opening prose blocks.
-- Diagnose mechanics with [[procedures/lint-vault|Lint Vault]] and strategy with [[procedures/review-vault-health|Review Vault Health]].
-
-Brain Projects do not require matching folders or agent-application projects. [[procedures/route-project-work-and-artifacts|Route Project Work And Artifacts]] defines the promotion gate and cloud `Working/` fallback. Inside a justified technical workspace, `AGENTS.md` is a pointer, not a handbook; [[procedures/initialize-project-memory|Initialize Project Memory]] keeps it near 80 words and adds a minimal Claude shim when needed.
-
-The canonical Skill packages remain under `.agents/skills/`. After deployment and pruning, [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] links those packages into Codex, Claude Code, or another runtime's documented Agent Skills directory. Runtime links are machine-local adapters, not copied workflow sources.
-
-## External project files
-
-Do not copy maintained external folders into the vault by default. A deployment chooses one default strategy:
-
-- `convention-based`: derive each project folder from a configured external root and project slug;
-- `linked-per-project`: confirm and link a distinct external folder for each project;
-- `workspace-only`: allow no durable non-versioned outputs unless a project explicitly adds an external location.
-
-Use a `Source` note for maintained inputs, outputs, or deliverables with fields such as:
-
-```yaml
+```markdown
+---
 type: Source
-storage_system: External folder
-root_key: documents_basedir
-relative_path: "Example/important-file.pdf"
-access: guarded-write
-last_checked: YYYY-MM-DD
+belongs_to:
+  - "[[example-project]]"
+related_to:
+  - "[[planning]]"
+url: https://example.org/reference
+_organized: true
+---
+
+# Planning reference
+
+A short summary of the material and why it matters.
+
+Original: [Planning reference](https://example.org/reference).
+See [[example-project|Example Project]] for the current work.
 ```
 
-Machine-specific candidates belong in ignored `.local/roots.yml`. `guarded-write` means read-only by default; writing requires explicit authorization for the specific external action.
+Here, `type: Source` refers to the definition in [source.md](source.md). `url` is ordinary metadata. `_organized: true` marks a note with a retrieval path. The quoted wikilinks connect it to other notes; these example targets illustrate the syntax and are not bundled notes.
 
-A deployed vault may disable `attachments/` or reserve it for small Git-tracked vault assets. It must not become a generic store for durable unversioned outputs. Configure `Working/<project-or-context-slug>/` under the chosen cloud root for retained work before a dedicated external folder is justified. Use an ignored workspace `.tmp/` only for reproducible or disposable intermediates and `/tmp/` for truly disposable files.
+Links in the body connect ideas in context. Relationship fields in the header give those connections an explicit meaning:
 
-## Skills and automations
+| Field | Meaning |
+| --- | --- |
+| `belongs_to` | Parent project, responsibility or other owning context. |
+| `related_to` | A lateral connection to another relevant note. |
+| `has` | A selective list of important children or entry points. |
+| `surface_for` | Membership in a small human-facing project surface, selected by a saved view. |
 
-Procedures contain full reusable workflows. Their Skill packages require the complete Procedure, which is authoritative on conflict, and may retain operational detail; prefer thinness only after a clause audit shows that no trigger, prerequisite, hard guard, command, or bundled-resource instruction will be lost. A genuinely specialized Skill may instead own its executable detail when no durable Procedure does; its catalogue note must make that ownership explicit. Do not create one skill per Procedure unless repeated use shows that discovery is the actual problem.
+Use YAML lists for multiple targets and quote wikilinks. `[[example-project]]` refers to a root filename without `.md`; `[[procedures/ingest-source]]` includes a vault-relative folder path. `[[example-project|Example Project]]` supplies a readable label. A `has` list is curated and does not need to repeat every child or backlink.
 
-The template creates no active automations. A deployed vault documents its jobs in [[vault-automations]], uses its own working directory and privacy policy, keeps read-only jobs read-only, and gives write-capable jobs narrow authorization. Cross-vault review remains exclusive to a designated routing/control vault.
+Folders organize files; links and relationships describe their meaning. The [saved views](tolaria-saved-views.md) are separate `.yml` files that select and display existing notes without duplicating their content. Markdown, metadata, links, views and Git remain the durable system independently of the viewer or agent.
 
-## Git and safety
+## Note lifecycle
 
-Git is the audit and rollback layer. Follow [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]]: preserve unrelated edits, stage only authorized files, separate local commit from network push authorization, and never force-push without explicit approval.
+Capture and organization are separate activities. Save useful material without first designing perfect metadata, then give it enough structure to find again. The [model's lifecycle](https://tolaria.md/templates/portent#lifecycle) also distinguishes retained history from active knowledge:
 
-## Status
+| State | Convention in this template |
+| --- | --- |
+| Captured | `_organized: false` identifies material still awaiting organization. |
+| Organized | `_organized: true` means it has a clear title, suitable type and a useful retrieval path, such as a Project link, Topic or view. |
+| Archived | `_archived: true` retains a note while excluding it from active views. |
 
-This is a starter template. A useful deployment replaces placeholders and acquires real scope; the template itself remains neutral and content-free.
+These flags are separate from type-specific workflow fields: a Project can have `status: Active`, and a Question `status: Open`. Completing work does not itself delete its notes. Archive retained inactive material according to the agreed retention policy, keeping useful evidence and provenance retrievable. See [Process Inbox](procedures/process-inbox.md) for the full organization and preservation rules.
+
+Write organized notes directly when their retrieval path is already clear.
+
+## Saved views
+
+A view saves the conditions for a useful recurring question, such as “Which questions are still open?” Its YAML file under `views/` defines filters, sorting and optional display columns. It contains the selection rules, not a stored copy of the results or another note type.
+
+The template includes four examples:
+
+| View | Selection | Example use by an agent |
+| --- | --- | --- |
+| [Open Questions](views/open-questions.yml) | Unarchived Questions with `status: Open`. | Find questions to review, then read their current answers and evidence. |
+| [Evergreen Concepts](views/evergreen-concepts.yml) | Unarchived Concepts with `maturity: Evergreen`. | Find established ideas relevant to a task. |
+| [External Raw Sources](views/external-raw-sources.yml) | Unarchived Sources with a `root_key`. | Identify external-file pointers for a reference check. |
+| [Vault](views/surface-vault.yml) | Unarchived notes whose `surface_for` includes `"[[vault]]"`. | Find the curated entry points for this vault. |
+
+**For people,** Tolaria renders the matching notes with the chosen sorting and columns. A project's human view is deliberately small, usually 3–5 notes: the Project, current work and a few useful entry points. Not every Project needs one.
+
+**For agents,** a relevant view can provide a reusable starting selection. An agent can read the YAML, find matching notes from their frontmatter with filesystem tools or a script, and inspect the underlying content without opening Tolaria. Filters are useful for narrowing retrieval; icons, colors and columns mainly support presentation.
+
+The file format is Tolaria-specific, and this repository does not bundle a standalone view executor. Reproducing exact results requires matching its filter and derived-field semantics. See the [saved-view reference](tolaria-saved-views.md) for the contract.
+
+Treat a view as a navigation aid within the task's scope. A curated human surface intentionally omits supporting Sources and historical detail; agents should follow Project links, relationships and targeted searches when more evidence is needed. Keep that human surface selective rather than expanding it into an exhaustive agent index. View membership grants no additional access to sources.
+
+## Extending the model
+
+The model is open to extension. Use existing types when they fit, and add structure when it solves a recurring retrieval or workflow need:
+
+- **Add a field:** properties such as `priority`, `review_date` or an external identifier can be added to frontmatter. Document a field's meaning and expected values in the relevant Type or Guide, and use it consistently.
+- **Add a relationship:** a field such as `depends_on` can hold quoted wikilinks. Define its direction and purpose while keeping the four established relationships above for their existing meanings.
+- **Add a type:** create a root definition such as `organization.md` with `type: Type`, a first heading `# Organization`, and an explanation of when to use it. Notes in that category then use `type: Organization`. Follow the [Type conventions](type.md) and give the definition a retrieval path.
+- **Extend a workflow or view:** update the relevant Procedure, Skill or saved-view configuration when the new structure should affect behavior. Adding a field alone does not create automation or guarantee that every application interprets it.
+
+Prefer a property for a small distinction, such as `format: video` on a Source. Create a new Type when it needs a distinct template, relationships or workflow, as the [extension guidance](https://portent.md/implementation/extending-portent) recommends.
+
+Type identities stay in English; `_sidebar_label` can localize their display. Preserve valid custom fields. Keys beginning with `_` are generally viewer or lifecycle metadata and should follow their documented conventions. This template supplies a shared starting model without requiring every vault to have the same domain-specific schema.
+
+## Relationship to Obsidian, wikis and OKF
+
+These describe different layers and can be combined: an application, an approach to organizing knowledge, and an exchange format.
+
+| Approach | What it provides | How this template relates |
+| --- | --- | --- |
+| [Obsidian](https://help.obsidian.md/Files+and+folders/How+Obsidian+stores+data) | An application for a local folder of Markdown notes, with [properties](https://help.obsidian.md/properties) and [internal links](https://help.obsidian.md/links). | The basic files, YAML and wikilinks are familiar. This template adds particular note types, relationship meanings and maintenance workflows. |
+| Wikis, including [LLM-maintained wikis](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | Linked pages that accumulate and revise knowledge; an LLM wiki uses an agent to maintain synthesis from sources. | Both use linked, maintained knowledge. This template also defines explicit types, project state and relationships, separates sources from synthesis, and supports human or agent maintenance. |
+| Google Cloud's [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) | A format for exchanging knowledge as Markdown files with YAML frontmatter, including a required `type` and extensible metadata. | The basic representation is similar. This template adds its own type definitions, typed relations and operating procedures. |
+
+You can open the notes in Obsidian, but the template does not bundle an Obsidian configuration or plugins. Its type meanings and Tolaria saved views do not automatically become equivalent Obsidian behavior; configure the views and workflows you want in your chosen application.
+
+The LLM-wiki pattern emphasizes a maintained knowledge layer between sources and answers. Here, the same principle extends to current work, decisions and responsibilities, with explicit write authority and external-file boundaries. Sources can remain in their canonical systems rather than being copied into a `raw/` folder.
+
+OKF specifies standard Markdown cross-links and its own lifecycle and provenance conventions. This template uses wikilinks for its typed graph and type-specific status values. Unknown types and extra fields are allowed by OKF, but equivalent graph and lifecycle behavior needs an explicit mapping. This repository makes no OKF conformance claim and does not require Google services. See the [OKF specification](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) before relying on interchange with a particular consumer.
+
+## Everyday use
+
+- Save ambiguous captures in unprocessed notes and use [Process Inbox](procedures/process-inbox.md). Put material explicitly ready for processing in [Ready To Ingest](ready-to-ingest.md), following [Process Ready Ingestion Inbox](procedures/process-ready-ingestion-inbox.md).
+- Add a paper, webpage or document through [Ingest Source](procedures/ingest-source.md), preserving provenance and linking useful conclusions to existing work.
+- Resume from a Project or Responsibility. Use [Update Project Summary](procedures/update-project-summary.md) and [Update Project Next Actions](procedures/update-project-next-actions.md) to reconcile current state.
+- Use small project views through [Maintain Project Human View](procedures/maintain-project-human-view.md). See the [saved-view reference](tolaria-saved-views.md), [starter views](views/) and [callout guide](tolaria-callouts.md) when needed.
+- Diagnose structure with [Lint Vault](procedures/lint-vault.md) and usefulness with [Review Vault Health](procedures/review-vault-health.md).
+
+A Brain Project does not require a matching folder or agent-application project. [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) defines when a technical workspace is justified and the cloud `Working/` fallback. [Initialize Project Memory](procedures/initialize-project-memory.md) connects an existing workspace through a small memory section in its instruction file, preserving its technical guidance. The added pointer is normally about 80 words; that is not a limit on the existing file.
+
+[Recaps](recap.md) are an optional way to retain reviewed discussions and activities by day, month or year. The [preparation procedure](procedures/prepare-recording-recaps.md) can use selected meeting notes, transcripts or recordings. Configure its source scope, review and retention first. You can omit the Recap Type, Procedure, [Capture Preferences](capture-preferences.md) and their links together.
+
+## Agent instructions
+
+The vault files are instructions for daily work after deployment. Setup guides explain how to customize and connect them:
+
+| Layer | Purpose and installation |
+| --- | --- |
+| Vault [AGENTS.md](AGENTS.md) | Daily retrieval, note and workflow rules for this Brain. Customize it in your copy; it stays in the vault. |
+| Vault [CLAUDE.md](CLAUDE.md) and [GEMINI.md](GEMINI.md) | Small compatibility files importing `AGENTS.md`. Keep shared rules in that one file and preserve any existing runtime-specific instructions when adding an import. |
+| Machine-global instructions | An optional, small routing block so an agent working elsewhere can find the Brain. Add it only to the selected runtimes through [Configure Global Agent Instructions](procedures/configure-global-agent-instructions.md). |
+| Existing project's instruction file | An optional memory section naming the relevant vault role and entry note. Add it alongside the project's existing technical instructions through [Initialize Project Memory](procedures/initialize-project-memory.md). |
+| Skills | Optional workflow shortcuts from `.agents/skills/`. Their discovery is separate from instruction loading; see [Configure Agent Skill Discovery](procedures/configure-agent-skill-discovery.md). |
+
+Working inside the Brain uses its local instruction files through the runtime's supported loading mechanism. Global routing is useful when working from other folders; manual note use needs no global installation. The [global instruction template](global-agent-instructions-template.md) contains only the marked block to add, not a replacement global file.
+
+Default user files are `~/.codex/AGENTS.md` for Codex, `~/.claude/CLAUDE.md` for Claude Code and `~/.gemini/GEMINI.md` for Gemini CLI. Existing overrides, custom configuration paths or a generator may change the active source; confirm it through the setup Procedure before editing.
+
+**Preserve existing instructions.** Inspect the destination first, preview the diff and keep a recovery copy outside the vault. Add or update only the Second Brain block or import, leaving unrelated content in place. An existing generated configuration keeps its own source and regeneration mechanism. A repeat installation should update the same block rather than append a duplicate; resolve real conflicts during setup and reuse that decision for routine work.
+
+Instruction generation is optional configuration infrastructure. This template maintains one vault `AGENTS.md` and two small import files. It does not include a generator for machine-global instructions. `scripts/configure-agent-skills.sh` only links Skill packages; it does not install or generate instruction files.
+
+The [Skill installer](scripts/configure-agent-skills.sh) supports Codex, Claude Code and an explicit documented directory for other compatible runtimes. Prune unwanted packages first: it links every retained package, preflights the full target and never overwrites conflicts. Links are machine-local and stay out of Git. Do not guess another runtime's discovery path; Procedures remain usable when automatic Skill discovery is unavailable.
+
+The [visible Skill catalogue](skills/) and [canonical packages](.agents/skills/) describe ownership. Procedure-backed packages require the complete Procedure, which wins on conflict. Thin wrappers must preserve triggers, prerequisites, guards, commands and support-file instructions. A specialized package may own execution when no Procedure does, with that ownership explicit in its catalogue. Add a Skill only when repeated use makes discovery useful.
+
+## External files and optional automation
+
+Keep maintained external folders in their canonical storage. Choose one default file strategy during deployment: `convention-based` derives a folder from an external root and project slug; `linked-per-project` confirms each project's distinct folder; `workspace-only` permits durable non-versioned files only after an explicit external location is added.
+
+A [Source](source.md) points to maintained inputs, outputs or deliverables with `storage_system`, `root_key`, `relative_path`, `access` and `last_checked`. Local roots resolve through ignored `.local/roots.yml`. `access: guarded-write` permits external writes only when the user authorizes that specific action. The [reference checker](procedures/check-external-raw-references.md) verifies paths within their configured roots.
+
+Disable `attachments/` or reserve it for small, intentional Git-tracked vault assets. Keep durable non-versioned work in the configured external location, or `Working/<project-or-context-slug>/` before a dedicated folder is justified. Use an ignored workspace `.tmp/` for reproducible or disposable intermediates and `/tmp/` for truly disposable files.
+
+[Vault Automations](vault-automations.md) documents optional jobs. Begin manually; configured jobs use their own vault's working directory, privacy rules and approved model. Read-only jobs never edit or checkpoint; write-capable jobs need narrow scope and separate push authority.
+
+[Review Multi-Vault Consistency](procedures/review-multi-vault-consistency.md) belongs only in an explicitly designated routing/control vault. Ordinary deployments remove its installed Skill package and active routes; they may retain the Procedure as clearly archived provenance. This template does not authorize access to another vault's private content.
+
+## Review and backup
+
+Follow [Git Checkpoint Vault Changes](procedures/git-checkpoint-vault-changes.md): preserve unrelated edits, review and stage only the authorized scope, and distinguish a local commit from permission to push. Never force-push without explicit approval. Review content before it enters Git, including filenames and metadata; keep the template itself neutral and content-free.
+
+## Repository map
+
+The repository includes a working skeleton and its maintenance instructions. You do not need to read every file before starting or retain every optional feature in a deployed vault.
+
+| Files | Role |
+| --- | --- |
+| [vault.md](vault.md), [maintain-vault.md](maintain-vault.md), [ready-to-ingest.md](ready-to-ingest.md) | Starter entry Project, maintenance Responsibility and ready-marked intake note. Replace their placeholders and add real content in your copy. |
+| Root Type definitions | The 17 [types listed above](#note-types), including their templates and conventions. These define categories; they are not examples of completed work. |
+| [AGENTS.md](AGENTS.md), [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md) | Vault operating rules and small compatibility files that import those rules for other runtimes. |
+| [Deployment](deploy-vault-from-template.md), [upgrade](upgrade-existing-vault-from-template.md) and [global instruction template](global-agent-instructions-template.md) | Bootstrap and configuration material, to customize or retire after setup. |
+| [procedures/](procedures/) | Complete workflows for ingestion, project upkeep, validation, configuration and checkpointing. |
+| [skills/](skills/) and [.agents/skills/](.agents/skills/) | Human-readable Skill catalogue and matching executable packages. `SKILL.md` routes an agent to its Procedure; optional `agents/openai.yaml` files supply Codex UI metadata. |
+| Package `scripts/` and `references/` | External-reference checking and its regression tests, compactness and icon audits, and a reproducible MIT-licensed Phosphor icon-name list. These support the relevant Procedures. |
+| [scripts/configure-agent-skills.sh](scripts/configure-agent-skills.sh) | Installs or checks machine-local links to retained Skill packages. |
+| [views/](views/), [saved-view reference](tolaria-saved-views.md), [callout reference](tolaria-callouts.md) | Optional saved selections and viewer presentation guidance. |
+| [Vault Automations](vault-automations.md), [Capture Preferences](capture-preferences.md) | Optional configuration guides; neither activates a job or source connection. |
+| [adr/](adr/) and short Concept notes | The starter portability decision and a small glossary of design choices, described below. |
+| [.gitignore](.gitignore) | Exclusions for local configuration, temporary files and common credential files. |
+| [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) | MIT terms for the template and retained upstream notices. |
+
+The short Concepts explain [the system](second-brain-system.md), [tool independence](agent-neutral-vault-definition.md), [capture first](capture-first-workflow.md), [project memory](project-scoped-memory.md), [sources and synthesis](source-note-vs-synthesis-note.md), [agent-executed Procedures](agent-executed-procedure.md) and [Agent Skills](agent-skill.md). They are lightweight linked examples, not prerequisites. Keep them when useful for onboarding, or prune them and their links during deployment.
+
+## Licence
+
+The template, its documentation and helper scripts are available under the [MIT licence](LICENSE). Retain the applicable [third-party notices](THIRD_PARTY_NOTICES.txt) for the Portent material and the Phosphor icon-name list. The latter is only an offline text list for the optional icon checker; it contains no icon images or application code.
+
+Material you later add to a deployed vault has its own ownership, confidentiality and licensing. Using this template grants no permission to disclose or relicense that material.

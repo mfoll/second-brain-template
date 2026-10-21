@@ -6,44 +6,33 @@ _organized: true
 
 # Global Agent Instructions Template
 
-Use this text only to bootstrap a standalone vault. If an existing routing/control vault or configuration repository owns generated global instructions, follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] and update that executable source instead; do not install this template as a competing instruction layer.
+This Guide supplies an optional routing block for using the Brain from other folders. Follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]] to add it alongside existing instructions. Install only the marked block below, replacing its two placeholders in the machine-local copy.
 
-## Second Brain Memory
+If a generator or configuration repository owns the destination, update that source through its normal mechanism. The generator remains optional infrastructure; the template does not install one or replace existing global guidance.
 
-I maintain a `<VAULT_ROLE>` Second Brain vault at `<VAULT_ROOT>`. The Markdown vault is the durable source of truth. Vault-level rules are in `<VAULT_ROOT>/AGENTS.md`.
+## Block to install
 
-When prior context may help, read relevant vault notes before answering. If the current workspace has a local `AGENTS.md` declaring a Second Brain vault role and pointing to an entry note, use that named vault root plus the entry note and linked notes as the primary memory scope before searching more broadly.
+```markdown
+<!-- BEGIN SECOND BRAIN -->
+## Second Brain memory
 
-Read progressively from frontmatter, H1, summary, and headings into only the relevant sections and evidence. External memory summaries and search snippets are hints, not authority; current user instructions, vault and project rules, Types, Procedures, and accepted ADRs take precedence.
+Vault role: `<VAULT_ROLE>`. Root: `<VAULT_ROOT>`.
 
-When the user asks for a concrete output, such as an email, message, plan, checklist, recommendation, administrative draft, decision support, or supplier/order request, and the request clearly depends on facts that are missing from the prompt, first look for the missing context in the relevant Second Brain vault before answering. Use targeted searches based on named entities, objects, people, places, projects, dates, brands, suppliers, filenames, or obvious synonyms. Only produce a generic template with placeholders after that retrieval attempt fails, or when the user explicitly asks for a generic/template answer.
+When relevant prior context would help, read the vault's `AGENTS.md`, then its
+entry note or the entry named in the current project's memory section. Follow
+only task-relevant links and inspect evidence before making claims. Self-contained
+requests need no vault lookup.
 
-Do not perform Second Brain retrieval when the prompt already contains the information needed, when the task is genuinely self-contained, or when the user explicitly asks for a generic answer.
+Respect existing project instructions, tools, canonical documents and privacy
+boundaries. Write to the Brain when asked or within an agreed standing scope;
+reuse that authorization for routine work. Memory access grants no permission
+to share content, change external files or push Git commits.
 
-When outside a specific project, search conservatively from the vault rules, project notes, indexes, topics, recent notes, and Inbox/Unprocessed notes.
+If the configured root is unknown or unreadable, report the gap and pause only
+vault-dependent work. Ask for its location rather than guessing or creating one.
+<!-- END SECOND BRAIN -->
+```
 
-Do not let workspace `docs/` folders become parallel Second Brain stores. Keep scripts, prototypes, fixtures, implementation-local notes, and versioned or reproducible build outputs in the workspace. Route durable non-versioned inputs, outputs, and deliverables through the deployed vault's configured external-project-file strategy and linked Source notes. Durable design docs, workflow decisions, research notes, open questions, tool evaluations, and project state belong in the relevant vault as typed notes linked from the project or entry note.
+## Keep detailed behavior in its owning files
 
-If a workspace expects Second Brain memory but the configured root for its named vault role is unknown or unreadable, stop and ask the user to configure the global Second Brain instructions with the correct vault path. Do not guess the path or create a new vault.
-
-Read from the vault when useful. Write when the user explicitly asks to save, remember, ingest, process, organize, update, maintain, or contribute knowledge. Significant work in a linked workspace also authorizes direct, high-confidence project-state writeback under the vault's rules; propose broad or uncertain cascades.
-
-When multiple vaults are configured, keep durable knowledge in its authoritative vault. Do not duplicate it across vaults unless the user explicitly asks; when cross-vault context is necessary, prefer the smallest useful non-sensitive pointer.
-
-For an explicit memory capture, choose the appropriate existing Type rather than merely appending text to a Project. Preserve concrete future-use details such as plans, constraints, caveats, rejected options, examples, exact terminology, and retrieval hooks needed to resume the work.
-
-Before creating, renaming, broadening, or replacing a workflow, Procedure, Skill, automation, Type, or ADR, compare the request with the live vault. If it overlaps, duplicates, or conflicts with what exists, summarize the current state and smallest compatible change, then ask for confirmation unless the user already approved the change after that comparison.
-
-If the user's message contains only a file, URL, or source attachment, treat it as a request to ingest it into the vault unless surrounding context clearly says otherwise.
-
-For external source ingestion, use the `ingest-source` skill when available. Ingested external material should use `type: Source`.
-
-For ambiguous captures, use Inbox/Unprocessed rather than forcing a project. Before bulk edits or reorganizations, summarize the intended changes first.
-
-## Codex Automations
-
-When creating or updating Codex automations, explicitly set the automation model to the latest available default-capable Codex model unless the user explicitly asks for another model. Do not create or recreate automations with stale older defaults just because Codex suggests them.
-
-After creating or updating a Codex automation, verify the stored model in the automation configuration and, when Codex Desktop uses a local automation database, verify the database row too. If either still shows an older model, fix it before reporting the automation as done.
-
-For write-capable automations, a persisted `git push` approval or configured network path is only an execution mechanism, not authorization. Push only when the current user and vault policy explicitly authorize that repository and action; otherwise stop after the permitted local commit.
+Vault [[AGENTS]] owns progressive retrieval, typed capture, workflow comparison and Git boundaries; [[procedures/ingest-source]] and [[procedures/process-inbox]] own ingestion. [[vault-automations]] holds optional runtime-specific automation settings and verification. Keep multi-vault routing in an existing owner's configuration when one exists. Choose automatic capture or project writeback explicitly during setup; a file, URL or workspace link alone does not install those policies for every project.

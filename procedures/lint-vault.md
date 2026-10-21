@@ -20,7 +20,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 
 - Missing or invalid frontmatter, H1, canonical Type, status, or required lifecycle fields.
 - Broken, ambiguous, title-fallback-only, or non-portable wikilinks; orphaned or unreachable active notes.
-- Relationship-key drift, duplicated aliases, invalid `surface_for`, saved-view filters using obsolete fields, and configured icons absent from Tolaria's curated registry.
+- Relationship-key drift, duplicated aliases, invalid `surface_for`, saved-view filters using obsolete fields, and configured icon names absent from the pinned Phosphor catalogue. Confirm compatibility in the current viewer before treating a catalogue difference as an invalid icon.
 - Active Projects missing useful resumption sections; validate human-view contracts only when a saved view exists. A missing human view is not itself a lint finding, and `Project view: false` is optional documentation rather than a required exemption.
 - Project `has` lists or views that have become exhaustive rather than selective.
 - Sources without human-visible provenance; external Source bridges missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked`.
@@ -30,7 +30,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 
 Type-aware compactness warnings:
 
-- `AGENTS.md` above 1,500 words; ordinary workspace pointer above 80 words; specialized pointer above 300 without a real safety reason.
+- Vault `AGENTS.md` above 1,500 words; an added workspace memory section above 80 words; a specialized pointer above 300 without a real safety reason. Preserve the existing project's technical instructions; these pointer targets do not limit the full file.
 - Active Project above 1,500 body words; above 3,000 requires a structural split or explicit justification.
 - Project Current State above 250 words, more than 10 unchecked actions, or more than five Maintenance Log entries.
 - Question above 750 body words: review whether its answer or analysis belongs in maintained synthesis.
@@ -51,6 +51,46 @@ Report the candidate task, why it appears responsible, and the proposed focused 
 3. Verify findings against the actual files; broad search output is not proof.
 4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures. Include responsible-task candidates and proposed follow-up workflows, but wait for user confirmation before contacting a task.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.
+
+## Refresh the icon-name reference
+
+The optional icon checker reads `.agents/skills/lint-vault/references/phosphor-icon-names.txt`, a list of regular SVG filenames from the MIT-licensed `@phosphor-icons/core` package. It contains no images or application code. Keep the Phosphor copyright and permission notice in `THIRD_PARTY_NOTICES.txt`. The catalogue is an offline identifier check; confirm actual glyphs in the selected viewer.
+
+Maintainers can reproduce the current list from the vault root with Python's standard library. This downloads and verifies a pinned source archive without installing a package or extracting SVGs. Normal vault use requires none of this:
+
+```bash
+python3 - <<'PY'
+import base64, hashlib, io, json, re, tarfile, urllib.request
+from pathlib import Path
+
+version = "2.1.1"
+url = f"https://registry.npmjs.org/@phosphor-icons/core/-/core-{version}.tgz"
+integrity = "sha512-v4ARvrip4qBCImOE5rmPUylOEK4iiED9ZyKjcvzuezqMaiRASCHKcRIuvvxL/twvLpkfnEODCOJp5dM4eZilxQ=="
+data = urllib.request.urlopen(url, timeout=30).read()
+actual = "sha512-" + base64.b64encode(hashlib.sha512(data).digest()).decode()
+if actual != integrity:
+    raise SystemExit("Source archive integrity mismatch")
+with tarfile.open(fileobj=io.BytesIO(data), mode="r:gz") as archive:
+    metadata = json.load(archive.extractfile("package/package.json"))
+    if (metadata["name"], metadata["version"], metadata["license"]) != ("@phosphor-icons/core", version, "MIT"):
+        raise SystemExit("Unexpected source package, version or licence")
+    names = sorted({match.group(1) for name in archive.getnames()
+                    if (match := re.fullmatch(r"package/assets/regular/([a-z0-9-]+)\.svg", name))})
+if not names:
+    raise SystemExit("No icon names found")
+header = ("# Phosphor icon names (regular SVG filenames)\n"
+          f"# Source: @phosphor-icons/core@{version} (MIT)\n"
+          f"# Archive: {url}\n"
+          f"# Integrity: {integrity}\n"
+          "# Refresh: procedures/lint-vault.md\n"
+          "# Upstream notice: THIRD_PARTY_NOTICES.txt\n")
+Path(".agents/skills/lint-vault/references/phosphor-icon-names.txt").write_text(
+    header + "\n".join(names) + "\n", encoding="utf-8")
+print(f"Wrote {len(names)} icon names")
+PY
+```
+
+For a version upgrade, review its package licence and integrity from the official registry, update the pin and notice together, regenerate, and run the icon audit. Check configured icons in the viewer before propagating the reference to another vault.
 
 ## Wikilink precedence
 

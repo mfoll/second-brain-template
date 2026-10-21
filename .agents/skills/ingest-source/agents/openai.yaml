@@ -1,3 +1,4 @@
-name: ingest-source
-description: Activate the Ingest Source procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Ingest Source"
+  short_description: "Save sources with provenance and useful links."
+  default_prompt: "Use $ingest-source in the selected vault, following its AGENTS.md and Procedure."

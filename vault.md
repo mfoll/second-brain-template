@@ -37,7 +37,7 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [ ] Define the deployed vault's purpose, scope, privacy boundary, and logical role.
 - [ ] Replace template placeholders and remove workflows the vault does not need.
 - [ ] Configure compact project pointers and any optional automations.
-- [ ] Configure and verify Skill discovery for each selected agent runtime.
+- [ ] If Skill installation is selected, configure and verify its discovery without replacing existing entries.
 - [ ] Create the first real Project, Responsibility, or Source and test retrieval.
 - [ ] If external raw files are needed, configure ignored root mappings and verify Source bridges.
 

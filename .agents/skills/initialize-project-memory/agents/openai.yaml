@@ -1,3 +1,4 @@
-name: initialize-project-memory
-description: Activate the Initialize Project Memory procedure for this vault.
-entrypoint: SKILL.md
+interface:
+  display_name: "Initialize Project Memory"
+  short_description: "Connect a workspace to its vault Project."
+  default_prompt: "Use $initialize-project-memory in the selected vault, following its AGENTS.md and Procedure."

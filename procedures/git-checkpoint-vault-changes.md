@@ -16,7 +16,7 @@ Use this procedure after an authorized vault edit when the work should receive a
 - A request to change, save, ingest, organize, or maintain the vault may authorize a task-scoped local commit under the deployed vault's policy.
 - Push only when the current user instruction, approved shortcut, publish flow, or narrowly configured automation explicitly authorizes it.
 - Persisted command approval is an execution mechanism, never broader permission.
-- Ask before mixing unrelated work, broad restructuring, bulk ingestion, attachments, credentials, sensitive documents, generated dumps, or unclear scope.
+- Keep credentials, raw sensitive documents and generated dumps out of the checkpoint. Ask before mixing unrelated work, broad restructuring, bulk ingestion, attachments, material outside the destination's agreed data scope, or unclear scope. Reuse existing authorization for approved project context.
 
 ## Steps
 
