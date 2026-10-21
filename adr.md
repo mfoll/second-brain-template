@@ -22,3 +22,5 @@ Link an ADR to the Project, Responsibility, or system surface it governs with `b
 - `Rejected`: considered but not adopted.
 
 Do not silently rewrite an Accepted ADR when direction changes. Create a new ADR, mark the earlier one Superseded, and link both decisions.
+
+Use `superseded_by` for a replacement recorded in frontmatter. Human-readable `Superseded by` labels may remain in prose.
