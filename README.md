@@ -140,6 +140,28 @@ Links in the body connect ideas in context. Relationship fields in the header gi
 
 Use YAML lists for multiple targets and quote wikilinks. `[[example-project]]` refers to a root filename without `.md`; `[[procedures/ingest-source]]` includes a vault-relative folder path. `[[example-project|Example Project]]` supplies a readable label. A `has` list is curated and does not need to repeat every child or backlink.
 
+For example, these notes connect work with useful knowledge. Each arrow names a field stored on the note it leaves; the links illustrate possible choices rather than a required hierarchy.
+
+```mermaid
+flowchart BT
+    accTitle: Example note relationships
+    accDescr: A Project and an Operation belong to a Responsibility. A Source and a Question belong to the Project. The Source and Project also relate to a Topic.
+    responsibility["Responsibility<br/>Maintain documentation"]
+    project_note["Project<br/>Refresh onboarding"]
+    operation["Operation<br/>Review links"]
+    source_note["Source<br/>Writing reference"]
+    question_note["Question<br/>What belongs in the quickstart?"]
+    topic_note["Topic<br/>Technical writing"]
+    project_note -->|belongs_to| responsibility
+    operation -->|belongs_to| responsibility
+    source_note -->|belongs_to| project_note
+    question_note -->|belongs_to| project_note
+    source_note -. related_to .-> topic_note
+    project_note -. related_to .-> topic_note
+```
+
+GitHub [renders these Mermaid diagrams directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams). Other editors may show their text source; the surrounding explanations and tables describe the same conventions.
+
 Folders organize files; links and relationships describe their meaning. The [saved views](tolaria-saved-views.md) are separate `.yml` files that select and display existing notes without duplicating their content. Markdown, metadata, links, views and Git remain the durable system independently of the viewer or agent.
 
 ## Note lifecycle
@@ -159,6 +181,20 @@ Write organized notes directly when their retrieval path is already clear.
 ## Saved views
 
 A view saves the conditions for a useful recurring question, such as “Which questions are still open?” Its YAML file under `views/` defines filters, sorting and optional display columns. It contains the selection rules, not a stored copy of the results or another note type.
+
+```mermaid
+flowchart LR
+    accTitle: Saved views select existing notes
+    accDescr: A view's selection rules and the original Markdown notes support both a human viewer and an agent reading the matching notes. Neither route creates another knowledge store.
+    notes["Original Markdown notes<br/>frontmatter + content"]
+    view["View YAML<br/>filters + sorting"]
+    human["Viewer<br/>display matching notes"]
+    agent["Agent<br/>find and inspect matching notes"]
+    view -->|selection rules| human
+    view -->|selection rules| agent
+    notes -->|current notes| human
+    notes -->|current notes| agent
+```
 
 The template includes four examples:
 
@@ -221,6 +257,29 @@ A Brain Project does not require a matching folder or agent-application project.
 ## Agent instructions
 
 The vault files are instructions for daily work after deployment. Setup guides explain how to customize and connect them:
+
+```mermaid
+flowchart TB
+    accTitle: Agent instruction layers
+    accDescr: Optional routing in existing global and project instructions leads to the vault's daily AGENTS.md rules. Claude and Gemini import those rules. Types define note semantics, Procedures define workflows, and optional Skills activate Procedures.
+    global_instructions["Existing global instructions<br/>+ optional Brain routing"]
+    project_instructions["Existing project instructions<br/>+ optional memory section"]
+    subgraph brain["Second Brain folder"]
+        imports["CLAUDE.md / GEMINI.md"]
+        rules["AGENTS.md<br/>daily rules"]
+        entry["Project or vault entry note"]
+        types["Type definitions"]
+        procedures["Procedures"]
+        skills["Optional Skills"]
+        imports -->|import| rules
+        rules -->|start here| entry
+        rules -->|note semantics| types
+        rules -->|task workflow| procedures
+        skills -->|activate| procedures
+    end
+    global_instructions -. locate vault .-> rules
+    project_instructions -. vault role + entry .-> rules
+```
 
 | Layer | Purpose and installation |
 | --- | --- |
