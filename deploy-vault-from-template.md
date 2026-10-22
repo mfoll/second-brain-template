@@ -17,12 +17,12 @@ Start with the folder setup below. The later GitHub walkthrough is optional when
 ## Minimal folder setup
 
 1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool, and copy the hidden files too: `.agents/` holds the Skill packages and `.gitignore` the exclusions, and Finder drag-and-drop or a copy tool that skips dotfiles would lose them (`cp -R source/ destination/` keeps them). Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
-2. Open the folder in the existing Markdown editor. In [[vault]], replace the `<Vault Name>` heading and the three `<...>` placeholders (outcome, current state, log date) and delete its first sentence; the scope and privacy boundary are written once, in the README (step 5). Keep existing project documents, repositories and task tools in their canonical locations.
-3. If agents will use the vault, customize its `AGENTS.md` for that scope and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair following the checklist under Retire The Control-Only Multi-Vault Pair below.
-4. Create one Responsibility for your own area of work, one Project under it (`belongs_to`), and one non-sensitive Source under the Project, using the templates in [[responsibility]], [[project]] and [[source]]. A Source can be a public web page, a document or spreadsheet you own, or a list you keep; it does not need a URL. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. The audit helpers are optional here; when you run them, they need only Python 3.10 or later and work in a plain folder as well as in a Git repository.
+2. Open the folder in the existing Markdown editor. In [[vault]], replace the `<Vault Name>` heading and the three `<...>` placeholders (outcome, current state, log date) and delete its first line; the scope and privacy boundary are written once, in the README (step 5). Keep existing project documents, repositories and task tools in their canonical locations.
+3. If agents will use the vault, customize the opening paragraph of its `AGENTS.md` (one sentence on what the vault is for is enough; the scope and privacy boundary themselves go in the README) and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair following the checklist under Retire The Control-Only Multi-Vault Pair below.
+4. Create one Responsibility for your own area of work, one Project under it (`belongs_to`), and one non-sensitive Source under the Project, using the templates in [[responsibility]], [[project]] and [[source]]. Create the three as kebab-case files at the vault root: the Project carries `belongs_to: "[[your-responsibility]]"`, the Source carries `belongs_to: "[[your-project]]"`, and the Project lists the Source in `has` or links it in its body. A Source can be a public web page, a document or spreadsheet you own, or a list you keep; it does not need a URL. The Source is retrievable when `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py . --tree` shows it under the Project. Then tick the first Next Action in [[vault]]. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. The audit helpers are optional here; when you run them, they need only Python 3.9 or later, as shipped with macOS, and work in a plain folder as well as in a Git repository.
 5. Replace the template README with the short vault README under Customize README below. It records the scope, privacy boundary, AI tools and accounts, storage, backup and retention agreed once; [[vault]] and `AGENTS.md` refer to it rather than repeating it. Use the existing backup method, adding Git history only if selected. Keep `LICENSE` and applicable `THIRD_PARTY_NOTICES.txt` with retained template material; added content keeps its own ownership and confidentiality.
 
-6. Mark the setup material you no longer need with `_archived: true`: this guide, [[upgrade-existing-vault-from-template]] and [[global-agent-instructions-template]]. They stay as provenance and drop out of active views; the placeholder check below excludes them by filename. In the same change, remove the active routes to them: the "Deploy or upgrade a vault" row of the Workflow router in `AGENTS.md`, and the links to the deployment guide and the global instruction template in [[agent-setup]]. Links from ADRs and Procedures are provenance and stay. Delete `assets/second-brain-overview.png` if the new README does not use it. Delete the archived guides later if you prefer, after the first checkpoint.
+6. Mark the setup material you no longer need with `_archived: true`: this guide, [[upgrade-existing-vault-from-template]] and [[global-agent-instructions-template]]. They stay as provenance and drop out of active views; the placeholder check below excludes them by filename. In the same change, remove the active routes to them: the "Deploy or upgrade a vault" row of the Workflow router in `AGENTS.md`, and the links to the deployment guide and the global instruction template in [[agent-setup]]. Links from ADRs and Procedures are provenance and stay. Delete `assets/second-brain-overview.png` and its folder if the new README does not use it. Delete the archived guides later if you prefer, after the first checkpoint.
 
 Stop here for a basic notes setup. Report what works and any optional choices still open; do not call unselected integrations installed or failed.
 
@@ -151,8 +151,8 @@ _organized: true
 
 # <NEW_VAULT_NAME>
 
-A Second Brain for <VAULT_SCOPE>, deployed from the Second Brain template at
-<TEMPLATE_URL>.
+A Second Brain for <VAULT_SCOPE>, deployed from the Second Brain template
+(<TEMPLATE_URL>: the repository or folder you copied from; drop this line if none).
 Start from [[vault]]; agents follow [[AGENTS]].
 
 ## Scope and privacy boundary
@@ -161,14 +161,14 @@ Start from [[vault]]; agents follow [[AGENTS]].
 - Out of scope: <what stays elsewhere, such as private or confidential material>.
 - Sources it may use: <documents, folders, tools>.
 - AI tools and accounts that may process it: <approved tools>.
-- Storage, backup and retention: <where the repository and backups live, how long material is kept>.
+- Storage, backup and retention: <where the folder lives, how it is backed up, how long material is kept; "local folder, no backup yet" is an honest answer>.
 
 ## Reference
 
 [Model Reference](model-reference.md) · [Agent Setup](agent-setup.md) · [Licence](LICENSE)
 ```
 
-Keep the portability and no-secret guidance; drop the template-only warnings.
+Carry over anything from the template README you still want, such as the responsible-use boundaries; the template-only warnings are not needed.
 
 ## Customize AGENTS
 
@@ -264,7 +264,7 @@ For each active pair, verify the visible note's `package_path`, matching package
 1. Delete the package directory `.agents/skills/review-multi-vault-consistency/`.
 2. Delete the catalogue note `skills/review-multi-vault-consistency-skill.md`.
 3. Add `_archived: true` to `procedures/review-multi-vault-consistency.md` and leave its `status` as it is; the archive flag, not the status, retires a note.
-4. Remove the sentence about the Procedure near the end of the Workflow router in `AGENTS.md`, and the paragraph about it in [[agent-setup]].
+4. Remove the paragraph about the Procedure just below the Workflow router table in `AGENTS.md`, and the paragraph about it at the end of External files and optional automation in [[agent-setup]].
 5. Leave the links from [[adr/0008-require-semantic-reachability-and-reversible-compaction|ADR 0008]] and other provenance notes in place; they are history, not active routes.
 
 Then rerun the catalogue and package listing above; both sides should show nine pairs.
@@ -344,7 +344,7 @@ For the GitHub walkthrough, complete the applicable checks below before checkpoi
 
 ### Mechanical validation
 
-- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `.agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
+- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `python3 -I .agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections. Where a human view exists, validate its small, deliberate membership through [[procedures/maintain-project-human-view|Maintain Project Human View]]; absence of a view is valid.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.

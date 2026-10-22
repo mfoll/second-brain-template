@@ -7,7 +7,7 @@ surface_for:
 
 # AGENTS.md — Second Brain Vault
 
-These are the daily instructions for agents using this Brain. Customize its scope and privacy boundary during deployment. Markdown, YAML frontmatter and wikilinks hold durable knowledge; saved views and optional Git history support retrieval and recovery. Start from [[vault]] when no Project entry is specified. [[deploy-vault-from-template]] owns setup.
+These are the daily instructions for agents using this Brain; the vault's scope and privacy boundary are recorded once in [[README]]. Markdown, YAML frontmatter and wikilinks hold durable knowledge; saved views and optional Git history support retrieval and recovery. Start from [[vault]] when no Project entry is specified.
 
 Keep changes small, portable, and reviewable. Current user instructions override this guide.
 
@@ -92,7 +92,7 @@ The template includes [[procedures/review-multi-vault-consistency|Review Multi-V
 
 ## Template and deployment boundary
 
-This section applies only to the reusable template checkout; remove it in a deployed Brain. Keep the template free of private/work content, credentials, local roots, caches and dumps. Customize the copy's scope and privacy, then choose optional integrations as needed. Preserve the template's licence and applicable upstream notices.
+This section applies only to the reusable template checkout; remove it in a deployed Brain. [[deploy-vault-from-template]] owns setup. Keep the template free of private/work content, credentials, local roots, caches and dumps. Customize the copy's scope and privacy, then choose optional integrations as needed. Preserve the template's licence and applicable upstream notices.
 
 When a generic rule changes, update the template first, then deliberately port compatible changes to selected deployed-vault interface files. Preserve intentional local differences and do not inspect private content as part of propagation.
 

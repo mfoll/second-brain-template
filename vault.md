@@ -9,7 +9,7 @@ surface_for:
 
 # <Vault Name>
 
-Entry note for this vault. Replace the heading and the three placeholders marked `<...>` below, then delete this sentence.
+Replace the heading and the three `<...>` placeholders below, then delete this line.
 
 ## Outcome
 

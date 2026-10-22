@@ -6,11 +6,11 @@ _organized: true
 
 # Agent Setup
 
-How agents find and operate a deployed vault: the instruction layers, Skill packages, external-file conventions, optional automation and checkpointing. Read [[README]] first for what the template is and how to start; use [[deploy-vault-from-template]] for the step-by-step deployment and this note for the operating setup that follows it.
+How agents find and operate a deployed vault: the instruction layers, Skill packages, external-file conventions, optional automation and checkpointing. The vault's [[README]] states what it is for; this note covers the operating setup that follows deployment.
 
 ## Agent instructions
 
-The vault files are instructions for daily work after deployment. Setup guides explain how to customize and connect them:
+The vault files are instructions for daily work after deployment. How they are customized and connected:
 
 ```mermaid
 flowchart TB
@@ -67,7 +67,7 @@ python3 .agents/skills/lint-vault/scripts/tolaria_icon_audit.py .
 python3 .agents/skills/lint-vault/scripts/hierarchy_audit.py . --tree
 ```
 
-The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. All three need only Python 3.10 or later with the standard library.
+The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. All three need only Python 3.9 or later with the standard library, verified on 3.9 and 3.13.
 
 ## External files and optional automation
 
