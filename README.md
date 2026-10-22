@@ -8,13 +8,50 @@ surface_for:
 
 # Second Brain template
 
-A lightweight folder of linked Markdown notes that adds persistent memory to your existing tools. Keep your editor, agent, task manager, project repositories and source documents. Save useful context here so you can resume work and understand decisions after the original conversation is gone.
+A lightweight knowledge base built from **Markdown notes, YAML frontmatter and links**, independent of any AI provider. Your Second Brain is a simple folder of human-readable files that you can copy, back up or move between tools. Its linked notes preserve context, sources and decisions between conversations.
 
-You can read and edit the files with any Markdown editor. [Tolaria](https://tolaria.md/) provides a vault viewer, and an AI agent can help retrieve and maintain notes. Both are optional. The repository contains note templates, instructions and helper scripts; it installs no applications and enables no scheduled jobs.
+You can use it entirely by hand in any Markdown editor. AI makes capture, retrieval and maintenance much easier: a coding agent with filesystem access can follow the included instructions to read and write the notes. Choose the agent and model provider that suit you. [Tolaria](https://tolaria.md/) offers an optional viewer; keep your existing tools and source documents.
+
+The repository contains note templates, instructions and helper scripts; it installs no applications and enables no scheduled jobs. [Search indexes and RAG](#optional-search-and-memory-layers) can be added on top. Direct file search and graph navigation have been sufficient in the workflows used to develop this template.
+
+![A portable folder of linked Markdown notes, readable and writable directly by you or through an AI agent. An example conversation asks for an alternative to linear regression, suggests gradient boosting, and requests saving the idea. A viewer, Git and search or RAG are optional.](assets/second-brain-overview.png)
 
 Keep this template free of personal or work content, source dumps, credentials, attachments, local roots, caches and generated agent state. Put real knowledge in your own deployed copy.
 
-[Start here](#start-here) · [Agent instructions](#agent-instructions) · [Responsible use](#responsible-use) · [Note types](#note-types) · [Files and relationships](#files-and-relationships) · [Note lifecycle](#note-lifecycle) · [Saved views](#saved-views) · [Extending the model](#extending-the-model) · [Obsidian, wikis and OKF](#relationship-to-obsidian-wikis-and-okf) · [Repository map](#repository-map) · [Licence](#licence)
+[How it works](#how-it-works) · [Start here](#start-here) · [Agent instructions](#agent-instructions) · [Responsible use](#responsible-use) · [Note types](#note-types) · [Files and relationships](#files-and-relationships) · [Note lifecycle](#note-lifecycle) · [Saved views](#saved-views) · [Extending the model](#extending-the-model) · [Other tools and formats](#relationship-to-other-tools-and-formats) · [Repository map](#repository-map) · [Licence](#licence)
+
+## How it works
+
+- **Notes are files.** Each `.md` file has readable text and a YAML header, called frontmatter, for structured properties.
+- **Types say what a note is.** `type: Project` describes current work; `Source`, `Concept` and `Question` distinguish source material, reusable ideas and unresolved issues. The [Type definitions](#note-types) explain their conventions and can be extended.
+- **Relationships say how notes connect.** `belongs_to` names a parent, `has` selects useful entry points, and `related_to` links relevant notes. Body links such as `[[benchmark-paper]]` add context.
+- **Agents can read and write the graph.** The template includes [agent instructions](AGENTS.md), Type definitions and Procedures that explain how to find, structure, link and update notes. With filesystem access, coding agents can search metadata, follow links and create or edit notes using these conventions. No graph database or separate retrieval index is required.
+
+You can write notes yourself in any Markdown editor. In practice, it is often easier to tell an agent what you want to remember and let it choose a suitable Type, reuse or update existing notes, and add useful links. For example: “Note this in my brain: for this study, we still need to check whether the results hold on a new dataset.”
+
+For example, a study comparing two analysis methods can link a benchmark paper, an open validation question and the concept of generalisation:
+
+```mermaid
+flowchart LR
+    accTitle: A small Second Brain graph
+    accDescr: A benchmark paper Source belongs to a Project comparing two analysis methods. The Project belongs to the Research methods Responsibility and has a Question about performance on a new dataset. The Source relates to the Concept of generalisation.
+    responsibility["`*Type: Responsibility*
+Research methods`"]
+    project_note["`*Type: Project*
+Compare two analysis methods`"]
+    source_note["`*Type: Source*
+Benchmark paper`"]
+    question_note["`*Type: Question*
+Does the result hold on a new dataset?`"]
+    concept_note["`*Type: Concept*
+Generalisation`"]
+    project_note -->|belongs_to| responsibility
+    source_note -->|belongs_to| project_note
+    project_note -->|has| question_note
+    source_note -. related_to .-> concept_note
+```
+
+Each box is one note; arrow labels name fields stored in the note they leave. These fictional notes illustrate the model. See the [file example and relationship reference](#files-and-relationships) below for the YAML behind it.
 
 ## Start here
 
@@ -106,25 +143,26 @@ Projects normally contain 600–1,200 words, concise current state, 3–7 action
 
 Each note is one UTF-8 `.md` file. Its YAML header, called *frontmatter*, stores structured metadata; the Markdown body holds the text, headings, lists and source links. The first `#` heading is the display title, so a separate `title:` field is unnecessary. Filenames use kebab-case.
 
-For example, `planning-reference.md` might contain:
+For example, the `benchmark-paper.md` Source from the opening graph might contain:
 
 ```markdown
 ---
 type: Source
 belongs_to:
-  - "[[example-project]]"
+  - "[[compare-analysis-methods]]"
 related_to:
-  - "[[planning]]"
-url: https://example.org/reference
+  - "[[generalisation]]"
+url: https://example.org/benchmark-paper
 _organized: true
 ---
 
-# Planning reference
+# Benchmark paper
 
-A short summary of the material and why it matters.
+A summary of how Method A and Method B were compared, including the datasets,
+evaluation criteria and limitations.
 
-Original: [Planning reference](https://example.org/reference).
-See [[example-project|Example Project]] for the current work.
+Original: [Benchmark paper](https://example.org/benchmark-paper).
+See [[compare-analysis-methods|Compare two analysis methods]] for the current study.
 ```
 
 Here, `type: Source` refers to the definition in [source.md](source.md). `url` is ordinary metadata. `_organized: true` marks a note with a retrieval path. The quoted wikilinks connect it to other notes; these example targets illustrate the syntax and are not bundled notes.
@@ -138,27 +176,9 @@ Links in the body connect ideas in context. Relationship fields in the header gi
 | `has` | A selective list of important children or entry points. |
 | `surface_for` | Membership in a small human-facing project surface, selected by a saved view. |
 
-Use YAML lists for multiple targets and quote wikilinks. `[[example-project]]` refers to a root filename without `.md`; `[[procedures/ingest-source]]` includes a vault-relative folder path. `[[example-project|Example Project]]` supplies a readable label. A `has` list is curated and does not need to repeat every child or backlink.
+Use YAML lists for multiple targets and quote wikilinks. `[[compare-analysis-methods]]` refers to a root filename without `.md`; `[[procedures/ingest-source]]` includes a vault-relative folder path. `[[compare-analysis-methods|Compare two analysis methods]]` supplies a readable label. A `has` list is curated and does not need to repeat every child or backlink.
 
-For example, these notes connect work with useful knowledge. Each arrow names a field stored on the note it leaves; the links illustrate possible choices rather than a required hierarchy.
-
-```mermaid
-flowchart BT
-    accTitle: Example note relationships
-    accDescr: A Project and an Operation belong to a Responsibility. A Source and a Question belong to the Project. The Source and Project also relate to a Topic.
-    responsibility["Responsibility<br/>Maintain documentation"]
-    project_note["Project<br/>Refresh onboarding"]
-    operation["Operation<br/>Review links"]
-    source_note["Source<br/>Writing reference"]
-    question_note["Question<br/>What belongs in the quickstart?"]
-    topic_note["Topic<br/>Technical writing"]
-    project_note -->|belongs_to| responsibility
-    operation -->|belongs_to| responsibility
-    source_note -->|belongs_to| project_note
-    question_note -->|belongs_to| project_note
-    source_note -. related_to .-> topic_note
-    project_note -. related_to .-> topic_note
-```
+The [opening graph](#how-it-works) shows a few of these relationships across different note types. It illustrates selected links, not every possible connection or a required hierarchy.
 
 GitHub [renders these Mermaid diagrams directly](https://docs.github.com/en/get-started/writing-on-github/working-with-advanced-formatting/creating-diagrams#creating-mermaid-diagrams). Other editors may show their text source; the surrounding explanations and tables describe the same conventions.
 
@@ -226,21 +246,31 @@ Prefer a property for a small distinction, such as `format: video` on a Source. 
 
 Type identities stay in English; `_sidebar_label` can localize their display. Preserve valid custom fields. Keys beginning with `_` are generally viewer or lifecycle metadata and should follow their documented conventions. This template supplies a shared starting model without requiring every vault to have the same domain-specific schema.
 
-## Relationship to Obsidian, wikis and OKF
+## Relationship to other tools and formats
 
-These describe different layers and can be combined: an application, an approach to organizing knowledge, and an exchange format.
+These tools and formats address different parts of a knowledge system and can be combined.
 
 | Approach | What it provides | How this template relates |
 | --- | --- | --- |
 | [Obsidian](https://help.obsidian.md/Files+and+folders/How+Obsidian+stores+data) | An application for a local folder of Markdown notes, with [properties](https://help.obsidian.md/properties) and [internal links](https://help.obsidian.md/links). | The basic files, YAML and wikilinks are familiar. This template adds particular note types, relationship meanings and maintenance workflows. |
 | Wikis, including [LLM-maintained wikis](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | Linked pages that accumulate and revise knowledge; an LLM wiki uses an agent to maintain synthesis from sources. | Both use linked, maintained knowledge. This template also defines explicit types, project state and relationships, separates sources from synthesis, and supports human or agent maintenance. |
 | Google Cloud's [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) | A format for exchanging knowledge as Markdown files with YAML frontmatter, including a required `type` and extensible metadata. | The basic representation is similar. This template adds its own type definitions, typed relations and operating procedures. |
+| [QMD](https://github.com/tobi/qmd) | A local search engine combining keyword search, semantic search and reranking over Markdown files. | Can index the folder as an optional retrieval layer. The notes remain authoritative; the index needs refreshing as files change. |
+| Garry Tan's [GBrain](https://github.com/garrytan/gbrain) | A broader agent-memory system with keyword and optional semantic retrieval, graph navigation, synthesis and agent integrations. | Selected retrieval features could complement the notes through a separate integration. It has its own storage and conventions; this template includes no ready-made connector. |
 
 You can open the notes in Obsidian, but the template does not bundle an Obsidian configuration or plugins. Its type meanings and Tolaria saved views do not automatically become equivalent Obsidian behavior; configure the views and workflows you want in your chosen application.
 
 The LLM-wiki pattern emphasizes a maintained knowledge layer between sources and answers. Here, the same principle extends to current work, decisions and responsibilities, with explicit write authority and external-file boundaries. Sources can remain in their canonical systems rather than being copied into a `raw/` folder.
 
 OKF specifies standard Markdown cross-links and its own lifecycle and provenance conventions. This template uses wikilinks for its typed graph and type-specific status values. Unknown types and extra fields are allowed by OKF, but equivalent graph and lifecycle behavior needs an explicit mapping. This repository makes no OKF conformance claim and does not require Google services. See the [OKF specification](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) before relying on interchange with a particular consumer.
+
+### Optional search and memory layers
+
+Retrieval-augmented generation (RAG) supplies a model with relevant material retrieved for a task. Many implementations build a separate search index, often using text chunks and embeddings. This template's default path is direct file search and graph navigation: start from an entry note, inspect metadata and follow useful links. The relationships already exist in the Markdown files.
+
+In the workflows used to develop this template, trials of QMD and GBrain did not show enough additional benefit to justify maintaining an extra retrieval stack. We therefore keep the default setup free of a separate index. The value of indexing depends on the workload; it may help when fuzzy recall or poorly connected material repeatedly defeats direct retrieval.
+
+You can add a search layer over the same files, or integrate a broader memory system, when it solves a concrete need. QMD can index a Markdown folder; a GBrain integration also needs to account for its storage, relationship and writeback conventions. Keep the notes as the durable source of truth, make derived indexes rebuildable, and verify retrieved snippets against the underlying notes. These are optional extensions, not bundled integrations.
 
 ## Everyday use
 
@@ -334,6 +364,7 @@ The repository includes a working skeleton and its maintenance instructions. You
 | [views/](views/), [saved-view reference](tolaria-saved-views.md), [callout reference](tolaria-callouts.md) | Optional saved selections and viewer presentation guidance. |
 | [Vault Automations](vault-automations.md), [Capture Preferences](capture-preferences.md) | Optional configuration guides; neither activates a job or source connection. |
 | [adr/](adr/) and short Concept notes | The starter portability decision and a small glossary of design choices, described below. |
+| [assets/second-brain-overview.png](assets/second-brain-overview.png) | README illustration of the portable folder and the manual and agent-assisted ways to use it. |
 | [.gitignore](.gitignore) | Exclusions for local configuration, temporary files and common credential files. |
 | [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) | MIT terms for the template and retained upstream notices. |
 
