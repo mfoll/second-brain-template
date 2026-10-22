@@ -22,17 +22,24 @@ ICON_NAME_RE = re.compile(r"^[a-z][a-z0-9-]*$")
 def selected_files(root: Path) -> list[Path]:
     """Return tracked notes plus every current saved-view YAML file."""
 
-    result = subprocess.run(
-        ["git", "ls-files", "-z", "--", "*.md"],
-        cwd=root,
-        check=True,
-        capture_output=True,
-    )
-    paths = {
-        root / raw.decode("utf-8", errors="surrogateescape")
-        for raw in result.stdout.split(b"\0")
-        if raw
-    }
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "-z", "--", "*.md"],
+            cwd=root,
+            check=True,
+            capture_output=True,
+        )
+        paths = {
+            root / raw.decode("utf-8", errors="surrogateescape")
+            for raw in result.stdout.split(b"\0")
+            if raw
+        }
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        skipped = {".git", ".agents", ".local", ".tmp", ".tolaria-cache", ".cache", "attachments"}
+        paths = {
+            path for path in root.rglob("*.md")
+            if not any(part in skipped for part in path.relative_to(root).parts)
+        }
     views_root = root / "views"
     if views_root.is_dir():
         paths.update(path for pattern in ("*.yml", "*.yaml") for path in views_root.glob(pattern))
@@ -109,10 +116,6 @@ def main() -> int:
     if not root.is_dir():
         print(f"ERROR\tvault root is not a directory: {root}", file=sys.stderr)
         return 2
-    if not (root / ".git").exists():
-        print(f"ERROR\tvault root is not a Git worktree: {root}", file=sys.stderr)
-        return 2
-
     try:
         catalog = load_catalog()
         files = selected_files(root)

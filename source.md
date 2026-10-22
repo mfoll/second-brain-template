@@ -21,3 +21,42 @@ For maintained project inputs, outputs, deliverables, or folders that intentiona
 `root_key` resolves through ignored local configuration such as `.local/roots.yml`, environment variables, or machine-local agent setup. `access: guarded-write` means read-only by default, with writes allowed only when the user explicitly asks for the specific write.
 
 A specific external file or project folder that should be maintained over time gets its own Source note. Project notes should link to that Source note instead of storing `last_checked` themselves. Casual one-off mentions of files do not need Source notes unless the user asks to remember, track, reference, associate, or maintain that file.
+
+## Template
+
+```md
+---
+type: Source
+source_type: Scientific paper
+url: https://example.org/the-item
+date_accessed: YYYY-MM-DD
+belongs_to: "[[project-or-responsibility-that-answers-for-it]]"
+related_to:
+  - "[[relevant-concept-or-question]]"
+_organized: true
+---
+
+# Title As Published
+
+## Summary
+
+What the source is and the two or three findings that matter here.
+
+## Why It Matters
+
+Which Project, Question or decision it informs.
+
+## Key Details
+
+The specific facts, numbers, methods or quotes worth keeping, with their limits.
+
+## Caveats
+
+What the source does not show, and any conflict with notes already in the vault.
+
+## Source Links
+
+- [Title As Published](https://example.org/the-item)
+```
+
+Use `source_file`, or `storage_system` with `root_key`, `relative_path`, `access` and `last_checked`, instead of `url` for a maintained external file or folder, and `## Source Location` instead of `## Source Links`. Follow [[procedures/ingest-source|Ingest Source]] for the full ingestion steps.

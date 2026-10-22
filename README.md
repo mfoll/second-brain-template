@@ -21,7 +21,7 @@ This template adapts the [Portent Vault Template](https://github.com/refactoring
 - **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
 - **Enforcement.** Lint scripts audit compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
 
-These additions were worked out on a real professional vault over several months and ported back once they proved generic.
+These additions were worked out on a real professional vault, in daily use with agents since April 2026, and ported back once they proved generic. Conventions still change; each change lands as an ADR.
 
 [How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
@@ -62,11 +62,11 @@ Each box is one note; arrow labels name fields stored in the note they leave. Th
 
 1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
-3. Give [vault.md](vault.md) a name and purpose, and define the copy's scope and privacy boundary in this README. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
-4. Create one Project and one non-sensitive Source using their definitions and templates. Link them and try finding the Source again from the Project.
+3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
+4. Create one Responsibility for your area of work, one Project under it and one non-sensitive Source under the Project, using their definitions and templates. Try finding the Source again from the Project.
 5. Use the notes as they are. Add [agent routing](agent-setup.md), Skills, external-file helpers, views or automation only when useful. Keep existing project documentation in its canonical location and link to it.
 
-Basic note use needs a text editor. Git adds history and rollback; the optional [GitHub deployment walkthrough](deploy-vault-from-template.md) uses Git and the GitHub CLI. Python 3.10 or later is needed only for the bundled audit helpers.
+Basic note use needs a text editor. Git adds history and rollback; the optional [GitHub deployment walkthrough](deploy-vault-from-template.md) uses Git and the GitHub CLI. Python 3.10 or later is needed only for the bundled audit helpers, which work in a plain folder as well as in a Git repository.
 
 Or open the template with your agent and adapt this request:
 

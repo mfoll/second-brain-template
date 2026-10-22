@@ -31,7 +31,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 
 Type-aware compactness warnings:
 
-- Vault `AGENTS.md` above 1,500 words; an added workspace memory section above 80 words; a specialized pointer above 300 without a real safety reason. Preserve the existing project's technical instructions; these pointer targets do not limit the full file.
+- Vault `AGENTS.md` above 2,000 words; an added workspace memory section above 80 words; a specialized pointer above 300 without a real safety reason. Preserve the existing project's technical instructions; these pointer targets do not limit the full file.
 - Active Project above 1,500 body words; above 3,000 requires a structural split or explicit justification.
 - Project Current State above 250 words, more than 10 unchecked actions, or more than five Maintenance Log entries.
 - Question above 750 body words: review whether its answer or analysis belongs in maintained synthesis.

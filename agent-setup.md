@@ -79,7 +79,7 @@ Disable `attachments/` or reserve it for small, intentional Git-tracked vault as
 
 [[vault-automations|Vault Automations]] documents optional jobs. Begin manually; configured jobs use their own vault's working directory, privacy rules and approved model. Read-only jobs never edit or checkpoint; write-capable jobs need narrow scope and separate push authority.
 
-[[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] belongs only in an explicitly designated routing/control vault. Ordinary deployments remove its installed Skill package and active routes; they may retain the Procedure as clearly archived provenance. This template does not authorize access to another vault's private content.
+[[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] belongs only in an explicitly designated routing/control vault. Ordinary deployments retire it with the checklist in [[deploy-vault-from-template]] and may keep the Procedure as archived provenance. This template does not authorize access to another vault's private content.
 
 ## Review and backup
 

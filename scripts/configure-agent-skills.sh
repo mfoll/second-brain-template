@@ -78,7 +78,7 @@ fi
 if [ "$operation" = "install" ]; then
   mkdir -p "$target_dir"
 elif [ ! -d "$target_dir" ]; then
-  echo "Runtime skill directory is missing: $target_dir" >&2
+  echo "Runtime skill directory not found (nothing installed there yet): $target_dir" >&2
   exit 1
 fi
 

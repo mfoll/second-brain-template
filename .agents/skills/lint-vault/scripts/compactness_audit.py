@@ -17,18 +17,25 @@ def words(text: str) -> int:
 
 
 def tracked_markdown(root: Path) -> list[Path]:
-    result = subprocess.run(
-        ["git", "ls-files", "-z", "--", "*.md"],
-        cwd=root,
-        check=True,
-        capture_output=True,
-    )
+    """Canonical notes: Git-tracked Markdown when the root is a Git worktree, else every Markdown file on disk."""
+    relatives: list[Path] = []
+    try:
+        result = subprocess.run(
+            ["git", "ls-files", "-z", "--", "*.md"],
+            cwd=root,
+            check=True,
+            capture_output=True,
+        )
+        relatives = [
+            Path(raw.decode("utf-8", errors="surrogateescape"))
+            for raw in result.stdout.split(b"\0")
+            if raw
+        ]
+    except (FileNotFoundError, subprocess.CalledProcessError):
+        relatives = sorted(path.relative_to(root) for path in root.rglob("*.md"))
     paths: list[Path] = []
-    for raw in result.stdout.split(b"\0"):
-        if not raw:
-            continue
-        relative = Path(raw.decode("utf-8", errors="surrogateescape"))
-        if any(part in EXCLUDED_PARTS for part in relative.parts):
+    for relative in relatives:
+        if any(part in EXCLUDED_PARTS or part == ".git" for part in relative.parts):
             continue
         paths.append(root / relative)
     return paths
@@ -66,8 +73,8 @@ def main() -> int:
         totals["notes"] += 1
         totals["words"] += body_words
 
-        if relative == "AGENTS.md" and words(text) > 1500:
-            warnings.append(("instructions", relative, f"{words(text)} words; target <=1500"))
+        if relative == "AGENTS.md" and words(text) > 2000:
+            warnings.append(("instructions", relative, f"{words(text)} words; target <=2000"))
 
         if note_type == "Project" and status == "Active":
             totals["projects"] += 1

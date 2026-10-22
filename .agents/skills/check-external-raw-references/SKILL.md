@@ -9,6 +9,7 @@ description: "Verify external Source locations in the selected deployed vault; u
 
 - Vault rules: `AGENTS.md`
 - Complete workflow: `procedures/check-external-raw-references.md`
+- Run from the vault root: `python3 -I .agents/skills/check-external-raw-references/scripts/check_external_raw_references.py` (dry run; `--write` updates `last_checked`); the script takes no path argument and needs `.local/roots.yml`
 
 Read the vault rules and Procedure completely before acting.
 

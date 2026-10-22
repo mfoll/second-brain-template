@@ -17,10 +17,12 @@ Start with the folder setup below. The later GitHub walkthrough is optional when
 ## Minimal folder setup
 
 1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool. Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
-2. Open the folder in the existing Markdown editor. Name [[vault]] and give it a purpose, scope and privacy boundary. Keep existing project documents, repositories and task tools in their canonical locations.
-3. If agents will use the vault, customize its `AGENTS.md` for that scope and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair and active routes, as described below.
-4. Create one Project and a non-sensitive Source, with a useful link between them. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. No audit helper or Skill installation is required for this first check.
-5. Agree source, tool, backup and retention boundaries once through [[README]]. Use the existing backup method, adding Git history only if selected. Keep `LICENSE` and applicable `THIRD_PARTY_NOTICES.txt` with retained template material; added content keeps its own ownership and confidentiality.
+2. Open the folder in the existing Markdown editor. Name [[vault]] and give it a purpose; the scope and privacy boundary are written once, in the README (step 5). Keep existing project documents, repositories and task tools in their canonical locations.
+3. If agents will use the vault, customize its `AGENTS.md` for that scope and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair following the checklist under Retire The Control-Only Multi-Vault Pair below.
+4. Create one Responsibility for your own area of work, one Project under it (`belongs_to`), and one non-sensitive Source under the Project, using the templates in [[responsibility]], [[project]] and [[source]]. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. The audit helpers are optional here; when you run them, they need only Python 3.10 or later and work in a plain folder as well as in a Git repository.
+5. Replace the template README with the short vault README under Customize README below. It records the scope, privacy boundary, AI tools and accounts, storage, backup and retention agreed once; [[vault]] and `AGENTS.md` refer to it rather than repeating it. Use the existing backup method, adding Git history only if selected. Keep `LICENSE` and applicable `THIRD_PARTY_NOTICES.txt` with retained template material; added content keeps its own ownership and confidentiality.
+
+6. Mark the setup material you no longer need with `_archived: true`: this guide, [[upgrade-existing-vault-from-template]] and [[global-agent-instructions-template]]. They stay as provenance and drop out of active views; the placeholder check below excludes them by filename. Delete them later if you prefer, after the first checkpoint.
 
 Stop here for a basic notes setup. Report what works and any optional choices still open; do not call unselected integrations installed or failed.
 
@@ -132,13 +134,41 @@ Create a vault-local deployment Event or equivalent ledger that records `<REVIEW
 
 ## Customize Root Note
 
-Rename or edit [[vault]] to match `<VAULT_ROOT_NOTE>` if needed. Replace `<Vault Name>` with `<NEW_VAULT_NAME>`. Fill in purpose, scope, first workflows, and first next actions for `<VAULT_SCOPE>`.
+Rename or edit [[vault]] to match `<VAULT_ROOT_NOTE>` if needed. Replace `<Vault Name>` with `<NEW_VAULT_NAME>`. Fill in purpose, first workflows, and first next actions for `<VAULT_SCOPE>`; link the README for the scope and privacy boundary instead of repeating them. Replace the `YYYY-MM-DD` placeholders in its Maintenance Log with real dates or remove the lines.
 
 If the root note is renamed, update wikilinks that point to [[vault]].
 
 ## Customize README
 
-Update the README so it describes the concrete vault rather than the template. Remove template-only warnings that no longer apply after deployment, but keep portability and no-secret guidance.
+Replace the template README with a short README for the concrete vault. The template documentation remains available in the upstream repository and in the two reference Guides, [[model-reference]] and [[agent-setup]], which stay in the vault. A starting point:
+
+```markdown
+---
+type: Guide
+related_to: "[[vault]]"
+_organized: true
+---
+
+# <NEW_VAULT_NAME>
+
+A Second Brain for <VAULT_SCOPE>, deployed from the
+[Second Brain template](https://github.com/mfoll/second-brain-template).
+Start from [[vault]]; agents follow [[AGENTS]].
+
+## Scope and privacy boundary
+
+- In scope: <what this vault records>.
+- Out of scope: <what stays elsewhere, such as private or confidential material>.
+- Sources it may use: <documents, folders, tools>.
+- AI tools and accounts that may process it: <approved tools>.
+- Storage, backup and retention: <where the repository and backups live, how long material is kept>.
+
+## Reference
+
+[Model Reference](model-reference.md) · [Agent Setup](agent-setup.md) · [Licence](LICENSE)
+```
+
+Keep the portability and no-secret guidance; drop the template-only warnings.
 
 ## Customize AGENTS
 
@@ -146,7 +176,7 @@ Keep the vault conventions, but update wording that should name the concrete vau
 
 Customize the deployed vault's `AGENTS.md` for the vault's purpose, privacy boundary, evidence standards, and domain-specific workflows. Do not copy every template, work/control-vault, or personal-vault rule wholesale when the deployed vault has a different role.
 
-Use the responsible-use section in [[README]] to agree source scope, AI tools/accounts, storage destinations, backup and retention during setup. Record those choices in the deployed README or its linked setup guide. Reuse them for routine work; ask when a material new risk or change of scope requires a decision.
+Use the responsible-use section in [[README]] to agree source scope, AI tools/accounts, storage destinations, backup and retention during setup. Record those choices in the deployed README only; `AGENTS.md` and [[vault]] refer to it. Reuse them for routine work; ask when a material new risk or change of scope requires a decision.
 
 Keep `CLAUDE.md` and `GEMINI.md` as small runtime imports of the daily vault `AGENTS.md`. Preserve runtime-specific instructions when adding an import to an existing file. Do not copy the full rulebook into each runtime file, and do not generate per-runtime vault copies merely because global instructions elsewhere are generated.
 
@@ -227,6 +257,18 @@ find .agents/skills -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort
 
 For each active pair, verify the visible note's `package_path`, matching package-directory `name`, catalogue lifecycle, and package-bundled relative support files. A Procedure-backed pair must have a resolvable `wraps` link and name the same Procedure on both sides; a specialized standalone pair must explicitly say that the package owns execution and must not duplicate an existing Procedure. Check documented external prerequisites at execution. Update both sides when shared purpose, ownership, name, path, or lifecycle changes; package-only implementation edits need not churn the catalogue. To retire a Skill, remove the installed package and archive or remove its catalogue note and active routes; record any intentional runtime-only exception.
 
+## Retire The Control-Only Multi-Vault Pair
+
+[[procedures/review-multi-vault-consistency]] and its Skill exist only for a vault that routes and coordinates other vaults. In every other deployment, retire the pair in one change:
+
+1. Delete the package directory `.agents/skills/review-multi-vault-consistency/`.
+2. Delete the catalogue note `skills/review-multi-vault-consistency-skill.md`.
+3. Add `_archived: true` to `procedures/review-multi-vault-consistency.md` and leave its `status` as it is; the archive flag, not the status, retires a note.
+4. Remove the sentence about the Procedure near the end of the Workflow router in `AGENTS.md`, and the paragraph about it in [[agent-setup]].
+5. Leave the links from [[adr/0008-require-semantic-reachability-and-reversible-compaction|ADR 0008]] and other provenance notes in place; they are history, not active routes.
+
+Then rerun the catalogue and package listing above; both sides should show nine pairs.
+
 ## Configure Agent Skill Discovery
 
 Only when Skill installation is selected, follow [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] for those runtimes. Keep `.agents/skills/` canonical and use the provided installer to create machine-local links, preserving existing conflicting entries:
@@ -282,13 +324,15 @@ Do not let a work/control vault automation read or maintain a private vault's co
 
 ## Validate Placeholders
 
-Search for placeholders:
+Search for placeholders in notes, excluding the setup material that keeps them by design:
 
 ```bash
-grep -R "<[A-Z0-9_]*>" -n .
+grep -R "<[A-Z0-9_]*>" -n --include='*.md' . \
+  | grep -v -E '(^|/)(deploy-vault-from-template|upgrade-existing-vault-from-template|global-agent-instructions-template|vault-automations)\.md|procedures/configure-' \
+  || true
 ```
 
-Expected placeholders may remain in this deployment guide and in [[global-agent-instructions-template]] while still working from the template repository. In deployed vaults, placeholders should remain only in archived provenance notes or explicitly local setup snippets. Other placeholder hits should be reviewed and replaced before the deployment checkpoint.
+The excluded files are setup guides and configuration snippets that legitimately contain `<PLACEHOLDER>` tokens; archive them with `_archived: true` once setup is done (minimal step 6). An empty result is a pass (the trailing `|| true` keeps the exit status at 0). The pattern does not catch `YYYY-MM-DD` lines or `<Vault Name>` prose in [[vault]]; replace those by hand.
 
 ## Validate Scope
 

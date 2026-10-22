@@ -61,7 +61,6 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 
 ## Maintenance Log
 
-- 2026-09-23: Updated the portable automation guide to describe Luna as the currently supported low-cost Codex model when that trade-off is appropriate, while keeping deployed model IDs in their local configurations.
 - YYYY-MM-DD: Deployed from `second-brain-template` and customized its scope.
 - YYYY-MM-DD: Confirmed compact project, pointer, retrieval, and Git contracts.
 - YYYY-MM-DD: Reviewed optional workflows and removed template-only residue.

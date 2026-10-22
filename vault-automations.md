@@ -14,7 +14,7 @@ Use this guide to document automations after deployment. The template defines no
 - Read-only lint and health jobs never stage, commit, or push.
 - A scheduled lint job diagnoses and proposes ownership. It may identify a responsible Codex task, but must report the candidate and wait for user confirmation before contacting it. If none exists, it proposes doing the focused follow-up in the current task.
 - Write-capable jobs need an explicit scope and narrowly authorized commands. Persisted network approval is only an execution mechanism, not general permission.
-- Set the deployment's approved standalone automation model and reasoning effort. For Codex, when a low-cost model is appropriate, use the currently supported Luna model with `max` reasoning unless the user requests another model or effort. Same-task heartbeats inherit their attached task's settings, so verify that task instead.
+- Set the deployment's approved standalone automation model and reasoning effort. For Codex, when a low-cost model is appropriate, use the vendor's currently supported low-cost model with its highest reasoning setting unless the user requests another model or effort. Same-task heartbeats inherit their attached task's settings, so verify that task instead.
 - Stagger schedules across vaults and document whether a job is active, paused, or manual.
 
 Cross-vault consistency review belongs only to a vault explicitly designated as routing/control. Ordinary personal, research, project, or team vaults must not schedule it.
@@ -41,5 +41,5 @@ Document the job's permitted sources, AI tools and storage destinations during s
 - Keep prompts thin and route logic to Procedures.
 - Verify read-only jobs cannot write.
 - Give write jobs task-scoped commit rules and separate push authorization.
-- Check both automation files and any local database row after schedule or model changes. Confirm they agree on the selected model and reasoning effort; when using the low-cost Luna default, verify the stored model ID against the current Codex model selection. For a heartbeat, verify the attached task's inherited settings.
+- Check both automation files and any local database row after schedule or model changes. Confirm they agree on the selected model and reasoning effort; when using a low-cost default model, verify the stored model ID against the current Codex model selection. For a heartbeat, verify the attached task's inherited settings.
 - Do not copy another vault's automation unchanged without reviewing scope and privacy.

@@ -88,7 +88,7 @@ When a task matches an existing Procedure, read and follow it before acting. Use
 | Expose retained Skills to an agent runtime | [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]] |
 | Checkpoint authorized edits | [[procedures/git-checkpoint-vault-changes|Git Checkpoint Vault Changes]] |
 
-The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only for routing/control vaults. Ordinary deployments remove its installed Skill package and active routes and must not schedule it.
+The template includes [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only for routing/control vaults. Ordinary deployments retire it following the checklist in [[deploy-vault-from-template]] and must not schedule it.
 
 ## Template and deployment boundary
 

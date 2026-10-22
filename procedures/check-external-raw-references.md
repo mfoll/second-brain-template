@@ -51,6 +51,18 @@ Treat external raw references as read-only by default. Agents may list folders, 
 8. Never modify the external raw folder as part of this procedure.
 9. Report unresolved roots, unsafe references, missing paths, kind mismatches, stale indexes, notes updated in the vault, and notes that use absolute local paths instead of `root_key` plus `relative_path`. Use portable note/root-key references in reports; do not print resolved machine paths or configured local root candidates.
 
+## Run
+
+From the vault root, with `.local/roots.yml` in place:
+
+```bash
+python3 -I .agents/skills/check-external-raw-references/scripts/check_external_raw_references.py            # dry run
+python3 -I .agents/skills/check-external-raw-references/scripts/check_external_raw_references.py --write    # update last_checked
+python3 -I .agents/skills/check-external-raw-references/scripts/check_external_raw_references.py --write --date YYYY-MM-DD
+```
+
+The checker takes no path argument; it reads the current directory. Without `.local/roots.yml` it warns and checks nothing, which is the expected result in a vault that has no external Source notes yet.
+
 ## Report Shape
 
 Group findings as:
