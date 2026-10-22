@@ -10,6 +10,8 @@ surface_for:
 
 A lightweight knowledge base built from **Markdown notes, YAML frontmatter and links**, independent of any AI provider. Your Second Brain is a simple folder of human-readable files that you can copy, back up or move between tools. Its linked notes preserve context, sources and decisions between conversations.
 
+This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent provides the core types, relationships and lifecycle. This repository extends that foundation with specialised note types, detailed instructions for agents, reusable maintenance workflows and lightweight setup guides.
+
 You can use it entirely by hand in any Markdown editor. AI makes capture, retrieval and maintenance much easier: a coding agent with filesystem access can follow the included instructions to read and write the notes. Choose the agent and model provider that suit you. [Tolaria](https://tolaria.md/) offers an optional viewer; keep your existing tools and source documents.
 
 The repository contains note templates, instructions and helper scripts; it installs no applications and enables no scheduled jobs. [Search indexes and RAG](#optional-search-and-memory-layers) can be added on top. Direct file search and graph navigation have been sufficient in the workflows used to develop this template.
@@ -176,6 +178,10 @@ Links in the body connect ideas in context. Relationship fields in the header gi
 | `has` | A selective list of important children or entry points. |
 | `surface_for` | Membership in a small human-facing project surface, selected by a saved view. |
 
+These are shared conventions, not an exhaustive list of allowed relationships. A custom frontmatter field can express another relationship when its value is a quoted wikilink or a YAML list of wikilinks. No separate relationship definition file or registration step is required; [Tolaria detects these fields automatically](https://tolaria.md/concepts/relationships).
+
+Document a relationship's meaning, direction, intended target kinds and whether it accepts one or several targets. Put Type-specific conventions in the relevant Type definition, and relationships shared across Types in this reference. Existing examples include [`wraps` on Skills](skill.md), [`based_on` on Recaps](recap.md) and [`superseded_by` on ADRs](adr.md). Optional fields in a Type's note template can make a relationship easier to discover; they are not a prerequisite for using it. Keep the established relationships above for their existing meanings.
+
 Use YAML lists for multiple targets and quote wikilinks. `[[compare-analysis-methods]]` refers to a root filename without `.md`; `[[procedures/ingest-source]]` includes a vault-relative folder path. `[[compare-analysis-methods|Compare two analysis methods]]` supplies a readable label. A `has` list is curated and does not need to repeat every child or backlink.
 
 The [opening graph](#how-it-works) shows a few of these relationships across different note types. It illustrates selected links, not every possible connection or a required hierarchy.
@@ -238,7 +244,7 @@ Treat a view as a navigation aid within the task's scope. A curated human surfac
 The model is open to extension. Use existing types when they fit, and add structure when it solves a recurring retrieval or workflow need:
 
 - **Add a field:** properties such as `priority`, `review_date` or an external identifier can be added to frontmatter. Document a field's meaning and expected values in the relevant Type or Guide, and use it consistently.
-- **Add a relationship:** a field such as `depends_on` can hold quoted wikilinks. Define its direction and purpose while keeping the four established relationships above for their existing meanings.
+- **Add a relationship:** a field such as `depends_on` can hold quoted wikilinks without a separate declaration or registry. Document its meaning and direction in the relevant Type definition or the [shared relationship reference](#files-and-relationships), and preserve existing relationship meanings.
 - **Add a type:** create a root definition such as `organization.md` with `type: Type`, a first heading `# Organization`, and an explanation of when to use it. Notes in that category then use `type: Organization`. Follow the [Type conventions](type.md) and give the definition a retrieval path.
 - **Extend a workflow or view:** update the relevant Procedure, Skill or saved-view configuration when the new structure should affect behavior. Adding a field alone does not create automation or guarantee that every application interprets it.
 
@@ -252,6 +258,7 @@ These tools and formats address different parts of a knowledge system and can be
 
 | Approach | What it provides | How this template relates |
 | --- | --- | --- |
+| [Portent](https://github.com/refactoringhq/portent) and its [vault template](https://github.com/refactoringhq/portent-vault-template) | The core work/knowledge types, relationships and lifecycle, plus starter Markdown Type definitions. | **The foundation of this template.** This repository adapts the starter definitions and extends the model with specialised types, detailed agent instructions, maintenance workflows and additive setup guidance. |
 | [Obsidian](https://help.obsidian.md/Files+and+folders/How+Obsidian+stores+data) | An application for a local folder of Markdown notes, with [properties](https://help.obsidian.md/properties) and [internal links](https://help.obsidian.md/links). | The basic files, YAML and wikilinks are familiar. This template adds particular note types, relationship meanings and maintenance workflows. |
 | Wikis, including [LLM-maintained wikis](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | Linked pages that accumulate and revise knowledge; an LLM wiki uses an agent to maintain synthesis from sources. | Both use linked, maintained knowledge. This template also defines explicit types, project state and relationships, separates sources from synthesis, and supports human or agent maintenance. |
 | Google Cloud's [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) | A format for exchanging knowledge as Markdown files with YAML frontmatter, including a required `type` and extensible metadata. | The basic representation is similar. This template adds its own type definitions, typed relations and operating procedures. |
