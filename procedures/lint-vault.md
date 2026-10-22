@@ -26,6 +26,7 @@ Inventory tracked vault notes. Exclude `.git`, `.agents`, `.local`, attachments,
 - Sources without human-visible provenance; external Source bridges missing `storage_system`, `root_key`, `relative_path`, `access`, or `last_checked`.
 - ADRs, Procedures, and project pointers that violate their current contracts.
 - Skill pair drift: a visible active Skill without its `package_path`, an installed package without an active catalogue note, a package-directory/`name` mismatch, a missing package-bundled relative support file, or an archived catalogue note whose package remains discoverable under `.agents/skills/`. For Procedure-backed pairs, also flag missing or divergent Procedure pointers; for standalone pairs, flag missing explicit package ownership or a duplicated existing Procedure. Treat semantic purpose or lifecycle drift as a warning unless executable behavior contradicts it; document and check external prerequisites at execution. Allow only documented runtime-only exceptions.
+- Hierarchy drift against [[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]]: Projects without `belongs_to` or parented by a Topic not flagged `hierarchy_root: true`, durable notes whose `belongs_to` chain reaches no Responsibility, Project or Topic, notes reachable only through `has`, notes with two parents at the same distance and no `accepted_double_parent: true`, Note, Concept, Person or Source notes acting as parents of three or more notes while reaching no hub themselves, and clusters of three or more `related_to`-only notes sharing a first link. Recaps, Guides, Operations, archived notes and Persons without an affiliation hub are exempt.
 - Unscoped local paths, credentials, caches, or generated dumps in portable notes.
 
 Type-aware compactness warnings:
@@ -47,10 +48,14 @@ Report the candidate task, why it appears responsible, and the proposed focused 
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.
-2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings and `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names. Verify warned emoji or URL icons in the current Tolaria UI.
+2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings, `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names, then `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for `belongs_to` hierarchy drift (add `--tree` to print the inferred home tree). Verify warned emoji or URL icons in the current Tolaria UI.
 3. Verify findings against the actual files; broad search output is not proof.
 4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures. Include responsible-task candidates and proposed follow-up workflows, but wait for user confirmation before contacting a task.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.
+
+## Hierarchy Heuristic
+
+Hierarchy findings are warnings. Report each list from `hierarchy_audit.py` with a one-line reason per item where one is known, and distinguish drift from deliberate choices recorded in [[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]] and in frontmatter: Topics flagged `hierarchy_root: true`, notes flagged `accepted_double_parent: true`, lateral-only Topics, Recaps and Guides outside the hierarchy, and Persons without an affiliation hub. The fix for a `has`-only or homeless note is its own `belongs_to`; the fix for a non-hub parent of many notes is usually a Topic or Responsibility; a `related_to`-only cluster is a promotion candidate for [[procedures/review-vault-health|Review Vault Health]], not a lint fix. Do not re-parent Projects or Responsibilities from lint.
 
 ## Refresh the icon-name reference
 

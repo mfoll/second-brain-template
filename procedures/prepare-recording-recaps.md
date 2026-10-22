@@ -1,6 +1,7 @@
 ---
 type: Procedure
 status: Active
+belongs_to: "[[vault]]"
 related_to:
   - "[[recap]]"
   - "[[capture-preferences]]"

@@ -25,11 +25,12 @@ Inventory canonical tracked notes and exclude implementation, local, attachment,
 - Do Types, procedures, skills, views, and automations earn their maintenance cost?
 - Are important sources, provenance, evidence boundaries, and retrieval paths visible?
 - Are automatically loaded instructions and hot entry notes concise, while long evidence notes retain useful detail?
+- Clusters ready for promotion: exploration Topics and `related_to`-only clusters listed by the lint hierarchy audit that have gained an outcome, actions, collaborators or a deliverable and should become a Project or move under one; Topic-rooted areas (`hierarchy_root: true`) that now have an owning Responsibility ([[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]]).
 
 ## Steps
 
 1. Read `AGENTS.md`, the root Project, maintenance Responsibility, Type notes, and recent meaningful milestones.
-2. Run a canonical type inventory and the compactness helper.
+2. Run a canonical type inventory, the compactness helper, and `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for promotion candidates.
 3. Inspect active Projects and Responsibilities first, then Questions, synthesis Types, Sources, Procedures, ADRs, Guides, and unprocessed surfaces.
 4. Separate mechanical lint findings, strategic recommendations, candidate typed notes, and workflow changes.
 5. Prefer a few high-value recommendations. Treat low Type counts as prompts for judgment, not quotas.

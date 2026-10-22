@@ -10,6 +10,8 @@ _order: 0
 
 A Project is a finite effort larger than one sitting. Its note is the live resumption surface for humans and agents, not a full archive or task database.
 
+`status` values: `Active` (work expected), `Paused` (deliberately parked, no current actions expected, resume condition stated in the Maintenance Log), `Completed` (outcome reached or deliberately closed), `Idea` (not yet started), `Superseded` (replaced by another note, linked). Mark a Project Paused or Completed rather than leaving it Active without activity.
+
 ## Compact front-page contract
 
 - Target 600–1,200 words; a complex umbrella may reach about 1,500.
@@ -28,6 +30,8 @@ Before removing a Project `has` value or body entry-point link, verify that the 
 ## Umbrellas and subprojects
 
 Create a child Project when a work package has its own outcome, state, actions, collaborators, artifacts, or publication trajectory. The umbrella keeps shared context and a selective subproject list; it does not repeat child details. Use `belongs_to` from child to umbrella and point project workspaces to the most specific active entry note.
+
+A Project belongs to the Responsibility or umbrella Project that will resume it, never to a Topic. Keep one primary `belongs_to`; declare two parents only for a Project genuinely co-owned across two trees, mark that note with `accepted_double_parent: true` so the lint hierarchy audit reports it as deliberate, and put the second context of other notes in `related_to`. A `has` link is an entry point, never a child's only link: the child's own `belongs_to` must reach a hub. See [[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]].
 
 ## Workspace promotion
 

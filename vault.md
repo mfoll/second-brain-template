@@ -1,6 +1,7 @@
 ---
 type: Project
 status: Active
+belongs_to: "[[maintain-vault]]"
 _organized: true
 surface_for:
   - "[[vault]]"

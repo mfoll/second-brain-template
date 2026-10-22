@@ -370,7 +370,7 @@ The repository includes a working skeleton and its maintenance instructions. You
 | [scripts/configure-agent-skills.sh](scripts/configure-agent-skills.sh) | Installs or checks machine-local links to retained Skill packages. |
 | [views/](views/), [saved-view reference](tolaria-saved-views.md), [callout reference](tolaria-callouts.md) | Optional saved selections and viewer presentation guidance. |
 | [Vault Automations](vault-automations.md), [Capture Preferences](capture-preferences.md) | Optional configuration guides; neither activates a job or source connection. |
-| [adr/](adr/) and short Concept notes | The starter portability decision and a small glossary of design choices, described below. |
+| [adr/](adr/) and short Concept notes | The portable vault-design decisions (portability, project memory, ADRs, layout, Source, subprojects, compact hot path, semantic reachability, Skill packages, workspace decoupling, `belongs_to` hierarchy) and a small glossary of design choices, described below. |
 | [assets/second-brain-overview.png](assets/second-brain-overview.png) | README illustration of the portable folder and the manual and agent-assisted ways to use it. |
 | [.gitignore](.gitignore) | Exclusions for local configuration, temporary files and common credential files. |
 | [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) | MIT terms for the template and retained upstream notices. |
