@@ -10,7 +10,16 @@ surface_for:
 
 A lightweight knowledge base built from **Markdown notes, YAML frontmatter and links**, independent of any AI provider. Your Second Brain is a simple folder of human-readable files that you can copy, back up or move between tools. Its linked notes preserve context, sources and decisions between conversations.
 
-This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent provides the core types, relationships and lifecycle. This repository extends that foundation with specialised note types, detailed instructions for agents, reusable maintenance workflows and lightweight setup guides.
+This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent provides the core types, relationships and lifecycle. This repository extends that foundation with specialised note types, detailed instructions for agents, reusable maintenance workflows, a recorded set of design decisions with the checks that enforce them, and lightweight setup guides.
+
+Portent supplies the vocabulary. This repository adds what an agent needs to operate a vault for months without the structure drifting:
+
+- **Operating rules.** `AGENTS.md` is the vault's constitution, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
+- **Workflows and packages.** Sixteen Procedures for ingestion, inbox processing, project upkeep, validation and checkpointing, each activated by a Skill package an agent can run.
+- **A decision record.** Eleven ADRs explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case.
+- **Enforcement.** Lint scripts audit compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
+
+These additions were worked out on a real professional vault over several months and ported back once they proved generic.
 
 You can use it entirely by hand in any Markdown editor. AI makes capture, retrieval and maintenance much easier: a coding agent with filesystem access can follow the included instructions to read and write the notes. Choose the agent and model provider that suit you. [Tolaria](https://tolaria.md/) offers an optional viewer; keep your existing tools and source documents.
 
@@ -258,7 +267,7 @@ These tools and formats address different parts of a knowledge system and can be
 
 | Approach | What it provides | How this template relates |
 | --- | --- | --- |
-| [Portent](https://github.com/refactoringhq/portent) and its [vault template](https://github.com/refactoringhq/portent-vault-template) | The core work/knowledge types, relationships and lifecycle, plus starter Markdown Type definitions. | **The foundation of this template.** This repository adapts the starter definitions and extends the model with specialised types, detailed agent instructions, maintenance workflows and additive setup guidance. |
+| [Portent](https://github.com/refactoringhq/portent) and its [vault template](https://github.com/refactoringhq/portent-vault-template) | The core work/knowledge types, relationships and lifecycle, plus starter Markdown Type definitions. | **The foundation of this template.** This repository adapts the starter definitions and extends the model with specialised types, detailed agent instructions, maintenance workflows, a decision record whose rules are checked by lint, and additive setup guidance. |
 | [Obsidian](https://help.obsidian.md/Files+and+folders/How+Obsidian+stores+data) | An application for a local folder of Markdown notes, with [properties](https://help.obsidian.md/properties) and [internal links](https://help.obsidian.md/links). | The basic files, YAML and wikilinks are familiar. This template adds particular note types, relationship meanings and maintenance workflows. |
 | Wikis, including [LLM-maintained wikis](https://gist.github.com/karpathy/442a6bf555914893e9891c11519de94f) | Linked pages that accumulate and revise knowledge; an LLM wiki uses an agent to maintain synthesis from sources. | Both use linked, maintained knowledge. This template also defines explicit types, project state and relationships, separates sources from synthesis, and supports human or agent maintenance. |
 | Google Cloud's [Open Knowledge Format (OKF)](https://github.com/GoogleCloudPlatform/knowledge-catalog/blob/main/okf/SPEC.md) | A format for exchanging knowledge as Markdown files with YAML frontmatter, including a required `type` and extensible metadata. | The basic representation is similar. This template adds its own type definitions, typed relations and operating procedures. |
