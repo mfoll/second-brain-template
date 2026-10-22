@@ -5,6 +5,9 @@ Usage: python3 hierarchy_audit.py [vault-root] [--tree]
 
 Prints TSV lines (WARNING|INFO<TAB>category<TAB>note<TAB>message) followed by a SUMMARY line.
 Warning categories:
+  belongs-to-cycle      ERROR: a belongs_to chain loops back on itself
+  topic-root-unflagged  a Topic with no belongs_to roots other notes without hierarchy_root: true
+  root-not-responsibility a Note, Concept, Person, Source or Event with no belongs_to roots other notes
   project-parent        active Project without belongs_to, or parented by a Topic not flagged hierarchy_root
   homeless              durable note whose belongs_to chain reaches no Project/Responsibility/Topic
   has-only              note reachable only through an inverse `has` link
@@ -127,7 +130,7 @@ def main() -> int:
                 break
         return fallback
 
-    warnings, infos = [], []
+    warnings, infos, errors = [], [], []
     for stem, n in sorted(notes.items()):
         if not n["hierarchy_root"]:
             continue
@@ -164,6 +167,48 @@ def main() -> int:
                     infos.append(("multi-parent", stem, msg + " (accepted_double_parent: true)"))
                 else:
                     warnings.append(("multi-parent", stem, msg))
+
+    # belongs_to cycles and chain roots: every chain must end at a Responsibility or a Topic flagged hierarchy_root.
+    cycles = set()
+    roots_of = {}
+
+    def chain_roots(stem, path):
+        if stem in roots_of:
+            return roots_of[stem]
+        if stem in path:
+            cycles.add(tuple(path[path.index(stem):]))
+            return set()
+        parents = [p for p, _ in strong.get(stem, [])]
+        if not parents:
+            roots_of[stem] = {stem}
+            return roots_of[stem]
+        out = set()
+        for p in parents:
+            out |= chain_roots(p, path + [stem])
+        roots_of[stem] = out
+        return out
+
+    for stem in notes:
+        chain_roots(stem, [])
+    for cyc in sorted(cycles):
+        errors.append(("belongs-to-cycle", cyc[0], "belongs_to chain loops: " + " -> ".join(cyc + (cyc[0],))))
+    bad_roots = defaultdict(int)
+    for stem, n in notes.items():
+        if n["type"] in EXEMPT or n["archived"] or n["inbox"] or not n["belongs_to"]:
+            continue
+        for r in roots_of.get(stem, ()):
+            if r == stem:
+                continue
+            rt = notes[r]["type"]
+            if rt == "Responsibility" or (rt == "Topic" and notes[r]["hierarchy_root"]) or rt == "Project":
+                continue  # a parentless Project is already reported as project-parent
+            bad_roots[r] += 1
+    for r, k in sorted(bad_roots.items()):
+        rt = notes[r]["type"] or "untyped note"
+        if rt == "Topic":
+            warnings.append(("topic-root-unflagged", r, f"Topic is the root of {k} note(s) but has no belongs_to and no hierarchy_root: true; give it a parent or flag it"))
+        else:
+            warnings.append(("root-not-responsibility", r, f"{rt} is the root of {k} note(s); belongs_to chains should end at a Responsibility"))
 
     children = defaultdict(int)
     for stem, n in notes.items():
@@ -208,15 +253,17 @@ def main() -> int:
             show(r, 0)
         print()
 
+    for cat, note, msg in errors:
+        print(f"ERROR\t{cat}\t{note}.md\t{msg}")
     for cat, note, msg in warnings:
         print(f"WARNING\t{cat}\t{note}.md\t{msg}")
     for cat, note, msg in infos:
         print(f"INFO\t{cat}\t{note}.md\t{msg}")
     counts = defaultdict(int)
-    for cat, _, _ in warnings:
+    for cat, _, _ in errors + warnings:
         counts[cat] += 1
-    print("SUMMARY\t" + "\t".join(f"{k}={v}" for k, v in sorted(counts.items())) + f"\twarnings={len(warnings)}\tinfo={len(infos)}\tnotes={len(notes)}")
-    return 0
+    print("SUMMARY\t" + "\t".join(f"{k}={v}" for k, v in sorted(counts.items())) + f"\terrors={len(errors)}\twarnings={len(warnings)}\tinfo={len(infos)}\tnotes={len(notes)}")
+    return 1 if errors else 0
 
 
 if __name__ == "__main__":

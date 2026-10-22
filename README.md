@@ -60,7 +60,7 @@ Each box is one note; arrow labels name fields stored in the note they leave. Th
 
 ## Start here
 
-1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy; include the hidden `.agents/` folder and `.gitignore`, which some copy tools skip. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
+1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy; include the hidden `.agents/` folder and `.gitignore`, which some copy tools skip, but not a clone's `.git` folder, which would carry the template's remote. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
 4. Create one Responsibility for your area of work, one Project under it and one non-sensitive Source under the Project, using their definitions and templates. Try finding the Source again from the Project.
@@ -101,7 +101,7 @@ Agent: Created Source benchmark-paper under Project compare-analysis-methods,
        Lint: no new findings.
 ```
 
-Behind that reply: [Ingest Source](procedures/ingest-source.md) chose the Source type and the parent, the hierarchy rule placed the note under the Project that answers for it, the [Project contract](project.md) made the agent reconcile Current State instead of appending a dated line, and [Lint Vault](procedures/lint-vault.md) confirmed the graph still resolves. Nothing was sent anywhere, and the note stays a file you can edit.
+Behind that reply: [Ingest Source](procedures/ingest-source.md) chose the Source type and the parent, the hierarchy rule placed the note under the Project that answers for it, the [Project contract](project.md) made the agent reconcile Current State instead of appending a dated line, and [Lint Vault](procedures/lint-vault.md) confirmed the graph still resolves. Nothing was published or sent to anyone; the agent's model provider did receive the text it read, which is why the responsible-use boundaries below are agreed once before the first session. The note stays a file you can edit.
 
 ## Design decisions
 
@@ -136,7 +136,7 @@ Agree these boundaries during setup and reuse them for routine work. Seek clarif
 - Save ambiguous captures as unprocessed notes and use [Process Inbox](procedures/process-inbox.md); put material explicitly ready for processing in [Ready To Ingest](ready-to-ingest.md).
 - Add a paper, webpage or document through [Ingest Source](procedures/ingest-source.md), preserving provenance and linking useful conclusions to existing work.
 - Resume from a Project or Responsibility, and reconcile current state with [Update Project Summary](procedures/update-project-summary.md) and [Update Project Next Actions](procedures/update-project-next-actions.md).
-- Diagnose structure with [Lint Vault](procedures/lint-vault.md) and usefulness with [Review Vault Health](procedures/review-vault-health.md); the three audit commands are in [Agent Setup](agent-setup.md#checks-that-keep-the-structure-honest).
+- Diagnose structure with [Lint Vault](procedures/lint-vault.md) and usefulness with [Review Vault Health](procedures/review-vault-health.md); the four audit commands are in [Agent Setup](agent-setup.md#checks-that-keep-the-structure-honest).
 - A Brain Project does not require a matching folder or agent-application project; [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) says when a workspace is justified, and [Initialize Project Memory](procedures/initialize-project-memory.md) connects one through a small memory section.
 - [Recaps](recap.md) are an optional way to retain reviewed discussions by day, month or year; configure their source scope, review and retention first, or omit the extension entirely.
 

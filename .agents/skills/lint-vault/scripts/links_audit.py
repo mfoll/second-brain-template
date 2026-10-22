@@ -11,7 +11,8 @@ Error categories:
 Warning categories:
   wikilink-non-portable    target matches no stem but matches a note's first H1; the stem is suggested
   markdown-link-missing    relative Markdown link [text](path) whose file does not exist
-  relationship-value       frontmatter relationship value that is not a quoted wikilink
+  relationship-value       frontmatter relationship value that is not a wikilink
+  relationship-unquoted    frontmatter wikilink without quotes, which YAML parses as a nested list
 Info: links-checked totals (wikilinks by location, Markdown links, relationship values).
 
 Canonical notes exclude `.git`, `.agents`, `.local`, `attachments`, caches and `.tmp`, so links into
@@ -86,19 +87,31 @@ def target_of(inner: str) -> str:
     return t.strip("/")
 
 
+def strip_comment(value: str) -> str:
+    """Drop a trailing YAML comment outside quotes."""
+    v = value.strip()
+    if v[:1] in ("'", '"'):
+        q = v[0]
+        close = v.find(q, 1)
+        return v[: close + 1] if close != -1 else v
+    return re.split(r"\s+#", v, maxsplit=1)[0].strip()
+
+
 def frontmatter_entries(fm: str):
-    """Yield (key, value) for top-level scalars and list items, in order."""
+    """Yield (key, value, form) for top-level scalars ('scalar') and list items ('item'); comments and empty values skipped."""
     key = None
     for line in fm.split("\n"):
         m = re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):[ \t]*(.*)$", line)
         if m:
-            key, value = m.group(1), m.group(2).strip()
-            if value and not value.startswith("#"):
-                yield key, value
+            key, value = m.group(1), strip_comment(m.group(2))
+            if value and value not in ("[]", "~", "null"):
+                yield key, value, "scalar"
             continue
-        m = re.match(r"^[ \t]+-[ \t]+(.*)$", line)
+        m = re.match(r"^[ \t]*-[ \t]+(.*)$", line)
         if m and key:
-            yield key, m.group(1).strip()
+            value = strip_comment(m.group(1))
+            if value:
+                yield key, value, "item"
 
 
 def main() -> int:
@@ -144,6 +157,8 @@ def main() -> int:
         link = f"[[{inner}]]"
         if status == "ambiguous":
             errors.append(("wikilink-ambiguous", stem, f"{link} ({where}) matches several notes: {', '.join(found)}; use a vault-relative path stem"))
+        elif status == "title" and len(found) > 1:
+            errors.append(("wikilink-ambiguous", stem, f"{link} ({where}) matches the title of several notes: {', '.join(found)}; use a vault-relative path stem"))
         elif status == "title":
             warnings.append(("wikilink-non-portable", stem, f"{link} ({where}) resolves only by title; use [[{found[0]}]]"))
         else:
@@ -153,18 +168,22 @@ def main() -> int:
         fm, body, offset = split(p.read_text(encoding="utf-8"))
         relationship_keys = set(RELATIONSHIP_KEYS)
         entries = list(frontmatter_entries(fm))
-        relationship_keys.update(k for k, v in entries if WIKILINK.search(v))
-        for key, value in entries:
+        relationship_keys.update(k for k, v, _ in entries if WIKILINK.search(v))
+        for key, value, form in entries:
             for m in WIKILINK.finditer(value):
                 counts["frontmatter-wikilinks"] += 1
                 check_wikilink(stem, m.group(1), f"frontmatter {key}")
             if key in relationship_keys:
                 counts["relationship-values"] += 1
-                if not re.fullmatch(r"""(['"])\[\[[^\]]+\]\]\1|\[\[[^\]]+\]\]""", value):
-                    bare = value.strip("'\"")
-                    status, found = resolve(target_of(bare)) if bare and not bare.startswith("[") else ("none", None)
-                    hint = f"; plain stem resolves to {found}, quote it as a wikilink" if status == "ok" else " and resolves to no note"
-                    warnings.append(("relationship-value", stem, f"{key}: {value!r} is not a quoted wikilink{hint}"))
+                if re.fullmatch(r"""(['"])\[\[[^\]]+\]\]\1""", value):
+                    continue
+                if re.fullmatch(r"\[\[[^\]]+\]\]", value):
+                    warnings.append(("relationship-unquoted", stem, f"{key}: {value} is an unquoted wikilink, which YAML reads as a nested list; quote it"))
+                    continue
+                bare = value.strip("'\"")
+                status, found = resolve(target_of(bare)) if bare and not bare.startswith("[") else ("none", None)
+                hint = f"; plain stem resolves to {found}, quote it as a wikilink" if status == "ok" else " and resolves to no note"
+                warnings.append(("relationship-value", stem, f"{key}: {value!r} is not a quoted wikilink{hint}"))
         clean = strip_code(body)
         for i, line in enumerate(clean.split("\n"), start=offset + 1):
             for m in WIKILINK.finditer(line):

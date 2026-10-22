@@ -8,7 +8,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-EXCLUDED_PARTS = {".agents", ".local", "attachments", ".tolaria-cache", ".cache"}
+EXCLUDED_PARTS = {".agents", ".local", "attachments", ".tolaria-cache", ".cache", ".tmp", "node_modules"}
 WORD_RE = re.compile(r"[^\W_]+(?:['’\-][^\W_]+)*", re.UNICODE)
 
 

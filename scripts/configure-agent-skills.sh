@@ -75,9 +75,23 @@ if [ ! -d "$source_dir" ]; then
   exit 1
 fi
 
+# Validate the canonical packages before deciding anything about the runtime directory.
+invalid_count=0
+for package_dir in "$source_dir"/*; do
+  [ -d "$package_dir" ] || continue
+  if [ ! -f "$package_dir/SKILL.md" ]; then
+    echo "Invalid package without SKILL.md: $package_dir" >&2
+    invalid_count=$((invalid_count + 1))
+  fi
+done
+
 if [ "$operation" = "install" ]; then
   mkdir -p "$target_dir"
 elif [ ! -d "$target_dir" ]; then
+  if [ "$invalid_count" -gt 0 ]; then
+    echo "Result: 0 linked, 0 verified, $invalid_count unresolved (invalid packages; nothing installed)."
+    exit 1
+  fi
   echo "Nothing installed yet: runtime skill directory not found: $target_dir"
   echo "Result: 0 linked, 0 verified, 0 unresolved (nothing installed)."
   exit 0
@@ -86,16 +100,12 @@ fi
 target_dir=$(CDPATH= cd -- "$target_dir" && pwd)
 linked_count=0
 verified_count=0
-conflict_count=0
+conflict_count=$invalid_count
 
-# Preflight the complete source and target before changing the runtime directory.
+# Preflight the complete target before changing the runtime directory.
 for package_dir in "$source_dir"/*; do
   [ -d "$package_dir" ] || continue
-  [ -f "$package_dir/SKILL.md" ] || {
-    echo "Invalid package without SKILL.md: $package_dir" >&2
-    conflict_count=$((conflict_count + 1))
-    continue
-  }
+  [ -f "$package_dir/SKILL.md" ] || continue
 
   skill_name=$(basename -- "$package_dir")
   runtime_entry="$target_dir/$skill_name"
@@ -118,7 +128,7 @@ for package_dir in "$source_dir"/*; do
 done
 
 if [ "$conflict_count" -gt 0 ]; then
-  if [ "$operation" = "check" ] && [ "$verified_count" -eq 0 ] && ! ls -A "$target_dir" | grep -q .; then
+  if [ "$operation" = "check" ] && [ "$invalid_count" -eq 0 ] && [ "$verified_count" -eq 0 ] && ! ls -A "$target_dir" | grep -q .; then
     echo "Result: 0 linked, 0 verified, $conflict_count unresolved (nothing installed yet, directory empty)."
     exit 0
   fi

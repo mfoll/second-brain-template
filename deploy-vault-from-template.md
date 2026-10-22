@@ -16,7 +16,7 @@ Start with the folder setup below. The later GitHub walkthrough is optional when
 
 ## Minimal folder setup
 
-1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool, and copy the hidden files too: `.agents/` holds the Skill packages and `.gitignore` the exclusions, and Finder drag-and-drop or a copy tool that skips dotfiles would lose them (`cp -R source/ destination/` keeps them). Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
+1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool, and copy the hidden files too: `.agents/` holds the Skill packages and `.gitignore` the exclusions, and Finder drag-and-drop or a copy tool that skips dotfiles would lose them (`cp -R source/ destination/` keeps them). Do not copy a clone's `.git` directory: its `origin` would still point at the template, and a later push would send your notes there. Copy from a downloaded archive, exclude it (`rsync -a --exclude .git source/ destination/`), or delete `destination/.git` after copying. If you enable Git later, run `git init` in the new folder and confirm that `git remote -v` prints nothing before adding your own remote. Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
 2. Open the folder in the existing Markdown editor. In [[vault]], replace the `<Vault Name>` heading and the three `<...>` placeholders (outcome, current state, log date) and delete its first line; the scope and privacy boundary are written once, in the README (step 5). Keep existing project documents, repositories and task tools in their canonical locations.
 3. If agents will use the vault, customize the opening paragraph of its `AGENTS.md` (one sentence on what the vault is for is enough; the scope and privacy boundary themselves go in the README) and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Skill pair following the checklist under Retire The Control-Only Multi-Vault Pair below.
 4. Create one Responsibility for your own area of work, one Project under it (`belongs_to`), and one non-sensitive Source under the Project, using the templates in [[responsibility]], [[project]] and [[source]]. Create the three as kebab-case files at the vault root: the Project carries `belongs_to: "[[your-responsibility]]"`, the Source carries `belongs_to: "[[your-project]]"`, and the Project lists the Source in `has` or links it in its body. A Source can be a public web page, a document or spreadsheet you own, or a list you keep; it does not need a URL. The Source is retrievable when `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py . --tree` shows it under the Project. Then tick the first Next Action in [[vault]]. Verify that the files open, their first headings and types are clear, and the Source is retrievable from the Project. The audit helpers are optional here; when you run them, they need only Python 3.9 or later, as shipped with macOS, and work in a plain folder as well as in a Git repository.
@@ -155,20 +155,23 @@ A Second Brain for <VAULT_SCOPE>, deployed from the Second Brain template
 (<TEMPLATE_URL>: the repository or folder you copied from; drop this line if none).
 Start from [[vault]]; agents follow [[AGENTS]].
 
-## Scope and privacy boundary
+## Scope and responsible use
+
+Agreed once at setup; agents reuse these boundaries without asking again and ask only when a new source, tool or destination changes them.
 
 - In scope: <what this vault records>.
 - Out of scope: <what stays elsewhere, such as private or confidential material>.
 - Sources it may use: <documents, folders, tools>.
 - AI tools and accounts that may process it: <approved tools>.
 - Storage, backup and retention: <where the folder lives, how it is backed up, how long material is kept; "local folder, no backup yet" is an honest answer>.
+- Recording and people: <whether meetings may be recorded or transcribed, who must agree first, and what is kept about people>.
 
 ## Reference
 
 [Model Reference](model-reference.md) · [Agent Setup](agent-setup.md) · [Licence](LICENSE)
 ```
 
-Carry over anything from the template README you still want, such as the responsible-use boundaries; the template-only warnings are not needed.
+The scope and responsible-use section is the deployed vault's permanent record of the boundaries agreed at setup; keep it, since `AGENTS.md` and [[vault]] refer to it. The template-only warnings are not needed.
 
 ## Customize AGENTS
 
