@@ -61,7 +61,7 @@ python3 -I .agents/skills/check-external-raw-references/scripts/check_external_r
 python3 -I .agents/skills/check-external-raw-references/scripts/check_external_raw_references.py --write --date YYYY-MM-DD
 ```
 
-The checker takes no path argument; it reads the current directory. Without `.local/roots.yml` it warns and checks nothing, which is the expected result in a vault that has no external Source notes yet.
+The checker takes no path argument; it reads the current directory. Without `.local/roots.yml` it prints an INFO line and checks nothing, which is the expected result in a vault that has no external Source notes yet. Run its unit test with `python3 -I .agents/skills/check-external-raw-references/scripts/test_check_external_raw_references.py`; the test writes its fixtures to the system temporary directory and removes them.
 
 ## Report Shape
 

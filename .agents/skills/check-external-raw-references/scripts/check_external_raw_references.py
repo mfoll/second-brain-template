@@ -229,7 +229,7 @@ def main() -> int:
                 note.write_text(new_text, encoding="utf-8")
 
     if not roots:
-        report.insert(0, "WARN .local/roots.yml not found or no roots parsed")
+        report.insert(0, "INFO .local/roots.yml not found or no roots parsed: no external roots configured, nothing to check")
 
     print("# External raw reference check")
     print(f"date: {args.date}")

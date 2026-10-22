@@ -7,4 +7,4 @@ _organized: true
 
 @AGENTS.md
 
-Daily vault instructions are imported from `AGENTS.md`; deployment is described in `README.md`. When adding this import to an existing setup, preserve its Gemini-specific instructions and avoid a duplicate import.
+Daily vault instructions are imported from `AGENTS.md`; setup is described in the deployment guide until it is archived. When adding this import to an existing setup, preserve its Gemini-specific instructions and avoid a duplicate import.

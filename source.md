@@ -59,4 +59,4 @@ What the source does not show, and any conflict with notes already in the vault.
 - [Title As Published](https://example.org/the-item)
 ```
 
-Use `source_file`, or `storage_system` with `root_key`, `relative_path`, `access` and `last_checked`, instead of `url` for a maintained external file or folder, and `## Source Location` instead of `## Source Links`. Follow [[procedures/ingest-source|Ingest Source]] for the full ingestion steps.
+A Source does not need a URL. For a document, spreadsheet or list you keep yourself, use for example `source_type: Internal document`, omit `url`, and replace `## Source Links` with `## Source Location` naming where the item lives (a folder, an app, a drawer). For a maintained external file or folder, use `source_file`, or `storage_system` with `root_key`, `relative_path`, `access` and `last_checked`, with `## Source Location` as well. Follow [[procedures/ingest-source|Ingest Source]] for the full ingestion steps.

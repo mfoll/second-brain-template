@@ -60,7 +60,7 @@ Each box is one note; arrow labels name fields stored in the note they leave. Th
 
 ## Start here
 
-1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
+1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy; include the hidden `.agents/` folder and `.gitignore`, which some copy tools skip. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
 4. Create one Responsibility for your area of work, one Project under it and one non-sensitive Source under the Project, using their definitions and templates. Try finding the Source again from the Project.

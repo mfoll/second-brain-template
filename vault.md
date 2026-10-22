@@ -9,19 +9,19 @@ surface_for:
 
 # <Vault Name>
 
-This is the root Project note for the deployed vault. Replace every placeholder with current scope and state.
+Entry note for this vault. Replace the heading and the three placeholders marked `<...>` below, then delete this sentence.
 
 ## Outcome
 
-Describe what this vault should help a future human or agent do.
+<What this vault should help a future human or agent do.>
 
 ## Current State
 
-- This repository is still a template deployment until its purpose, privacy boundary, and entry surfaces are customized.
+- <One or two bullets of current truth; replace this bullet once the first real notes exist.>
 
 ## Scope and Boundaries
 
-Describe what belongs here, what remains outside, and any privacy, evidence, or routing constraints.
+The scope and privacy boundary are recorded once in [[README]]; this note links to them rather than repeating them. Add here only routing rules specific to this vault.
 
 ## Active Workflows
 
@@ -31,21 +31,16 @@ Describe what belongs here, what remains outside, and any privacy, evidence, or 
 - [[procedures/lint-vault|Lint Vault]]
 - [[procedures/review-vault-health|Review Vault Health]]
 
-Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consistency]] only if this deployment is explicitly the routing/control vault.
-
 ## Next Actions
 
-- [ ] Define the deployed vault's purpose, scope, privacy boundary, and logical role.
-- [ ] Replace template placeholders and remove workflows the vault does not need.
-- [ ] Configure compact project pointers and any optional automations.
+- [ ] Create the first Responsibility, Project and Source and test retrieval from the Project.
+- [ ] Remove the workflows, Types and optional guides this vault does not need.
 - [ ] If Skill installation is selected, configure and verify its discovery without replacing existing entries.
-- [ ] Create the first real Project, Responsibility, or Source and test retrieval.
 - [ ] If external raw files are needed, configure ignored root mappings and verify Source bridges.
 
 ## Open Questions
 
-- What should this vault store permanently?
-- What should remain transient or outside the vault?
+- What should this vault store permanently, and what should remain transient or outside it?
 
 ## Important Notes
 
@@ -54,13 +49,10 @@ Activate [[procedures/review-multi-vault-consistency|Review Multi-Vault Consiste
 - [[project]]
 - [[tolaria-callouts|Tolaria Callouts]]
 - [[tolaria-saved-views|Tolaria Saved Views]]
-- [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]]
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
 - [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]]
 - [[vault-automations|Vault Automations]]
 
 ## Maintenance Log
 
-- YYYY-MM-DD: Deployed from `second-brain-template` and customized its scope.
-- YYYY-MM-DD: Confirmed compact project, pointer, retrieval, and Git contracts.
-- YYYY-MM-DD: Reviewed optional workflows and removed template-only residue.
+- <YYYY-MM-DD>: Deployed from the Second Brain template and customized its scope.

@@ -78,8 +78,9 @@ fi
 if [ "$operation" = "install" ]; then
   mkdir -p "$target_dir"
 elif [ ! -d "$target_dir" ]; then
-  echo "Runtime skill directory not found (nothing installed there yet): $target_dir" >&2
-  exit 1
+  echo "Nothing installed yet: runtime skill directory not found: $target_dir"
+  echo "Result: 0 linked, 0 verified, 0 unresolved (nothing installed)."
+  exit 0
 fi
 
 target_dir=$(CDPATH= cd -- "$target_dir" && pwd)
@@ -117,6 +118,10 @@ for package_dir in "$source_dir"/*; do
 done
 
 if [ "$conflict_count" -gt 0 ]; then
+  if [ "$operation" = "check" ] && [ "$verified_count" -eq 0 ] && ! ls -A "$target_dir" | grep -q .; then
+    echo "Result: 0 linked, 0 verified, $conflict_count unresolved (nothing installed yet, directory empty)."
+    exit 0
+  fi
   echo "Result: 0 linked, $verified_count verified, $conflict_count unresolved."
   exit 1
 fi
