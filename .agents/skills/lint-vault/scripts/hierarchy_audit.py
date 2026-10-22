@@ -23,6 +23,7 @@ Exempt from homeless: Recap, Guide, Type, Operation, archived notes, root hubs, 
 Deliberate exceptions live in the frontmatter of the note concerned, so the script carries no vault names:
   hierarchy_root: true          on a Topic allowed to root an area (recorded in the vault's hierarchy ADR)
   accepted_double_parent: true  on a note allowed two parents at the same distance
+  hierarchy_exempt: true        on a Type definition note whose notes sit outside the hierarchy by design, like Recaps
 Standard library only; the script never writes.
 """
 from __future__ import annotations
@@ -82,6 +83,8 @@ def main() -> int:
             "archived": flag(fm, "_archived"),
             "inbox": (scalar(fm, "_organized") or "").lower() == "false" or (scalar(fm, "status") or "") == "Unprocessed",
             "hierarchy_root": flag(fm, "hierarchy_root"),
+            "hierarchy_exempt": flag(fm, "hierarchy_exempt"),
+            "title": (re.search(r"(?m)^# (.+)$", p.read_text(encoding="utf-8")) or [None, stem])[1].strip() if re.search(r"(?m)^# (.+)$", p.read_text(encoding="utf-8")) else stem,
             "accepted_double_parent": flag(fm, "accepted_double_parent"),
             "belongs_to": links(fm, "belongs_to"),
             "related_to": links(fm, "related_to"),
@@ -97,11 +100,20 @@ def main() -> int:
         c = by_name.get(target.split("/")[-1], [])
         return c[0] if len(c) == 1 else None
 
+    # Types whose definition note carries `hierarchy_exempt: true` sit outside the hierarchy, like Recaps.
+    exempt = set(EXEMPT)
+    for stem, n in notes.items():
+        if n["type"] == "Type" and n["hierarchy_exempt"]:
+            exempt.add(n["title"])
+
     strong, both = defaultdict(list), defaultdict(list)
+    self_refs = []
     for stem, n in notes.items():
         for t in n["belongs_to"]:
             r = resolve(t)
-            if r and r != stem:
+            if r == stem:
+                self_refs.append(stem)
+            elif r:
                 strong[stem].append((r, "belongs_to")); both[stem].append((r, "belongs_to"))
         for t in n["has"]:
             r = resolve(t)
@@ -151,7 +163,7 @@ def main() -> int:
             elif h and notes[h[0]]["type"] == "Topic" and not notes[h[0]]["hierarchy_root"]:
                 warnings.append(("project-parent", stem, f"Project parent is a Topic: {h[0]}"))
         if h is None:
-            if n["type"] in EXEMPT or n["archived"] or n["inbox"] or (is_hub(stem) and n["type"] != "Project"):
+            if n["type"] in exempt or n["archived"] or n["inbox"] or (is_hub(stem) and n["type"] != "Project"):
                 continue
             if n["type"] == "Person":
                 infos.append(("person-no-affiliation", stem, "Person without belongs_to; fine when no affiliation hub exists"))
@@ -190,11 +202,13 @@ def main() -> int:
 
     for stem in notes:
         chain_roots(stem, [])
+    for stem in sorted(self_refs):
+        errors.append(("belongs-to-cycle", stem, "belongs_to points at the note itself"))
     for cyc in sorted(cycles):
         errors.append(("belongs-to-cycle", cyc[0], "belongs_to chain loops: " + " -> ".join(cyc + (cyc[0],))))
     bad_roots = defaultdict(int)
     for stem, n in notes.items():
-        if n["type"] in EXEMPT or n["archived"] or n["inbox"] or not n["belongs_to"]:
+        if n["type"] in exempt or n["archived"] or n["inbox"] or not n["belongs_to"]:
             continue
         for r in roots_of.get(stem, ()):
             if r == stem:
@@ -228,7 +242,7 @@ def main() -> int:
     for stem, n in notes.items():
         if n["belongs_to"] or not n["related_to"] or n["archived"]:
             continue
-        if n["type"] in EXEMPT | {"Person"} or is_hub(stem):
+        if n["type"] in exempt | {"Person"} or is_hub(stem):
             continue
         r = resolve(n["related_to"][0])
         if r:

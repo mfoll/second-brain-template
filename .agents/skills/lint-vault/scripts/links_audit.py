@@ -94,6 +94,8 @@ def strip_comment(value: str) -> str:
         q = v[0]
         close = v.find(q, 1)
         return v[: close + 1] if close != -1 else v
+    if v.startswith("#"):
+        return ""
     return re.split(r"\s+#", v, maxsplit=1)[0].strip()
 
 
@@ -104,8 +106,15 @@ def frontmatter_entries(fm: str):
         m = re.match(r"^([A-Za-z_][A-Za-z0-9_-]*):[ \t]*(.*)$", line)
         if m:
             key, value = m.group(1), strip_comment(m.group(2))
-            if value and value not in ("[]", "~", "null"):
-                yield key, value, "scalar"
+            if value.startswith("#") or value in ("", "[]", "~", "null"):
+                continue
+            if value.startswith("[") and value.endswith("]") and not value.startswith("[["):
+                for item in re.findall(r"""'[^']*'|"[^"]*"|[^,\s][^,]*""", value[1:-1]):
+                    item = item.strip()
+                    if item:
+                        yield key, item, "item"
+                continue
+            yield key, value, "scalar"
             continue
         m = re.match(r"^[ \t]*-[ \t]+(.*)$", line)
         if m and key:

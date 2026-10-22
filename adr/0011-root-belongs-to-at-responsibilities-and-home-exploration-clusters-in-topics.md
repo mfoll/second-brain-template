@@ -35,7 +35,7 @@ _organized: true
 - `has` lists selective entry points. A note reachable only through `has` is a lint warning; the fix is the child's `belongs_to`.
 - Notes, Concepts and Persons may be intermediate parents only when they themselves roll up to a hub, for example a committee Note under the Responsibility that sits on it. A note that parents many others and is a durable area should become a Topic or Responsibility.
 - A Person's `belongs_to` is affiliation when the vault has a hub for it; Projects go in `related_to`; a contact without an affiliation hub stays parentless deliberately.
-- Recaps, automatically loaded Guides and archived notes are outside the hierarchy by design.
+- Recaps, automatically loaded Guides, archived notes and the notes of any Type whose definition carries `hierarchy_exempt: true` (structured daily records produced by an automation, for example) are outside the hierarchy by design.
 
 ### Iterative ingestion and promotion
 
