@@ -1,6 +1,6 @@
 ---
 type: Guide
-related_to: "[<Vault Name>](vault.md)"
+related_to: "[[vault]]"
 _organized: true
 ---
 
