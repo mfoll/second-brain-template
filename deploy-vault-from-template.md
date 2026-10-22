@@ -344,7 +344,7 @@ For the GitHub walkthrough, complete the applicable checks below before checkpoi
 
 ### Mechanical validation
 
-- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `python3 -I .agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`.
+- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `python3 -I .agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `python3 -I .agents/skills/lint-vault/scripts/links_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`; link validation passes when the links audit reports zero errors.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections. Where a human view exists, validate its small, deliberate membership through [[procedures/maintain-project-human-view|Maintain Project Human View]]; absence of a view is valid.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.

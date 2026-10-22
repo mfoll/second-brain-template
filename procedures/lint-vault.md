@@ -48,7 +48,7 @@ Report the candidate task, why it appears responsible, and the proposed focused 
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.
-2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings, `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names, then `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for `belongs_to` hierarchy drift (add `--tree` to print the inferred home tree). Verify warned emoji or URL icons in the current Tolaria UI.
+2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings, `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names, then `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for `belongs_to` hierarchy drift (add `--tree` to print the inferred home tree), and `.agents/skills/lint-vault/scripts/links_audit.py <vault-root>` for unresolved or ambiguous wikilinks, missing relative Markdown link targets and relationship values that are not wikilinks. Verify warned emoji or URL icons in the current Tolaria UI.
 3. Verify findings against the actual files; broad search output is not proof.
 4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures. Include responsible-task candidates and proposed follow-up workflows, but wait for user confirmation before contacting a task.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.
@@ -100,3 +100,5 @@ For a version upgrade, review its package licence and integrity from the officia
 ## Wikilink precedence
 
 Resolve exact vault-relative path stems first, then unique filename stems. H1 or humanized-title matching is fallback only and should be reported when a portable target exists. Ignore clearly illustrative placeholder links in examples.
+
+`links_audit.py` implements this resolver: it strips fenced code blocks and inline code spans before scanning bodies, scans frontmatter separately, reports unresolved and ambiguous targets as errors, title-only matches and missing relative Markdown link targets as warnings, and never reports placeholders inside code. A placeholder in normal prose is a real error until it is moved into a code span.

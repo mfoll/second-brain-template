@@ -59,15 +59,16 @@ The visible Skill catalogue under `skills/` and the canonical packages under `.a
 
 ## Checks that keep the structure honest
 
-Three read-only helpers in `.agents/skills/lint-vault/scripts/` support [Lint Vault](procedures/lint-vault.md) and [Review Vault Health](procedures/review-vault-health.md):
+Four read-only helpers in `.agents/skills/lint-vault/scripts/` support [Lint Vault](procedures/lint-vault.md) and [Review Vault Health](procedures/review-vault-health.md):
 
 ```bash
 python3 .agents/skills/lint-vault/scripts/compactness_audit.py .
 python3 .agents/skills/lint-vault/scripts/tolaria_icon_audit.py .
 python3 .agents/skills/lint-vault/scripts/hierarchy_audit.py . --tree
+python3 .agents/skills/lint-vault/scripts/links_audit.py .
 ```
 
-The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. All three need only Python 3.9 or later with the standard library, verified on 3.9 and 3.13.
+The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. The links audit reports wikilinks that resolve to no note or to several, relative Markdown links whose file is missing, and relationship values that are not wikilinks; examples inside code are ignored. All four need only Python 3.9 or later with the standard library, verified on 3.9 and 3.13.
 
 ## External files and optional automation
 
