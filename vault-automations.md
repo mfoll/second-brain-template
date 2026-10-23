@@ -19,6 +19,8 @@ Use this guide to document automations after deployment. The template defines no
 
 Cross-vault consistency review belongs only to a vault explicitly designated as routing/control. Ordinary personal, research, project, or team vaults must not schedule it.
 
+Template upgrades are never a candidate job: [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]] needs the owner's review of each change, because deployed vaults diverge from the template on purpose.
+
 ## Candidate jobs
 
 - Process [[ready-to-ingest]] through [[procedures/process-ready-ingestion-inbox|Process Ready Ingestion Inbox]] in manual or scheduled write mode.

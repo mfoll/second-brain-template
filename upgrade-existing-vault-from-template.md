@@ -14,6 +14,11 @@ Use this guide to port reviewed generic improvements into an existing deployed v
 
 This is a preservation-first comparison, not a template merge. The deployed vault remains authoritative for its content and intentional local behavior. Import only compatible interfaces whose value is understood.
 
+> [!warning]
+> An upgrade is a reviewed, human-approved operation, never an unattended or scheduled job. Once a vault is in use, its owner may have edited, superseded or deleted ADRs, Procedures, Skills, Types and `AGENTS.md` sections on purpose, and a template file with the same name is not evidence that the local version is outdated.
+
+Treat every difference in those files as a possible local decision: propose the port file by file, show the diff, and apply only what the owner approves. Never overwrite a local ADR; when a template ADR conflicts with a local one, report the conflict and let the owner decide whether to supersede either.
+
 ## Folder-only upgrade
 
 For a vault without Git, keep its existing private backup method. Preserve a recovery copy of the files in scope, inspect the current instructions and notes, and port only the selected compatible sections. Compare retrieval before and after the change. Add a memory block or import alongside existing guidance, using its generator if one owns it. Apply the global-routing and Skill procedures only when those integrations are selected.
