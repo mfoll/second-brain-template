@@ -10,6 +10,14 @@ from pathlib import Path
 
 EXCLUDED_PARTS = {".agents", ".local", "attachments", ".tolaria-cache", ".cache", ".tmp", "node_modules"}
 WORD_RE = re.compile(r"[^\W_]+(?:['’\-][^\W_]+)*", re.UNICODE)
+# Session output appended as "## Follow-up, 16 October 2026" instead of reconciled
+# into the section that owns the fact. A bare year ("2026 objective map") is allowed.
+DATED_HEADING_RE = re.compile(
+    r"\b\d{4}-\d{2}-\d{2}\b|(?<![A-Za-z])(?:January|February|March|April|May|June|July|"
+    r"August|September|October|November|December)(?![a-z])",
+)
+RESUMPTION_TYPES = {"Project", "Responsibility", "Topic", "Guide", "Operation"}
+LOG_HEADINGS = {"maintenance log"}
 
 
 def words(text: str) -> int:
@@ -92,6 +100,18 @@ def main() -> int:
             log_count = len(re.findall(r"(?m)^\s*[-*]\s+\S", section(body, "Maintenance Log")))
             if log_count > 5:
                 warnings.append(("maintenance-log", relative, f"{log_count} entries; target <=5"))
+
+        if note_type in RESUMPTION_TYPES and field(frontmatter, "_archived") != "true":
+            headings = re.findall(r"(?m)^## (.+?)\s*$", body)
+            for heading in headings:
+                if DATED_HEADING_RE.search(heading):
+                    warnings.append(("dated-section", relative, f"'{heading}'; fold into the owning section or an Event"))
+            log_positions = [i for i, heading in enumerate(headings) if heading.lower() in LOG_HEADINGS]
+            if len(log_positions) > 1:
+                warnings.append(("maintenance-log", relative, f"{len(log_positions)} Maintenance Log headings; merge"))
+            if log_positions and log_positions[0] < len(headings) - 1:
+                after = len(headings) - 1 - log_positions[0]
+                warnings.append(("after-log", relative, f"{after} section(s) below Maintenance Log; move above it"))
 
         if note_type == "Question" and body_words > 750:
             warnings.append(("question-review", relative, f"{body_words} body words; review routing"))

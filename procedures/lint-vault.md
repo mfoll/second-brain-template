@@ -34,6 +34,7 @@ Type-aware compactness warnings:
 - Vault `AGENTS.md` above 2,000 words; an added workspace memory section above 80 words; a specialized pointer above 300 without a real safety reason. Preserve the existing project's technical instructions; these pointer targets do not limit the full file.
 - Active Project above 1,500 body words; above 3,000 requires a structural split or explicit justification.
 - Project Current State above 250 words, more than 10 unchecked actions, or more than five Maintenance Log entries.
+- In Projects, Responsibilities, Topics, Guides and Operations: a `##` heading that carries a date (a bare year is allowed), sections below `## Maintenance Log`, or more than one Maintenance Log heading. These mark session output appended instead of reconciled into the owning section.
 - Question above 750 body words: review whether its answer or analysis belongs in maintained synthesis.
 - Source, Event, or Method above 2,000 body words: preserve the payload, but require a concise opening summary rather than blanket shortening.
 

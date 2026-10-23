@@ -18,6 +18,8 @@ Follow [[project]]: 600–1,200 words by default, up to about 1,500 for a comple
 
 The Project is current synthesis, not an archive. Replace superseded text instead of appending another dated report. Keep each fact in one canonical linked note; use Git for routine chronology.
 
+The same applies to any agent writeback into a Project, Responsibility, Topic or Guide: update the section that owns each fact rather than appending to the note. Never add a dated `##` section such as "Follow-up, October 2026", and never write below `## Maintenance Log`; a dated occurrence with lasting value goes to its Event, linked from a compact bullet in the owning section. Add at most one Maintenance Log entry per change.
+
 Compactness targets never authorize information loss. Before shortening a Project, make a preservation ledger for every section or block that may disappear. Classify it as:
 
 - retained in the Project because it is required for resumption;
