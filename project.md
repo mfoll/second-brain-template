@@ -12,6 +12,8 @@ A Project is a finite effort larger than one sitting. Its note is the live resum
 
 `status` values: `Active` (work expected), `Paused` (deliberately parked, no current actions expected, resume condition stated in the Maintenance Log), `Completed` (outcome reached or deliberately closed), `Idea` (not yet started), `Superseded` (replaced by another note, linked). Mark a Project Paused or Completed rather than leaving it Active without activity.
 
+A Project must have an end condition you could tick off: an outcome that is reached, delivered, submitted or decided. An outcome that reads as maintaining or establishing something ongoing belongs to a Responsibility; split its finite deliverables into Projects. Name a Project as you would say it aloud, in two to five words, and keep the filename stem matching the name.
+
 ## Compact front-page contract
 
 - Target 600–1,200 words; a complex umbrella may reach about 1,500.

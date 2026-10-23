@@ -26,6 +26,7 @@ Inventory canonical tracked notes and exclude implementation, local, attachment,
 - Are important sources, provenance, evidence boundaries, and retrieval paths visible?
 - Are automatically loaded instructions and hot entry notes concise, while long evidence notes retain useful detail?
 - Clusters ready for promotion: exploration Topics and `related_to`-only clusters listed by the lint hierarchy audit that have gained an outcome, actions, collaborators or a deliverable and should become a Project or move under one; Topic-rooted areas (`hierarchy_root: true`) that now have an owning Responsibility ([[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]]).
+- Responsibilities in disguise: active Projects whose outcome has no end condition (maintain, keep, or establish an ongoing function), Responsibilities whose single child Project mirrors them, and Project names longer than five words. Propose folding the ongoing part into the Responsibility, splitting finite deliverables into short-named Projects, and retiring the old Project as Superseded rather than renaming it.
 
 ## Steps
 
