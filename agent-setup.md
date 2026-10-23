@@ -57,6 +57,21 @@ The Skill installer, `scripts/configure-agent-skills.sh`, supports Codex, Claude
 
 The visible Skill catalogue under `skills/` and the canonical packages under `.agents/skills/` describe ownership. Procedure-backed packages require the complete Procedure, which wins on conflict. Thin wrappers must preserve triggers, prerequisites, guards, commands and support-file instructions. A specialized package may own execution when no Procedure does, with that ownership explicit in its catalogue. Add a Skill only when repeated use makes discovery useful. [ADR 0009](adr/0009-support-procedure-backed-and-specialized-skill-packages.md) records the two ownership modes.
 
+### Why skills are thin
+
+Most published Agent Skills carry their whole workflow in `SKILL.md`. Here a Procedure-backed package is usually a few lines that name the Procedure, keep its triggers and hard guards, and send the agent to read it. The workflow lives in the Procedure for four reasons:
+
+- **It outlives the runtime.** A Procedure is an ordinary note that a person can read in any Markdown viewer and any agent can follow, including one without Skill support or with discovery not configured on this machine. This applies [ADR 0001](adr/0001-treat-markdown-graph-as-portable-brain.md): Procedures are portable Markdown before they are agent-specific packages.
+- **It belongs to the graph.** A Procedure has a Type, a parent and links to the ADRs and Types it applies, so retrieval, lint and the health review all see it. A package under `.agents/` is outside the graph.
+- **It has one home.** Keeping the steps in one file means an edit cannot leave two diverging copies, as [ADR 0007](adr/0007-keep-hot-path-memory-compact-and-single-sourced.md) requires.
+- **It keeps the discipline in the vault.** The Skill is a shortcut that starts the workflow; the method itself is part of the Brain and is reviewed and versioned with it.
+
+The cost is one extra file read per task, and the package description alone has to make the runtime choose it. Hence the clause audit before a package is thinned: no trigger, prerequisite, guard, command or support-file instruction may be lost.
+
+### Starter selection
+
+The template ships seven packages for the workflows run most often: ingestion, both Inbox passes, the two project updates, lint and the health review. Rarer or setup-only Procedures, such as [Initialize Project Memory](procedures/initialize-project-memory.md), [Check External Raw References](procedures/check-external-raw-references.md) and the control-vault-only [Review Multi-Vault Consistency](procedures/review-multi-vault-consistency.md), are reached through the `AGENTS.md` router without a package. A deployed vault may add packages for its own frequent work, including specialized standalone ones, or drop any it does not use. A different package set is an intentional difference from the template, not drift; the pair and ownership contract in [Skill](skill.md) is what must stay the same.
+
 ## Checks that keep the structure honest
 
 Four read-only helpers in `.agents/skills/lint-vault/scripts/` support [Lint Vault](procedures/lint-vault.md) and [Review Vault Health](procedures/review-vault-health.md):

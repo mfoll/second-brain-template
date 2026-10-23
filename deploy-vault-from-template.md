@@ -260,17 +260,17 @@ find .agents/skills -mindepth 2 -maxdepth 2 -type f -name 'SKILL.md' | sort
 
 For each active pair, verify the visible note's `package_path`, matching package-directory `name`, catalogue lifecycle, and package-bundled relative support files. A Procedure-backed pair must have a resolvable `wraps` link and name the same Procedure on both sides; a specialized standalone pair must explicitly say that the package owns execution and must not duplicate an existing Procedure. Check documented external prerequisites at execution. Update both sides when shared purpose, ownership, name, path, or lifecycle changes; package-only implementation edits need not churn the catalogue. To retire a Skill, remove the installed package and archive or remove its catalogue note and active routes; record any intentional runtime-only exception.
 
-## Retire The Control-Only Multi-Vault Pair
+## Retire The Control-Only Multi-Vault Procedure
 
-[[procedures/review-multi-vault-consistency]] and its Skill exist only for a vault that routes and coordinates other vaults. In every other deployment, retire the pair in one change:
+[[procedures/review-multi-vault-consistency]] exists only for a vault that routes and coordinates other vaults; the template ships it without a Skill package. In every other deployment, retire it in one change:
 
-1. Delete the package directory `.agents/skills/review-multi-vault-consistency/`.
-2. Delete the catalogue note `skills/review-multi-vault-consistency-skill.md`.
-3. Add `_archived: true` to `procedures/review-multi-vault-consistency.md` and leave its `status` as it is; the archive flag, not the status, retires a note.
-4. Remove the paragraph about the Procedure just below the Workflow router table in `AGENTS.md`, and the paragraph about it at the end of External files and optional automation in [[agent-setup]].
-5. Leave the links from [[adr/0008-require-semantic-reachability-and-reversible-compaction|ADR 0008]] and other provenance notes in place; they are history, not active routes.
+1. Add `_archived: true` to `procedures/review-multi-vault-consistency.md` and leave its `status` as it is; the archive flag, not the status, retires a note.
+2. Remove the paragraph about the Procedure just below the Workflow router table in `AGENTS.md`, and the paragraph about it at the end of External files and optional automation in [[agent-setup]].
+3. Leave the links from [[adr/0008-require-semantic-reachability-and-reversible-compaction|ADR 0008]] and other provenance notes in place; they are history, not active routes.
 
-Then rerun the catalogue and package listing above; both sides should show nine pairs.
+A control vault that wants a package for it adds the catalogue note and package together, as [[skill]] requires.
+
+Then rerun the catalogue and package listing above; both sides should show the same pairs, seven when the starter selection is kept unchanged.
 
 ## Configure Agent Skill Discovery
 
@@ -358,7 +358,7 @@ For the GitHub walkthrough, complete the applicable checks below before checkpoi
 
 - Re-read the customized `AGENTS.md` and confirm its scope, privacy, language, evidence, authorization, and automation behavior are coherent.
 - Confirm Type semantics and detailed Procedures remain reachable through the instruction router, root Project, or installed Skills when a task needs them.
-- Confirm template-only control-vault Skill packages and active routes are absent from ordinary vaults; any retained Procedure is clearly archived provenance.
+- Confirm control-vault-only Skill packages and active routes are absent from ordinary vaults; any retained Procedure is clearly archived provenance.
 - Record intentional deviations from the template instead of treating byte-for-byte equality as success.
 
 ### Retrieval validation
