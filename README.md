@@ -23,7 +23,7 @@ This template adapts the [Portent Vault Template](https://github.com/refactoring
 
 These additions were worked out on a real professional vault, in daily use with agents since April 2026, and ported back once they proved generic. Conventions still change; each change lands as an ADR.
 
-[How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
+[How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
 Reference material lives in two Guides: the [Model Reference](model-reference.md) (types, file format, relationships, lifecycle, views, extending the model, interoperability) and [Agent Setup](agent-setup.md) (instruction layers, Skills, audits, external files, automation, checkpointing).
 
@@ -102,6 +102,22 @@ Agent: Created Source benchmark-paper under Project compare-analysis-methods,
 ```
 
 Behind that reply: [Ingest Source](procedures/ingest-source.md) chose the Source type and the parent, the hierarchy rule placed the note under the Project that answers for it, the [Project contract](project.md) made the agent reconcile Current State instead of appending a dated line, and [Lint Vault](procedures/lint-vault.md) confirmed the graph still resolves. Nothing was published or sent to anyone; the agent's model provider did receive the text it read, which is why the responsible-use boundaries below are agreed once before the first session. The note stays a file you can edit.
+
+## Example vaults
+
+Nine demo vaults show the template after about two years of fictional daily use, each with about 500 linked notes, a lived-in Git history and a guided tour with questions that have known answers. Everything about the people and organisations is invented; the literature they cite is real. Clone one and open the folder.
+
+| Vault | Whose memory |
+| --- | --- |
+| [Varga Lab Brain](https://github.com/mfoll/second-brain-demo-cancer-lab) | A group leader running a cancer genomics and molecular epidemiology lab |
+| [Hollowgate Bakehouse Brain](https://github.com/mfoll/second-brain-demo-cafe) | The owner of an independent café and bakery |
+| [Marchbank Teaching Brain](https://github.com/mfoll/second-brain-demo-teacher) | A secondary-school history teacher and head of year |
+| [Brennick Design Brain](https://github.com/mfoll/second-brain-demo-freelancer) | A freelance product designer |
+| [Brierly Household Brain](https://github.com/mfoll/second-brain-demo-household) | A parent keeping a family's home, care, school and money records |
+| [Fernhollow Club Brain](https://github.com/mfoll/second-brain-demo-community-club) | The volunteer chair of a neighbourhood sports and youth club |
+| [Quayle Writing Brain](https://github.com/mfoll/second-brain-demo-novelist) | A novelist writing her second book |
+| [Arneberg Engineering Brain](https://github.com/mfoll/second-brain-demo-startup) | The engineering lead of a small software start-up |
+| [Castellane HR Brain](https://github.com/mfoll/second-brain-demo-hr-assistant) | An HR assistant in a large company |
 
 ## Design decisions
 
