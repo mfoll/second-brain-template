@@ -5,7 +5,7 @@ surface_for:
   - "[[vault]]"
 ---
 
-# AGENTS.md — Second Brain Vault
+# AGENTS.md: Second Brain Vault
 
 These are the daily instructions for agents using this Brain; the vault's scope and privacy boundary are recorded once in [[README]]. Markdown, YAML frontmatter and wikilinks hold durable knowledge; saved views and optional Git history support retrieval and recovery. Start from [[vault]] when no Project entry is specified.
 

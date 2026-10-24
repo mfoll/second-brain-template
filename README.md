@@ -8,22 +8,13 @@ surface_for:
 
 # Second Brain template
 
-A knowledge base made of **Markdown notes, YAML frontmatter and links**, independent of any AI provider: a folder of readable files you can copy, back up or move between tools, whose linked notes keep context, sources and decisions between conversations. You can use it by hand in any Markdown editor; a coding agent with filesystem access makes capture, retrieval and maintenance much easier. [Tolaria](https://tolaria.md/) offers an optional viewer, and [Brain Graph](https://github.com/mfoll/brain-graph) (a companion repository) draws the whole vault as an interactive map coloured by the Responsibility or Project each note rolls up to; it is how the hierarchy contract below was first seen. The repository installs no applications, enables no scheduled jobs and needs no search index.
+A knowledge base made of **Markdown notes, YAML frontmatter and links**, independent of any AI provider: a folder of readable files you can copy, back up or move between tools, whose linked notes keep context, sources and decisions between conversations. You can use it by hand in any Markdown editor; a coding agent with filesystem access makes capture, retrieval and maintenance much easier. It builds on [Portent](https://github.com/refactoringhq/portent), an open specification for portable knowledge bases.
+
+Two viewers are optional: [Tolaria](https://tolaria.md/), a desktop app for browsing and editing this kind of vault, and [Brain Graph](https://github.com/mfoll/brain-graph), a companion repository that draws the whole vault as an interactive map. The repository installs no applications, enables no scheduled jobs and needs no search index.
 
 ![A friendly sketch of a portable Second Brain folder containing linked Markdown notes and a working method: ADRs explain why, Procedures describe how to work, and Skills offer agent shortcuts, supported by agent instructions and checks. You can read and write directly or through an AI agent. An example conversation asks for an alternative to linear regression, suggests gradient boosting, and requests saving the idea. A viewer, Git and search or RAG are optional.](assets/second-brain-overview.png)
 
-## What it adds to Portent
-
-This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent supplies the vocabulary: the core types, relationships and lifecycle. This repository adds what an agent needs to operate a vault for months without the structure drifting:
-
-- **Operating rules.** [AGENTS.md](AGENTS.md) is the vault's constitution, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
-- **Workflows and packages.** Sixteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. The seven most frequent are also exposed as thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
-- **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
-- **Enforcement.** Lint scripts audit compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
-
-These additions were worked out on a real professional vault, in daily use with agents since April 2026, and ported back once they proved generic. Conventions still change; each change lands as an ADR.
-
-[How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
+[How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
 Reference material lives in two Guides: the [Model Reference](model-reference.md) (types, file format, relationships, lifecycle, views, extending the model, interoperability) and [Agent Setup](agent-setup.md) (instruction layers, Skills, audits, external files, automation, checkpointing).
 
@@ -62,7 +53,7 @@ Each box is one note; arrow labels name fields stored in the note they leave. Th
 
 To see what a vault looks like after two years of use before building your own, clone one of the [example vaults](#example-vaults) and open it in any Markdown editor, [Tolaria](https://tolaria.md/) or [Brain Graph](https://github.com/mfoll/brain-graph).
 
-1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy; include the hidden `.agents/` folder and `.gitignore`, which some copy tools skip, but not a clone's `.git` folder, which would carry the template's remote. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
+1. Create your own private copy in a new folder: click **Use this template** on GitHub, or clone or download the repository. Copy the hidden `.agents/` folder and `.gitignore` too, which some copy tools skip, but not a clone's `.git` folder, which would still point at this template. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) instead to bring selected changes into it.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
 4. Create one Responsibility for your area of work, one Project under it and one non-sensitive Source under the Project, using their definitions and templates. Try finding the Source again from the Project.
@@ -121,6 +112,17 @@ Nine demo vaults show the template after about two years of fictional daily use,
 | [Arneberg Engineering Brain](https://github.com/mfoll/second-brain-demo-startup/blob/main/README.md) | The engineering lead of a small software start-up |
 | [Castellane HR Brain](https://github.com/mfoll/second-brain-demo-hr-assistant/blob/main/README.md) | An HR assistant in a large company |
 
+## What it adds to Portent
+
+This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent supplies the vocabulary: the core types, relationships and lifecycle. This repository adds what an agent needs to keep a vault in shape over months of use:
+
+- **Operating rules.** [AGENTS.md](AGENTS.md) holds the vault's operating rules for agents, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
+- **Workflows and packages.** Sixteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. The seven most frequent are also exposed as thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
+- **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
+- **Enforcement.** Lint scripts audit compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
+
+These additions were worked out on a real professional vault, in daily use with agents since April 2026, and ported back once they proved generic. Conventions still change; each change lands as an ADR.
+
 ## Design decisions
 
 The eleven ADRs, one line each. Each records its context, the options rejected and the signal that would reopen it.
@@ -155,7 +157,7 @@ Agree these boundaries during setup and reuse them for routine work. Seek clarif
 - Add a paper, webpage or document through [Ingest Source](procedures/ingest-source.md), preserving provenance and linking useful conclusions to existing work.
 - Resume from a Project or Responsibility, and reconcile current state with [Update Project Summary](procedures/update-project-summary.md) and [Update Project Next Actions](procedures/update-project-next-actions.md).
 - Diagnose structure with [Lint Vault](procedures/lint-vault.md) and usefulness with [Review Vault Health](procedures/review-vault-health.md); the four audit commands are in [Agent Setup](agent-setup.md#checks-that-keep-the-structure-honest).
-- A Brain Project does not require a matching folder or agent-application project; [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) says when a workspace is justified, and [Initialize Project Memory](procedures/initialize-project-memory.md) connects one through a small memory section.
+- A Project note does not need its own folder, repository or agent workspace; [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) says when a workspace is justified, and [Initialize Project Memory](procedures/initialize-project-memory.md) connects one through a small memory section.
 - [Recaps](recap.md) are an optional way to retain reviewed discussions by day, month or year; configure their source scope, review and retention first, or omit the extension entirely.
 
 ## Relationship to other tools
