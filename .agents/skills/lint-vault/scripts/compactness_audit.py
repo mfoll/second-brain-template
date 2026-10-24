@@ -18,6 +18,7 @@ DATED_HEADING_RE = re.compile(
 )
 RESUMPTION_TYPES = {"Project", "Responsibility", "Topic", "Guide", "Operation"}
 LOG_HEADINGS = {"maintenance log"}
+FENCE = re.compile(r"^[ \t]{0,3}(`{3,}|~{3,})")
 
 
 def words(text: str) -> int:
@@ -56,6 +57,24 @@ def split_note(text: str) -> tuple[str, str]:
     return ("", text) if end < 0 else (text[4:end], text[end + 5 :])
 
 
+def strip_fences(body: str) -> str:
+    """Blank fenced code blocks so example headings are not read as note structure."""
+    out, fence = [], None
+    for line in body.split("\n"):
+        m = FENCE.match(line)
+        if fence is None and m:
+            fence = m.group(1)
+            out.append("")
+            continue
+        if fence is not None:
+            if m and m.group(1)[0] == fence[0] and len(m.group(1)) >= len(fence) and line.strip() == m.group(1):
+                fence = None
+            out.append("")
+            continue
+        out.append(line)
+    return "\n".join(out)
+
+
 def field(frontmatter: str, name: str) -> str | None:
     match = re.search(rf"(?m)^{re.escape(name)}:\s*['\"]?([^'\"\n]+)", frontmatter)
     return match.group(1).strip() if match else None
@@ -77,6 +96,7 @@ def main() -> int:
         note_type = field(frontmatter, "type")
         status = field(frontmatter, "status")
         body_words = words(body)
+        outline = strip_fences(body)
         relative = str(path.relative_to(root))
         totals["notes"] += 1
         totals["words"] += body_words
@@ -91,18 +111,18 @@ def main() -> int:
                 warnings.append(("project-critical", relative, f"{body_words} body words; split or justify"))
             elif body_words > 1500:
                 warnings.append(("project-review", relative, f"{body_words} body words; target <=1500"))
-            current_words = words(section(body, "Current State"))
+            current_words = words(section(outline, "Current State"))
             if current_words > 250:
                 warnings.append(("current-state", relative, f"{current_words} words; target <=250"))
-            action_count = len(re.findall(r"(?m)^\s*[-*]\s+\[ \]\s+", section(body, "Next Actions")))
+            action_count = len(re.findall(r"(?m)^\s*[-*]\s+\[ \]\s+", section(outline, "Next Actions")))
             if action_count > 10:
                 warnings.append(("next-actions", relative, f"{action_count} unchecked actions; target <=10"))
-            log_count = len(re.findall(r"(?m)^\s*[-*]\s+\S", section(body, "Maintenance Log")))
+            log_count = len(re.findall(r"(?m)^\s*[-*]\s+\S", section(outline, "Maintenance Log")))
             if log_count > 5:
                 warnings.append(("maintenance-log", relative, f"{log_count} entries; target <=5"))
 
         if note_type in RESUMPTION_TYPES and field(frontmatter, "_archived") != "true":
-            headings = re.findall(r"(?m)^## (.+?)\s*$", body)
+            headings = re.findall(r"(?m)^## (.+?)\s*$", outline)
             for heading in headings:
                 if DATED_HEADING_RE.search(heading):
                     warnings.append(("dated-section", relative, f"'{heading}'; fold into the owning section or an Event"))
@@ -119,7 +139,7 @@ def main() -> int:
         if note_type in {"Source", "Event", "Method"} and body_words > 2000:
             if not re.search(
                 r"(?mi)^## (?:At a [Gg]lance|Summary|Abstract|Current Recommendation|Event Summary)\s*$",
-                body,
+                outline,
             ):
                 warnings.append(("long-reference", relative, f"{body_words} body words; add opening summary"))
 
