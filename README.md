@@ -107,7 +107,7 @@ Behind that reply: [Ingest Source](procedures/ingest-source.md) chose the Source
 
 ## Example vaults
 
-Nine demo vaults show the template after about two years of fictional daily use, each with 500 to 800 linked notes, a lived-in Git history and a guided tour with questions that have known answers. Everything about the people and organisations is invented; the literature they cite is real. Clone one and open the folder.
+Nine demo vaults show the template after about two years of fictional daily use, each with 500 to 800 linked notes, a lived-in Git history and a guided tour with questions that have known answers. Everything about the people and organisations is invented; the literature they cite is real. Clone one and open the folder, or [explore all nine in the live Brain Graph demo](https://mfoll.github.io/brain-graph-demo/) without installing anything.
 
 | Vault | Whose memory |
 | --- | --- |
