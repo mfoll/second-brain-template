@@ -1,0 +1,40 @@
+# Runs the template's read-only audits on every push and pull request, on the oldest and a
+# current supported Python. The template must stay at zero errors and zero warnings.
+# In a deployed vault, warnings are advisory: keep this file, relax it, or delete it.
+name: Audits
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  audits:
+    runs-on: ubuntu-24.04
+    strategy:
+      matrix:
+        python: ['3.9', '3.13']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@6d4fd22b20465ccc0f7354476588e8df7c9ca0e0 # v7.1.0
+        with:
+          python-version: ${{ matrix.python }}
+      - name: Run the four vault audits
+        run: |
+          status=0
+          for audit in links_audit hierarchy_audit compactness_audit tolaria_icon_audit; do
+            echo "::group::$audit"
+            if ! out=$(python -I -W error ".agents/skills/lint-vault/scripts/$audit.py" .); then status=1; fi
+            echo "$out"
+            if grep -qE '^(ERROR|WARNING)[[:space:]]' <<<"$out"; then status=1; fi
+            echo "::endgroup::"
+          done
+          exit $status
+      - name: Test the external-reference checker
+        run: python -I -W error scripts/test_check_external_raw_references.py
