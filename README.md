@@ -60,6 +60,8 @@ Each box is one note; arrow labels name fields stored in the note they leave. Th
 
 ## Start here
 
+To see what a vault looks like after two years of use before building your own, clone one of the [example vaults](#example-vaults) and open it in any Markdown editor, [Tolaria](https://tolaria.md/) or [Brain Graph](https://github.com/mfoll/brain-graph).
+
 1. Create your own private copy in a new folder, using GitHub's template action, a clone, or a downloaded copy; include the hidden `.agents/` folder and `.gitignore`, which some copy tools skip, but not a clone's `.git` folder, which would carry the template's remote. Keep the shared template neutral. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) to port selected changes while preserving your notes and instructions.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
@@ -186,6 +188,7 @@ You do not need to read every file before starting or retain every optional feat
 | [scripts/check_external_raw_references.py](scripts/check_external_raw_references.py) | Checker and unit test for [Check External Raw References](procedures/check-external-raw-references.md). |
 | [views/](views/), [saved-view reference](tolaria-saved-views.md), [callout reference](tolaria-callouts.md) | Optional saved selections and viewer presentation guidance. |
 | [Vault Automations](vault-automations.md), [Capture Preferences](capture-preferences.md) | Optional configuration guides; neither activates a job or source connection. |
+| [Example vaults](#example-vaults) | Nine separate repositories, `second-brain-demo-*`: fictional vaults deployed from this template, each with about 500 notes, a guided tour and deliberate lint findings. |
 | [Brain Graph](https://github.com/mfoll/brain-graph) | Separate companion repository: an interactive graph viewer for a vault built this way, reading `belongs_to`, `has` and `related_to` directly from the files. Optional. |
 | [adr/](adr/) and short Concept notes | The eleven design decisions above and a small glossary: [the system](second-brain-system.md), [tool independence](agent-neutral-vault-definition.md), [capture first](capture-first-workflow.md), [project memory](project-scoped-memory.md), [sources and synthesis](source-note-vs-synthesis-note.md), [agent-executed Procedures](agent-executed-procedure.md), [Agent Skills](agent-skill.md). |
 | [.gitignore](.gitignore), [LICENSE](LICENSE), [THIRD_PARTY_NOTICES.txt](THIRD_PARTY_NOTICES.txt) | Exclusions for local configuration and credentials; MIT terms and retained upstream notices. |
