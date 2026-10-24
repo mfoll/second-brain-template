@@ -111,15 +111,15 @@ Nine demo vaults show the template after about two years of fictional daily use,
 
 | Vault | Whose memory |
 | --- | --- |
-| [Varga Lab Brain](https://github.com/mfoll/second-brain-demo-cancer-lab) | A group leader running a cancer genomics and molecular epidemiology lab |
-| [Hollowgate Bakehouse Brain](https://github.com/mfoll/second-brain-demo-cafe) | The owner of an independent café and bakery |
-| [Marchbank Teaching Brain](https://github.com/mfoll/second-brain-demo-teacher) | A secondary-school history teacher and head of year |
-| [Brennick Design Brain](https://github.com/mfoll/second-brain-demo-freelancer) | A freelance product designer |
-| [Brierly Household Brain](https://github.com/mfoll/second-brain-demo-household) | A parent keeping a family's home, care, school and money records |
-| [Fernhollow Club Brain](https://github.com/mfoll/second-brain-demo-community-club) | The volunteer chair of a neighbourhood sports and youth club |
-| [Quayle Writing Brain](https://github.com/mfoll/second-brain-demo-novelist) | A novelist writing her second book |
-| [Arneberg Engineering Brain](https://github.com/mfoll/second-brain-demo-startup) | The engineering lead of a small software start-up |
-| [Castellane HR Brain](https://github.com/mfoll/second-brain-demo-hr-assistant) | An HR assistant in a large company |
+| [Varga Lab Brain](https://github.com/mfoll/second-brain-demo-cancer-lab/blob/main/README.md) | A group leader running a cancer genomics and molecular epidemiology lab |
+| [Hollowgate Bakehouse Brain](https://github.com/mfoll/second-brain-demo-cafe/blob/main/README.md) | The owner of an independent café and bakery |
+| [Marchbank Teaching Brain](https://github.com/mfoll/second-brain-demo-teacher/blob/main/README.md) | A secondary-school history teacher and head of year |
+| [Brennick Design Brain](https://github.com/mfoll/second-brain-demo-freelancer/blob/main/README.md) | A freelance product designer |
+| [Brierly Household Brain](https://github.com/mfoll/second-brain-demo-household/blob/main/README.md) | A parent keeping a family's home, care, school and money records |
+| [Fernhollow Club Brain](https://github.com/mfoll/second-brain-demo-community-club/blob/main/README.md) | The volunteer chair of a neighbourhood sports and youth club |
+| [Quayle Writing Brain](https://github.com/mfoll/second-brain-demo-novelist/blob/main/README.md) | A novelist writing her second book |
+| [Arneberg Engineering Brain](https://github.com/mfoll/second-brain-demo-startup/blob/main/README.md) | The engineering lead of a small software start-up |
+| [Castellane HR Brain](https://github.com/mfoll/second-brain-demo-hr-assistant/blob/main/README.md) | An HR assistant in a large company |
 
 ## Design decisions
 
