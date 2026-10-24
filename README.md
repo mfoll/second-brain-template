@@ -10,7 +10,7 @@ surface_for:
 
 A knowledge base made of **Markdown notes, YAML frontmatter and links**, independent of any AI provider: a folder of readable files you can copy, back up or move between tools, whose linked notes keep context, sources and decisions between conversations. You can use it by hand in any Markdown editor; a coding agent with filesystem access makes capture, retrieval and maintenance much easier. [Tolaria](https://tolaria.md/) offers an optional viewer, and [Brain Graph](https://github.com/mfoll/brain-graph) (a companion repository) draws the whole vault as an interactive map coloured by the Responsibility or Project each note rolls up to; it is how the hierarchy contract below was first seen. The repository installs no applications, enables no scheduled jobs and needs no search index.
 
-![A portable folder of linked Markdown notes, readable and writable directly by you or through an AI agent. An example conversation asks for an alternative to linear regression, suggests gradient boosting, and requests saving the idea. A viewer, Git and search or RAG are optional.](assets/second-brain-overview.png)
+![A friendly sketch of a portable Second Brain folder containing linked Markdown notes and a working method: ADRs explain why, Procedures describe how to work, and Skills offer agent shortcuts, supported by agent instructions and checks. You can read and write directly or through an AI agent. An example conversation asks for an alternative to linear regression, suggests gradient boosting, and requests saving the idea. A viewer, Git and search or RAG are optional.](assets/second-brain-overview.png)
 
 ## What it adds to Portent
 
