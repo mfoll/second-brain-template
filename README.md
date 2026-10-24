@@ -14,6 +14,10 @@ Two viewers are optional: [Tolaria](https://tolaria.md/), a desktop app for brow
 
 ![A friendly sketch of a portable Second Brain folder containing linked Markdown notes and a working method: ADRs explain why, Procedures describe how to work, and Skills offer agent shortcuts, supported by agent instructions and checks. You can read and write directly or through an AI agent. An example conversation asks for an alternative to linear regression, suggests gradient boosting, and requests saving the idea. A viewer, Git and search or RAG are optional.](assets/second-brain-overview.png)
 
+![Brain Graph drawing Varga Lab Brain, one of the example vaults, about 790 notes coloured by the project they belong to, while two agents work in it: the notes they read pulse blue, dots run along the links they follow, and the notes they update pulse red](https://mfoll.github.io/brain-graph-demo/media/brain-graph-activity.webp)
+
+*[Brain Graph](https://github.com/mfoll/brain-graph) drawing one of the [example vaults](#example-vaults) while two agents work in it: the notes they read glow blue, a dot runs along each link they follow, and the notes they write glow red. **[Explore the nine example vaults in the live demo](https://mfoll.github.io/brain-graph-demo/)**, nothing to install.*
+
 [How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
 Reference material lives in two Guides: the [Model Reference](model-reference.md) (types, file format, relationships, lifecycle, views, extending the model, interoperability) and [Agent Setup](agent-setup.md) (instruction layers, Skills, audits, external files, automation, checkpointing).
