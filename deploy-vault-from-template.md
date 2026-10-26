@@ -12,14 +12,45 @@ Use this guide to create a new concrete vault from this template. If the destina
 
 ## Choose the setup path
 
-Start with the folder setup below. The later GitHub walkthrough is optional when repository history, a verified template snapshot and rollback tags are useful. Global routing, Skills, external-file helpers and automation are separate choices; configure only the features selected by the user.
+Start with the folder setup below, or let an agent run it through the agent-led setup that follows. The later GitHub walkthrough is optional when repository history, a verified template snapshot and rollback tags are useful. Global routing, Skills, external-file helpers and automation are separate choices; configure only the features selected by the user.
+
+## Agent-led setup
+
+The README's short setup request points an agent here. The agent runs the minimal folder setup below for the user, with an interview in place of hand-editing, and writes nothing until the user has answered.
+
+1. **Inspect and copy.** Inspect the destination. If a vault already exists there, stop and follow [[upgrade-existing-vault-from-template]]. If the template is not already local, ask before downloading it, then copy it as in minimal step 1, excluding `.git`.
+2. **Setup interview.** Ask one question at a time, offering a default or short choices where the runtime supports them, and skip anything the request already answers:
+   - a name for the vault and what it is for;
+   - what is in scope, what stays out, and what is sensitive;
+   - where the user's material lives and which sources the agent may read;
+   - which AI tools and accounts may process the notes;
+   - storage, backup and retention, and whether to use Git;
+   - whether meetings or other people's information will be recorded, and on what agreement (ask only if relevant);
+   - what the agent may save without asking each time;
+   - the language for notes;
+   - whether to use the Brain from other folders, explained as below.
+3. **Write the agreed setup.** Apply the answers through minimal steps 2, 3 and 5: [[vault]], `AGENTS.md` and the deployed README with its scope and responsible-use section. Show the user the result.
+4. **Start the first focus** through [[procedures/start-a-focus|Start a Focus]] (minimal step 4).
+5. **Offer the remaining options** without enabling them by default: installing Skills for discovery, Git history and checkpoints, and the other optional connections. Then archive the setup material (minimal step 6), run the checks and report.
+
+### Explain the choice to use the Brain from other folders
+
+Ask this as its own question, in plain language, because it changes how every session of the selected agent behaves, not only work in the vault. Leave it off unless the user chooses it, and accept either answer.
+
+- **What it does.** It adds one small marked block, about fifteen lines, to the user-level instruction file of each agent the user selects, for example `~/.claude/CLAUDE.md` for Claude Code, `~/.codex/AGENTS.md` for Codex or `~/.gemini/GEMINI.md` for Gemini CLI. The block names the vault folder. Every session of that agent, in any folder, then knows where the Brain is, reads it when earlier context would help, and saves to it when asked.
+- **Why choose it.** Work in a code repository, a manuscript folder or any other project can draw on and update the same Brain without opening the vault first.
+- **What to weigh.** Agents working on unrelated tasks may read relevant notes and send them to their model provider under that tool's terms. The change applies to all projects using that agent. It installs no Skills, services or automation and grants no permission to share content, change external files or push.
+- **If unsure, choose no.** The Brain still works whenever the agent is opened in the vault folder, and this step can be added at any time.
+- **Undo.** Remove the block between the `BEGIN SECOND BRAIN` and `END SECOND BRAIN` markers; a recovery copy of the previous file is kept.
+
+If the user chooses it, follow [[procedures/configure-global-agent-instructions|Configure Global Agent Instructions]]: show the exact diff for each selected agent and wait for approval before writing, keep the recovery copy, then verify from another folder that the agent finds the vault.
 
 ## Minimal folder setup
 
 1. Make a private copy in a new destination folder, using a downloaded template copy or an existing file-copy tool, and copy the hidden files too: `.agents/` holds the Skill packages and `.gitignore` the exclusions, and Finder drag-and-drop or a copy tool that skips dotfiles would lose them (`cp -R source/ destination/` keeps them). Do not copy a clone's `.git` directory: its `origin` would still point at the template, and a later push would send your notes there. Copy from a downloaded archive, exclude it (`rsync -a --exclude .git source/ destination/`), or delete `destination/.git` after copying. If you enable Git later, run `git init` in the new folder and confirm that `git remote -v` prints nothing before adding your own remote. Preserve any existing destination rather than overlaying it. See [[README]] for the human quickstart and agent setup request.
 2. Open the folder in the existing Markdown editor. In [[vault]], replace the `<Vault Name>` heading and the three `<...>` placeholders (outcome, current state, log date) and delete its first line; the scope and privacy boundary are written once, in the README (step 5). Keep existing project documents, repositories and task tools in their canonical locations.
 3. If agents will use the vault, customize the opening paragraph of its `AGENTS.md` (one sentence on what the vault is for is enough; the scope and privacy boundary themselves go in the README) and remove the section explicitly limited to the reusable template checkout. Its `CLAUDE.md` and `GEMINI.md` import those daily rules. Keep existing instruction files when joining an established setup; add only a needed memory section or import. Ordinary vaults retire the control-only multi-vault Procedure following the checklist under Retire The Control-Only Multi-Vault Procedure below.
-4. Start from one real outcome and one non-sensitive piece of useful material. Follow [[README#Build your first useful project|Build your first useful project]]: ask what the user wants to achieve, propose the smallest structure using existing Types, explain it in ordinary language, then create the agreed notes. Reuse existing notes where possible. Do not require a complete taxonomy or a bulk import.
+4. Start from one real focus and one non-sensitive piece of useful material. Follow [[procedures/start-a-focus|Start a Focus]], or [[README#Start your first focus|Start your first focus]] by hand: interview the user about what they want to achieve, propose the smallest structure using existing Types, explain it in ordinary language, then create the agreed notes. Reuse existing notes where possible. Do not require a complete taxonomy or a bulk import.
 
    A typical start is a Responsibility (an ongoing area), a Project under it (a finite outcome), and a Source for an external reference. An internal idea can update the Project or use another suitable Type. For manual setup, use [[responsibility]], [[project]] and the selected knowledge Type templates. Use kebab-case files at the vault root: the Project has `belongs_to: "[[your-responsibility]]"`, the Source has `belongs_to: "[[your-project]]"`, and the Project links the useful note through `has` or its body.
 
@@ -286,7 +317,7 @@ For each active pair, verify the visible note's `package_path`, matching package
 
 A control vault that wants a package for it adds the catalogue note and package together, as [[skill]] requires.
 
-Then rerun the catalogue and package listing above; both sides should show the same pairs, seven when the starter selection is kept unchanged.
+Then rerun the catalogue and package listing above; both sides should show the same pairs, eight when the starter selection is kept unchanged.
 
 ## Configure Agent Skill Discovery
 

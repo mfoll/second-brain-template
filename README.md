@@ -18,7 +18,7 @@ Two viewers are optional: [Tolaria](https://tolaria.md/), a desktop app for brow
 
 *[Brain Graph](https://github.com/mfoll/brain-graph) drawing one of the [example vaults](#example-vaults) while two agents work in it: the notes they read glow blue, a dot runs along each link they follow, and the notes they write glow red. **[Explore the nine example vaults in the live demo](https://mfoll.github.io/brain-graph-demo/)**, nothing to install.*
 
-[How it works](#how-it-works) · [Start here](#start-here) · [Build your first useful project](#build-your-first-useful-project) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
+[How it works](#how-it-works) · [Start here](#start-here) · [Start your first focus](#start-your-first-focus) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
 Reference material lives in two Guides: the [Model Reference](model-reference.md) (types, file format, relationships, lifecycle, views, extending the model, interoperability) and [Agent Setup](agent-setup.md) (instruction layers, Skills, audits, external files, automation, checkpointing).
 
@@ -60,45 +60,38 @@ To see what a vault looks like after two years of use before building your own, 
 1. Create your own private copy in a new folder: click **Use this template** on GitHub, or clone or download the repository. Copy the hidden `.agents/` folder and `.gitignore` too, which some copy tools skip, but not a clone's `.git` folder, which would still point at this template. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) instead to bring selected changes into it.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
-4. Pick one real thing you are working on and one non-sensitive piece of material that would help with it. Follow [Build your first useful project](#build-your-first-useful-project) below; you do not need to plan the whole structure first.
+4. Pick one real thing you are working on and one non-sensitive piece of material that would help with it. Follow [Start your first focus](#start-your-first-focus) below; you do not need to plan the whole structure first.
 5. Use the notes as they are. Add [agent routing](agent-setup.md), Skills, external-file helpers, views or automation only when useful. Keep existing project documentation in its canonical location and link to it.
 
 Each [release](https://github.com/mfoll/second-brain-template/releases) marks a reviewed version of the template; note the one you copied, so that a later [upgrade](upgrade-existing-vault-from-template.md) can list what changed since.
 
 Basic note use needs a text editor. Git adds history and rollback; the optional [GitHub deployment walkthrough](deploy-vault-from-template.md) uses Git and the GitHub CLI. Python 3.9 or later is needed only for the bundled audit helpers, which work in a plain folder as well as in a Git repository; the Python that ships with macOS is enough.
 
-Or open the template with your agent and adapt this request:
+### Or let an agent set it up
+
+Paste this into Claude Code, Codex, Gemini CLI or another agent that can work with files, replacing the folder:
 
 ```text
-Set up a Second Brain in <DESTINATION> for <PURPOSE> using this template.
-Read README.md and deploy-vault-from-template.md. Inspect the destination first;
-preserve existing content and use the upgrade guide if a vault already exists.
-Start with Markdown notes, customize the entry note and vault instructions,
-then help me start with one real project and one non-sensitive item.
-Ask what I want to achieve and what material I already have. Propose the
-smallest structure using the existing Types, explain it in plain language,
-then create the agreed notes and verify I can retrieve the saved material.
-Keep my existing tools, project documents and instruction files.
-For cross-project memory, offer the small global routing block for the runtimes
-I select. Inspect existing instructions, preview the diff and preserve a recovery
-copy; add or update only the Second Brain section or import.
-Leave optional Skill installation, services and automation off unless selected.
-Report the resulting files, checks and any remaining setup choices.
+Set up a Second Brain for me from https://github.com/mfoll/second-brain-template
+in <FOLDER>. Follow its deployment guide's agent-led setup.
+Interview me before writing anything.
 ```
 
-## Build your first useful project
+The agent copies the template, then asks a few questions one at a time: what the vault is for, what stays out of it, where your material lives, which AI tools may process it, how it is backed up, and what it may save without asking. It writes the agreed setup, starts your first focus with you and checks that you can find what was saved. Skills, Git history, connections and automation stay off unless you choose them.
 
-Start with something you already need to do: prepare a workshop, compare two methods or finish a report. Choose one useful document, public link or idea. You can add more areas later; there is no need to import your entire archive or design every category at the start.
+One question deserves a moment: **should your agents use the Brain when you work in other folders?** If you say yes, the agent adds a short marked block to the user-level instruction file of the agents you choose, so that any session, in any project, knows where your notes are and can read or update them when that helps. The trade-off is that agents working on unrelated tasks may then read relevant notes and send them to their model provider. The agent shows you the exact change first and keeps a recovery copy; deleting the block undoes it. If unsure, say no: the Brain still works whenever the agent is opened in the vault folder, and you can add this later. The [deployment guide](deploy-vault-from-template.md#explain-the-choice-to-use-the-brain-from-other-folders) has the details.
 
-With a filesystem agent, open your copied vault as its working folder and try:
+## Start your first focus
+
+A focus is anything you want the brain to help with: an ongoing area such as teaching, a finite outcome such as preparing a workshop, or a subject you are exploring. Start with something you already need to do and one useful document, public link or idea. You can add more later; there is no need to import your entire archive or design every category at the start.
+
+With a filesystem agent, open your copied vault as its working folder and ask:
 
 ```text
-Read AGENTS.md. Help me start this brain around preparing a workshop.
-Ask what I want the workshop to achieve and what useful material I already have.
-Propose the smallest structure using the existing Types and explain it in plain
-language. Reuse existing notes where possible, then create the agreed notes.
-Start with the non-sensitive material I supply; leave integrations off.
+Use the start-a-focus skill: I want to prepare a workshop.
 ```
+
+Without the Skill installed, ask the agent to follow [Start a Focus](procedures/start-a-focus.md). It interviews you briefly (what you want to achieve, whether it ends, what it belongs to, what material exists), searches existing notes, then proposes the smallest structure in plain language and waits for your agreement before writing. The same workflow starts every later focus.
 
 For example, the result could be:
 
@@ -163,7 +156,7 @@ Nine demo vaults show the template after about two years of fictional daily use,
 This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent supplies the vocabulary: the core types, relationships and lifecycle. This repository adds what an agent needs to keep a vault in shape over months of use:
 
 - **Operating rules.** [AGENTS.md](AGENTS.md) holds the vault's operating rules for agents, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
-- **Workflows and packages.** Sixteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. Seven selected workflows are also exposed as optional thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
+- **Workflows and packages.** Seventeen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. Eight selected workflows are also exposed as optional thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
 - **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
 - **Enforcement.** Lint scripts check required note metadata, Skill pairs, links, compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
 
@@ -245,10 +238,11 @@ A Project note does not need its own folder, repository or agent workspace; [Rou
 
 ### Choosing a skill
 
-The seven Skills are optional shortcuts to the [Procedures](procedures/). The [catalogue](skills/) explains when to choose each one; the executable packages live under [.agents/skills/](.agents/skills/). You can ask for the work in ordinary language or follow a Procedure without installing its Skill.
+The eight Skills are optional shortcuts to the [Procedures](procedures/). The [catalogue](skills/) explains when to choose each one; the executable packages live under [.agents/skills/](.agents/skills/). You can ask for the work in ordinary language or follow a Procedure without installing its Skill.
 
 | What you want to do | Skill | Example request |
 | --- | --- | --- |
+| Start something new: an area, a project or a subject to explore | [Start a Focus](skills/start-a-focus-skill.md) | “Start a new focus for the workshop I am preparing.” |
 | Incorporate external material with provenance and useful synthesis | [Ingest Source](skills/ingest-source-skill.md) | “Add this paper to my brain.” |
 | Refresh a Project’s state, scope, blockers and links | [Update Project Summary](skills/update-project-summary-skill.md) | “Bring this Project up to date.” |
 | Reconcile completed, changed and new next actions | [Update Project Next Actions](skills/update-project-next-actions-skill.md) | “Update what should happen next.” |
@@ -293,7 +287,7 @@ You do not need to read every file before starting or retain every optional feat
 | [Model Reference](model-reference.md), [Agent Setup](agent-setup.md) | The two reference Guides behind this README. |
 | [Deployment](deploy-vault-from-template.md), [upgrade](upgrade-existing-vault-from-template.md) and [global instruction template](global-agent-instructions-template.md) | Bootstrap and configuration material, to customize or retire after setup. |
 | [procedures/](procedures/) | Complete workflows for ingestion, project upkeep, validation, configuration and checkpointing. |
-| [skills/](skills/) and [.agents/skills/](.agents/skills/) | Human-readable Skill catalogue and matching executable packages, including the contract, compactness, icon, hierarchy and link audits. The seven packages are a starter selection. |
+| [skills/](skills/) and [.agents/skills/](.agents/skills/) | Human-readable Skill catalogue and matching executable packages, including the contract, compactness, icon, hierarchy and link audits. The eight packages are a starter selection. |
 | [.github/workflows/audits.yml](.github/workflows/audits.yml) | Runs the five audits and the contract/reference regression tests on every push to the template. Optional in a deployed vault. |
 | [scripts/configure-agent-skills.sh](scripts/configure-agent-skills.sh) | Installs or checks machine-local links to retained Skill packages. |
 | [scripts/check_external_raw_references.py](scripts/check_external_raw_references.py) | Checker and unit test for [Check External Raw References](procedures/check-external-raw-references.md). |

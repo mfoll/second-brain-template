@@ -1,0 +1,4 @@
+interface:
+  display_name: "Start a Focus"
+  short_description: "Interview the user and set up a new area, project or topic."
+  default_prompt: "Use $start-a-focus in the selected vault, following its AGENTS.md and Procedure."
