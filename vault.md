@@ -26,15 +26,14 @@ The scope and privacy boundary are recorded once in [[README]]; this note links 
 ## Active Workflows
 
 - [[procedures/ingest-source|Ingest Source]]
-- [[procedures/process-inbox|Process Inbox]]
 - [[procedures/update-project-summary|Update Project Summary]]
 - [[procedures/lint-vault|Lint Vault]]
 - [[procedures/review-vault-health|Review Vault Health]]
 
 ## Next Actions
 
-- [ ] Create the first Responsibility, Project and Source and test retrieval from the Project.
-- [ ] Remove the workflows, Types and optional guides this vault does not need.
+- [ ] Start with one real outcome and one useful reference or idea; create the smallest linked structure and test finding it again.
+- [ ] Use the basic save/resume/update loop before deciding which optional features to retain.
 - [ ] If Skill installation is selected, configure and verify its discovery without replacing existing entries.
 - [ ] If external raw files are needed, configure ignored root mappings and verify Source bridges.
 
@@ -51,7 +50,8 @@ The scope and privacy boundary are recorded once in [[README]]; this note links 
 - [[tolaria-saved-views|Tolaria Saved Views]]
 - [[procedures/initialize-project-memory|Initialize Project Memory]]
 - [[procedures/configure-agent-skill-discovery|Configure Agent Skill Discovery]]
-- [[vault-automations|Vault Automations]]
+- [[model-reference|Model Reference]]
+- [[agent-setup|Agent Setup]]
 
 ## Maintenance Log
 

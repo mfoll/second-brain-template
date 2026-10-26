@@ -56,7 +56,7 @@ Project notes are compact resumption surfaces, not archives. Follow [[project]];
 
 ## Writing and evidence
 
-Read whenever prior vault context matters. Write when the user asks to save, remember, ingest, process, organize, update or maintain durable knowledge, or under an agreed standing writeback scope. Linking a workspace alone grants no automatic write authority.
+Read whenever prior vault context matters. Write when the user asks to save, remember, ingest, process, organize, update or maintain durable knowledge, or under an agreed standing writeback scope. A request only to read, explain or summarize is read-only unless saving is also requested or an agreed standing scope covers it. Linking a workspace alone grants no automatic write authority.
 
 Keep project writeback proportional: update the entry Project and directly affected notes, reconcile its summary, actions, and any useful existing human view, and propose broad or uncertain cascades before applying them.
 

@@ -41,7 +41,7 @@ Treat external raw references as read-only by default. Agents may list folders, 
 
 ## Steps
 
-1. Find active Source notes where `root_key` and `relative_path` are present, or where `storage_system` suggests an external raw-file system.
+1. Exclude notes with `_archived: true`; leave their metadata and indexes unchanged. Find active Source notes where `root_key` and `relative_path` are present, or where `storage_system` suggests an external raw-file system.
 2. For each note, verify `storage_system`, `root_key`, `relative_path`, `access`, and `last_checked` exist.
 3. Resolve `root_key` using `.local/roots.yml` when available. If the local config is missing, report that it should be created before relying on references from this machine.
 4. Resolve the target within the configured root. Reject absolute paths, parent traversal (`..`) and symlinks that escape that root; leave rejected notes unchanged. Skip symlinked Markdown notes and the checker's local/support exclusions.

@@ -49,10 +49,16 @@ Report the candidate task, why it appears responsible, and the proposed focused 
 ## Steps
 
 1. Inspect Type definitions and the canonical tracked-note tree.
-2. Run `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings, `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names, then `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for `belongs_to` hierarchy drift (add `--tree` to print the inferred home tree), and `.agents/skills/lint-vault/scripts/links_audit.py <vault-root>` for unresolved or ambiguous wikilinks, missing relative Markdown link targets and relationship values that are not wikilinks. Verify warned emoji or URL icons in the current Tolaria UI.
+2. Run `.agents/skills/lint-vault/scripts/contracts_audit.py <vault-root>` for required note headers, declared Types and Skill-pair contracts (its sibling `links_audit.py` must be present), then `.agents/skills/lint-vault/scripts/compactness_audit.py <vault-root>` for deterministic compactness warnings, `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py <vault-root>` for saved-view and frontmatter icon names, then `.agents/skills/lint-vault/scripts/hierarchy_audit.py <vault-root>` for `belongs_to` hierarchy drift (add `--tree` to print the inferred home tree), and `.agents/skills/lint-vault/scripts/links_audit.py <vault-root>` for unresolved or ambiguous wikilinks, missing relative Markdown link targets and relationship values that are not wikilinks. Verify warned emoji or URL icons in the current Tolaria UI.
 3. Verify findings against the actual files; broad search output is not proof.
 4. Report errors and warnings by severity and note. Treat compactness thresholds as review signals, not arbitrary failures. Include responsible-task candidates and proposed follow-up workflows, but wait for user confirmation before contacting a task.
 5. Stay read-only unless the user asks for focused fixes. Do not process Inbox, rewrite summaries, normalize broad relationships, or delete notes from lint.
+
+## Automated coverage and manual review
+
+`contracts_audit.py` checks required frontmatter, H1 outside code, canonical Type names from root Type definitions, active Skill/package pairs, package names, wrapped Procedure paths and explicit package support paths. Its top-level scalar parser is not a general YAML validator. Link, hierarchy, compactness and icon helpers cover the named checks above.
+
+Manual review remains necessary for source fidelity, write authority, useful resumption, Type-specific required fields and lifecycle, saved-view semantics, ambiguous naming and standalone Skill ownership. A green CI run establishes only the automated checks, not every item in this Procedure. Test the contract helper with `python3 -I scripts/test_vault_contracts.py`.
 
 ## Hierarchy Heuristic
 

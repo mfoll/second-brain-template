@@ -93,6 +93,15 @@ class ReferenceScopeTests(unittest.TestCase):
         self.assertNotIn(str(self.root), result.stdout)
         self.assertIn("vault notes needing update: 2", result.stdout)
 
+    def test_archived_source_is_not_checked_or_rewritten(self) -> None:
+        path = self.vault / "archived.md"
+        original = self.note_text(".").replace("type: Source", "type: Source\n_archived: true")
+        path.write_text(original, encoding="utf-8")
+        result = self.run_checker()
+        self.assertEqual(path.read_text(encoding="utf-8"), original)
+        self.assertNotIn("archived.md", result.stdout)
+        self.assertIn("vault notes needing update: 0", result.stdout)
+
 
 if __name__ == "__main__":
     unittest.main()

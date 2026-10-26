@@ -16,7 +16,7 @@ A Project must have an end condition you could tick off: an outcome that is reac
 
 ## Compact front-page contract
 
-- Target 600–1,200 words; a complex umbrella may reach about 1,500.
+- For an established Project, target 600–1,200 words; a complex umbrella may reach about 1,500. A new or simple Project can be much shorter. Do not pad it to meet a word target.
 - `Current State` contains current truth only: normally no more than five bullets or 250 words.
 - `Next Actions` contains 3–7 outcome-level actions. Keep microtasks in the active chat or task system.
 - `Open Questions` and `Important Notes` normally contain 3–7 prioritized links each.
@@ -41,7 +41,47 @@ A Project note does not imply a matching filesystem folder, repository, or agent
 
 ## Template
 
+### Minimal starter
+
+Replace the owning Responsibility and the example text. A few useful lines are enough to begin:
+
 ```md
+---
+type: Project
+status: Active
+belongs_to: "[[owning-responsibility]]"
+_organized: true
+---
+
+# Prepare workshop
+
+## Outcome
+
+Deliver a workshop that helps the audience practise the chosen topic.
+
+## Current State
+
+- The audience and date are known; the exercises remain to be chosen.
+
+## Next Actions
+
+- [ ] Choose one useful reference and draft the first exercise.
+```
+
+Link saved references or ideas from the Project when they exist. Add sections as the work needs them.
+
+### Expanded template
+
+For a project with more context, use the sections below and omit empty or misleading ones.
+
+```md
+---
+type: Project
+status: Active
+belongs_to: "[[owning-responsibility]]"
+_organized: true
+---
+
 # Project Name
 
 One or two sentences describing the project.

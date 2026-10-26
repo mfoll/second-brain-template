@@ -9,7 +9,9 @@ _organized: true
 
 # Ingest Source
 
-Use this procedure when the user asks to save, ingest, process, extract from, or summarize external material such as a webpage, repository, paper, PDF, dataset, transcript, documentation page, tool, tutorial, or pasted source text.
+Use this procedure when the user asks to save or incorporate external material into the vault, or an agreed standing writeback scope covers that material. Inputs can include a webpage, repository, paper, PDF, dataset, email, transcript, documentation page, tool, tutorial, or pasted source text.
+
+A request only to read, explain, extract from or summarize material is read-only unless the user also asks to save the result or existing authorization covers that writeback. Return the requested answer without creating or updating vault notes in that case. Source access, acquisition and transcription must use the deployment’s approved tools; this Procedure supplies none of those connections.
 
 Do not use `type: Source` for ordinary internal planning once the useful conclusions have already been synthesized. Update the relevant Project, Question, Concept, Procedure, ADR, or Note instead.
 
@@ -21,8 +23,8 @@ Create a traceable Source note, preserve provenance, extract only useful durable
 
 1. Confirm the source input: URL, file path, pasted text, repository, document, or attachment.
 2. Read enough of the source to identify title, author or owner when available, date or access date, source type, and why it matters.
-3. Search the vault for likely Projects, Responsibilities, Topics, Concepts, Opinions, Questions, Procedures, ADRs, and existing Source notes before creating a new note.
-4. Create one `type: Source` note with a kebab-case filename and a clear H1 matching the source title or repository/tool name.
+3. Search the vault for likely Projects, Responsibilities, Topics, Concepts, Opinions, Questions, Procedures, ADRs, and existing Source notes. Match an existing Source by its canonical URL, DOI, repository, external-file pointer or other stable identifier, then check its content and source version. A changed URL or title alone does not establish a new source.
+4. Update the matching Source in place when the same item is already represented; preserve its useful detail, provenance and caveats. Create one `type: Source` note only when no suitable record exists, with a kebab-case filename and a clear H1 matching the source title or repository/tool name. Repeating an unchanged ingestion should not create duplicate notes or repeat already-applied updates; a distinct version may merit a separate linked Source when its differences matter.
 5. Add provenance frontmatter such as `url`, `source_file`, `source_type`, `author`, `date_published`, or `date_accessed` when available. Do not invent missing metadata.
 6. Add only strong relationships. Use `belongs_to` for the Project or Responsibility that would resume or answer for the source; use `related_to` for concepts, questions, topics, tools, or methods; use `has` only for selected child notes or deliverables. Every durable note needs a `belongs_to` that reaches a Responsibility. If no Project or Responsibility owns the source yet, file it under the matching exploration Topic of the Responsibility the deployment designates for exploratory reading; creating a new cluster Topic there needs no separate approval once at least three notes share the theme. Never leave a durable note attached by `related_to` alone; when the deployment designates no exploration Responsibility, leave the note unprocessed under step 13 instead ([[adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics|ADR 0011]]).
 7. Write concise sections: `## Summary`, `## Why It Matters`, `## Key Details`, `## Caveats`, and `## Links Or Follow-Up` when relevant. For long sources, summaries are acceptable; preserve provenance and enough retrieval hooks to return to the source rather than duplicating every detail. If provenance fields such as `url`, `urls`, `source_file`, DOI, repository, `root_key`, or `relative_path` are present in frontmatter, also include the useful pointer in the readable body, usually as `## Source Links` or `## Source Location`.

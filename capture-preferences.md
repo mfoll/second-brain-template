@@ -8,7 +8,7 @@ _organized: true
 
 # Capture Preferences
 
-Optional, vault-local feedback and terminology for curated capture. This guide does not activate ingestion. Keep work and personal rules in their respective vaults; never copy a private dictionary or examples into a shared template.
+Optional, vault-local preferences and terminology for capture. A simple deployment can record explicit instructions such as “keep the caveats” in plain language; it needs no topic IDs or review interface. This guide does not activate ingestion. Keep work and personal rules in their respective vaults; never copy a private dictionary or examples into a shared template.
 
 ## Default treatment
 
@@ -16,7 +16,7 @@ Propose durable decisions, useful constraints, meaningful changes, and clearly o
 
 ## How feedback is remembered
 
-The user can select `capture`, `recap-only`, `forget`, or `correct` for a stable topic ID and add a comment. A one-off decision applies only to that topic. Add a reusable rule here only when the user expresses a future preference, such as “always exclude this kind of material.” Confirmation of a name correction may update the contextual dictionary with its evidence and scope.
+For an advanced review workflow that supplies stable topic IDs and a decision interface, a deployment may offer `capture`, `recap-only`, `forget`, or `correct` and a comment. This template does not bundle that interface. A one-off decision applies only to that topic. Add a reusable rule here only when the user expresses a future preference, such as “always exclude this kind of material.” Confirmation of a name correction may update the contextual dictionary with its evidence and scope.
 
 Rules use a stable ID, date, narrow context, requested treatment, rationale when useful, and a user-decision reference. Specific current instructions override broader rules. Do not infer preferences from silence or train an opaque model. Rules remain inspectable and reversible.
 

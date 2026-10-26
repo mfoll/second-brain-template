@@ -147,7 +147,7 @@ For the Git-backed walkthrough, complete the applicable groups before checkpoint
 
 ### Mechanical
 
-- Follow [[procedures/lint-vault|Lint Vault]] for affected interfaces. When Python-assisted checks are selected, run the relevant bundled helpers: `compactness_audit.py` and `tolaria_icon_audit.py`.
+- Follow [[procedures/lint-vault|Lint Vault]] for affected interfaces. When Python-assisted checks are selected, run the relevant bundled helpers: `contracts_audit.py`, `links_audit.py`, `hierarchy_audit.py`, `compactness_audit.py` and `tolaria_icon_audit.py`. The contracts helper requires its sibling link helper. Treat newly detected pre-existing findings separately from regressions; do not rewrite deployed content merely to obtain a green result.
 - Check frontmatter, first H1s, Type resolution, portable wikilinks, relationships, views, active Project surfaces, and orphaned active notes.
 - Confirm each installed Skill catalogue/package pair satisfies [[skill]].
 - For runtime Skill discovery included in the upgrade, run the authoritative installer in check mode and require zero missing or conflicting retained packages. Instruction-only changes need no Skill installation.

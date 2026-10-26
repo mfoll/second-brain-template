@@ -10,7 +10,7 @@ The note model behind this template: the 17 note types, the file format and rela
 
 ## Note types
 
-The template includes all 17 types below; there is no separate type pack to install. You can start by writing only Projects, Sources and general Notes. The other types are available when useful, and some describe the template's own instructions and workflows. Recap is an explicitly optional extension.
+The template includes all 17 types below; there is no separate type pack to install. Start with one Responsibility for an ongoing area, one Project for a finite outcome, and a useful Source or general Note beneath it. The other types are available when useful, and some describe the template's own instructions and workflows. Recap is an explicitly optional extension.
 
 | Note | Purpose |
 | --- | --- |
@@ -45,7 +45,7 @@ Work and knowledge belong in the same graph. Events, Notes, Topics and People pr
 
 You do not need to create examples of every type. When pruning a deployment, keep the definitions needed by its retained notes and remove affected links and workflows together.
 
-Projects normally contain 600–1,200 words, concise current state, 3–7 actions, prioritized Questions and Important Notes, and 3–5 milestones. Detailed evidence lives in linked notes. Long reference notes retain their payload and start with a short summary. The [Project](project.md) Type note is the authoritative contract.
+Established Projects normally contain 600–1,200 words; a new or simple Project can be much shorter. Keep concise current state, 3–7 actions, prioritized Questions and Important Notes, and 3–5 milestones. Detailed evidence lives in linked notes. Long reference notes retain their payload and start with a short summary. The [Project](project.md) Type note is the authoritative contract.
 
 ## Files and relationships
 
@@ -104,7 +104,7 @@ Capture and organization are separate activities. Save useful material without f
 
 These flags are separate from type-specific workflow fields: a Project can have `status: Active`, `Paused` or `Completed`, and a Question `status: Open`, `Answered` or `Deferred`. Completing work does not itself delete its notes. Archive retained inactive material according to the agreed retention policy, keeping useful evidence and provenance retrievable. See [Process Inbox](procedures/process-inbox.md) for the full organization and preservation rules.
 
-Write organized notes directly when their retrieval path is already clear. When no Project or Responsibility owns a note yet, file it under an exploration Topic of the Responsibility your deployment designates for exploratory reading, so that it has a home before it has a project ([ADR 0011](adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics.md)).
+Write organized notes directly when their retrieval path is already clear. Useful knowledge need not belong to an active Project: a Source or Concept can belong directly to its owning Responsibility. Do not invent a Project for every saved item. When no Project or Responsibility owns a note yet, file it under an exploration Topic of the Responsibility your deployment designates for exploratory reading, so that it has a home before it has a project ([ADR 0011](adr/0011-root-belongs-to-at-responsibilities-and-home-exploration-clusters-in-topics.md)).
 
 ## Saved views
 

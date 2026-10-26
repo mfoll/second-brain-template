@@ -182,6 +182,8 @@ def main() -> int:
         fm = parse_frontmatter(fm_lines)
         if fm.get("type") != "Source":
             continue
+        if fm.get("_archived", "").lower() == "true":
+            continue
         root_key = fm.get("root_key")
         relative_path = fm.get("relative_path")
         if not root_key or not relative_path:

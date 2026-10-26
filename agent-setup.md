@@ -74,16 +74,17 @@ The template ships seven optional packages. Direct saving, project updates, lint
 
 ## Checks that keep the structure honest
 
-Four read-only helpers in `.agents/skills/lint-vault/scripts/` support [Lint Vault](procedures/lint-vault.md) and [Review Vault Health](procedures/review-vault-health.md):
+Five read-only helpers in `.agents/skills/lint-vault/scripts/` support [Lint Vault](procedures/lint-vault.md) and [Review Vault Health](procedures/review-vault-health.md):
 
 ```bash
+python3 .agents/skills/lint-vault/scripts/contracts_audit.py .
 python3 .agents/skills/lint-vault/scripts/compactness_audit.py .
 python3 .agents/skills/lint-vault/scripts/tolaria_icon_audit.py .
 python3 .agents/skills/lint-vault/scripts/hierarchy_audit.py . --tree
 python3 .agents/skills/lint-vault/scripts/links_audit.py .
 ```
 
-The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. The links audit reports wikilinks that resolve to no note or to several, relative Markdown links whose file is missing, and relationship values that are not wikilinks; examples inside code are ignored. All four need only Python 3.9 or later with the standard library, verified on 3.9 and 3.13. The template runs them, with the external-reference checker's unit test, in GitHub Actions on every push ([audits.yml](.github/workflows/audits.yml)) and must stay at zero errors and warnings; a deployed vault can keep, relax or delete that workflow.
+The contracts audit checks required frontmatter, a first H1, declared Type identity and executable Skill/catalogue pairs, including package names, wrapped Procedure paths and explicit package support paths. It uses the vault’s root Type definitions. It is not a complete YAML parser or a semantic review. The compactness audit warns when Projects, Current State sections, Maintenance Logs, Questions or automatically loaded instructions exceed their targets. The icon audit checks configured icon names against the pinned Phosphor list. The hierarchy audit lists Projects without a parent or under a Topic, notes whose `belongs_to` chain reaches no Responsibility, notes reachable only through `has`, double parents, non-hub notes acting as parents, and `related_to`-only clusters ready for promotion; deliberate exceptions are declared with `hierarchy_root: true` and `accepted_double_parent: true` in frontmatter. The links audit reports wikilinks that resolve to no note or to several, relative Markdown links whose file is missing, and relationship values that are not wikilinks; examples inside code are ignored. All five need only Python 3.9 or later with the standard library, verified on 3.9 and 3.13. The template runs them, with the contract and external-reference regression tests, in GitHub Actions on every push ([audits.yml](.github/workflows/audits.yml)) and must stay at zero errors and warnings; a deployed vault can keep, relax or delete that workflow. Human review still checks source fidelity, permission boundaries, useful resumption, Type-specific lifecycle rules, view semantics and standalone Skill ownership. Passing these helpers is not proof of complete correctness.
 
 ## External files and optional automation
 
@@ -96,6 +97,14 @@ Disable `attachments/` or reserve it for small, intentional Git-tracked vault as
 [Vault Automations](vault-automations.md) documents optional jobs. Begin manually; configured jobs use their own vault's working directory, privacy rules and approved model. Read-only jobs never edit or checkpoint; write-capable jobs need narrow scope and separate push authority.
 
 [Review Multi-Vault Consistency](procedures/review-multi-vault-consistency.md) belongs only in an explicitly designated routing/control vault. Ordinary deployments retire it with the checklist in [Deploy Vault From Template](deploy-vault-from-template.md) and may keep the Procedure as archived provenance. This template does not authorize access to another vault's private content.
+
+## Runtime-specific automation configuration
+
+After a job is selected, configure it through the chosen runtime’s supported interface and verify what was stored. Record the model, reasoning effort and permissions where that runtime exposes them. Select a model appropriate to the material and task; a low-cost option can be suitable for bounded checks after its results are validated.
+
+For Codex, standalone jobs can store independent model settings; same-task heartbeats inherit the attached task’s settings. Verify the relevant task or job rather than assuming the requested setting took effect. If local scheduler files and a database both represent a schedule, inspect them through the supported tooling and reconcile disagreement before claiming it works. Keep runtime IDs and machine paths out of portable notes.
+
+A runtime may support identifying an existing responsible task for a finding. That is optional coordination: report the proposed owner and obtain permission before messaging or resuming it. The basic result is still a useful report when no such feature exists.
 
 ## Review and backup
 

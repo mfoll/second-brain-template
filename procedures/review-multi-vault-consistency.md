@@ -21,18 +21,18 @@ The review is read-only by default and should inspect only routing/interface sur
 
 ## Deployment Rule
 
-This template includes the procedure and skill package so a newly deployed main/control vault can keep a complete operating system for multi-vault coordination.
+This template includes the Procedure without a Skill package. A designated routing/control vault can use it directly through the instruction router; add a catalogue/package pair only if repeated use makes discovery useful.
 
 When deploying an ordinary vault:
 
 - do not add this procedure to the root Project's active workflows;
 - do not create a Codex automation for this workflow;
 - do not use this vault to inspect or maintain another vault's private content;
-- remove the installed skill package and archive or remove its catalogue note and active routes; retain the Procedure only as clearly archived provenance if useful.
+- archive or remove this Procedure’s active routes, retaining it only as clearly archived provenance if useful; if a local deployment added a Skill pair, retire both sides deliberately.
 
 When deploying the designated main/control vault:
 
-- keep this procedure, its visible Skill note, and its hidden skill package;
+- keep this Procedure; any locally added Skill must have both its catalogue note and package;
 - link it from the root Project or maintenance responsibility;
 - document the active automation in [[vault-automations]] if scheduled;
 - state which vaults and template repositories are in scope.

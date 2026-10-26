@@ -6,42 +6,52 @@ _organized: true
 
 # Vault Automations
 
-Use this guide to document automations after deployment. The template defines no active jobs.
+Optional guidance and a register for recurring work you explicitly enable after deployment. This template installs no scheduler, connectors or active jobs. You can ignore this page while using the brain manually.
 
-## Ownership and safety
+## When recurring help is useful
 
-- Each job runs from one deployed vault and follows that vault's `AGENTS.md`, Procedure, Skill, privacy boundary, and Git policy.
-- Read-only lint and health jobs never stage, commit, or push.
-- A scheduled lint job diagnoses and proposes ownership. It may identify a responsible Codex task, but must report the candidate and wait for user confirmation before contacting it. If none exists, it proposes doing the focused follow-up in the current task.
-- Write-capable jobs need an explicit scope and narrowly authorized commands. Persisted network approval is only an execution mechanism, not general permission.
-- Set the deployment's approved standalone automation model and reasoning effort. For Codex, when a low-cost model is appropriate, use the vendor's currently supported low-cost model with its highest reasoning setting unless the user requests another model or effort. Same-task heartbeats inherit their attached task's settings, so verify that task instead.
-- Stagger schedules across vaults and document whether a job is active, paused, or manual.
+Try a workflow manually first. Add a schedule only when it repeatedly saves effort, its output is useful, and failures or incomplete coverage are visible. Choose your own tools, sources, cadence and review process.
 
-Cross-vault consistency review belongs only to a vault explicitly designated as routing/control. Ordinary personal, research, project, or team vaults must not schedule it.
+| Purpose | Possible job | Starting boundary |
+| --- | --- | --- |
+| Collect useful knowledge | Review selected messages, saved links or documents for proposed knowledge updates | Explicitly selected sources through an approved tool; no account-wide scan by default. |
+| Retain meeting outcomes | Prepare a summary and proposed Project updates from supplied notes or transcripts | Recording, transcription and source access are separate choices; reuse any established review workflow. |
+| Process deferred captures | Process ready-marked material through [[procedures/process-ready-ingestion-inbox]] | Optional; only `ingest_ready: true` captures, with original-capture preservation. |
+| Check structure | Run [[procedures/lint-vault]] | Read-only findings; no automatic fixes. |
+| Review usefulness | Run [[procedures/review-vault-health]] | Read-only recommendations about current state, retrieval and maintenance priorities. |
 
-Template upgrades are never a candidate job: [[upgrade-existing-vault-from-template|Upgrade an Existing Vault From the Template]] needs the owner's review of each change, because deployed vaults diverge from the template on purpose.
+Collection and maintenance are different jobs. A collection job can prepare proposals without being allowed to change notes; a maintenance report does not authorize repairs. The template includes no email, messaging, recording or transcription connector. Use the source-handling examples in [[README#What can you bring into the brain?|the README]] to choose a manual starting method.
 
-## Candidate jobs
+## Introduce one job
 
-- Process [[ready-to-ingest]] through [[procedures/process-ready-ingestion-inbox|Process Ready Ingestion Inbox]] in manual or scheduled write mode.
-- Run [[procedures/lint-vault|Lint Vault]] read-only, including the type-aware compactness and Tolaria icon helpers.
-- Run [[procedures/review-vault-health|Review Vault Health]] read-only for strategic drift and overloaded hot paths.
+1. Identify a repeated manual task and try it on a small, selected input.
+2. Agree its sources, approved AI tools, storage destinations and coverage window. Define whether it reports, proposes updates, or applies narrowly authorized changes.
+3. Define what happens when a source is unavailable, incomplete, already processed or ambiguous. Avoid duplicate updates on retries; preserve pending reviews.
+4. Run it manually and inspect the result. Verify the actual configured permissions and output; an instruction saying “read-only” is not an access-control mechanism by itself.
+5. Select a schedule only if useful, with a time zone, active/paused state and a way to disable it. Verify the stored configuration and observe a scheduled run before calling it reliable.
 
-Start with manual runs. Add a schedule only after the workflow, privacy boundary, failure behavior, and value have been observed.
+Reuse existing authorization for routine work. A new source, unapproved destination or expanded action needs a separate decision. Leave the original material unchanged unless specific retention or cleanup authority applies.
 
-## Thin prompt pattern
+## Job register
 
-```text
-In <VAULT_ROOT>, run the <skill-name> skill. Follow AGENTS.md, the skill, and the linked Procedure. Keep the run <read-only or task-scoped write mode>. For lint, preserve important information: compactness is not a goal by itself and may call for no change, careful reduction, reorganization, routing, or structural splitting. Identify any current responsible Codex task, report the candidate and proposed workflow, and wait for user confirmation before contacting it. If none exists, say so and offer to perform the focused follow-up in the current task. Report findings or checkpoint only as authorized.
-```
+No jobs are enabled in the template. Fill in a job record in a deployed vault only when a job is selected; do not put credentials or sensitive source contents here.
 
-Document the job's permitted sources, AI tools and storage destinations during setup, following [[README]]. Reuse that scope on later runs. Stop only the affected operation when it would access an excluded source, disclose content to a new unapproved destination or otherwise exceed its authority. Reuse existing authorization for routine work. Advisory feedback should not block safe ingestion; durable user questions should be reserved for genuine routing or safety blockers.
+| Field | Record for each enabled job |
+| --- | --- |
+| Name and purpose | The useful result it should produce. |
+| Workflow | The authoritative Procedure or existing deployment workflow. |
+| Sources and selection | Exactly what it may read, including account/folder/list boundaries when relevant. |
+| Destination and working directory | The one vault the job runs from and may update; cross-vault access needs separate explicit scope. |
+| Runner and configuration | The chosen tool and location of its real configuration; keep machine-specific bindings in local setup. |
+| Schedule and state | Cadence, time zone, active/paused/manual state, and how to disable it. |
+| Permitted changes | Read-only report, proposals, or named task-scoped writes; commit and push authority are separate. |
+| Review and failure handling | Who accepts proposals, how gaps are reported and how retries avoid duplication. |
+| Verification | Last checked configuration and observed run, including remaining limits. |
 
-## Deployment checklist
+## Execution boundaries
 
-- Record job name, purpose, working directory, model, mode, cadence, and active/paused state.
-- Keep prompts thin and route logic to Procedures.
-- Verify read-only jobs cannot write.
-- Give write jobs task-scoped commit rules and separate push authorization.
-- Check both automation files and any local database row after schedule or model changes. Confirm they agree on the selected model and reasoning effort; when using a low-cost default model, verify the stored model ID against the current Codex model selection. For a heartbeat, verify the attached task's inherited settings.
-- Do not copy another vault's automation unchanged without reviewing scope and privacy.
+Each job follows its destination vault’s `AGENTS.md`, privacy rules and authoritative workflow. Read-only jobs never stage, commit or push. Write jobs need explicit scope; unattended pushes additionally need narrow repository/branch authorization and a working execution path. Persisted command approval grants no wider permission.
+
+Keep detailed logic in Procedures and the actual scheduler configuration in its owning tool. A short prompt can name the vault, workflow, selected inputs and permitted mode; it must not silently broaden those boundaries. See [[agent-setup#Runtime-specific automation configuration|Agent Setup]] for runtime-specific checks.
+
+Cross-vault review belongs only to an explicitly designated routing/control vault. Template upgrades are never an unattended job: [[upgrade-existing-vault-from-template]] requires reviewed, selective changes that preserve deployed differences.

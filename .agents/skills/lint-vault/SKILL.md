@@ -13,6 +13,7 @@ For judgment about usefulness, stale project state or unnecessary workflows, use
 
 - Vault rules: `AGENTS.md`
 - Checks and severity: `procedures/lint-vault.md`
+- Contracts helper: `.agents/skills/lint-vault/scripts/contracts_audit.py` (requires the sibling `links_audit.py`; note headers, Type identities and Skill pairs, not full YAML or semantic validation)
 - Compactness helper: `.agents/skills/lint-vault/scripts/compactness_audit.py`
 - Tolaria icon helper: `.agents/skills/lint-vault/scripts/tolaria_icon_audit.py`
 - Hierarchy helper: `.agents/skills/lint-vault/scripts/hierarchy_audit.py` (`belongs_to` drift per the vault's hierarchy ADR, exceptions read from `hierarchy_root` and `accepted_double_parent` frontmatter flags; `--tree` prints the inferred home tree)
@@ -24,7 +25,7 @@ Read the vault rules and Procedure completely before acting.
 ## Guardrails
 
 - Inventory canonical tracked notes and exclude implementation, local, generated, cache, attachment, and support trees.
-- Use the four helpers for deterministic compactness, icon, hierarchy and link warnings, then inspect actual notes before conclusions. The pinned Phosphor name list checks identifiers, not glyph rendering or a live app registry; the current Tolaria picker remains authoritative. The Procedure documents reproducible refresh and upstream notices.
+- Use the five helpers for deterministic contract, compactness, icon, hierarchy and link findings, then inspect actual notes before conclusions. The pinned Phosphor name list checks identifiers, not glyph rendering or a live app registry; the current Tolaria picker remains authoritative. The Procedure documents reproducible refresh and upstream notices.
 - Compactness thresholds are review signals, not blanket failures for long evidence.
 - Recommend preservation-led routing, never blanket shortening; a threshold does not authorize deletion. A valid result may be no change, safe wording reduction, reorganization or routing, or a structural split.
 - In scheduled runs, identify a narrowly matched responsible agent task when possible, report it with the proposed workflow, and wait for user confirmation before contacting it. If none exists, offer to perform the focused follow-up in the current task.

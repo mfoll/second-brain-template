@@ -325,9 +325,9 @@ If the user enables [[recap|Recap]], follow [[procedures/prepare-recording-recap
 
 ## Configure Per-Vault Automations
 
-Review [[vault-automations]] and decide whether this deployed vault should have local automations.
+Review [[vault-automations]] only if recurring help is useful. Collection jobs may prepare proposed knowledge updates from selected messages, documents, links or meeting material; maintenance jobs diagnose structure or usefulness. Source connections and schedulers are configured separately, never activated by this template.
 
-Leave ready ingestion disabled and manual-first by default. Start with read-only jobs unless the user explicitly wants a write-capable intake job. Common candidates are:
+Start from a useful manual run, then choose the job’s sources, review, permissions and cadence. Leave ready ingestion unscheduled unless selected. Examples include optional ready-intake processing and read-only maintenance:
 
 - process [[ready-to-ingest]] manually with [[procedures/process-ready-ingestion-inbox]], then schedule it only after the workflow and privacy boundary have been observed;
 - run read-only [[procedures/lint-vault]];
@@ -363,7 +363,7 @@ For the GitHub walkthrough, complete the applicable checks below before checkpoi
 
 ### Mechanical validation
 
-- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `python3 -I .agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `python3 -I .agents/skills/lint-vault/scripts/links_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`; link validation passes when the links audit reports zero errors.
+- Follow [[procedures/lint-vault|Lint Vault]] for structural checks. When Python-assisted audits are selected, run `python3 -I .agents/skills/lint-vault/scripts/contracts_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/compactness_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/tolaria_icon_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`, `python3 -I .agents/skills/lint-vault/scripts/hierarchy_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>` and `python3 -I .agents/skills/lint-vault/scripts/links_audit.py <LOCAL_DESTINATION_ROOT>/<REPOSITORY_NAME>`; link validation passes when the links audit reports zero errors.
 - Verify frontmatter, first H1s, Type resolution, portable wikilinks, relationships, `_archived` exclusions, and saved-view syntax.
 - Confirm active Projects have usable resumption sections. Where a human view exists, validate its small, deliberate membership through [[procedures/maintain-project-human-view|Maintain Project Human View]]; absence of a view is valid.
 - Confirm every retained Skill catalogue/package pair satisfies [[skill]] and has either a resolvable matching Procedure or explicit specialized standalone ownership.

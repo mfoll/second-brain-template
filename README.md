@@ -163,9 +163,9 @@ Nine demo vaults show the template after about two years of fictional daily use,
 This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent supplies the vocabulary: the core types, relationships and lifecycle. This repository adds what an agent needs to keep a vault in shape over months of use:
 
 - **Operating rules.** [AGENTS.md](AGENTS.md) holds the vault's operating rules for agents, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
-- **Workflows and packages.** Sixteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. The seven most frequent are also exposed as thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
+- **Workflows and packages.** Sixteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. Seven selected workflows are also exposed as optional thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
 - **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
-- **Enforcement.** Lint scripts audit compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
+- **Enforcement.** Lint scripts check required note metadata, Skill pairs, links, compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
 
 These additions were worked out on a real professional vault, in daily use with agents since April 2026, and ported back once they proved generic. Conventions still change; each change lands as an ADR.
 
@@ -179,7 +179,7 @@ The eleven ADRs, one line each. Each records its context, the options rejected a
 4. [Hybrid layout](adr/0004-use-hybrid-layout-with-frontmatter-as-semantic-source.md): core notes and Types at the root, ADRs, Procedures and views in folders; frontmatter is the semantic source.
 5. [One Source type](adr/0005-use-source-as-single-external-ingestion-type.md) for all external material, with provenance fields.
 6. [Active subprojects get their own Project note](adr/0006-use-project-notes-for-active-subprojects.md) under an umbrella.
-7. [Compact front page](adr/0007-keep-hot-path-memory-compact-and-single-sourced.md): Projects stay 600–1,200 words with linked detail.
+7. [Compact front page](adr/0007-keep-hot-path-memory-compact-and-single-sourced.md): established Projects target 600–1,200 words with linked detail; small starters can be shorter.
 8. [Semantic reachability and reversible compaction](adr/0008-require-semantic-reachability-and-reversible-compaction.md): nothing is trimmed until its payload has a verified home.
 9. [Skill packages](adr/0009-support-procedure-backed-and-specialized-skill-packages.md) are vault-owned and catalogued, either Procedure-backed or explicitly standalone.
 10. [A Project note implies no folder](adr/0010-decouple-brain-projects-from-local-workspaces.md): promote to a workspace only past a stated threshold.
@@ -220,6 +220,22 @@ Start with the simplest method you will actually use:
 - **Add an integration only for a recurring need.** Once manual use shows a repeated capture task, choose an appropriate tool and explicitly agree its source scope, privacy boundaries, review step and permitted writes. Email, recordings and other sources depend on separately configured tools; the template provides no automatic connection to them. [Automation](vault-automations.md) is optional too.
 
 Try one method on real work before adding another. Keep what makes useful knowledge easier to save and find; there is no requirement to adopt every capture route or Skill.
+
+### What can you bring into the brain?
+
+Start with items you select and supply yourself. Tell the agent why an item matters and whether you want an answer, a saved note, or proposed updates. “Summarize this” asks for an answer; “Save the useful findings under this project” authorizes a scoped vault update under its rules.
+
+| Material | Simple starting method | What to retain |
+| --- | --- | --- |
+| Your own idea or a useful conversation | Describe it or supply a passage, then ask to save it | Reasoning, alternatives and caveats in the appropriate existing note. |
+| Webpage, paper or reading note | Supply a link, file or excerpt and why it matters | Provenance, useful findings and connections to existing knowledge. |
+| Email or message | Supply a selected message, or explicitly select it through an approved connector | The useful decision or context, with attribution and a source pointer; avoid copying an entire mailbox or thread by default. |
+| Meeting notes or transcript | Supply the selected material and requested outcome | Confirmed decisions, proposed actions and useful context, keeping attribution and uncertainty visible. Recording and transcription are separate choices. |
+| Existing document or project folder | Supply a relevant file or confirmed location | Selected knowledge and a pointer to the original; preserve the existing documents. |
+
+The template includes no email, messaging, recording or transcription connector. An available connector grants no permission to scan an account. If the source cannot be read, the agent should state the gap rather than invent findings. Repeatedly supplying the same source should update its existing note when needed, not create duplicates.
+
+You can also save knowledge without an active project. Give it a home under the relevant ongoing area (Responsibility); create a Project only when there is a finite outcome to pursue. If placement is unclear, preserve the capture and resolve that question rather than forcing a category.
 
 ### Keep it useful
 
@@ -277,8 +293,8 @@ You do not need to read every file before starting or retain every optional feat
 | [Model Reference](model-reference.md), [Agent Setup](agent-setup.md) | The two reference Guides behind this README. |
 | [Deployment](deploy-vault-from-template.md), [upgrade](upgrade-existing-vault-from-template.md) and [global instruction template](global-agent-instructions-template.md) | Bootstrap and configuration material, to customize or retire after setup. |
 | [procedures/](procedures/) | Complete workflows for ingestion, project upkeep, validation, configuration and checkpointing. |
-| [skills/](skills/) and [.agents/skills/](.agents/skills/) | Human-readable Skill catalogue and matching executable packages, including the compactness, icon, hierarchy and link audits. The seven packages are a starter selection. |
-| [.github/workflows/audits.yml](.github/workflows/audits.yml) | Runs the four audits and the checker's test on every push to the template. Optional in a deployed vault. |
+| [skills/](skills/) and [.agents/skills/](.agents/skills/) | Human-readable Skill catalogue and matching executable packages, including the contract, compactness, icon, hierarchy and link audits. The seven packages are a starter selection. |
+| [.github/workflows/audits.yml](.github/workflows/audits.yml) | Runs the five audits and the contract/reference regression tests on every push to the template. Optional in a deployed vault. |
 | [scripts/configure-agent-skills.sh](scripts/configure-agent-skills.sh) | Installs or checks machine-local links to retained Skill packages. |
 | [scripts/check_external_raw_references.py](scripts/check_external_raw_references.py) | Checker and unit test for [Check External Raw References](procedures/check-external-raw-references.md). |
 | [views/](views/), [saved-view reference](tolaria-saved-views.md), [callout reference](tolaria-callouts.md) | Optional saved selections and viewer presentation guidance. |
