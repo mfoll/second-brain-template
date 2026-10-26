@@ -1,9 +1,13 @@
 ---
 name: update-project-next-actions
-description: "Reconcile project next actions in the selected deployed vault; use that vault’s rules and Procedure."
+description: "Reconcile completed, changed and new project next actions in the selected deployed vault; refresh related state when those actions affect it."
 ---
 
 # Update Project Next Actions
+
+Reconcile what should happen next: remove completed actions, rewrite remaining work and merge overlaps. Refresh related project state when the action changes affect it.
+
+For a broader refresh of current state, scope, blockers and links, use `update-project-summary`. Both workflows keep actions and state consistent.
 
 ## Source of truth
 

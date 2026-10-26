@@ -1,9 +1,13 @@
 ---
 name: lint-vault
-description: "Diagnose vault structure without automatic fixes in the selected deployed vault; use that vault’s rules and Procedure."
+description: "Check vault metadata, links, hierarchy and structural contracts in the selected deployed vault; report defects without automatic fixes."
 ---
 
 # Lint Vault
+
+Check metadata, links, hierarchy and other structural contracts. Report errors and warnings without applying fixes.
+
+For judgment about usefulness, stale project state or unnecessary workflows, use `review-vault-health`. Lint findings can inform that review.
 
 ## Source of truth
 

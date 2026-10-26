@@ -1,9 +1,13 @@
 ---
 name: update-project-summary
-description: "Refresh compact project state in the selected deployed vault; use that vault’s rules and Procedure."
+description: "Refresh project state, scope, blockers and key links in the selected deployed vault; reconcile next actions when needed."
 ---
 
 # Update Project Summary
+
+Refresh a Project’s current synthesis after significant work: state, scope, blockers and useful links. Reconcile next actions when the changed state affects them.
+
+For a focused change to what should happen next, use `update-project-next-actions`. Both workflows update related project sections when needed.
 
 ## Source of truth
 

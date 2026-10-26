@@ -18,7 +18,7 @@ Two viewers are optional: [Tolaria](https://tolaria.md/), a desktop app for brow
 
 *[Brain Graph](https://github.com/mfoll/brain-graph) drawing one of the [example vaults](#example-vaults) while two agents work in it: the notes they read glow blue, a dot runs along each link they follow, and the notes they write glow red. **[Explore the nine example vaults in the live demo](https://mfoll.github.io/brain-graph-demo/)**, nothing to install.*
 
-[How it works](#how-it-works) · [Start here](#start-here) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
+[How it works](#how-it-works) · [Start here](#start-here) · [Build your first useful project](#build-your-first-useful-project) · [A worked session](#a-worked-session) · [Example vaults](#example-vaults) · [What it adds to Portent](#what-it-adds-to-portent) · [Design decisions](#design-decisions) · [Responsible use](#responsible-use) · [Everyday use](#everyday-use) · [Other tools](#relationship-to-other-tools) · [Repository map](#repository-map) · [Licence](#licence)
 
 Reference material lives in two Guides: the [Model Reference](model-reference.md) (types, file format, relationships, lifecycle, views, extending the model, interoperability) and [Agent Setup](agent-setup.md) (instruction layers, Skills, audits, external files, automation, checkpointing).
 
@@ -60,7 +60,7 @@ To see what a vault looks like after two years of use before building your own, 
 1. Create your own private copy in a new folder: click **Use this template** on GitHub, or clone or download the repository. Copy the hidden `.agents/` folder and `.gitignore` too, which some copy tools skip, but not a clone's `.git` folder, which would still point at this template. If you already have a vault, use [Upgrade an Existing Vault](upgrade-existing-vault-from-template.md) instead to bring selected changes into it.
 2. Open the folder in your usual Markdown editor. A vault is simply this folder of notes and their operating rules.
 3. Give [vault.md](vault.md) a name and purpose, then replace this README with the short vault README from the [deployment guide](deploy-vault-from-template.md), which records the copy's scope and privacy boundary once. If you use an agent, customize [AGENTS.md](AGENTS.md) for that same scope and remove its template-only section.
-4. Create one Responsibility for your area of work, one Project under it and one non-sensitive Source under the Project, using their definitions and templates. Try finding the Source again from the Project.
+4. Pick one real thing you are working on and one non-sensitive piece of material that would help with it. Follow [Build your first useful project](#build-your-first-useful-project) below; you do not need to plan the whole structure first.
 5. Use the notes as they are. Add [agent routing](agent-setup.md), Skills, external-file helpers, views or automation only when useful. Keep existing project documentation in its canonical location and link to it.
 
 Each [release](https://github.com/mfoll/second-brain-template/releases) marks a reviewed version of the template; note the one you copied, so that a later [upgrade](upgrade-existing-vault-from-template.md) can list what changed since.
@@ -74,7 +74,10 @@ Set up a Second Brain in <DESTINATION> for <PURPOSE> using this template.
 Read README.md and deploy-vault-from-template.md. Inspect the destination first;
 preserve existing content and use the upgrade guide if a vault already exists.
 Start with Markdown notes, customize the entry note and vault instructions,
-and verify that a Project can lead to a useful linked note.
+then help me start with one real project and one non-sensitive item.
+Ask what I want to achieve and what material I already have. Propose the
+smallest structure using the existing Types, explain it in plain language,
+then create the agreed notes and verify I can retrieve the saved material.
 Keep my existing tools, project documents and instruction files.
 For cross-project memory, offer the small global routing block for the runtimes
 I select. Inspect existing instructions, preview the diff and preserve a recovery
@@ -82,6 +85,43 @@ copy; add or update only the Second Brain section or import.
 Leave optional Skill installation, services and automation off unless selected.
 Report the resulting files, checks and any remaining setup choices.
 ```
+
+## Build your first useful project
+
+Start with something you already need to do: prepare a workshop, compare two methods or finish a report. Choose one useful document, public link or idea. You can add more areas later; there is no need to import your entire archive or design every category at the start.
+
+With a filesystem agent, open your copied vault as its working folder and try:
+
+```text
+Read AGENTS.md. Help me start this brain around preparing a workshop.
+Ask what I want the workshop to achieve and what useful material I already have.
+Propose the smallest structure using the existing Types and explain it in plain
+language. Reuse existing notes where possible, then create the agreed notes.
+Start with the non-sensitive material I supply; leave integrations off.
+```
+
+For example, the result could be:
+
+| What you need to remember | Note | Why it exists |
+| --- | --- | --- |
+| An ongoing area of work | Responsibility: Teaching | Gives related projects a stable home. |
+| A finite outcome | Project: Prepare workshop | Keeps the outcome, current state, open questions and next actions together. |
+| Material you will use | Source: Workshop reference | Keeps provenance and useful findings linked to the Project. |
+
+If the first item is your own idea, the agent can update the Project or choose another existing Type; it should not label your idea an external Source. If you work by hand, use the [Responsibility](responsibility.md), [Project](project.md) and relevant knowledge Type templates to make the same small structure.
+
+Give the agent the actual link, file or text and say why you want to keep it:
+
+```text
+Save this reference under the workshop project: <LINK OR FILE>.
+It may help explain <TOPIC>. Read the material, preserve its provenance,
+and capture what is useful for this workshop, including limits or caveats.
+Tell me what you saved, where it belongs and anything you could not access.
+```
+
+Review the resulting notes. Can you open the Project and find the reference? In a fresh conversation with the agent working in the vault, ask: “What reference did we save for the workshop, why is it useful, and what remains to do?” A useful answer from the files is the first success criterion. If it cannot find the material, improve the entry note and links before adding more content or tooling.
+
+Keep existing documents in their original locations and link to them. Save the knowledge needed for future use in the vault; copying every file is not required. The [deployment guide](deploy-vault-from-template.md) covers the technical setup and checks.
 
 ## A worked session
 
@@ -159,12 +199,58 @@ Agree these boundaries during setup and reuse them for routine work. Seek clarif
 
 ## Everyday use
 
-- Save ambiguous captures as unprocessed notes and use [Process Inbox](procedures/process-inbox.md); put material explicitly ready for processing in [Ready To Ingest](ready-to-ingest.md).
-- Add a paper, webpage or document through [Ingest Source](procedures/ingest-source.md), preserving provenance and linking useful conclusions to existing work.
-- Resume from a Project or Responsibility, and reconcile current state with [Update Project Summary](procedures/update-project-summary.md) and [Update Project Next Actions](procedures/update-project-next-actions.md).
-- Diagnose structure with [Lint Vault](procedures/lint-vault.md) and usefulness with [Review Vault Health](procedures/review-vault-health.md); the four audit commands are in [Agent Setup](agent-setup.md#checks-that-keep-the-structure-honest).
-- A Project note does not need its own folder, repository or agent workspace; [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) says when a workspace is justified, and [Initialize Project Memory](procedures/initialize-project-memory.md) connects one through a small memory section.
-- [Recaps](recap.md) are an optional way to retain reviewed discussions by day, month or year; configure their source scope, review and retention first, or omit the extension entirely.
+Use the brain alongside real work. You do not need a separate daily administration session or a particular capture application. When using an agent, work in the vault folder or configure the optional [project routing](agent-setup.md#agent-instructions) so it knows where the notes live. Without an agent, open the Project and make the same updates by hand.
+
+| Moment | What to ask | What should happen |
+| --- | --- | --- |
+| You find something useful | “Save this reference under my workshop project; keep its caveats.” | Preserve provenance, connect useful knowledge to the Project and update affected synthesis when warranted. |
+| You have an idea | “Keep this idea and why we might try it.” | Update an existing note or create a suitable linked note; retain the reasoning. |
+| You return to work | “Where did we leave this project, and what remains unresolved?” | Read the saved state, identify open decisions and suggest the next useful step. |
+| You finish meaningful work | “Update the project with what we decided and what comes next.” | Reconcile current state and next actions instead of appending another session transcript. |
+
+**Check what was saved.** The agent should explain what it created or updated, where it belongs, how it connects to existing knowledge, and what remains uncertain or inaccessible. Open the notes when the material matters. A good capture preserves useful reasoning and caveats, not just a link or a vague summary. External material goes through [Ingest Source](procedures/ingest-source.md); your own ideas can go directly into the appropriate notes.
+
+### Choose a capture habit
+
+Start with the simplest method you will actually use:
+
+- **Save directly during a conversation.** Ask the agent to save a useful idea, decision or supplied reference while the context is available. No Inbox note is required.
+- **Bring selected material yourself.** Supply a link, file or passage when you want it incorporated, with a sentence about why it matters. This does not require connecting the source application.
+- **Capture now, organize later.** If immediate organization interrupts you, write unprocessed notes or use the optional [Ready To Ingest](ready-to-ingest.md) scratchpad, then request processing when convenient. Any Markdown editor works; Tolaria is optional.
+- **Add an integration only for a recurring need.** Once manual use shows a repeated capture task, choose an appropriate tool and explicitly agree its source scope, privacy boundaries, review step and permitted writes. Email, recordings and other sources depend on separately configured tools; the template provides no automatic connection to them. [Automation](vault-automations.md) is optional too.
+
+Try one method on real work before adding another. Keep what makes useful knowledge easier to save and find; there is no requirement to adopt every capture route or Skill.
+
+### Keep it useful
+
+When a Project changes, refresh its [summary](procedures/update-project-summary.md) and [next actions](procedures/update-project-next-actions.md). When finding or resuming work becomes difficult, ask for a focused [health review](procedures/review-vault-health.md); use [lint](procedures/lint-vault.md) for structural defects. The audit commands are in [Agent Setup](agent-setup.md#checks-that-keep-the-structure-honest).
+
+A Project note does not need its own folder, repository or agent workspace; [Route Project Work And Artifacts](procedures/route-project-work-and-artifacts.md) explains when one is useful. [Recaps](recap.md), views and scheduled maintenance can be added later if they solve a concrete problem.
+
+### Choosing a skill
+
+The seven Skills are optional shortcuts to the [Procedures](procedures/). The [catalogue](skills/) explains when to choose each one; the executable packages live under [.agents/skills/](.agents/skills/). You can ask for the work in ordinary language or follow a Procedure without installing its Skill.
+
+| What you want to do | Skill | Example request |
+| --- | --- | --- |
+| Incorporate external material with provenance and useful synthesis | [Ingest Source](skills/ingest-source-skill.md) | “Add this paper to my brain.” |
+| Refresh a Project’s state, scope, blockers and links | [Update Project Summary](skills/update-project-summary-skill.md) | “Bring this Project up to date.” |
+| Reconcile completed, changed and new next actions | [Update Project Next Actions](skills/update-project-next-actions-skill.md) | “Update what should happen next.” |
+| Check metadata, links, hierarchy and structural contracts | [Lint Vault](skills/lint-vault-skill.md) | “Check for broken links and structural defects.” |
+| Judge usefulness, current state and ease of retrieval | [Review Vault Health](skills/review-vault-health-skill.md) | “Review whether this vault still helps me resume work.” |
+
+**Optional: capture now, organize later.** An Inbox is a collection of unprocessed captures, not a required folder or step. You can write separate notes, or use `ready-to-ingest.md` as a reusable scratchpad. These ordinary Markdown files can be edited in any editor; Tolaria provides an optional Inbox interface.
+
+| If you use an intake queue | Skill | Example request |
+| --- | --- | --- |
+| Organize mixed captures within a requested scope | [Process Inbox](skills/process-inbox-skill.md) | “Organize last week’s captures.” |
+| Process only captures marked `ingest_ready: true` | [Process Ready Ingestion Inbox](skills/process-ready-ingestion-inbox-skill.md) | “Process only what I marked ready.” |
+
+These are two selection modes for the same processing, not successive stages. Ready Ingestion selects explicitly queued captures and follows Process Inbox, preserving the reusable intake note and leaving other Inbox material untouched. Process Inbox calls Ingest Source for external material. You can also use Ingest Source directly without either Inbox workflow. Keep the two Inbox Skills only if deferred capture suits your routine; installing them enables no scheduled job.
+
+**The two reviews answer different questions.** Lint checks structural contracts; health review judges whether the knowledge and workflows remain useful. Both default to read-only. Health review uses some of the same audit evidence, but a vault can pass mechanical checks and still have stale summaries or buried decisions.
+
+**The two project updates differ in starting scope.** Summary refresh starts from the Project’s overall state; next-action reconciliation starts from remaining work. Each updates related sections when needed to keep state and actions consistent. Choose the narrower task when only the actions changed.
 
 ## Relationship to other tools
 

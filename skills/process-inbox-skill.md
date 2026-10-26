@@ -10,6 +10,12 @@ _organized: true
 
 # Process Inbox Skill
 
-Thin visible catalogue note for the `process-inbox` agent skill package.
+Triage and organize unprocessed captures within the requested scope: internal ideas, questions, project updates and external material. Preserve useful details and leave blocked items unresolved.
 
-Use this skill when the matching procedure should be activated quickly from an agent workflow.
+This Skill supports optional deferred capture; direct saving does not require an Inbox or Tolaria.
+
+Example request: “Organize last week’s captures.”
+
+For external material supplied directly, use [[skills/ingest-source-skill|Ingest Source]]. To process only explicitly ready-marked captures, use [[skills/process-ready-ingestion-inbox-skill|Process Ready Ingestion Inbox]].
+
+The matching Procedure owns the workflow; the package under `.agents/skills/process-inbox/` makes it discoverable to compatible agents.

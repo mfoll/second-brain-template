@@ -1,9 +1,13 @@
 ---
 name: review-vault-health
-description: "Review vault health and maintenance priorities in the selected deployed vault; use that vault’s rules and Procedure."
+description: "Assess vault usefulness, current state and retrieval in the selected deployed vault; recommend maintenance priorities, read-only by default."
 ---
 
 # Review Vault Health
+
+Assess whether the vault remains useful, current and easy to navigate. Recommend a few high-value improvements, read-only by default.
+
+For mechanical defects, use `lint-vault`. Health review interprets some of the same audit evidence; a structurally valid vault can still contain stale summaries or buried decisions.
 
 ## Source of truth
 

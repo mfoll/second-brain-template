@@ -10,6 +10,10 @@ _organized: true
 
 # Ingest Source Skill
 
-Thin visible catalogue note for the `ingest-source` agent skill package.
+Incorporate a paper, webpage, document or other external material into the vault, preserving provenance and connecting useful knowledge to existing notes.
 
-Use this skill when the matching procedure should be activated quickly from an agent workflow.
+Example request: “Add this paper to my brain.”
+
+For mixed or unclassified captures, use [[skills/process-inbox-skill|Process Inbox]], which delegates external material to this workflow.
+
+The matching Procedure owns the workflow; the package under `.agents/skills/ingest-source/` makes it discoverable to compatible agents.

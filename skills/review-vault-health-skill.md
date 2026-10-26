@@ -10,6 +10,10 @@ _organized: true
 
 # Review Vault Health Skill
 
-Thin visible catalogue note for the `review-vault-health` agent skill package.
+Assess whether the vault remains useful, current and easy to navigate. Recommend a few high-value improvements, read-only by default.
 
-Use this skill when the matching procedure should be activated quickly from an agent workflow.
+Example request: “Review whether this vault still helps me resume work.”
+
+For mechanical defects, use [[skills/lint-vault-skill|Lint Vault]]. Health review interprets some of the same audit evidence; a structurally valid vault can still contain stale summaries or buried decisions.
+
+The matching Procedure owns the workflow; the package under `.agents/skills/review-vault-health/` makes it discoverable to compatible agents.
