@@ -25,7 +25,7 @@ Reference material lives in two Guides: the [Model Reference](model-reference.md
 ## How it works
 
 - **Notes are files.** Each `.md` file has readable text and a YAML header, called frontmatter, for structured properties.
-- **Types say what a note is.** `type: Project` describes current work; `Source`, `Concept` and `Question` distinguish source material, reusable ideas and unresolved issues. The 17 [Type definitions](model-reference.md#note-types) explain their conventions and can be extended.
+- **Types say what a note is.** `type: Project` describes current work; `Source`, `Concept` and `Question` distinguish source material, reusable ideas and unresolved issues. The 18 [Type definitions](model-reference.md#note-types) explain their conventions and can be extended.
 - **Relationships say how notes connect.** `belongs_to` names the parent, `has` selects useful entry points, and `related_to` links relevant notes. Body links add context.
 - **Agents can read and write the graph.** With filesystem access, a coding agent follows the instructions, Type definitions and Procedures to find, structure, link and update notes. No graph database or separate retrieval index is required.
 

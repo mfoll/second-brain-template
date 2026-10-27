@@ -6,7 +6,7 @@ _organized: true
 
 # Model Reference
 
-The note model behind this template: the 17 note types, the file format and relationship fields, the capture-to-archive lifecycle, saved views, how to extend the model, and how it relates to other formats. Read [Second Brain template](README.md) first for what the template is and how to start; read this when you need the exact conventions.
+The note model behind this template: the 18 note types, the file format and relationship fields, the capture-to-archive lifecycle, saved views, how to extend the model, and how it relates to other formats. Read [Second Brain template](README.md) first for what the template is and how to start; read this when you need the exact conventions.
 
 ## Note types
 
