@@ -10,7 +10,7 @@ The note model behind this template: the 17 note types, the file format and rela
 
 ## Note types
 
-The template includes all 17 types below; there is no separate type pack to install. Start with one Responsibility for an ongoing area, one Project for a finite outcome, and a useful Source or general Note beneath it. The other types are available when useful, and some describe the template's own instructions and workflows. Recap is an explicitly optional extension.
+The template includes all 18 types below; there is no separate type pack to install. Start with one Responsibility for an ongoing area, one Project for a finite outcome, and a useful Source or general Note beneath it. The other types are available when useful, and some describe the template's own instructions and workflows. Recap is an explicitly optional extension.
 
 | Note | Purpose |
 | --- | --- |
@@ -24,6 +24,7 @@ The template includes all 17 types below; there is no separate type pack to inst
 | [Question](question.md) | A consequential unresolved issue worth returning to. |
 | [Opinion](opinion.md) | Your current stance, kept distinct from evidence. |
 | [Person](person.md) | Relevant relationship, role and collaboration context about someone. |
+| [Organization](organization.md) | A company, institution, funder, customer or supplier: its names and codes, the relationship's current state and dated history. |
 | [Event](event.md) | A meeting, milestone or other occurrence worth remembering as an event. |
 | [Recap](recap.md) | Optional reviewed summaries of discussions and activities over a day, month or year. |
 | [Guide](guide.md) | Orientation and reference material, including the README and this note. |
@@ -147,7 +148,7 @@ The model is open to extension. Use existing types when they fit, and add struct
 
 - **Add a field:** properties such as `priority`, `review_date` or an external identifier can be added to frontmatter. Document a field's meaning and expected values in the relevant Type or Guide, and use it consistently.
 - **Add a relationship:** a field such as `depends_on` can hold quoted wikilinks without a separate declaration or registry. Document its meaning and direction in the relevant Type definition or the relationship reference above, and preserve existing relationship meanings.
-- **Add a type:** create a root definition such as `organization.md` with `type: Type`, a first heading `# Organization`, and an explanation of when to use it. Notes in that category then use `type: Organization`. Follow the [Type conventions](type.md) and give the definition a retrieval path.
+- **Add a type:** create a root definition such as `contract.md` with `type: Type`, a first heading `# Contract`, and an explanation of when to use it. Notes in that category then use `type: Contract`. During ingestion, agents propose a new Type as a Question for the owner rather than creating it ([[procedures/ingest-source|Ingest Source]]). Follow the [Type conventions](type.md) and give the definition a retrieval path.
 - **Extend a workflow or view:** update the relevant Procedure, Skill or saved-view configuration when the new structure should affect behavior. Adding a field alone does not create automation or guarantee that every application interprets it.
 
 Prefer a property for a small distinction, such as `format: video` on a Source. Create a new Type when it needs a distinct template, relationships or workflow, as the [extension guidance](https://portent.md/implementation/extending-portent) recommends.

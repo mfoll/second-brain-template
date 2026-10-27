@@ -35,6 +35,7 @@ Inventory canonical tracked notes and exclude implementation, local, attachment,
 3. Inspect active Projects and Responsibilities first, then Questions, synthesis Types, Sources, Procedures, ADRs, Guides, and unprocessed surfaces.
 4. Separate mechanical lint findings, strategic recommendations, candidate typed notes, and workflow changes.
 5. Prefer a few high-value recommendations. Treat low Type counts as prompts for judgment, not quotas.
-6. Propose broad structural work before editing; apply only focused authorized changes and then run the relevant maintenance procedures.
+6. List pending Type proposals (Question notes proposing a Type) with a recommendation: accept when several existing notes would use the Type and no current Type fits. On the owner's acceptance, write the Type note following [[type]], move the affected notes to it, update links, and run [[procedures/lint-vault|Lint Vault]]; a rejected proposal is closed with its reason.
+7. Propose broad structural work before editing; apply only focused authorized changes and then run the relevant maintenance procedures.
 
 Lead with judgment: whether the vault is sound enough to trust and what would most improve future retrieval.

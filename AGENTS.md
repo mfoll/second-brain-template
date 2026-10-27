@@ -83,6 +83,7 @@ When a task matches an existing Procedure, read and follow it before acting. Use
 | Start something new (area, project, subject or first item) | [[procedures/start-a-focus|Start a Focus]] |
 | Refresh project state or actions | [[procedures/update-project-summary|Update Project Summary]] and [[procedures/update-project-next-actions|Update Project Next Actions]] |
 | Maintain a project workbench | [[procedures/maintain-project-human-view|Maintain Project Human View]] |
+| Import an existing archive at once | [[procedures/import-archive|Import an Archive]] |
 | Process Inbox or ingest a source | [[procedures/process-inbox|Process Inbox]] or [[procedures/ingest-source|Ingest Source]] |
 | Verify external raw locations | [[procedures/check-external-raw-references|Check External Raw References]] |
 | Diagnose structure or review strategy | [[procedures/lint-vault|Lint Vault]] or [[procedures/review-vault-health|Review Vault Health]] |

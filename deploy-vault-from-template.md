@@ -31,7 +31,7 @@ The README's short setup request points an agent here. The agent runs the minima
    - whether to use the Brain from other folders, explained as below.
 3. **Write the agreed setup.** Apply the answers through minimal steps 2, 3 and 5: [[vault]], `AGENTS.md` and the deployed README with its scope and responsible-use section. Show the user the result.
 4. **Start the first focus** through [[procedures/start-a-focus|Start a Focus]] (minimal step 4).
-5. **Offer the remaining options** without enabling them by default: installing Skills for discovery, Git history and checkpoints, and the other optional connections. Then archive the setup material (minimal step 6), run the checks and report.
+5. **Offer the remaining options** without enabling them by default: importing an existing archive through [[procedures/import-archive|Import an Archive]], installing Skills for discovery, Git history and checkpoints, and the other optional connections. Then archive the setup material (minimal step 6), run the checks and report.
 
 ### Explain the choice to use the Brain from other folders
 

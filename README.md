@@ -156,7 +156,7 @@ Nine demo vaults show the template after about two years of fictional daily use,
 This template adapts the [Portent Vault Template](https://github.com/refactoringhq/portent-vault-template) and builds on [Portent](https://github.com/refactoringhq/portent), Refactoring’s open specification for portable knowledge bases. Portent supplies the vocabulary: the core types, relationships and lifecycle. This repository adds what an agent needs to keep a vault in shape over months of use:
 
 - **Operating rules.** [AGENTS.md](AGENTS.md) holds the vault's operating rules for agents, with three instruction layers (global, vault, project pointer) and explicit write, provenance and external-file boundaries.
-- **Workflows and packages.** Seventeen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. Eight selected workflows are also exposed as optional thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
+- **Workflows and packages.** Eighteen [Procedures](procedures/) for ingestion, inbox processing, project upkeep, validation and checkpointing. Eight selected workflows are also exposed as optional thin [Skill packages](.agents/skills/) that point an agent to the Procedure rather than repeat it; [Agent Setup](agent-setup.md#why-skills-are-thin) explains why.
 - **A decision record.** Eleven [ADRs](adr/) explain why the structure is the way it is, with the alternatives rejected and the signal that would reopen each decision, so that an agent does not relax a rule in the first ambiguous case. They are listed [below](#design-decisions).
 - **Enforcement.** Lint scripts check required note metadata, Skill pairs, links, compactness, icon names and the `belongs_to` hierarchy, and the health review turns their findings into promotion proposals. The hierarchy contract fills the one gap Portent leaves open: every durable note rolls up to a Responsibility, Topics stay lateral, and a note has a named home before it has a project.
 
@@ -282,7 +282,7 @@ You do not need to read every file before starting or retain every optional feat
 | Files | Role |
 | --- | --- |
 | [vault.md](vault.md), [maintain-vault.md](maintain-vault.md), [ready-to-ingest.md](ready-to-ingest.md) | Starter entry Project, maintenance Responsibility and ready-marked intake note. Replace their placeholders in your copy. |
-| Root Type definitions | The 17 types, including their templates and conventions. |
+| Root Type definitions | The 18 types, including their templates and conventions. |
 | [AGENTS.md](AGENTS.md), [CLAUDE.md](CLAUDE.md), [GEMINI.md](GEMINI.md) | Vault operating rules and small compatibility files that import them for other runtimes. |
 | [Model Reference](model-reference.md), [Agent Setup](agent-setup.md) | The two reference Guides behind this README. |
 | [Deployment](deploy-vault-from-template.md), [upgrade](upgrade-existing-vault-from-template.md) and [global instruction template](global-agent-instructions-template.md) | Bootstrap and configuration material, to customize or retire after setup. |
