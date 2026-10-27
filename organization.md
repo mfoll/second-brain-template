@@ -29,7 +29,7 @@ List every surface the material uses for the organization in `aliases`: short na
 Facts about an organization change: owners and contacts, contract terms, status. Keep two layers:
 
 - **Current State** states what holds now, written so a reader needs nothing else for today's answer.
-- **History** keeps every change as a dated line, oldest first, with what changed, the effective date when it differs from the recorded date, and a pointer to the record: its `root_key` plus `relative_path`, a URL, or a stable identifier such as a message ID or ticket number, never a machine-local path. A correction or retraction is a new line that names what it corrects; the earlier line stays. Conflicting records that cannot be settled are kept as a History line or under Open Questions in the note; a separate Question note is warranted only when the conflict meets [[question]]'s standard.
+- **History** keeps every change as a dated line, oldest first, with what changed, who stated it when that matters, the effective date when it differs from the recorded date, and a pointer to the record: its `root_key` plus `relative_path`, a URL, or a stable identifier such as a message ID or ticket number, never a machine-local path. A correction or retraction is a new line that names what it corrects; the earlier line stays. When records disagree, the authority rules in [[procedures/ingest-source|Ingest Source]] decide first; conflicts they cannot settle are kept as a History line or under Open Questions in the note; a separate Question note is warranted only when the conflict meets [[question]]'s standard.
 
 Answering "as of" a date reads History; answering "now" reads Current State. When they disagree, History and its records win, and Current State is fixed.
 
