@@ -22,6 +22,8 @@ For maintained project inputs, outputs, deliverables, or folders that intentiona
 
 A specific external file or project folder that should be maintained over time gets its own Source note. Project notes should link to that Source note instead of storing `last_checked` themselves. Casual one-off mentions of files do not need Source notes unless the user asks to remember, track, reference, associate, or maintain that file.
 
+`source_type` is free text that names the kind of material, such as article, book, scientific paper, web page, dataset, contract, invoice, meeting notes or recording. The template below uses one example value.
+
 ## Template
 
 ```md

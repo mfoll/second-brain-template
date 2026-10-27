@@ -28,4 +28,4 @@ Use this procedure after an authorized vault edit when the work should receive a
 6. Push only when explicitly authorized, never with force unless that exact rewrite was approved after its risk was stated.
 7. Verify final status and report the commit, push result, and intentionally uncommitted files.
 
-Use a `codex/<topic>` branch for broad, risky, experimental, or review-heavy changes. Read-only automations never stage, commit, or push; write-capable jobs operate only within their documented vault, scope, and command authorization.
+Use a `<agent>/<topic>` branch, such as `codex/<topic>` or `claude/<topic>`, for broad, risky, experimental, or review-heavy changes. Read-only automations never stage, commit, or push; write-capable jobs operate only within their documented vault, scope, and command authorization.
