@@ -19,6 +19,7 @@ A Project must have an end condition you could tick off: an outcome that is reac
 - For an established Project, target 600–1,200 words; a complex umbrella may reach about 1,500. A new or simple Project can be much shorter. Do not pad it to meet a word target.
 - `Current State` contains current truth only: normally no more than five bullets or 250 words.
 - `Next Actions` contains 3–7 outcome-level actions. Keep microtasks in the active chat or task system.
+- `Open Promises`, when present, lists what people have promised each other on this Project and not yet kept, one line each: `- [ ] Who → to whom: what (due YYYY-MM-DD) — [[source]]`. Remove a line when a record shows the promise kept, dropped or handed over; the Source keeps the history. The fixed form lets one search list everything the owner owes, or is owed, across Projects.
 - `Open Questions` and `Important Notes` normally contain 3–7 prioritized links each.
 - `Maintenance Log` keeps the latest 3–5 meaningful milestones. Git carries routine edit history.
 - Replace or reconcile old synthesis when work changes; do not append another dated mini-report.
@@ -109,6 +110,10 @@ Current procedures, recurring loops, or work surfaces.
 ## Next Actions
 
 - [ ] Three to seven outcome-level actions.
+
+## Open Promises
+
+- [ ] Who → to whom: what (due YYYY-MM-DD) — [[source]]
 
 ## Open Questions
 

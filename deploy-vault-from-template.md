@@ -26,7 +26,7 @@ The README's short setup request points an agent here. The agent runs the minima
    - which AI tools and accounts may process the notes;
    - storage, backup and retention, and whether to use Git;
    - whether meetings or other people's information will be recorded, and on what agreement (ask only if relevant);
-   - what the agent may save without asking each time;
+   - what the agent may save without asking each time, including whether it may create the areas and Projects that the user's own records show (otherwise it proposes them in one batch);
    - the language for notes;
    - whether to use the Brain from other folders, explained as below.
 3. **Write the agreed setup.** Apply the answers through minimal steps 2, 3 and 5: [[vault]], `AGENTS.md` and the deployed README with its scope and responsible-use section. Show the user the result.

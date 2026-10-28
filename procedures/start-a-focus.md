@@ -50,6 +50,15 @@ Read the matching root Type notes before writing. Create a Responsibility only w
 4. If the user supplied a first item, save it through [[procedures/ingest-source|Ingest Source]] for external material, or into the right note for the user's own idea.
 5. If the focus needs a code repository or other technical workspace connected to the Brain, hand over to [[procedures/initialize-project-memory|Initialize Project Memory]]; do not create a folder or pointer here.
 
+## Several focuses at once
+
+Importing an archive or capturing a stream of records often reveals several areas the owner answers for and finite efforts the owner leads or takes part in that have no note yet. Do not interview the owner about each one, and do not leave them unplaced:
+
+1. Collect them into one proposal table: each note, its Type, its parent, and the records that show it (a done condition for a Project when the records give one). Answer the interview questions from the records; leave a cell blank rather than guess.
+2. Ask once. The owner may approve the whole table, approve some rows, or edit them; approval covers the rows approved.
+3. If the setup recorded standing permission to create structure the owner's records show (see "what the agent may save without asking" in the vault README), create the rows directly and list them in the report instead of asking.
+4. Create the approved notes as in "Propose, then write", then place the records' people and Sources under them.
+
 ## Verify and report
 
 - Run the links and hierarchy audits from `.agents/skills/lint-vault/scripts/` when Python is available; fix new errors.

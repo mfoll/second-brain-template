@@ -24,6 +24,8 @@ Rules use a stable ID, date, narrow context, requested treatment, rationale when
 
 ## Reusable rules
 
+Triage rules for streams of records live here too, for example "conference mailings and automated notices: skip", added when the owner answers a batched triage question with a future preference ([[procedures/ingest-source#Triage a stream of records|Ingest Source]]).
+
 No deployment-specific rules are included in the template.
 
 ## Contextual dictionary

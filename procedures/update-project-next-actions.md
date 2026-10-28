@@ -22,4 +22,4 @@ Use this procedure when completed, changed, or newly created work changes what s
 6. Add a Maintenance Log entry only for a meaningful transition or decision, keeping the latest 3–5 milestones.
 7. Reconcile the human view when the active workbench changed, then review the diff.
 
-Phrase actions as outcomes, not microtasks. Do not keep a routine Done section, hide durable Questions inside actions, append near-duplicates, or attempt speculative broad cascades.
+A promise between people (who owes what to whom) goes to the Project's Open Promises, not to Next Actions, unless it is also the Project's next outcome; see the [[project|Project]] Type. Phrase actions as outcomes, not microtasks. Do not keep a routine Done section, hide durable Questions inside actions, append near-duplicates, or attempt speculative broad cascades.
